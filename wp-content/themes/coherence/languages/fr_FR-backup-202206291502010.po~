@@ -1,0 +1,643 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Coherence\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-06-08 00:53+0000\n"
+"PO-Revision-Date: 2022-06-29 14:59+0000\n"
+"Last-Translator: \n"
+"Language-Team: Français\n"
+"Language: fr_FR\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.6.2; wp-6.0\n"
+"X-Domain: coherence"
+
+#: inc/breadcrumb.php:204
+#, php-format
+msgid " ( Page %s )"
+msgstr " ( Page %s )"
+
+#: inc/theme-options/theme-options.php:22
+msgid " By "
+msgstr " Par "
+
+#: template-parts/footer/footer-builder.php:19
+#: template-parts/header/header-builder.php:22
+#, php-format
+msgid "%s"
+msgstr "%s"
+
+#. 1: title.
+#: comments.php:37
+msgid "1 Comment"
+msgstr "1 Commentaire"
+
+#: inc/theme-options/theme-options.php:375
+msgid "404"
+msgstr "404"
+
+#: inc/theme-options/theme-options.php:363
+msgid "404 Page"
+msgstr "Page 404"
+
+#: inc/theme-options/theme-options.php:369
+msgid "404 Page Options"
+msgstr "Options De La Page 404"
+
+#: inc/class-coherence-init.php:135
+msgid "Add Sidebar widgets here."
+msgstr "Ajouter des widgets Encadré ici."
+
+#: inc/theme-options/theme-customizer.php:49
+msgid "All Header Color"
+msgstr "Tous Les En-Tête De Couleur"
+
+#: inc/breadcrumb.php:212
+msgid "Archive"
+msgstr "Archive"
+
+#: inc/theme-options/theme-options.php:249
+msgid "Archive  Page"
+msgstr "Page D'Archive"
+
+#: inc/theme-options/theme-options.php:278
+msgid "Archive  Page Spacing Top"
+msgstr "Page D'Archive De L'Espacement En Haut"
+
+#: inc/theme-options/theme-options.php:256
+msgid "Archive Page Option"
+msgstr "Page D'Archive Option"
+
+#: inc/theme-options/theme-options.php:272
+msgid "Archive Page Spacing"
+msgstr "Page D'Archive De L'Espacement"
+
+#: inc/theme-options/theme-options.php:290
+msgid "Archive Page Spacing Bottom"
+msgstr "Page D'Archive De L'Espacement Bas"
+
+#: inc/breadcrumb.php:147
+msgid "Author archive for: "
+msgstr "Archive de l'auteur pour: "
+
+#: 404.php:14
+msgid "Back To Homepage"
+msgstr "Retour À La Page D'Accueil"
+
+#: inc/theme-options/theme-options.php:49
+msgid "Back Top"
+msgstr "Retour haut de page"
+
+#: inc/theme-options/theme-options.php:45
+msgid "Back Top Options"
+msgstr "Options retour haut de page"
+
+#: inc/theme-options/theme-options.php:538
+msgid "Backup"
+msgstr "Sauvegarde"
+
+#: inc/breadcrumb.php:216 inc/breadcrumb.php:217
+msgid "Blog"
+msgstr "Blog"
+
+#: inc/theme-options/theme-options.php:216
+msgid "Blog Details Page Spacing"
+msgstr "Blog De La Page Des Détails De L'Espacement"
+
+#: inc/theme-options/theme-options.php:131
+msgid "Blog Page"
+msgstr "Page De Blog"
+
+#: inc/theme-options/theme-options.php:138
+msgid "Blog Page Option"
+msgstr "Page De Blog De L'Option"
+
+#: inc/theme-options/theme-options.php:154
+msgid "Blog Page Spacing"
+msgstr "Page De Blog D'Espacement"
+
+#: inc/theme-options/theme-options.php:172
+msgid "Blog Page Spacing Bottom"
+msgstr "Page De Blog Espacement Bas"
+
+#: inc/theme-options/theme-options.php:160
+msgid "Blog Page Spacing Top"
+msgstr "Page De Blog D'Espacement En Haut"
+
+#: inc/theme-options/theme-options.php:187
+msgid "Blog Single Page"
+msgstr "Blog Page Unique"
+
+#: inc/theme-options/theme-options.php:194
+msgid "Blog Single Page Option"
+msgstr "Blog Seule Page L'Option"
+
+#: inc/theme-options/theme-options.php:234
+msgid "Blog Single Page Spacing Bottom"
+msgstr "Blog Seule Page L'Espacement Bas"
+
+#: inc/theme-options/theme-options.php:222
+msgid "Blog Single Page Spacing Top"
+msgstr "Blog Seule Page L'Espacement Haut"
+
+#: inc/theme-options/theme-options.php:407
+msgid "Body Font"
+msgstr "Corps De Police"
+
+#: inc/theme-options/theme-options.php:402
+msgid "Body Font Options"
+msgstr "Corps D'Options De Police"
+
+#: inc/theme-options/theme-customizer.php:57
+msgid "Body Text Color"
+msgstr "Corps De Couleur De Texte"
+
+#: inc/theme-options/theme-options.php:95
+#: inc/theme-options/theme-options.php:106
+msgid "Breadcrumb"
+msgstr "Fil d'ariane"
+
+#: inc/theme-options/theme-options.php:102
+msgid "Breadcrumb Options"
+msgstr "Fil D'Ariane Options"
+
+#: inc/theme-options/theme-options.php:385
+msgid "Button Text"
+msgstr "Texte Du Bouton"
+
+#: comments.php:103
+msgid "Cancel"
+msgstr "Annuler"
+
+#: comments.php:71
+msgid "Comments are closed."
+msgstr "Les commentaires sont fermés."
+
+#. 1: comment count number, 2: title.
+#: comments.php:43
+#, php-format
+msgctxt "comments title"
+msgid "%1$s Comments &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s Comments "
+msgstr[0] "%1$s Commentaires “%2$s”"
+msgstr[1] "%1$s Commentaires "
+
+#. %s: Name of current post. Only visible to screen readers
+#: template-parts/content-single.php:33
+msgid "Continue reading"
+msgstr "Continuer la lecture"
+
+#: template-parts/footer/default-footer.php:7
+msgid "Copyright &copy;2022 coherence"
+msgstr "Copyright ©2022 cohérence"
+
+#: inc/theme-options/theme-options.php:521
+msgid "Copyright Area Bottom Spacing"
+msgstr "Domaine Du Droit D'Auteur En Bas De L'Espacement"
+
+#: inc/theme-options/theme-options.php:499
+msgid "Copyright Area Spacing"
+msgstr "Domaine Du Droit D'Auteur De L'Espacement"
+
+#: inc/theme-options/theme-options.php:492
+msgid "Copyright Area Text"
+msgstr "Le Droit D'Auteur De La Zone De Texte"
+
+#: inc/theme-options/theme-options.php:507
+msgid "Copyright Area Top Spacing"
+msgstr "Domaine Du Droit D'Auteur En Haut De L'Espacement"
+
+#: inc/theme-options/theme-options.php:210
+msgid "Display Social Share"
+msgstr "Affichage De La Part Sociale"
+
+#: comments.php:88
+msgid "Email"
+msgstr "E-mail"
+
+#: inc/theme-options/theme-options.php:476
+msgid "Enable Footer Builder"
+msgstr "Activer Le Pied De Page Builder"
+
+#: inc/theme-options/theme-options.php:77
+msgid "Enable Header Builder"
+msgstr "Activer L'En-Tête Builder"
+
+#: inc/theme-options/theme-options.php:494
+msgid "enter copyright text"
+msgstr "entrez le droit d'auteur du texte"
+
+#: inc/breadcrumb.php:196
+msgid "Error 404"
+msgstr "Erreur 404"
+
+#: inc/theme-options/theme-options.php:466
+msgid "Footer"
+msgstr "Le pied de page"
+
+#: inc/theme-options/theme-options.php:472
+msgid "Footer Options"
+msgstr "Pied De Page Des Options"
+
+#: inc/theme-options/theme-options.php:387
+msgid "Go Back"
+msgstr "Revenir En Arrière"
+
+#. If there are characters in your language that are not supported
+#. by chosen font(s), translate this to 'off'. Do not translate into your own language.
+#: inc/class-coherence-init.php:220
+msgctxt "Google font: on or off"
+msgid "on"
+msgstr "sur"
+
+#: inc/theme-options/theme-options.php:64
+msgid "Header Option"
+msgstr "L'En-Tête Option"
+
+#: inc/theme-options/theme-options.php:437
+msgid "Heading Font"
+msgstr "Titre De La Police"
+
+#: inc/theme-options/theme-options.php:432
+msgid "Heading Font Options"
+msgstr "La Rubrique Options De Police"
+
+#: inc/breadcrumb.php:18
+msgid "Home"
+msgstr "La maison"
+
+#. Author URI of the theme
+msgid "https://coherence.com/"
+msgstr ""
+
+#. URI of the theme
+msgid "https://coherence.com"
+msgstr ""
+
+#: template-parts/content-none.php:44
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching can help."
+msgstr ""
+"Il semble que nous ne pouvons pas trouver ce que vous cherchez. Peut-être "
+"que la recherche peut vous aider."
+
+#. Name of the theme
+msgid "Coherence"
+msgstr "La cohérence"
+
+#: inc/theme-options/theme-customizer.php:39
+msgid "Coherence Main Body"
+msgstr "La Cohérence Corps Principal"
+
+#: inc/theme-options/theme-customizer.php:22
+msgid "Coherence Primary Color"
+msgstr "La Cohérence De Couleur Primaire"
+
+#. Description of the theme
+msgid ""
+"Coherence – Coherence is typically designed for the IT sector and businesses "
+"providing IT services. It offers many various possibilities which will help "
+"you easily create a beautiful, stunning and unique website."
+msgstr ""
+"Cohérence la Cohérence est généralement conçu pour le secteur de l'IT et les "
+"entreprises fournissant des services de TI. Il offre de nombreuses "
+"possibilités différentes qui vous aideront à créer une belle, magnifique et "
+"unique site web."
+
+#: comments.php:96
+msgid "Leave A Comment"
+msgstr "Laisser Un Commentaire"
+
+#: comments.php:97
+#, php-format
+msgid "Leave A Reply To %s"
+msgstr "Laisser Une Réponse À %s"
+
+#: inc/theme-options/theme-customizer.php:44
+msgid "Main Body Options"
+msgstr "Corps Principal Options"
+
+#: comments.php:83
+msgid "Name"
+msgstr "Nom"
+
+#: template-parts/content-none.php:14
+msgid "Nothing Found"
+msgstr "Rien N'A Été Trouvé"
+
+#: 404.php:12
+msgid "Oops!"
+msgstr "Oups!"
+
+#: inc/breadcrumb.php:198
+msgid "Page Not Found"
+msgstr "Page Non Trouvée"
+
+#: inc/theme-options/theme-options.php:125
+msgid "Pages & Template"
+msgstr "Pages & Modèle"
+
+#: inc/template-functions.php:65 template-parts/content-page.php:21
+#: template-parts/content-single.php:46
+msgid "Pages:"
+msgstr "Pages:"
+
+#. %s: post author.
+#: inc/template-tags.php:49
+#, php-format
+msgctxt "post author"
+msgid "%s"
+msgstr "%s"
+
+#: comments.php:105
+msgid "Post Comment"
+msgstr "Poster Un Commentaire"
+
+#. %s: post date.
+#: inc/template-tags.php:32
+#, php-format
+msgctxt "post date"
+msgid "%s"
+msgstr "%s"
+
+#: inc/theme-options/theme-options.php:38
+msgid "Preloader"
+msgstr "Préchargement "
+
+#: inc/theme-options/theme-options.php:34
+msgid "Preloader Options"
+msgstr "Pré chargement "
+
+#: inc/class-coherence-init.php:75
+msgid "Primary Menu"
+msgstr "Menu Principal"
+
+#: template-parts/content.php:30
+msgid "Read More"
+msgstr "Lire Plus"
+
+#. 1: link to WP admin new post page.
+#: template-parts/content-none.php:24
+#, php-format
+msgid ""
+"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+
+#: inc/theme-options/theme-options.php:305
+msgid "Search  Page"
+msgstr "Page De Recherche"
+
+#: inc/theme-options/theme-options.php:334
+msgid "Search  Page Spacing Top"
+msgstr "Page De Recherche D'Espacement En Haut"
+
+#: searchform.php:10
+msgid "Search here"
+msgstr "Recherche ici"
+
+#: inc/breadcrumb.php:191
+msgid "Search Page"
+msgstr "Page De Recherche"
+
+#: inc/theme-options/theme-options.php:312
+msgid "Search Page Option"
+msgstr "Page De Recherche Option"
+
+#: inc/theme-options/theme-options.php:328
+msgid "Search Page Spacing"
+msgstr "Page De Recherche D'Espacement"
+
+#: inc/theme-options/theme-options.php:346
+msgid "Search Page Spacing Bottom"
+msgstr "Page De Recherche D'Espacement Bas"
+
+#: inc/class-coherence-general-hooks.php:109
+msgid "Search....."
+msgstr "Recherche....."
+
+#: inc/breadcrumb.php:189
+msgid "Searched for: "
+msgstr "Recherché: "
+
+#: inc/theme-options/theme-options.php:485
+msgid "Select a Footer"
+msgstr "Sélectionnez un Pied de page"
+
+#: inc/theme-options/theme-options.php:86
+msgid "Select a Header"
+msgstr "Sélectionnez un en-Tête"
+
+#: inc/theme-options/theme-options.php:484
+msgid "Select Footer"
+msgstr "Sélectionnez Le Pied De Page"
+
+#: inc/theme-options/theme-options.php:85
+msgid "Select Header"
+msgstr "Sélectionnez L'En-Tête"
+
+#: inc/theme-options/theme-options.php:143
+#: inc/theme-options/theme-options.php:199
+#: inc/theme-options/theme-options.php:261
+#: inc/theme-options/theme-options.php:317
+msgid "Select Page Layout"
+msgstr "Sélectionnez Mise En Page"
+
+#: inc/class-coherence-init.php:133
+msgid "Sidebar"
+msgstr "Barre latérale"
+
+#: header.php:34
+msgid "Skip to content"
+msgstr "Aller au contenu"
+
+#. Author of the theme
+msgid "COHERENCE"
+msgstr "COHERENCE"
+
+#: template-parts/content-none.php:37
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with some "
+"different keywords."
+msgstr ""
+"Désolé, mais rien n'correspondent à vos termes de recherche. Merci d'essayer "
+"de nouveau avec certains mots-clés différents."
+
+#: 404.php:13
+msgid "Sorry, This Page Doesn't Exist."
+msgstr "Désolé, Cette Page N'Existe pas."
+
+#: inc/theme-options/theme-options.php:381
+msgid "Sorry. we couldn't find that page"
+msgstr "Désolé. nous n'avons pas pu trouver la page"
+
+#: inc/theme-options/theme-options.php:379
+msgid "Sub Title"
+msgstr "Sous-Titre"
+
+#. 1: list of tags.
+#: inc/template-functions.php:274
+msgid "Tag: "
+msgstr "Tag: "
+
+#: inc/theme-options/theme-options.php:70
+msgid "Theme Logos"
+msgstr "Thème Logos"
+
+#: inc/theme-options/theme-customizer.php:28
+msgid "Theme Main Color"
+msgstr "Le Thème Principal De La Couleur"
+
+#: inc/theme-options/theme-customizer.php:30
+msgid ""
+"This is theme primary color, means it'll affect most of elements that have "
+"default color of our theme primary color"
+msgstr ""
+"C'est le thème principal de la couleur, signifie qu'il vont affecter la "
+"plupart des éléments qui ont par défaut la couleur de notre thème de couleur "
+"primaire"
+
+#: inc/theme-options/theme-options.php:373
+msgid "Title"
+msgstr "Titre"
+
+#: inc/theme-options/theme-options.php:397
+#: inc/theme-options/theme-options.php:413
+#: inc/theme-options/theme-options.php:443
+msgid "Typography"
+msgstr "La typographie"
+
+#: inc/theme-options/theme-options.php:114
+msgid "Upload Breadcrumb Banner Shape"
+msgstr "Télécharger Fil D'Ariane De La Bannière De La Forme"
+
+#: comments.php:108
+msgid "Write Comment"
+msgstr "Ecrire Un Commentaire"
+
+#: inc/theme-options/theme-options.php:427
+msgid "you can set font for all html tags (if not use different heading font)"
+msgstr ""
+"vous pouvez définir la police pour toutes les balises html (si ce n'est "
+"utiliser différents titres de la police)"
+
+#: inc/theme-options/theme-options.php:456
+msgid "you can set font for for heading tag .eg: h1,h2mh3,h4,h5,h6"
+msgstr ""
+"vous pouvez définir la police pour la balise d'en-tête .par exemple: h1,"
+"h2mh3,h4,h5,h6"
+
+#: inc/theme-options/theme-options.php:292
+msgid "you can set padding bottom for archive page container."
+msgstr "vous pouvez définir un rembourrage en bas de page archive contenant."
+
+#: inc/theme-options/theme-options.php:174
+msgid "you can set Padding Bottom for Blog page container."
+msgstr "vous pouvez définir un Rembourrage en Bas de page de Blog contenant."
+
+#: inc/theme-options/theme-options.php:236
+msgid "you can set padding Bottom for Blog Single page container."
+msgstr ""
+"vous pouvez définir un rembourrage Fond pour le Blog Seule page contenant."
+
+#: inc/theme-options/theme-options.php:348
+msgid "you can set Padding Bottom for search page container."
+msgstr ""
+"vous pouvez définir un Rembourrage en Bas de page de recherche de conteneurs."
+
+#: inc/theme-options/theme-options.php:523
+msgid "you can set padding for copyright area bottom"
+msgstr ""
+"vous pouvez définir un rembourrage pour le domaine du droit d'auteur en bas"
+
+#: inc/theme-options/theme-options.php:509
+msgid "you can set padding for copyright area top"
+msgstr ""
+"vous pouvez définir un rembourrage pour le domaine du droit d'auteur dessus"
+
+#: inc/theme-options/theme-options.php:280
+msgid "you can set padding top for archive page container."
+msgstr ""
+"vous pouvez définir le rembourrage supérieur pour la page d'archive "
+"contenant."
+
+#: inc/theme-options/theme-options.php:162
+msgid "you can set Padding Top for Blog Page container."
+msgstr "vous pouvez définir un Rembourrage Haut de Page de Blog contenant."
+
+#: inc/theme-options/theme-options.php:224
+msgid "you can set padding Top for Blog Single Page container.\t"
+msgstr ""
+"vous pouvez définir le rembourrage Supérieur pour Blog Seule Page contenant. "
+
+#: inc/theme-options/theme-options.php:336
+msgid "you can set padding top for search page container."
+msgstr ""
+"vous pouvez définir le rembourrage supérieur pour la page de recherche de "
+"conteneurs."
+
+#: inc/theme-options/theme-options.php:40
+msgid "you can set Yes / No to enable/disable preloader"
+msgstr "vous pouvez définir Yes / No pour activer/désactiver le préchargement"
+
+#: inc/theme-options/theme-options.php:501
+msgid "you can set Yes / No to set copyright area spacing"
+msgstr ""
+"vous pouvez définir Oui / Non pour définir les droits d'auteur de la zone "
+"d'espacement"
+
+#: inc/theme-options/theme-options.php:51
+msgid "you can set Yes / No to show/hide back to top"
+msgstr "vous pouvez définir Yes / No pour afficher/masquer les haut de page"
+
+#: inc/theme-options/theme-options.php:108
+msgid "you can set Yes / No to show/hide breadcrumb"
+msgstr ""
+"vous pouvez définir Yes / No pour afficher/masquer la barre de navigation d'"
+
+#: inc/theme-options/theme-options.php:478
+msgid "You can set Yes / No to use footer builder"
+msgstr "Vous pouvez définir Oui / Non pour utiliser le pied de page builder"
+
+#: inc/theme-options/theme-options.php:79
+msgid "You can set Yes / No to use header builder"
+msgstr "Vous pouvez définir Yes / No pour utiliser l'en-tête builder"
+
+#: inc/theme-options/theme-options.php:273
+msgid "you can set yes to enable archive page spacing"
+msgstr "vous pouvez définir yes pour activer la page d'archive de l'espacement"
+
+#: inc/theme-options/theme-options.php:217
+msgid "you can set yes to enable blog details page spacing"
+msgstr ""
+"vous pouvez définir oui pour activer le blog de la page des détails de "
+"l'espacement"
+
+#: inc/theme-options/theme-options.php:155
+msgid "you can set yes to enable blog page spacing"
+msgstr "vous pouvez définir yes pour activer la page de blog de l'espacement"
+
+#: inc/theme-options/theme-options.php:329
+msgid "you can set yes to enable search page spacing"
+msgstr "vous pouvez définir yes pour activer la page de recherche d'espacement"
+
+#: inc/theme-options/theme-options.php:408
+msgid "you can set yes to select different body font"
+msgstr ""
+"vous pouvez définir oui pour sélectionner les différents corps de police"
+
+#: inc/theme-options/theme-options.php:438
+msgid "you can set yes to select different heading font"
+msgstr ""
+"vous pouvez définir oui pour sélectionner les différents titres de la police"
+
+#: inc/theme-options/theme-options.php:487
+msgid "You need to create first footer from footer builder"
+msgstr "Vous devez créer d'abord pied de page dans le pied de page builder"
+
+#: inc/theme-options/theme-options.php:89
+msgid "You need to create first header from header builder"
+msgstr "Vous devez créer d'abord d'en-tête en-tête builder"

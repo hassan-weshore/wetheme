@@ -1,0 +1,456 @@
+# Translation of Plugins - Slides &amp; Presentations - Development (trunk) in French (France)
+# This file is distributed under the same license as the Plugins - Slides &amp; Presentations - Development (trunk) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2019-12-18 09:30:31+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: fr\n"
+"Project-Id-Version: Plugins - Slides &amp; Presentations - Development (trunk)\n"
+
+#: template.js:79
+msgid "Speaker View"
+msgstr "Vue de l’orateur·rice"
+
+#: template.js:78
+msgid "Fullscreen"
+msgstr "Plein écran"
+
+#. Plugin Name of the plugin
+msgid "Slides & Presentations"
+msgstr "Slides & Presentations"
+
+#: speaker.php:42
+msgid "Notes"
+msgstr "Notes"
+
+#: speaker.php:35
+msgid "Click to Reset"
+msgstr "Cliquez pour réinitialiser"
+
+#: speaker.php:31
+msgid "Time"
+msgstr "Temps"
+
+#: speaker.php:25
+msgid "Next"
+msgstr "Suivante"
+
+#: speaker.php:24
+msgid "Previous"
+msgstr "Précédente"
+
+#: speaker.php:21
+msgid "Upcoming"
+msgstr "À venir"
+
+#: index.js:984 index.js:742
+msgid "Speaker notes"
+msgstr "Notes du conférencier"
+
+#: index.js:922 index.js:664
+msgid "Background SVG"
+msgstr "Arrière-plan SVG"
+
+#: index.js:1177 index.js:931
+msgid "This can be useful if positions from background and full width blocks must be preserved."
+msgstr "Ceci peut être utile si les positions des blocs en arrière-plan et en pleine largeur doivent être préservées."
+
+#: index.js:1176 index.js:930
+msgid "Contain view to dimensions"
+msgstr "Contenir la vue aux tailles"
+
+#: index.js:890 index.js:630
+msgid "Contain"
+msgstr "Contenir"
+
+#: index.js:887 index.js:629
+msgid "Cover"
+msgstr "Couvrir"
+
+#: index.js:884 index.js:626
+msgid "Size"
+msgstr "Dimension"
+
+#: index.js:1360 index.js:1157
+msgid "Comma separated list of color values. Please refresh the page to be able to use the palette."
+msgstr "Liste de valeurs de couleurs séparées par des virgules. Veuillez rafraîchir la page pour pouvoir utiliser la palette."
+
+#: index.js:1357 index.js:1153
+msgid "Color Palette"
+msgstr "Palette de couleurs"
+
+#: index.js:1404 index.js:1195
+msgid "Background Transition Style"
+msgstr "Style de transition de l’arrière-plan"
+
+#: index.js:405 index.js:162
+msgid "Black"
+msgstr "Noir"
+
+#: index.js:402 index.js:161
+msgid "Extra Bold"
+msgstr "Très gras"
+
+#: index.js:399 index.js:160
+msgid "Bold"
+msgstr "Gras"
+
+#: index.js:396 index.js:159
+msgid "Semi Bold"
+msgstr "Semi gras"
+
+#: index.js:393 index.js:158
+msgid "Medium"
+msgstr "Moyen"
+
+#: index.js:390 index.js:157
+msgid "Normal"
+msgstr "Normal"
+
+#: index.js:387 index.js:156
+msgid "Light"
+msgstr "Léger"
+
+#: index.js:384 index.js:155
+msgid "Extra Light"
+msgstr "Très léger"
+
+#: index.js:381 index.js:154
+msgid "Thin"
+msgstr "Fin"
+
+#: index.js:492 index.js:1242 index.js:255 index.js:1007
+msgid "Font Weight"
+msgstr "Graisse de la police"
+
+#: index.js:949 index.js:693
+msgid "Hide Slide"
+msgstr "Masquer la diapositive"
+
+#: index.js:945 index.js:688
+msgid "Visibility"
+msgstr "Visibilité"
+
+#: index.js:903 index.js:645
+msgid "Iframe URL"
+msgstr "URL de l’iframe"
+
+#: index.js:899 index.js:640
+msgid "Background Iframe"
+msgstr "Iframe d’arrière-plan"
+
+#: index.js:756 index.js:491
+msgid "Speaker Notes"
+msgstr "Notes de présentation"
+
+#: index.js:1192 index.js:948
+msgid "Vertical Padding"
+msgstr "Marge interne verticale"
+
+#: index.js:1185 index.js:942
+msgid "Horizontal Padding"
+msgstr "Marge interne horizontale"
+
+#: index.js:1167 index.js:919
+msgid "Widescreen 16:9"
+msgstr "Écran large 16:9"
+
+#: index.js:1164 index.js:918
+msgid "Standard 4:3"
+msgstr "Standard 4:3"
+
+#: index.js:1159 index.js:912
+msgid "Setup"
+msgstr "Configuration"
+
+#: index.js:1229 index.js:991
+msgid "Heading Font"
+msgstr "Police de titre"
+
+#: index.js:1200 index.js:958
+msgid "Base Font"
+msgstr "Police de labeur"
+
+#: index.js:709 index.js:438
+msgid "With this blocks you can form your slide deck! You can override document level setting for each slide block."
+msgstr "Avec ces blocs vous pouvez créer vos diapositives ! Vous pouvez surcharger les réglages au niveau du document depuis chaque bloc de diapositive."
+
+#: index.js:1469 index.js:1255
+msgid "Enable backgrounds and remove margins."
+msgstr "Activer les arrière-plans et retirer les marges externes."
+
+#: index.js:1469 index.js:1252
+msgid "Print (Save as PDF)."
+msgstr "Imprimer (enregistrer en PDF)."
+
+#: index.js:1462 index.js:1240
+msgid "PDF (Experimental)"
+msgstr "PDF (expérimental)"
+
+#: index.js:1269 index.js:1345 index.js:1040 index.js:1134
+msgid "May be overridden by the block!"
+msgstr "Peut être surchargé par le bloc !"
+
+#: index.js:1262 index.js:1033
+msgid "Experimental:"
+msgstr "Expérimental :"
+
+#: index.js:864 index.js:1319 index.js:610 index.js:1109
+msgid "Focal Point Picker"
+msgstr "Sélecteur de point de focalisation"
+
+#: index.js:787 index.js:823 index.js:863 index.js:1318 index.js:522
+#: index.js:563 index.js:607 index.js:1106
+msgid "Remove"
+msgstr "Retirer"
+
+#: index.js:851 index.js:1307 index.js:594 index.js:1090
+msgid "Add Background Image"
+msgstr "Ajouter une image d’arrière-plan"
+
+#: index.js:851 index.js:1307 index.js:594 index.js:1090
+msgid "Change"
+msgstr "Modifier"
+
+#: index.js:824 index.js:1281 index.js:568 index.js:1059
+msgid "Background Image"
+msgstr "Image d’arrière-plan"
+
+#: index.js:800 index.js:873 index.js:911 index.js:934 index.js:1268
+#: index.js:1344 index.js:539 index.js:616 index.js:651 index.js:675
+#: index.js:1039 index.js:1133
+msgid "Opacity"
+msgstr "Opacité"
+
+#: index.js:1455 index.js:1231
+msgid "Progress Bar"
+msgstr "Barre de progression"
+
+#: index.js:1449 index.js:1226
+msgid "Control Arrows"
+msgstr "Flèches de contrôle"
+
+#: index.js:1446 index.js:1222
+msgid "Controls"
+msgstr "Contrôles"
+
+#: index.js:1438 index.js:1212
+msgid "Slow"
+msgstr "Lent"
+
+#: index.js:1435 index.js:1211
+msgid "Fast"
+msgstr "Rapide"
+
+#: index.js:1432 index.js:1210
+msgid "Default"
+msgstr "Par défaut"
+
+#: index.js:1429 index.js:1208
+msgid "Transition Speed"
+msgstr "Vitesse de transition"
+
+#: index.js:1397 index.js:1422 index.js:1189 index.js:1202
+msgid "Zoom"
+msgstr "Zoom"
+
+#: index.js:1394 index.js:1419 index.js:1188 index.js:1201
+msgid "Concave"
+msgstr "Concave"
+
+#: index.js:1391 index.js:1416 index.js:1187 index.js:1200
+msgid "Convex"
+msgstr "Convexe"
+
+#: index.js:1385 index.js:1410 index.js:1185 index.js:1198
+msgid "Fade"
+msgstr "Estompage"
+
+#: index.js:1382 index.js:1407 index.js:1184 index.js:1197
+msgid "None"
+msgstr "Aucun"
+
+#: index.js:1379 index.js:1182
+msgid "Transition Style"
+msgstr "Style de transition"
+
+#: index.js:1376 index.js:1178
+msgid "Transition"
+msgstr "Transition"
+
+#: index.js:602 index.js:610 index.js:375 index.js:381
+msgid "Slide Fragment"
+msgstr "Fragment de diapositive"
+
+#: index.js:760 index.js:496
+msgid "Anything you want to remember."
+msgstr "Quelque chose dont vous voulez vous rappeler."
+
+#: index.js:712 index.js:441
+msgid "Presentation"
+msgstr "Présentation"
+
+#: index.js:1367 index.js:1166
+msgid "Custom CSS"
+msgstr "CSS personnalisé"
+
+#: index.js:788 index.js:792 index.js:1253 index.js:527 index.js:532
+#: index.js:1021
+msgid "Background Color"
+msgstr "Couleur d’arrière-plan"
+
+#: index.js:1250 index.js:1017
+msgid "Background"
+msgstr "Arrière-plan"
+
+#: index.js:773 index.js:1222 index.js:510 index.js:982
+msgid "Color"
+msgstr "Couleur"
+
+#: index.js:484 index.js:1212 index.js:1232 index.js:250 index.js:970
+#: index.js:995
+msgid "Font Family"
+msgstr "Famille de police"
+
+#: index.js:1203 index.js:962
+msgid "Font Size"
+msgstr "Taille de police"
+
+#: index.js:480 index.js:769 index.js:245 index.js:505
+msgid "Font"
+msgstr "Police"
+
+#: register.php:28
+msgctxt "Screen reader text for the items list heading on the post type listing screen. Default “Posts list”/”Pages list”. Added in 4.4"
+msgid "Presentations list"
+msgstr "Liste de présentations"
+
+#: register.php:27
+msgctxt "Screen reader text for the pagination heading on the post type listing screen. Default “Posts list navigation”/”Pages list navigation”. Added in 4.4"
+msgid "Presentations list navigation"
+msgstr "Navigation dans la liste des présentations"
+
+#: register.php:26
+msgctxt "Screen reader text for the filter links heading on the post type listing screen. Default “Filter posts list”/”Filter pages list”. Added in 4.4"
+msgid "Filter presentations list"
+msgstr "Filtrer la liste de présentations"
+
+#: register.php:25
+msgctxt "Overrides the “Uploaded to this post”/”Uploaded to this page” phrase (used when viewing media attached to a post). Added in 4.4"
+msgid "Uploaded to this presentation"
+msgstr "Téléversé sur cette présentation"
+
+#: register.php:24
+msgctxt "Overrides the “Insert into post”/”Insert into page” phrase (used when inserting media into a post). Added in 4.4"
+msgid "Insert into presentation"
+msgstr "Insérer dans la présentation"
+
+#: register.php:23
+msgctxt "The post type archive label used in nav menus. Default “Post Archives”. Added in 4.4"
+msgid "Presentation archives"
+msgstr "Archives des présentations"
+
+#: register.php:22
+msgctxt "Overrides the “Use as featured image” phrase for this post type. Added in 4.3"
+msgid "Use as cover image"
+msgstr "Utiliser en tant qu’image de bannière"
+
+#: register.php:21
+msgctxt "Overrides the “Remove featured image” phrase for this post type. Added in 4.3"
+msgid "Remove cover image"
+msgstr "Retirer l’image de bannière"
+
+#: register.php:20
+msgctxt "Overrides the “Set featured image” phrase for this post type. Added in 4.3"
+msgid "Set cover image"
+msgstr "Définir l’image de bannière"
+
+#: register.php:19
+msgctxt "Overrides the “Featured Image” phrase for this post type. Added in 4.3"
+msgid "Presentation Cover Image"
+msgstr "Image de bannière de la présentation"
+
+#: register.php:18
+msgid "No presentations found in Trash."
+msgstr "Aucune présentation trouvée dans la corbeille."
+
+#: register.php:17
+msgid "No presentations found."
+msgstr "Aucune présentation trouvée."
+
+#: register.php:16
+msgid "Parent Presentations:"
+msgstr "Présentations parentes :"
+
+#: register.php:15
+msgid "Search Presentations"
+msgstr "Rechercher des présentations"
+
+#: register.php:14
+msgid "All Presentations"
+msgstr "Toutes les présentations"
+
+#: register.php:13
+msgid "View Presentation"
+msgstr "Voir la présentation"
+
+#: register.php:12
+msgid "Edit Presentation"
+msgstr "Modifier la présentation"
+
+#: register.php:11
+msgid "New Presentation"
+msgstr "Nouvelle présentation"
+
+#: register.php:10
+msgid "Add New Presentation"
+msgstr "Ajouter une nouvelle présentation"
+
+#: register.php:9
+msgid "Add New"
+msgstr "Ajouter une nouvelle"
+
+#: register.php:8
+msgctxt "Add New on Toolbar"
+msgid "Presentation"
+msgstr "Présentation"
+
+#: register.php:7
+msgctxt "Admin Menu text"
+msgid "Presentations"
+msgstr "Présentations"
+
+#: register.php:6
+msgctxt "Post type singular name"
+msgid "Presentation"
+msgstr "Présentation"
+
+#: register.php:5
+msgctxt "Post type general name"
+msgid "Presentations"
+msgstr "Présentations"
+
+#. Author URI of the plugin
+msgid "https://ellavandurpe.com"
+msgstr "https://ellavandurpe.com"
+
+#. Author of the plugin
+msgid "Ella van Durpe"
+msgstr "Ella van Durpe"
+
+#. Description of the plugin
+msgid "Allows you to create presentations with the block editor."
+msgstr "Permet de créer des présentations avec l’éditeur de blocs."
+
+#. Plugin URI of the plugin
+msgid "https://wordpress.org/plugins/slide/"
+msgstr "https://fr.wordpress.org/plugins/slide/"
+
+#: speaker.php:27 index.js:708 index.js:1388 index.js:1413 index.js:437
+#: index.js:1186 index.js:1199
+msgid "Slide"
+msgstr "Diapositive"
