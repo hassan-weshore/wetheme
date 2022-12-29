@@ -1,0 +1,14 @@
+{
+  "name": "coherence",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "compile:sass": "sass scss:css --watch --update --no-source-map --style compressed"
+  },
+  "author": "Hassan ELKHAROUA",
+  "license": "ISC",
+  "dependencies": {
+    "sass": "^1.57.1"
+  }
+}

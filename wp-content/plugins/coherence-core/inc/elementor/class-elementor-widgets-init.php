@@ -68,6 +68,7 @@ if (!class_exists('Coherence_Elementor_Widget_Init')) {
 				return;
 			}
 			$elementor_widgets = array(
+				'button',
 				'header',
 				'banner',
 				'about',
