@@ -341,3 +341,129 @@ function coherence_move_comment_field_to_bottom($fields)
 	return $fields;
 }
 */
+
+
+/*
+
+
+function hook_phoneNumber()
+
+{
+
+	echo "<script>
+
+        jQuery(document).ready(function() {
+
+            var globalPhoneNumber1='" . coherence_get_option('telephone_1') . "';
+
+            var globalPhoneNumber2='" . coherence_get_option('telephone_2') . "';
+
+            var globalAdresseMail='" . coherence_get_option('Adresse_mail') . "';
+
+            var globalAdressePhysique='" . coherence_get_option('Adresse_physique') . "';
+
+            var globalHoraireTravail='" . coherence_get_option('Horaire_travail') . "';
+
+            var globalMapIframe='" . coherence_get_option('Map_iframe') . "';
+
+            var globalSiteName='" . get_bloginfo('name') . "';
+
+            var globalSiteUrl='" . get_bloginfo('url') . "';
+
+            
+
+            jQuery(\".phoneNumber1\").html(\"<a href=' tel:\"+globalPhoneNumber1+\"' class='dib link_phone1'>\"+globalPhoneNumber1+\"</a>\" );
+
+            jQuery(\".phoneNumber2\").html(\"<a href=' tel:\"+globalPhoneNumber2+\"' class='dib link_phone2'>\"+globalPhoneNumber2+\"</a>\" );
+
+            jQuery(\".AdresseMail\").html( \"<a href=' mailto:\"+globalAdresseMail+\"' class='dib link_mail'>\"+globalAdresseMail+\"</a>\" );
+
+            jQuery(\".AdressePhysique\").html(globalAdressePhysique );
+
+            jQuery(\".HoraireTravail\").html(globalHoraireTravail);
+
+            jQuery(\".MapIframe\").html(globalMapIframe);
+
+            jQuery(\".SiteName\").html(globalSiteName);
+
+            jQuery(\".SiteUrl\").html(globalSiteUrl);
+
+        });
+
+    </script>";
+}
+
+function shortcode_phoneNumber1()
+
+{
+
+	return "<a href='tel:" . coherence_get_option('telephone_1') . "' class='dib link_phone1'>" . coherence_get_option('telephone_1') . "</a>";
+}
+
+function shortcode_phoneNumber2()
+
+{
+
+	return "<a href='tel:" . coherence_get_option('telephone_2') . "' class='dib link_phone2'>" . coherence_get_option('telephone_2') . "</a>";
+}
+
+function shortcode_AdresseMail()
+
+{
+
+	return "<a href='mailto:" . coherence_get_option('Adresse_mail') . "'>" . coherence_get_option('Adresse_mail') . "</a>";
+}
+
+function shortcode_AdressePhysique()
+
+{
+
+	return coherence_get_option('Adresse_physique');
+}
+
+function shortcode_HoraireTravail()
+
+{
+
+	return coherence_get_option('Horaire_travail');
+}
+
+function shortcode_MapIframe()
+
+{
+
+	return coherence_get_option('Map_iframe');
+}
+
+function shortcode_SiteName()
+
+{
+
+	return get_bloginfo('name');
+}
+
+function shortcode_SiteUrl()
+
+{
+
+	return get_bloginfo('url');
+}
+
+add_action('wp_head', 'hook_phoneNumber');
+
+add_shortcode('phoneNumber1', 'shortcode_phoneNumber1');
+
+add_shortcode('phoneNumber2', 'shortcode_phoneNumber2');
+
+add_shortcode('AdresseMail', 'shortcode_AdresseMail');
+
+add_shortcode('AdressePhysique', 'shortcode_AdressePhysique');
+
+add_shortcode('HoraireTravail', 'shortcode_HoraireTravail');
+
+add_shortcode('MapIframe', 'shortcode_MapIframe');
+
+add_shortcode('SiteName', 'shortcode_SiteName');
+
+add_shortcode('SiteUrl', 'shortcode_SiteUrl');
+*/
