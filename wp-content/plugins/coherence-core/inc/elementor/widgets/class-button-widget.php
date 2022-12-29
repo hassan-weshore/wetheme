@@ -153,6 +153,8 @@ class Coherence_Button_Widget extends Widget_Base {
 		$this->register_button_content_controls($args);
 		//Remove control button_type
 		$this->remove_control('button_type');
+		////Remove control Button ID
+		$this->remove_control('button_css_id');
 		//Update control Icon
 		$this->update_control('selected_icon', [
 			'skin' => 'media',
@@ -196,6 +198,47 @@ class Coherence_Button_Widget extends Widget_Base {
 					'{{WRAPPER}} .elementor-button .elementor-align-icon-down' => 'margin-top: {{SIZE}}{{UNIT}};',
 				],
 				'condition' => array_merge( $args['section_condition'], [ 'selected_icon[value]!' => '' ] ),
+			]
+		);
+
+		$this->update_control(
+			'text',
+			[
+				'dynamic' => [
+					'active' => false,
+				],
+			]
+		);
+		//Update link
+		$this->update_control(
+			'link',
+			[
+				'dynamic' => [
+					'active' => false,
+				],
+				'condition' => [
+					'link-type[value]!' => 'lightbox' // Type image
+				]
+			]
+		);
+		//Update align Delete option justify 
+		$this->update_responsive_control(
+			'align',
+			[
+				'options' => [
+					'left'    => [
+						'title' => esc_html__( 'Left', 'elementor' ),
+						'icon' => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'elementor' ),
+						'icon' => 'eicon-text-align-center',
+					],
+					'right' => [
+						'title' => esc_html__( 'Right', 'elementor' ),
+						'icon' => 'eicon-text-align-right',
+					],
+				],
 			]
 		);
 	}
@@ -248,6 +291,21 @@ class Coherence_Button_Widget extends Widget_Base {
 						'plain' => esc_html__( 'Plain', 'coherence-core' ),
 					],
 					'condition' => $args['section_condition'],
+				]
+			);
+			$element->add_control(
+				'link-type',
+				[
+					'label' => esc_html__( 'Link Type', 'coherence-core' ),
+					'type' => Controls_Manager::SELECT,
+					'default' => 'simple-click',
+					'options' => [
+						'simple-click' => esc_html__( 'Simple Click', 'coherence-core' ),
+						'lightbox' => esc_html__( 'Lightbox', 'coherence-core' ), // image
+						'modal-window' => esc_html__( 'Modal Window', 'coherence-core' ), // popup
+						'local-scroll' => esc_html__( 'Local Scroll', 'coherence-core' ), //scroll by id
+						'scroll-to-section-bellow' => esc_html__( 'Scroll to Section Bellow', 'coherence-core' ),
+					],
 				]
 			);
 		}
