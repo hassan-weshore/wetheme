@@ -216,9 +216,6 @@ class Coherence_Button_Widget extends Widget_Base {
 				'dynamic' => [
 					'active' => false,
 				],
-				'condition' => [
-					'link-type[value]!' => 'lightbox' // Type image
-				]
 			]
 		);
 		//Update align Delete option justify 
