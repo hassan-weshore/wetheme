@@ -70,6 +70,7 @@ if (!class_exists('Coherence_Elementor_Widget_Init')) {
 			$elementor_widgets = array(
 				'button',
 				'header',
+				'heading',
 				'banner',
 				'about',
 				'service',
