@@ -97,6 +97,7 @@ if (!class_exists('Coherence_Elementor_Widget_Init')) {
 				'footer-nav',
 				'footer-subscribe',
 				'copyright',
+				'heading',
 			);
 			$elementor_widgets = apply_filters('coherence_elementor_widget', $elementor_widgets);
 
