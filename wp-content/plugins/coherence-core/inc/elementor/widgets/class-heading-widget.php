@@ -2,7 +2,7 @@
 
 namespace Elementor;
 if ( ! defined( 'ABSPATH' ) ) {
-    exit; // Exit if accessed directly.
+	exit; // Exit if accessed directly.
 }
 use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
 /**
@@ -115,7 +115,7 @@ class Coherence_Heading_Widget extends Widget_Heading {
 			// 	]
 			// );
 
-            $element->add_control(
+			$element->add_control(
 				'show_separator',
 				[
 					'label' => esc_html__( 'Show Separator', 'coherence-core' ),
@@ -132,9 +132,8 @@ class Coherence_Heading_Widget extends Widget_Heading {
 				[
 					'label' => esc_html__( 'Separator Title', 'coherence-core' ),
 					'type' => Controls_Manager::SELECT,
-					'default' => 'none',
+					'default' => 'single-solid',
 					'options' => [
-						'none' => esc_html__( 'None', 'coherence-core' ),
 						'single-solid' => esc_html__( 'Single Solid', 'coherence-core' ),
 						'single-dashed' => esc_html__( 'Single Dashed', 'coherence-core' ),
 						'single-dotted' => esc_html__( 'Single Dotted', 'coherence-core' ),
@@ -142,91 +141,112 @@ class Coherence_Heading_Widget extends Widget_Heading {
 						'double-dashed' => esc_html__( 'Double Dashed', 'coherence-core' ),
 						'double-dotted' => esc_html__( 'Double Dotted', 'coherence-core' ),
 					],
-				]
-			);
-
-            $element->add_responsive_control(
-				'separator_type',
-				[
-					'label' => esc_html__( 'Separator Type', 'coherence-core' ),
-					'type' => Controls_Manager::SELECT,
-					'default' => 'block',
-					'options' => [
-						'block' => esc_html__( 'Block', 'coherence-core' ),
-						'inline-block' => esc_html__( 'Inline Block', 'coherence-core' ),
+					'condition' => [ 
+						'show_separator[value]' => 'yes',
 					],
-                    'selectors' => [
-                        '{{WRAPPER}} [class*="coherence-core-heading"]' => 'display: {{VALUE}};',
-                    ],
 				]
 			);
 
-            $element->add_control(
-                'separator_space_title',
-                [
-                    'label' => esc_html__( 'Space Between Separator / Title', 'coherence-core' ),
-                    'type' => \Elementor\Controls_Manager::SLIDER,
-                    'size_units' => ['px','em'],
-                    'range' => [
-                        'px' => [
-                            'min' => 0,
-                        ],
-                        'em' => [
-                            'min' => 0,
-                        ],
-                    ],
-                    'default' => [
-                        'unit' => 'px',
-                        'size' => 15,
-                    ],
-                    'selectors' => [
-                        '{{WRAPPER}} [class*="coherence-core-heading"]' => 'margin-top: {{SIZE}}{{UNIT}};',
-                    ],
-                ]
-            );
+			$element->add_responsive_control(
+				'separator_width',
+				[
+					'label' => esc_html__( 'Separator width (%)', 'coherence-core' ),
+					'type' => \Elementor\Controls_Manager::SLIDER,
+					'size_units' => ['%'],
+					'range' => [
+						'%' => [
+							'min' => 0,
+							'max' => 100,
+						],
+					],
+					'default' => [
+						'unit' => '%',
+						'size' => 20,
+					],
+					'selectors' => [
+						'{{WRAPPER}} [class*="coherence-core-heading"]' => 'width: {{SIZE}}{{UNIT}};',
+					],
+					'condition' => [ 
+						'show_separator[value]' => 'yes',
+					],
+				]
+			);
 
-            $element->add_control(
-                'double_separator_thickness',
-                [
-                    'label' => esc_html__( 'Thickness Separator', 'coherence-core' ),
-                    'type' => \Elementor\Controls_Manager::SLIDER,
-                    'size_units' => ['px','em'],
-                    'range' => [
-                        'px' => [
-                            'min' => 0,
-                        ],
-                        'em' => [
-                            'min' => 0,
-                        ],
-                    ],
-                    'default' => [
-                        'unit' => 'px',
-                        'size' => 15,
-                    ],
-                    'selectors' => [
-                        '{{WRAPPER}} [class*="coherence-core-heading"]' => 'height: {{SIZE}}{{UNIT}};',
-                    ],
-                ]
-            );
+			$element->add_control(
+				'separator_space_title',
+				[
+					'label' => esc_html__( 'Space Between Separator / Title', 'coherence-core' ),
+					'type' => \Elementor\Controls_Manager::SLIDER,
+					'size_units' => ['px','em'],
+					'range' => [
+						'px' => [
+							'min' => 0,
+						],
+						'em' => [
+							'min' => 0,
+						],
+					],
+					'default' => [
+						'unit' => 'px',
+						'size' => 15,
+					],
+					'selectors' => [
+						'{{WRAPPER}} [class*="coherence-core-heading"]' => 'margin-top: {{SIZE}}{{UNIT}};',
+					],
+					'condition' => [ 
+						'show_separator[value]' => 'yes',
+					],
+				]
+			);
 
-            $element->add_control(
-                'separator_color',
-                [
-                    'label' => esc_html__( 'Separator Color', 'coherence-core' ),
-                    'type' => Controls_Manager::COLOR,
-                    'global' => [
-                        'default' => Global_Colors::COLOR_PRIMARY,
-                    ],
-                    'selectors' => [
-                        '{{WRAPPER}} [class*="coherence-core-heading"]' => 'border-color: {{VALUE}};',
-                    ],
-                ]
-            );
+			$element->add_control(
+				'double_separator_thickness',
+				[
+					'label' => esc_html__( 'Thickness Separator', 'coherence-core' ),
+					'type' => \Elementor\Controls_Manager::SLIDER,
+					'size_units' => ['px','em'],
+					'range' => [
+						'px' => [
+							'min' => 0,
+						],
+						'em' => [
+							'min' => 0,
+						],
+					],
+					'default' => [
+						'unit' => 'px',
+						'size' => 15,
+					],
+					'selectors' => [
+						'{{WRAPPER}} [class*="coherence-core-heading"]' => 'height: {{SIZE}}{{UNIT}};',
+					],
+					'condition' => [ 
+						'show_separator[value]' => 'yes',
+					],
+				]
+			);
+
+			$element->add_control(
+				'separator_color',
+				[
+					'label' => esc_html__( 'Separator Color', 'coherence-core' ),
+					'type' => Controls_Manager::COLOR,
+					'global' => [
+						'default' => Global_Colors::COLOR_PRIMARY,
+					],
+					'selectors' => [
+						'{{WRAPPER}} [class*="coherence-core-heading"]' => 'border-color: {{VALUE}};',
+					],
+					'condition' => [ 
+						'show_separator[value]' => 'yes',
+					],
+				]
+			);
 
 		}
 	}
 
-    /**
+	/**
 	 * Render heading widget output on the frontend.
 	 *
 	 * Written in PHP and used to generate the final HTML.
@@ -241,7 +261,7 @@ class Coherence_Heading_Widget extends Widget_Heading {
 			return;
 		}
 
-		$this->add_render_attribute( 'title', 'class', "elementor-heading-title coherence-core-heading-{$settings['separator_title']}" );
+		$this->add_render_attribute( 'title', 'class', "elementor-heading-title" );
 
 		if ( ! empty( $settings['size'] ) ) {
 			$this->add_render_attribute( 'title', 'class', 'elementor-size-' . $settings['size'] );
@@ -260,10 +280,15 @@ class Coherence_Heading_Widget extends Widget_Heading {
 		$title_html = sprintf( '<%1$s %2$s>%3$s</%1$s>', Utils::validate_html_tag( $settings['header_size'] ), $this->get_render_attribute_string( 'title' ), $title );
 
 		// PHPCS - the variable $title_html holds safe data.
+		echo '<div class="coherence-heading">';
 		echo $title_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		if ( ! empty( $settings['show_separator'] ) && $settings['show_separator'] ==  'yes' ) {
+			echo '<span class="coherence-core-heading-'.$settings['separator_title'].'"></span>';
+		}
+		echo '</div>';
 	}
 
-    /**
+	/**
 	 * Render heading widget output in the editor.
 	 *
 	 * Written as a Backbone JavaScript template and used to generate the live preview.
@@ -273,31 +298,31 @@ class Coherence_Heading_Widget extends Widget_Heading {
 	 */
 	protected function content_template() {
 		?>
-        <div class="coherence-heading">
-        <#
-        var title = settings.title;
-        var show_separator = settings.show_separator;
+		<div class="coherence-heading">
+		<#
+		var title = settings.title;
+		var show_separator = settings.show_separator;
 
 		if ( '' !== settings.link.url ) {
 			title = '<a href="' + settings.link.url + '">' + title + '</a>';
 		}
 
-        view.addRenderAttribute( 'title', 'class', [ 'elementor-heading-title', 'elementor-size-' + settings.size ] );
-        view.addInlineEditingAttributes( 'title' );
+		view.addRenderAttribute( 'title', 'class', [ 'elementor-heading-title', 'elementor-size-' + settings.size ] );
+		view.addInlineEditingAttributes( 'title' );
 
-        var headerSizeTag = elementor.helpers.validateHTMLTag( settings.header_size )
-        if ( headerSizeTag ) {
-            #>
-            <{{{headerSizeTag}}} {{{view.getRenderAttributeString( 'title' )}}}>{{{title}}}</{{{headerSizeTag}}}>
-            <#
-        } 
-        if ( show_separator === 'yes' ) {
-            #>
-                <span class="coherence-core-heading-{{{settings.separator_title}}}"></span>
-            <#
-            }
-        #>
-        </div>
+		var headerSizeTag = elementor.helpers.validateHTMLTag( settings.header_size )
+		if ( headerSizeTag ) {
+			#>
+			<{{{headerSizeTag}}} {{{view.getRenderAttributeString( 'title' )}}}>{{{title}}}</{{{headerSizeTag}}}>
+			<#
+		} 
+		if ( show_separator === 'yes' ) {
+			#>
+				<span class="coherence-core-heading-{{{settings.separator_title}}}"></span>
+			<#
+			}
+		#>
+		</div>
 		<?php
 	}
 

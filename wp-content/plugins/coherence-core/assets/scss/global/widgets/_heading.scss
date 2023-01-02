@@ -1,6 +1,7 @@
 .coherence-heading {
     [class*="coherence-core-heading"] {
-        width: 100%;
+        width: 20%;
+        display: inline-block;
     }
     .coherence-core-heading-single-dashed {
         border-bottom-style: dashed;
