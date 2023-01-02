@@ -1,0 +1,26 @@
+//\ Responsive breakpoints
+// Small devices
+$small-devices : 576px;
+// Medium devices
+$medium-devices : 768px;
+// Large devices
+$large-devices : 992px;
+// Extra large
+$extra-devices : 1200px;
+
+//\ Colors Variables
+$primary-color : #007bff;
+$secondary-color : #6c757d;
+$success-color : #28a745;
+$danger-color : #dc3545;
+$warning-color : #ffc107;
+$info-color : #17a2b8;
+
+//\ Basic colors
+$black-color : #000000;
+$white-color : #ffffff;
+$grey-color  : #919191;
+
+//\ Fonts Variables
+$default : sans-serif;
+$Poppins : 'Poppins', $default;

@@ -42,7 +42,7 @@ if (class_exists('CSF')) {
 				'type'       => 'switcher',
 				'desc'       => esc_html__('You can set Yes / No to use header builder', 'coherence'),
 				'default'    => false,
-				'dependency'  => array('enable_header', '==', true),
+				'dependency'  => array('enable_header_page', '==', true),
 			),
 			array(
 				'id'          => 'header-builder-id',
@@ -52,7 +52,7 @@ if (class_exists('CSF')) {
 				'options'     => coherence_get_header_builder_library(),
 				'dependency' => array(
 					array('enable_header_builder', '==', true),
-					array('enable_header', '==', true)
+					array('enable_header_page', '==', true)
 				),
 				'desc'        => esc_html__("You need to create first header from header builder", 'coherence')
 			),
