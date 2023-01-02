@@ -502,7 +502,7 @@ class Coherence_Header_Widget extends Widget_Base
 				'label_on' => esc_html__('Show', 'coherence-core'),
 				'label_off' => esc_html__('Hide', 'coherence-core'),
 				'return_value' => 'yes',
-				'default' => 'no',
+				'default' => 'yes',
 			]
 		);
 
@@ -512,6 +512,9 @@ class Coherence_Header_Widget extends Widget_Base
 				'label' => esc_html__('Button Text', 'coherence-core'),
 				'type' => \Elementor\Controls_Manager::TEXT,
 				'default' => esc_html__('Demande un devis', 'coherence-core'),
+				'condition' => [
+					'btn_devis_enable[value]' => 'yes',
+				],
 			]
 		);
 
@@ -527,6 +530,9 @@ class Coherence_Header_Widget extends Widget_Base
 					'is_external' => true,
 					'nofollow' => true,
 				],
+				'condition' => [
+					'btn_devis_enable[value]' => 'yes',
+				],
 			]
 		);
 
@@ -538,6 +544,9 @@ class Coherence_Header_Widget extends Widget_Base
 				'size_units' => ['px', '%', 'em'],
 				'selectors' => [
 					'{{WRAPPER}} header.header-core .btn-header.btn-devis' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};height: auto;line-height: initial;',
+				],
+				'condition' => [
+					'btn_devis_enable[value]' => 'yes',
 				],
 			]
 		);
@@ -551,6 +560,9 @@ class Coherence_Header_Widget extends Widget_Base
 				'selectors' => [
 					'{{WRAPPER}} header.header-core .btn-header.btn-devis' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};height: auto;line-height: initial;',
 				],
+				'condition' => [
+					'btn_devis_enable[value]' => 'yes',
+				],
 			]
 		);
 
@@ -561,6 +573,9 @@ class Coherence_Header_Widget extends Widget_Base
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} header.header-core .btn-header.btn-devis' => 'background-color: {{VALUE}}',
+				],
+				'condition' => [
+					'btn_devis_enable[value]' => 'yes',
 				],
 			]
 		);
@@ -573,6 +588,9 @@ class Coherence_Header_Widget extends Widget_Base
 				'selectors' => [
 					'{{WRAPPER}} header.header-core .btn-header.btn-devis' => 'border-color: {{VALUE}}',
 				],
+				'condition' => [
+					'btn_devis_enable[value]' => 'yes',
+				],
 			]
 		);
 
@@ -584,6 +602,9 @@ class Coherence_Header_Widget extends Widget_Base
 				'selectors' => [
 					'{{WRAPPER}} header.header-core .btn-header.btn-devis' => 'color: {{VALUE}}',
 				],
+				'condition' => [
+					'btn_devis_enable[value]' => 'yes',
+				],
 			]
 		);
 
@@ -592,6 +613,9 @@ class Coherence_Header_Widget extends Widget_Base
 			[
 				'name' => 'btn_devis_text_typography',
 				'selector' => '{{WRAPPER}} header.header-core .btn-header.btn-devis',
+				'condition' => [
+					'btn_devis_enable[value]' => 'yes',
+				],
 			]
 		);
 
@@ -601,6 +625,9 @@ class Coherence_Header_Widget extends Widget_Base
 				'label' => esc_html__( 'Hover Options', 'coherence-core' ),
 				'type' => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'before',
+				'condition' => [
+					'btn_devis_enable[value]' => 'yes',
+				],
 			]
 		);
 
@@ -611,6 +638,9 @@ class Coherence_Header_Widget extends Widget_Base
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} header.header-core .btn-header.btn-devis:hover' => 'background-color: {{VALUE}}',
+				],
+				'condition' => [
+					'btn_devis_enable[value]' => 'yes',
 				],
 			]
 		);
@@ -623,6 +653,9 @@ class Coherence_Header_Widget extends Widget_Base
 				'selectors' => [
 					'{{WRAPPER}} header.header-core .btn-header.btn-devis:hover' => 'border-color: {{VALUE}}',
 				],
+				'condition' => [
+					'btn_devis_enable[value]' => 'yes',
+				],
 			]
 		);
 
@@ -633,6 +666,9 @@ class Coherence_Header_Widget extends Widget_Base
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} header.header-core .btn-header.btn-devis:hover' => 'color: {{VALUE}}',
+				],
+				'condition' => [
+					'btn_devis_enable[value]' => 'yes',
 				],
 			]
 		);
@@ -660,7 +696,7 @@ class Coherence_Header_Widget extends Widget_Base
 				'label_on' => esc_html__('Show', 'coherence-core'),
 				'label_off' => esc_html__('Hide', 'coherence-core'),
 				'return_value' => 'yes',
-				'default' => 'no',
+				'default' => 'yes',
 			]
 		);
 		$this->add_control(
@@ -669,6 +705,9 @@ class Coherence_Header_Widget extends Widget_Base
 				'label' => esc_html__('Button Text', 'coherence-core'),
 				'type' => \Elementor\Controls_Manager::TEXT,
 				'placeholder' => esc_html__('Contact us', 'coherence-core'),
+				'condition' => [
+					'btn_phone_enable[value]' => 'yes', 
+				],
 			]
 		);
 		$this->add_control(
@@ -677,6 +716,9 @@ class Coherence_Header_Widget extends Widget_Base
 				'label' => esc_html__('Phone number', 'coherence-core'),
 				'type' => \Elementor\Controls_Manager::TEXT,
 				'placeholder' => esc_html__('+212600112233', 'coherence-core'),
+				'condition' => [
+					'btn_phone_enable[value]' => 'yes', 
+				],
 			]
 		);
 		$this->add_control(
@@ -687,6 +729,9 @@ class Coherence_Header_Widget extends Widget_Base
 				'size_units' => ['px', '%', 'em'],
 				'selectors' => [
 					'{{WRAPPER}} header.header-core .btn-header.btn-phone' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};height: auto;line-height: initial;',
+				],
+				'condition' => [
+					'btn_phone_enable[value]' => 'yes', 
 				],
 			]
 		);
@@ -699,6 +744,9 @@ class Coherence_Header_Widget extends Widget_Base
 				'selectors' => [
 					'{{WRAPPER}} header.header-core .btn-header.btn-phone' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};height: auto;line-height: initial;',
 				],
+				'condition' => [
+					'btn_phone_enable[value]' => 'yes', 
+				],
 			]
 		);
 		$this->add_control(
@@ -708,6 +756,9 @@ class Coherence_Header_Widget extends Widget_Base
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} header.header-core .btn-header.btn-phone' => 'background-color: {{VALUE}}',
+				],
+				'condition' => [
+					'btn_phone_enable[value]' => 'yes', 
 				],
 			]
 		);
@@ -719,6 +770,9 @@ class Coherence_Header_Widget extends Widget_Base
 				'selectors' => [
 					'{{WRAPPER}} header.header-core .btn-header.btn-phone' => 'border-color: {{VALUE}}',
 				],
+				'condition' => [
+					'btn_phone_enable[value]' => 'yes', 
+				],
 			]
 		);
 		$this->add_control(
@@ -729,6 +783,9 @@ class Coherence_Header_Widget extends Widget_Base
 				'selectors' => [
 					'{{WRAPPER}} header.header-core .btn-header.btn-phone' => 'color: {{VALUE}}',
 				],
+				'condition' => [
+					'btn_phone_enable[value]' => 'yes', 
+				],
 			]
 		);
 		$this->add_group_control(
@@ -736,6 +793,9 @@ class Coherence_Header_Widget extends Widget_Base
 			[
 				'name' => 'btn_phone_text_typography',
 				'selector' => '{{WRAPPER}} header.header-core .btn-header.btn-phone',
+				'condition' => [
+					'btn_phone_enable[value]' => 'yes', 
+				],
 			]
 		);
 		$this->add_control(
@@ -744,6 +804,9 @@ class Coherence_Header_Widget extends Widget_Base
 				'label' => esc_html__( 'Hover Options', 'coherence-core' ),
 				'type' => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'before',
+				'condition' => [
+					'btn_phone_enable[value]' => 'yes', 
+				],
 			]
 		);
 		$this->add_control(
@@ -753,6 +816,9 @@ class Coherence_Header_Widget extends Widget_Base
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} header.header-core .btn-header.btn-phone:hover' => 'background-color: {{VALUE}}',
+				],
+				'condition' => [
+					'btn_phone_enable[value]' => 'yes', 
 				],
 			]
 		);
@@ -764,6 +830,9 @@ class Coherence_Header_Widget extends Widget_Base
 				'selectors' => [
 					'{{WRAPPER}} header.header-core .btn-header.btn-phone:hover' => 'border-color: {{VALUE}}',
 				],
+				'condition' => [
+					'btn_phone_enable[value]' => 'yes', 
+				],
 			]
 		);
 		$this->add_control(
@@ -773,6 +842,9 @@ class Coherence_Header_Widget extends Widget_Base
 				'type' => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} header.header-core .btn-header.btn-phone:hover' => 'color: {{VALUE}}',
+				],
+				'condition' => [
+					'btn_phone_enable[value]' => 'yes', 
 				],
 			]
 		);

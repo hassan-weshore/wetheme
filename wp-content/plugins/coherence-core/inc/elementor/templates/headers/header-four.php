@@ -29,10 +29,10 @@ if(!empty($settings['btn_devis_enable'])) {
             <?php endif;?>
         </div>
         <div class="col-sm-9 col-5 text-end">
-            <?php if(!empty($settings['btn_phone_enable'])):?>
+            <?php if(!empty($settings['btn_phone_enable']) && $settings['btn_phone_enable'] == 'yes'):?>
                 <a class="btn-header btn-phone" href="tel:<?php echo $settings['btn_phone_number']?>" role="button"><i class="fas fa-phone-alt"></i> <span class="text d-none d-md-inline"><?php echo $settings['btn_phone_text'] ?></span></a>
             <?php endif;?>
-            <?php if(!empty($settings['btn_devis_enable'])):?>
+            <?php if(!empty($settings['btn_devis_enable']) && $settings['btn_devis_enable'] == 'yes'):?>
                 <?php if(!empty($settings['btn_devis_url'])):?>
                     <?php foreach ($settings['btn_devis_url'] as $key => $setting):?>
                         <?php endforeach;?>
