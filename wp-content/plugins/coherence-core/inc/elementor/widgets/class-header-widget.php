@@ -100,7 +100,6 @@ class Coherence_Header_Widget extends Widget_Base
 					'layout_one' => __('Layout One', 'coherence-core'),
 					'layout_two' => __('Layout Two', 'coherence-core'),
 					'layout_three' => __('Layout Three', 'coherence-core'),
-					'layout_four' => __('Layout Four', 'coherence-core'),
 				]
 			]
 		);
@@ -114,7 +113,6 @@ class Coherence_Header_Widget extends Widget_Base
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
-		
 		$this->add_control(
 			'nav_menu',
 			[
@@ -122,49 +120,6 @@ class Coherence_Header_Widget extends Widget_Base
 				'type' => \Elementor\Controls_Manager::SELECT2,
 				'options' => coherence_core_nav_menu(),
 				'label_block' => true,
-			]
-		);
-
-		$this->add_control(
-			'header_nav_elements_padding',
-			[
-				'label' => esc_html__( 'Padding', 'coherence-core' ),
-				'type' => \Elementor\Controls_Manager::DIMENSIONS,
-				'size_units' => ['px', '%', 'em', 'custom' ],
-				'selectors' => [
-					'{{WRAPPER}} .navbar .navbar-nav li a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-			]
-		);
-
-		$this->add_control(
-			'more_options_hover',
-			[
-				'label' => esc_html__( 'Hover Options', 'coherence-core' ),
-				'type' => \Elementor\Controls_Manager::HEADING,
-				'separator' => 'before',
-			]
-		);
-
-		$this->add_control(
-			'header_nav_espace_underline',
-			[
-				'label' => esc_html__( 'Underline offset (%)', 'coherence-core'),
-				'type' => \Elementor\Controls_Manager::SLIDER,
-				'size_units' => ['%'],
-				'range' => [
-					'%' => [
-						'min' => 0,
-						'max' => 100,
-					],
-				],
-				'default' => [
-					'unit' => '%',
-					'size' => 0,
-				],
-				'selectors' => [
-					'{{WRAPPER}} .navbar-collapse .navbar-nav > li > a:after' => 'bottom: {{SIZE}}{{UNIT}};',
-				],
 			]
 		);
 
@@ -252,6 +207,46 @@ class Coherence_Header_Widget extends Widget_Base
 				'default' => [
 					'width' => '',
 					'height' => '',
+				],
+			]
+		);
+
+		$this->end_controls_section();
+
+		$this->start_controls_section(
+			'style_section',
+			[
+				'label' => esc_html__('Style Section', 'textdomain'),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->add_responsive_control(
+			'space_between',
+			[
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'label' => esc_html__('Spacing', 'textdomain'),
+				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 100,
+					],
+				],
+				'devices' => ['desktop', 'tablet', 'mobile'],
+				'desktop_default' => [
+					'size' => 30,
+					'unit' => 'px',
+				],
+				'tablet_default' => [
+					'size' => 20,
+					'unit' => 'px',
+				],
+				'mobile_default' => [
+					'size' => 10,
+					'unit' => 'px',
+				],
+				'selectors' => [
+					'{{WRAPPER}} .widget-image' => 'margin-bottom: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -482,303 +477,6 @@ class Coherence_Header_Widget extends Widget_Base
 
 		$this->end_controls_section();
 
-		// Start Section [demande un devis]
-		$this->start_controls_section(
-			'btn_devis',
-			[
-				'label' => __('Demande Un Devis', 'coherence-core'),
-				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
-				'condition' => [
-					'layout_type' => ['layout_four'],
-				],
-			]
-		);
-
-		$this->add_control(
-			'btn_devis_enable',
-			[
-				'label' => esc_html__('activer la section', 'coherence-core'),
-				'type' => \Elementor\Controls_Manager::SWITCHER,
-				'label_on' => esc_html__('Show', 'coherence-core'),
-				'label_off' => esc_html__('Hide', 'coherence-core'),
-				'return_value' => 'yes',
-				'default' => 'no',
-			]
-		);
-
-		$this->add_control(
-			'btn_devis_text',
-			[
-				'label' => esc_html__('Button Text', 'coherence-core'),
-				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__('Demande un devis', 'coherence-core'),
-			]
-		);
-
-		$this->add_control(
-			'btn_devis_url',
-			[
-				'label' => esc_html__('Url', 'coherence-core'),
-				'type' => \Elementor\Controls_Manager::URL,
-				'placeholder' => esc_html__('#', 'coherence-core'),
-				'show_external' => true,
-				'default' => [
-					'url' => '#',
-					'is_external' => true,
-					'nofollow' => true,
-				],
-			]
-		);
-
-		$this->add_control(
-			'btn_devis_padding',
-			[
-				'label' => esc_html__( 'Padding', 'coherence-core' ),
-				'type' => \Elementor\Controls_Manager::DIMENSIONS,
-				'size_units' => ['px', '%', 'em'],
-				'selectors' => [
-					'{{WRAPPER}} header.header-core .btn-header.btn-devis' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};height: auto;line-height: initial;',
-				],
-			]
-		);
-
-		$this->add_control(
-			'btn_devis_border_radius',
-			[
-				'label' => esc_html__( 'Border radius', 'coherence-core' ),
-				'type' => \Elementor\Controls_Manager::DIMENSIONS,
-				'size_units' => ['px', '%', 'em'],
-				'selectors' => [
-					'{{WRAPPER}} header.header-core .btn-header.btn-devis' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};height: auto;line-height: initial;',
-				],
-			]
-		);
-
-		$this->add_control(
-			'btn_devis_bg_color',
-			[
-				'label' => esc_html__( 'Background color', 'coherence-core' ),
-				'type' => \Elementor\Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} header.header-core .btn-header.btn-devis' => 'background-color: {{VALUE}}',
-				],
-			]
-		);
-
-		$this->add_control(
-			'btn_devis_border_color',
-			[
-				'label' => esc_html__( 'Border color', 'coherence-core' ),
-				'type' => \Elementor\Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} header.header-core .btn-header.btn-devis' => 'border-color: {{VALUE}}',
-				],
-			]
-		);
-
-		$this->add_control(
-			'btn_devis_text_color',
-			[
-				'label' => esc_html__( 'Text color', 'coherence-core' ),
-				'type' => \Elementor\Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} header.header-core .btn-header.btn-devis' => 'color: {{VALUE}}',
-				],
-			]
-		);
-
-		$this->add_group_control(
-			\Elementor\Group_Control_Typography::get_type(),
-			[
-				'name' => 'btn_devis_text_typography',
-				'selector' => '{{WRAPPER}} header.header-core .btn-header.btn-devis',
-			]
-		);
-
-		$this->add_control(
-			'section_btn_devis_hover',
-			[
-				'label' => esc_html__( 'Hover Options', 'coherence-core' ),
-				'type' => \Elementor\Controls_Manager::HEADING,
-				'separator' => 'before',
-			]
-		);
-
-		$this->add_control(
-			'btn_devis_bg_color_hover',
-			[
-				'label' => esc_html__( 'Background color', 'coherence-core' ),
-				'type' => \Elementor\Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} header.header-core .btn-header.btn-devis:hover' => 'background-color: {{VALUE}}',
-				],
-			]
-		);
-
-		$this->add_control(
-			'btn_devis_border_color_hover',
-			[
-				'label' => esc_html__( 'Border color', 'coherence-core' ),
-				'type' => \Elementor\Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} header.header-core .btn-header.btn-devis:hover' => 'border-color: {{VALUE}}',
-				],
-			]
-		);
-
-		$this->add_control(
-			'btn_devis_text_color_hover',
-			[
-				'label' => esc_html__( 'Text color', 'coherence-core' ),
-				'type' => \Elementor\Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} header.header-core .btn-header.btn-devis:hover' => 'color: {{VALUE}}',
-				],
-			]
-		);
-
-		$this->end_controls_section();
-		// End Section [demande un devis]
-		
-		// Start Section [telephone]
-		$this->start_controls_section(
-			'btn_phone',
-			[
-				'label' => __('Phone Section', 'coherence-core'),
-				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
-				'condition' => 
-				[
-					'layout_type' => ['layout_four']
-				],
-			]
-		);
-		$this->add_control(
-			'btn_phone_enable',
-			[
-				'label' => esc_html__('Activate section', 'coherence-core'),
-				'type' => \Elementor\Controls_Manager::SWITCHER,
-				'label_on' => esc_html__('Show', 'coherence-core'),
-				'label_off' => esc_html__('Hide', 'coherence-core'),
-				'return_value' => 'yes',
-				'default' => 'no',
-			]
-		);
-		$this->add_control(
-			'btn_phone_text',
-			[
-				'label' => esc_html__('Button Text', 'coherence-core'),
-				'type' => \Elementor\Controls_Manager::TEXT,
-				'placeholder' => esc_html__('Contact us', 'coherence-core'),
-			]
-		);
-		$this->add_control(
-			'btn_phone_number',
-			[
-				'label' => esc_html__('Phone number', 'coherence-core'),
-				'type' => \Elementor\Controls_Manager::TEXT,
-				'placeholder' => esc_html__('+212600112233', 'coherence-core'),
-			]
-		);
-		$this->add_control(
-			'btn_phone_padding',
-			[
-				'label' => esc_html__( 'Padding', 'coherence-core' ),
-				'type' => \Elementor\Controls_Manager::DIMENSIONS,
-				'size_units' => ['px', '%', 'em'],
-				'selectors' => [
-					'{{WRAPPER}} header.header-core .btn-header.btn-phone' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};height: auto;line-height: initial;',
-				],
-			]
-		);
-		$this->add_control(
-			'btn_phone_border_radius',
-			[
-				'label' => esc_html__( 'Border radius', 'coherence-core' ),
-				'type' => \Elementor\Controls_Manager::DIMENSIONS,
-				'size_units' => ['px', '%', 'em'],
-				'selectors' => [
-					'{{WRAPPER}} header.header-core .btn-header.btn-phone' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};height: auto;line-height: initial;',
-				],
-			]
-		);
-		$this->add_control(
-			'btn_phone_bg_color',
-			[
-				'label' => esc_html__( 'Background color', 'coherence-core' ),
-				'type' => \Elementor\Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} header.header-core .btn-header.btn-phone' => 'background-color: {{VALUE}}',
-				],
-			]
-		);
-		$this->add_control(
-			'btn_phone_border_color',
-			[
-				'label' => esc_html__( 'Border color', 'coherence-core' ),
-				'type' => \Elementor\Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} header.header-core .btn-header.btn-phone' => 'border-color: {{VALUE}}',
-				],
-			]
-		);
-		$this->add_control(
-			'btn_phone_text_color',
-			[
-				'label' => esc_html__( 'Text color', 'coherence-core' ),
-				'type' => \Elementor\Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} header.header-core .btn-header.btn-phone' => 'color: {{VALUE}}',
-				],
-			]
-		);
-		$this->add_group_control(
-			\Elementor\Group_Control_Typography::get_type(),
-			[
-				'name' => 'btn_phone_text_typography',
-				'selector' => '{{WRAPPER}} header.header-core .btn-header.btn-phone',
-			]
-		);
-		$this->add_control(
-			'section_btn_phone_hover',
-			[
-				'label' => esc_html__( 'Hover Options', 'coherence-core' ),
-				'type' => \Elementor\Controls_Manager::HEADING,
-				'separator' => 'before',
-			]
-		);
-		$this->add_control(
-			'btn_phone_bg_color_hover',
-			[
-				'label' => esc_html__( 'Background color', 'coherence-core' ),
-				'type' => \Elementor\Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} header.header-core .btn-header.btn-phone:hover' => 'background-color: {{VALUE}}',
-				],
-			]
-		);
-		$this->add_control(
-			'btn_phone_border_color_hover',
-			[
-				'label' => esc_html__( 'Border color', 'coherence-core' ),
-				'type' => \Elementor\Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} header.header-core .btn-header.btn-phone:hover' => 'border-color: {{VALUE}}',
-				],
-			]
-		);
-		$this->add_control(
-			'btn_phone_text_color_hover',
-			[
-				'label' => esc_html__( 'Text color', 'coherence-core' ),
-				'type' => \Elementor\Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} header.header-core .btn-header.btn-phone:hover' => 'color: {{VALUE}}',
-				],
-			]
-		);
-		$this->end_controls_section();
-		// End Section [telephone]
-
 		//General style
 		$this->start_controls_section(
 			'general_style',
@@ -788,140 +486,24 @@ class Coherence_Header_Widget extends Widget_Base
 			]
 		);
 
-		$this->add_control(
-			'top_bar_options',
-			[
-				'label' => esc_html__( 'Top Bar Options', 'coherence-core' ),
-				'type' => \Elementor\Controls_Manager::HEADING,
-				'separator' => 'before',
-				'condition' => [
-					'layout_type' => ['layout_two', 'layout_three']
-				],
-			]
-		);
-
 		coherence_core_typo_and_color_options($this, 'Top Bar', '{{WRAPPER}} .navbar-top ul li p,{{WRAPPER}} .navbar-top ul li p span', ['layout_one', 'layout_three']);
 		coherence_core_typo_and_color_options($this, 'Top Bar Title', '{{WRAPPER}} .navbar-top .media .media-body h6', ['layout_two']);
 		coherence_core_typo_and_color_options($this, 'Top Bar Text', '{{WRAPPER}} .navbar-top .media .media-body p', ['layout_two']);
+		coherence_core_typo_and_color_options($this, 'Header background color', '{{WRAPPER}} .navbar-area, {{WRAPPER}} .navbar-area .nav-container.navbar-bg:after', ['layout_one'], 'background-color', false);
 		coherence_core_typo_and_color_options($this, 'Top Bar Background', '{{WRAPPER}} .navbar-top', ['layout_one', 'layout_three', 'layout_two'], 'background-color', false);
 		//coherence_core_typo_and_color_options($this, 'Top Bar Background', '{{WRAPPER}} .navbar-top', ['layout_two'], 'background-color', true);
-
-		$this->add_control(
-			'header_nav_options',
-			[
-				'label' => esc_html__( 'Header Navigation Options', 'coherence-core' ),
-				'type' => \Elementor\Controls_Manager::HEADING,
-				'separator' => 'before',
-			]
-		);
-
-		$this->add_control(
-			'header_nav_hover_color',
-			[
-				'label' => esc_html__( 'Color', 'coherence-core' ),
-				'type' => \Elementor\Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .navbar .navbar-nav li:hover a:after' => 'background-color: {{VALUE}};',
-					'{{WRAPPER}} .navbar .navbar-nav li:hover a ,{{WRAPPER}} #header-four .menu_navbar li a' => 'color: {{VALUE}};',
-				],
-			]
-		);
-
-		$this->add_control(
-			'header_nav_hover_bg_color',
-			[
-				'label' => esc_html__( 'Background color', 'coherence-core' ),
-				'type' => \Elementor\Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .navbar .navbar-nav li:hover' => 'background-color: {{VALUE}} ; transition: all 0.6s;',
-				],
-				'condition' => [
-					'layout_type' => ['layout_two', 'layout_three']
-				],
-			]
-		);
-		
-		coherence_core_typo_and_color_options($this, 'Header background color', '{{WRAPPER}} .navbar-area, {{WRAPPER}} .navbar-area .nav-container.navbar-bg:after', ['layout_one'], 'background-color', false);
-		coherence_core_typo_and_color_options($this, 'Nav Bar Background', '{{WRAPPER}} .navbar-area-2, {{WRAPPER}} .navbar-area-3 , {{WRAPPER}} header .header-core-navbar', ['layout_two', 'layout_three','layout_four'], 'background-color', false);
+		coherence_core_typo_and_color_options($this, 'Nav Bar Background', '{{WRAPPER}} .navbar-area-2, {{WRAPPER}} .navbar-area-3', ['layout_two', 'layout_three'], 'background-color', false);
 		//coherence_core_typo_and_color_options($this, 'Nav Bar Background', '{{WRAPPER}} .navbar-area-3', ['layout_three'], 'background-color', false);
 
 		coherence_core_typo_and_color_options($this, 'Navigation', '{{WRAPPER}} .navbar-area-1 .nav-container .navbar-collapse .navbar-nav > li > a,
 		{{WRAPPER}} .navbar-area-2 .nav-container .navbar-collapse .navbar-nav > li a,
 		{{WRAPPER}} .navbar-area-3 .nav-container .navbar-collapse .navbar-nav > li a, {{WRAPPER}}  .navbar-area .nav-container .navbar-collapse .navbar-nav li.menu-item-has-children:before, {{WRAPPER}}  .navbar-nav li.menu-item-has-children:after', ['layout_one', 'layout_two', 'layout_three']);
 
-		$this->add_control(
-			'btn_header_contact',
-			[
-				'label' => esc_html__( 'Button Contact Options', 'coherence-core' ),
-				'type' => \Elementor\Controls_Manager::HEADING,
-				'separator' => 'before',
-				'condition' => [
-					'layout_type' => ['layout_one', 'layout_two', 'layout_three']
-				]
-			]
-		);
-
 		coherence_core_typo_and_color_options($this, 'Button ', '{{WRAPPER}} .btn-base,{{WRAPPER}} .btn.btn-black', ['layout_one', 'layout_two', 'layout_three']);
 		coherence_core_typo_and_color_options($this, 'Button  Background', '{{WRAPPER}} .btn-base,{{WRAPPER}} .btn.btn-black', ['layout_one', 'layout_two', 'layout_three'], 'background-color', false);
 
-		$this->add_control(
-			'btn_header_contact_hover',
-			[
-				'label' => esc_html__( 'Hover Options', 'coherence-core' ),
-				'type' => \Elementor\Controls_Manager::HEADING,
-				'condition' => [
-					'layout_type' => ['layout_one', 'layout_two', 'layout_three']
-				]
-			]
-		);
 
-		$this->add_control(
-			'contact_text_color',
-			[
-				'label' => esc_html__( 'Color', 'coherence-core' ),
-				'type' => \Elementor\Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .navbar .btn-base' => 'border-radius: 0;',
-					'{{WRAPPER}} .navbar .btn-base:hover' => 'color: {{VALUE}} !important;',
-				],
-				'condition' => [
-					'layout_type' => ['layout_one', 'layout_two', 'layout_three']
-				]
-			]
-		);
-
-		$this->add_control(
-			'contact_bg_color_after',
-			[
-				'label' => esc_html__( 'Background color', 'coherence-core' ),
-				'type' => \Elementor\Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}} .navbar .btn-base::after' => 'background-color: {{VALUE}};left: -50%;',
-					'{{WRAPPER}} .navbar .btn-base:hover::after' => 'width: 150%;',
-				],
-				'condition' => [
-					'layout_type' => ['layout_one', 'layout_two', 'layout_three']
-				]
-			]
-		);
-
-		$this->add_control(
-			'btn_contact_padding',
-			[
-				'label' => esc_html__( 'Padding', 'coherence-core' ),
-				'type' => \Elementor\Controls_Manager::DIMENSIONS,
-				'size_units' => ['px', '%', 'em'],
-				'selectors' => [
-					'{{WRAPPER}} .navbar .btn-base' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};height: auto;line-height: initial;',
-				],
-				'condition' => [
-					'layout_type' => ['layout_one', 'layout_two', 'layout_three']
-				]
-			]
-		);
-		
 		$this->end_controls_section();
-
 	}
 	/**
 	 * Render Elementor widget output on the frontend.
@@ -934,35 +516,9 @@ class Coherence_Header_Widget extends Widget_Base
 	protected function render()
 	{
 		$settings = $this->get_settings_for_display();
-		$header = $settings['layout_type'] ?? '';
-		$template_path =  apply_filters('change_default_header_layout', 'header-one.php');
-
-		switch ($header) {
-			case 'layout_one':
-				$template_path = 'headers/header-one.php';
-				break;
-			case 'layout_two':
-				$template_path = 'headers/header-two.php';
-				break;
-			case 'layout_three':
-				$template_path = 'headers/header-three.php';
-			break;
-			case 'layout_four':
-				$template_path = 'headers/header-four.php';
-			break;
-		}
-
-		$header_file = coherence_get_template($template_path);
-
-		if(!empty($header_file)) {
-			$logo = $settings['logo'] ?? [];
-			$logo_type = $settings['logo_type'] ?? '';
-			$menu = $settings['nav_menu'] ?? '';
-			ob_start();
-			include_once $header_file;
-			echo  ob_get_clean();
-		}
-
+		include coherence_get_template('header-one.php');
+		include coherence_get_template('header-two.php');
+		include coherence_get_template('header-three.php');
 	}
 }
 

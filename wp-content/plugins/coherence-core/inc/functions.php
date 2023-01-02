@@ -393,6 +393,7 @@ if (!function_exists('coherence_core_typo_and_color_options')) :
       );
 
     endif;
+
     if (false != $color) :
       $agrs->add_control(
         str_replace(' ', '_', $label) . '_color',

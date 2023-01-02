@@ -379,10 +379,6 @@
             }, 2000);
         });
 
-        $('header .menu-burger').click (function() {
-            $('header.header-core').toggleClass('show-menu');
-        });
-
     });
 
     $(window).on("scroll", function() {
@@ -431,8 +427,6 @@
             $("#preloader").fadeOut(2000);
         });
 
-    });
-
-
+    });    
 
 })(jQuery);
