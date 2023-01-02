@@ -91,7 +91,7 @@ class Coherence_Heading_Widget extends Widget_Heading {
 					'label_on' => esc_html__( 'Show', 'coherence-core' ),
 					'label_off' => esc_html__( 'Hide', 'coherence-core' ),
 					'return_value' => 'yes',
-					'default' => 'yes',
+					'default' => 'no',
 				]
 			);
 
@@ -110,19 +110,14 @@ class Coherence_Heading_Widget extends Widget_Heading {
 					'condition' => [ 'show_link[value]' => 'yes' ],
 				]
 			);
-
-			// $element->add_control(
-			// 	'gradient_font_color',
-			// 	[
-			// 		'label' => esc_html__( 'Gradient Font Color', 'coherence-core' ),
-			// 		'type' => \Elementor\Controls_Manager::SWITCHER,
-			// 		'label_on' => esc_html__( 'Show', 'coherence-core' ),
-			// 		'label_off' => esc_html__( 'Hide', 'coherence-core' ),
-			// 		'return_value' => 'yes',
-			// 		'default' => 'no',
-			// 	]
-			// );
-
+			$element->add_control(
+				'option_separator_heading',
+				[
+					'label' => esc_html__( 'Option Separator', 'coherence-core' ),
+					'type' => \Elementor\Controls_Manager::HEADING,
+					'separator' => 'before',
+				]
+			);
 			$element->add_control(
 				'show_separator',
 				[
@@ -134,11 +129,10 @@ class Coherence_Heading_Widget extends Widget_Heading {
 					'default' => 'no',
 				]
 			);
-
 			$element->add_responsive_control(
-				'separator_title',
+				'separator_type',
 				[
-					'label' => esc_html__( 'Separator Title', 'coherence-core' ),
+					'label' => esc_html__( 'Separator Type', 'coherence-core' ),
 					'type' => Controls_Manager::SELECT,
 					'default' => 'single-solid',
 					'options' => [
@@ -180,6 +174,76 @@ class Coherence_Heading_Widget extends Widget_Heading {
 				]
 			);
 
+			$element->add_responsive_control(
+				'separator_top_width',
+				[
+					'label' => esc_html__( 'Separator Top Width (px)', 'coherence-core' ),
+					'type' => \Elementor\Controls_Manager::SLIDER,
+					'size_units' => ['px'],
+					'range' => [
+						'px' => [
+							'min' => 1,
+						],
+					],
+					'default' => [
+						'unit' => 'px',
+						'size' => 2,
+					],
+					'selectors' => [
+						'{{WRAPPER}} [class*="coherence-core-heading"]' => 'border-top-width: {{SIZE}}{{UNIT}};',
+					],
+					'conditions' => [
+						'relation' => 'and',
+						'terms' => [
+							[
+								'name' => 'separator_type',
+								'operator' => '!==',
+								'value' => 'single-solid',
+							],
+							[
+								'name' => 'separator_type',
+								'operator' => '!==',
+								'value' => 'single-dashed',
+							],
+							[
+								'name' => 'separator_type',
+								'operator' => '!==',
+								'value' => 'single-dotted',
+							],
+							[
+								'name' => 'show_separator',
+								'operator' => '===',
+								'value' => 'yes',
+							],
+						],
+					],
+				]
+			);
+
+			$element->add_responsive_control(
+				'separator_bottom_width',
+				[
+					'label' => esc_html__( 'Separator Bottom Width (px)', 'coherence-core' ),
+					'type' => \Elementor\Controls_Manager::SLIDER,
+					'size_units' => ['px'],
+					'range' => [
+						'px' => [
+							'min' => 1,
+						],
+					],
+					'default' => [
+						'unit' => 'px',
+						'size' => 2,
+					],
+					'selectors' => [
+						'{{WRAPPER}} [class*="coherence-core-heading"]' => 'border-bottom-width: {{SIZE}}{{UNIT}};',
+					],
+					'condition' => [ 
+						'show_separator[value]' => 'yes',
+					],
+				]
+			);
+
 			$element->add_control(
 				'separator_space_title',
 				[
@@ -210,7 +274,7 @@ class Coherence_Heading_Widget extends Widget_Heading {
 			$element->add_control(
 				'double_separator_thickness',
 				[
-					'label' => esc_html__( 'Thickness Separator', 'coherence-core' ),
+					'label' => esc_html__( 'Space Between Separators', 'coherence-core' ),
 					'type' => \Elementor\Controls_Manager::SLIDER,
 					'size_units' => ['px','em'],
 					'range' => [
@@ -228,8 +292,30 @@ class Coherence_Heading_Widget extends Widget_Heading {
 					'selectors' => [
 						'{{WRAPPER}} [class*="coherence-core-heading"]' => 'height: {{SIZE}}{{UNIT}};',
 					],
-					'condition' => [ 
-						'show_separator[value]' => 'yes',
+					'conditions' => [
+						'relation' => 'and',
+						'terms' => [
+							[
+								'name' => 'separator_type',
+								'operator' => '!==',
+								'value' => 'single-solid',
+							],
+							[
+								'name' => 'separator_type',
+								'operator' => '!==',
+								'value' => 'single-dashed',
+							],
+							[
+								'name' => 'separator_type',
+								'operator' => '!==',
+								'value' => 'single-dotted',
+							],
+							[
+								'name' => 'show_separator',
+								'operator' => '===',
+								'value' => 'yes',
+							],
+						],
 					],
 				]
 			);
@@ -291,7 +377,7 @@ class Coherence_Heading_Widget extends Widget_Heading {
 		echo '<div class="coherence-heading">';
 		echo $title_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		if ( ! empty( $settings['show_separator'] ) && $settings['show_separator'] ==  'yes' ) {
-			echo '<span class="coherence-core-heading-'.$settings['separator_title'].'"></span>';
+			echo '<span class="coherence-core-heading-'.$settings['separator_type'].'"></span>';
 		}
 		echo '</div>';
 	}
@@ -326,7 +412,7 @@ class Coherence_Heading_Widget extends Widget_Heading {
 		} 
 		if ( show_separator === 'yes' ) {
 			#>
-				<span class="coherence-core-heading-{{{settings.separator_title}}}"></span>
+				<span class="coherence-core-heading-{{{settings.separator_type}}}"></span>
 			<#
 			}
 		#>
