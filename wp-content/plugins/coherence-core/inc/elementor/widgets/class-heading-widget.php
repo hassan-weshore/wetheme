@@ -68,15 +68,7 @@ class Coherence_Heading_Widget extends Widget_Heading {
 				],
 			]
 		);
-		$this->update_control(
-			'link',
-			[
-				'dynamic' => [
-					'active' => false,
-				],
-				'condition' => [ 'show_link[value]' => 'yes' ],
-			]
-		);
+		$this->remove_control('link');
 	}
 
 	public function inject_register_controls($element, $section_id, $args) {
@@ -94,12 +86,28 @@ class Coherence_Heading_Widget extends Widget_Heading {
 			$element->add_control(
 				'show_link',
 				[
-					'label' => esc_html__( 'Title link', 'coherence-core' ),
+					'label' => esc_html__( 'Title Link', 'coherence-core' ),
 					'type' => \Elementor\Controls_Manager::SWITCHER,
 					'label_on' => esc_html__( 'Show', 'coherence-core' ),
 					'label_off' => esc_html__( 'Hide', 'coherence-core' ),
 					'return_value' => 'yes',
 					'default' => 'yes',
+				]
+			);
+
+			$element->add_control(
+				'custom_link',
+				[
+					'label' => esc_html__( 'Link', 'elementor' ),
+					'type' => Controls_Manager::URL,
+					'dynamic' => [
+						'active' => false,
+					],
+					'default' => [
+						'url' => '',
+					],
+					'separator' => 'after',
+					'condition' => [ 'show_link[value]' => 'yes' ],
 				]
 			);
 
@@ -161,7 +169,7 @@ class Coherence_Heading_Widget extends Widget_Heading {
 					],
 					'default' => [
 						'unit' => '%',
-						'size' => 20,
+						'size' => 100,
 					],
 					'selectors' => [
 						'{{WRAPPER}} [class*="coherence-core-heading"]' => 'width: {{SIZE}}{{UNIT}};',
@@ -271,8 +279,8 @@ class Coherence_Heading_Widget extends Widget_Heading {
 
 		$title = $settings['title'];
 
-		if ( ! empty( $settings['link']['url'] ) ) {
-			$this->add_link_attributes( 'url', $settings['link'] );
+		if ( ! empty( $settings['custom_link']['url'] ) ) {
+			$this->add_link_attributes( 'url', $settings['custom_link'] );
 
 			$title = sprintf( '<a %1$s>%2$s</a>', $this->get_render_attribute_string( 'url' ), $title );
 		}
@@ -303,8 +311,8 @@ class Coherence_Heading_Widget extends Widget_Heading {
 		var title = settings.title;
 		var show_separator = settings.show_separator;
 
-		if ( '' !== settings.link.url ) {
-			title = '<a href="' + settings.link.url + '">' + title + '</a>';
+		if ( '' !== settings.custom_link.url ) {
+			title = '<a href="' + settings.custom_link.url + '">' + title + '</a>';
 		}
 
 		view.addRenderAttribute( 'title', 'class', [ 'elementor-heading-title', 'elementor-size-' + settings.size ] );
