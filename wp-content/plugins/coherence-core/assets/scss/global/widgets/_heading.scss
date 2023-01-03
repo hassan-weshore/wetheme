@@ -27,4 +27,19 @@
     .coherence-core-heading-none {
         border: none;
     }
+    .separator-sub-title {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &::before , &::after {
+            content: '';
+            display: inline-block;
+        }
+        &::before {
+            margin-right: 10px;
+        }
+        &::after {
+            margin-left: 10px;
+        }
+    }
 }

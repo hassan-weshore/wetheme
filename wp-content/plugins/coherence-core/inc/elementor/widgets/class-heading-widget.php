@@ -5,6 +5,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 /**
 * Elementor heading widget.
 *
@@ -17,6 +18,7 @@ class Coherence_Heading_Widget extends Widget_Heading {
 	public function  __construct($data = [], $args = null) {
 		parent::__construct( $data, $args );
 		add_action( 'elementor/element/before_section_end', [$this,'inject_register_controls'], 99, 3 );
+		add_action('elementor/element/after_section_end',[$this,'inject_register_controls_style'], 99, 3 );
 	}
 
 	/**
@@ -98,7 +100,7 @@ class Coherence_Heading_Widget extends Widget_Heading {
 			$element->add_control(
 				'custom_link',
 				[
-					'label' => esc_html__( 'Link', 'elementor' ),
+					'label' => esc_html__( 'Link', 'coherence-core' ),
 					'type' => Controls_Manager::URL,
 					'dynamic' => [
 						'active' => false,
@@ -108,6 +110,31 @@ class Coherence_Heading_Widget extends Widget_Heading {
 					],
 					'separator' => 'after',
 					'condition' => [ 'show_link[value]' => 'yes' ],
+				]
+			);
+			$element->add_control(
+				'option_sub_and_summary_heading',
+				[
+					'label' => esc_html__( 'Sub Title / Summary', 'coherence-core' ),
+					'type' => \Elementor\Controls_Manager::HEADING,
+					'separator' => 'before',
+				]
+			);
+			$element->add_control(
+				'sub_title',
+				[
+					'label' => esc_html__( 'Sub Title', 'coherence-core' ),
+					'type' => Controls_Manager::TEXT,
+					'placeholder' => esc_html__( 'Enter your Sub Title', 'coherence-core' ),
+					'label_block' => true,
+				]
+			);
+			$element->add_control(
+				'summary_title',
+				[
+					'label' => esc_html__( 'Summary', 'coherence-core' ),
+					'type' => Controls_Manager::TEXTAREA,
+					'placeholder' => esc_html__( 'Enter your Summary', 'coherence-core' ),
 				]
 			);
 			$element->add_control(
@@ -340,6 +367,209 @@ class Coherence_Heading_Widget extends Widget_Heading {
 		}
 	}
 
+	public function inject_register_controls_style($element, $section_id, $args) {
+		if($section_id == 'section_title_style' && $element->get_name() == 'coherence_Heading_widget') {
+			$element->start_controls_section(
+				'section_sub_title_style',
+				[
+					'label' => esc_html__( 'Sub Title', 'coherence-core' ),
+					'tab' => Controls_Manager::TAB_STYLE,
+					'condition' => [
+						'sub_title[value]!' => '',
+					],
+				]
+			);
+			$element->add_group_control(
+				Group_Control_Typography::get_type(),
+				[
+					'name' => 'sub_titletypography',
+					'global' => [
+						'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+					],
+					'selector' => '{{WRAPPER}}  .coherence-heading .separator-sub-title',
+				]
+			);
+
+			$element->add_control(
+				'sub_title_color',
+				[
+					'label' => esc_html__( 'Text Color', 'elementor' ),
+					'type' => Controls_Manager::COLOR,
+					'global' => [
+						'default' => Global_Colors::COLOR_PRIMARY,
+					],
+					'selectors' => [
+						'{{WRAPPER}} .coherence-heading .separator-sub-title' => 'color: {{VALUE}};',
+					],
+				]
+			);
+			$element->add_responsive_control(
+				'sub_title_justify_content',
+				[
+					'label' => esc_html__( 'Justify Content', 'coherence-core' ),
+					'type' => Controls_Manager::SELECT,
+					'default' => 'center',
+					'options' => [
+						'center' => esc_html__( 'Center', 'coherence-core' ),
+						'flex-start' => esc_html__( 'Flex Start', 'coherence-core' ),
+						'flex-end' => esc_html__( 'Flex End', 'coherence-core' ),
+						'space-around' => esc_html__( 'Space Around', 'coherence-core' ),
+						'space-between' => esc_html__( 'Space Between', 'coherence-core' ),
+						'space-evenly' => esc_html__( 'Space Evenly', 'coherence-core' ),
+					],
+					'selectors' => [
+						'{{WRAPPER}} .coherence-heading .separator-sub-title' => 'justify-content: {{VALUE}};',
+					],
+				]
+			);
+			$element->add_responsive_control(
+				'sub_title_margin',
+				[
+					'label' => esc_html__( 'Margin', 'coherence-core' ),
+					'type' => Controls_Manager::DIMENSIONS,
+					'size_units' => [ 'px', 'em', '%' ],
+					'selectors' => [
+						'{{WRAPPER}} .coherence-heading .separator-sub-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					],
+				]
+			);
+			$element->add_control(
+				'sub_title_separators_option',
+				[
+					'label' => esc_html__( 'Separators Option', 'coherence-core' ),
+					'type' => \Elementor\Controls_Manager::HEADING,
+					'separator' => 'before',
+				]
+			);
+			$element->add_control(
+				'sub_title_separators_color',
+				[
+					'label' => esc_html__( 'Color', 'elementor' ),
+					'type' => Controls_Manager::COLOR,
+					'global' => [
+						'default' => Global_Colors::COLOR_PRIMARY,
+					],
+					'selectors' => [
+						'{{WRAPPER}} .coherence-heading .separator-sub-title::after' => 'background-color: {{VALUE}};',
+						'{{WRAPPER}} .coherence-heading .separator-sub-title::before' => 'background-color: {{VALUE}};',
+					],
+				]
+			);
+			$element->add_responsive_control(
+				'sub_title_separator_width',
+				[
+					'label' => esc_html__( 'Width', 'coherence-core' ),
+					'type' => \Elementor\Controls_Manager::SLIDER,
+					'size_units' => ['px','%'],
+					'range' => [
+						'%' => [
+							'min' => 0,
+							'max' => 100,
+						],
+						'px' => [
+							'min' => 0,
+							'max' => 200
+						],
+					],
+					'default' => [
+						'unit' => 'px',
+						'size' => 40,
+					],
+					'selectors' => [
+						'{{WRAPPER}} .coherence-heading .separator-sub-title::after' => 'width: {{SIZE}}{{UNIT}};',
+						'{{WRAPPER}} .coherence-heading .separator-sub-title::before' => 'width: {{SIZE}}{{UNIT}};',
+					],
+				]
+			);
+			$element->add_responsive_control(
+				'sub_title_separator_height',
+				[
+					'label' => esc_html__( 'Height (px)', 'coherence-core' ),
+					'type' => \Elementor\Controls_Manager::SLIDER,
+					'size_units' => ['px'],
+					'range' => [
+						'px' => [
+							'min' => 0,
+							'max' => 20
+						],
+					],
+					'default' => [
+						'unit' => 'px',
+						'size' => 2,
+					],
+					'selectors' => [
+						'{{WRAPPER}} .coherence-heading .separator-sub-title::after' => 'height: {{SIZE}}{{UNIT}};',
+						'{{WRAPPER}} .coherence-heading .separator-sub-title::before' => 'height: {{SIZE}}{{UNIT}};',
+					],
+				]
+			);
+			$element->end_controls_section();
+
+			$element->start_controls_section(
+				'section_summary_style',
+				[
+					'label' => esc_html__( 'Summary', 'coherence-core' ),
+					'tab' => Controls_Manager::TAB_STYLE,
+					'condition' => [
+						'summary_title[value]!' => '',
+					],
+				]
+			);
+			$element->add_group_control(
+				Group_Control_Typography::get_type(),
+				[
+					'name' => 'summary_titletypography',
+					'global' => [
+						'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
+					],
+					'selector' => '{{WRAPPER}}  .coherence-heading .text-summary-title',
+				]
+			);
+
+			$element->add_control(
+				'summary_color',
+				[
+					'label' => esc_html__( 'summary Color', 'elementor' ),
+					'type' => Controls_Manager::COLOR,
+					'global' => [
+						'default' => Global_Colors::COLOR_PRIMARY,
+					],
+					'selectors' => [
+						'{{WRAPPER}}  .coherence-heading .text-summary-title' => 'color: {{VALUE}};',
+					],
+				]
+			);
+			$element->add_responsive_control(
+				'summary_text_align',
+				[
+					'label' => esc_html__( 'Justify Content', 'coherence-core' ),
+					'type' => Controls_Manager::SELECT,
+					'default' => 'center',
+					'options' => [
+						'center' => esc_html__( 'Center', 'coherence-core' ),
+						'left' => esc_html__( 'Left', 'coherence-core' ),
+						'right' => esc_html__( 'Right', 'coherence-core' ),
+					],
+					'selectors' => [
+						'{{WRAPPER}}  .coherence-heading .text-summary-title' => 'text-align: {{VALUE}};',
+					],
+				]
+			);
+			$element->add_responsive_control(
+				'summary_margin',
+				[
+					'label' => esc_html__( 'Margin', 'coherence-core' ),
+					'type' => Controls_Manager::DIMENSIONS,
+					'size_units' => [ 'px', 'em', '%' ],
+					'selectors' => [
+						'{{WRAPPER}}  .coherence-heading .text-summary-title' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					],
+				]
+			);
+			$element->end_controls_section();
+		}
+	}
+
 	/**
 	 * Render heading widget output on the frontend.
 	 *
@@ -375,9 +605,15 @@ class Coherence_Heading_Widget extends Widget_Heading {
 
 		// PHPCS - the variable $title_html holds safe data.
 		echo '<div class="coherence-heading">';
+		if(!empty($settings['sub_title'])) {
+			echo '<span class="separator-sub-title">'.$settings['sub_title'].'</span>';
+		}
 		echo $title_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		if ( ! empty( $settings['show_separator'] ) && $settings['show_separator'] ==  'yes' ) {
 			echo '<span class="coherence-core-heading-'.$settings['separator_type'].'"></span>';
+		}
+		if(!empty($settings['summary_title'])) {
+			echo '<p class="text-summary-title">'.$settings['summary_title'].'</p>';
 		}
 		echo '</div>';
 	}
@@ -397,12 +633,14 @@ class Coherence_Heading_Widget extends Widget_Heading {
 		var title = settings.title;
 		var show_separator = settings.show_separator;
 
-		if ( '' !== settings.custom_link.url ) {
-			title = '<a href="' + settings.custom_link.url + '">' + title + '</a>';
-		}
-
 		view.addRenderAttribute( 'title', 'class', [ 'elementor-heading-title', 'elementor-size-' + settings.size ] );
 		view.addInlineEditingAttributes( 'title' );
+
+		if ( settings.sub_title !== '' ) {
+			#>
+				<span class="separator-sub-title">{{{settings.sub_title}}}</span>
+			<#
+		}
 
 		var headerSizeTag = elementor.helpers.validateHTMLTag( settings.header_size )
 		if ( headerSizeTag ) {
@@ -415,6 +653,13 @@ class Coherence_Heading_Widget extends Widget_Heading {
 				<span class="coherence-core-heading-{{{settings.separator_type}}}"></span>
 			<#
 			}
+
+		if ( settings.summary_title !== '' ) {
+			#>
+				<p class="text-summary-title">{{{settings.summary_title}}}</p>
+			<#
+		}
+
 		#>
 		</div>
 		<?php
