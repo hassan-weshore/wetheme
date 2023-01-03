@@ -115,7 +115,7 @@ class Coherence_Heading_Widget extends Widget_Heading {
 			$element->add_control(
 				'option_sub_and_summary_heading',
 				[
-					'label' => esc_html__( 'Sub Title / Summary', 'coherence-core' ),
+					'label' => esc_html__( 'Sub Title and Content', 'coherence-core' ),
 					'type' => \Elementor\Controls_Manager::HEADING,
 					'separator' => 'before',
 				]
@@ -132,9 +132,9 @@ class Coherence_Heading_Widget extends Widget_Heading {
 			$element->add_control(
 				'summary_title',
 				[
-					'label' => esc_html__( 'Summary', 'coherence-core' ),
+					'label' => esc_html__( 'Content', 'coherence-core' ),
 					'type' => Controls_Manager::TEXTAREA,
-					'placeholder' => esc_html__( 'Enter your Summary', 'coherence-core' ),
+					'placeholder' => esc_html__( 'Enter your Content', 'coherence-core' ),
 				]
 			);
 			$element->add_control(
@@ -393,7 +393,7 @@ class Coherence_Heading_Widget extends Widget_Heading {
 			$element->add_control(
 				'sub_title_color',
 				[
-					'label' => esc_html__( 'Text Color', 'elementor' ),
+					'label' => esc_html__( 'Text Color', 'coherence-core' ),
 					'type' => Controls_Manager::COLOR,
 					'global' => [
 						'default' => Global_Colors::COLOR_PRIMARY,
@@ -444,7 +444,7 @@ class Coherence_Heading_Widget extends Widget_Heading {
 			$element->add_control(
 				'sub_title_separators_color',
 				[
-					'label' => esc_html__( 'Color', 'elementor' ),
+					'label' => esc_html__( 'Color', 'coherence-core' ),
 					'type' => Controls_Manager::COLOR,
 					'global' => [
 						'default' => Global_Colors::COLOR_PRIMARY,
@@ -508,7 +508,7 @@ class Coherence_Heading_Widget extends Widget_Heading {
 			$element->start_controls_section(
 				'section_summary_style',
 				[
-					'label' => esc_html__( 'Summary', 'coherence-core' ),
+					'label' => esc_html__( 'Content', 'coherence-core' ),
 					'tab' => Controls_Manager::TAB_STYLE,
 					'condition' => [
 						'summary_title[value]!' => '',
@@ -518,7 +518,7 @@ class Coherence_Heading_Widget extends Widget_Heading {
 			$element->add_group_control(
 				Group_Control_Typography::get_type(),
 				[
-					'name' => 'summary_titletypography',
+					'name' => 'summary_title_typography',
 					'global' => [
 						'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
 					],
@@ -529,7 +529,7 @@ class Coherence_Heading_Widget extends Widget_Heading {
 			$element->add_control(
 				'summary_color',
 				[
-					'label' => esc_html__( 'summary Color', 'elementor' ),
+					'label' => esc_html__( 'Content Color', 'coherence-core' ),
 					'type' => Controls_Manager::COLOR,
 					'global' => [
 						'default' => Global_Colors::COLOR_PRIMARY,
@@ -542,7 +542,7 @@ class Coherence_Heading_Widget extends Widget_Heading {
 			$element->add_responsive_control(
 				'summary_text_align',
 				[
-					'label' => esc_html__( 'Justify Content', 'coherence-core' ),
+					'label' => esc_html__( 'Text Align', 'coherence-core' ),
 					'type' => Controls_Manager::SELECT,
 					'default' => 'center',
 					'options' => [
