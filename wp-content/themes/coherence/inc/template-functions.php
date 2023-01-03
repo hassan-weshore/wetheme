@@ -343,17 +343,18 @@ function coherence_move_comment_field_to_bottom($fields)
 */
 
 
-/*
 
 
-function hook_phoneNumber()
+if (!function_exists('hook_phoneNumber')) :
+	function hook_phoneNumber()
 
-{
+	{
 
-	echo "<script>
+		echo "<script>
 
         jQuery(document).ready(function() {
 
+            var globalheader_number='" . coherence_get_option('header_number') . "';
             var globalPhoneNumber1='" . coherence_get_option('telephone_1') . "';
 
             var globalPhoneNumber2='" . coherence_get_option('telephone_2') . "';
@@ -372,6 +373,7 @@ function hook_phoneNumber()
 
             
 
+            jQuery(\".header_number\").html(\"<a href=' tel:\"+globalheader_number+\"' class='dib link_phone1'>\"+globalheader_number+\"</a>\" );
             jQuery(\".phoneNumber1\").html(\"<a href=' tel:\"+globalPhoneNumber1+\"' class='dib link_phone1'>\"+globalPhoneNumber1+\"</a>\" );
 
             jQuery(\".phoneNumber2\").html(\"<a href=' tel:\"+globalPhoneNumber2+\"' class='dib link_phone2'>\"+globalPhoneNumber2+\"</a>\" );
@@ -391,66 +393,79 @@ function hook_phoneNumber()
         });
 
     </script>";
-}
+	}
+endif;
+if (!function_exists('shortcode_header_number')) :
+	function shortcode_header_number()
+	{
+		return "<a href='tel:" . coherence_get_option('header_number') . "' class='dib link_phone1'>" . coherence_get_option('header_number') . "</a>";
+	}
+endif;
+if (!function_exists('shortcode_phoneNumber1')) :
+	function shortcode_phoneNumber1()
+	{
+		return "<a href='tel:" . coherence_get_option('telephone_1') . "' class='dib link_phone1'>" . coherence_get_option('telephone_1') . "</a>";
+	}
+endif;
+if (!function_exists('shortcode_phoneNumber2')) :
+	function shortcode_phoneNumber2()
 
-function shortcode_phoneNumber1()
+	{
 
-{
+		return "<a href='tel:" . coherence_get_option('telephone_2') . "' class='dib link_phone2'>" . coherence_get_option('telephone_2') . "</a>";
+	}
+endif;
+if (!function_exists('shortcode_AdresseMail')) :
+	function shortcode_AdresseMail()
 
-	return "<a href='tel:" . coherence_get_option('telephone_1') . "' class='dib link_phone1'>" . coherence_get_option('telephone_1') . "</a>";
-}
+	{
 
-function shortcode_phoneNumber2()
+		return "<a href='mailto:" . coherence_get_option('header_email') . "'>" . coherence_get_option('header_email') . "</a>";
+	}
+endif;
+if (!function_exists('shortcode_AdressePhysique')) :
+	function shortcode_AdressePhysique()
 
-{
+	{
 
-	return "<a href='tel:" . coherence_get_option('telephone_2') . "' class='dib link_phone2'>" . coherence_get_option('telephone_2') . "</a>";
-}
+		return coherence_get_option('Adresse_physique');
+	}
+endif;
+if (!function_exists('shortcode_HoraireTravail')) :
+	function shortcode_HoraireTravail()
 
-function shortcode_AdresseMail()
+	{
 
-{
+		return coherence_get_option('Horaire_travail');
+	}
+endif;
+if (!function_exists('shortcode_MapIframe')) :
+	function shortcode_MapIframe()
 
-	return "<a href='mailto:" . coherence_get_option('Adresse_mail') . "'>" . coherence_get_option('Adresse_mail') . "</a>";
-}
+	{
 
-function shortcode_AdressePhysique()
+		return coherence_get_option('Map_iframe');
+	}
+endif;
+if (!function_exists('shortcode_SiteName')) :
+	function shortcode_SiteName()
 
-{
+	{
 
-	return coherence_get_option('Adresse_physique');
-}
+		return get_bloginfo('name');
+	}
+endif;
+if (!function_exists('shortcode_SiteUrl')) :
+	function shortcode_SiteUrl()
+	{
 
-function shortcode_HoraireTravail()
-
-{
-
-	return coherence_get_option('Horaire_travail');
-}
-
-function shortcode_MapIframe()
-
-{
-
-	return coherence_get_option('Map_iframe');
-}
-
-function shortcode_SiteName()
-
-{
-
-	return get_bloginfo('name');
-}
-
-function shortcode_SiteUrl()
-
-{
-
-	return get_bloginfo('url');
-}
+		return get_bloginfo('url');
+	}
+endif;
 
 add_action('wp_head', 'hook_phoneNumber');
 
+add_shortcode('header_number', 'shortcode_header_number');
 add_shortcode('phoneNumber1', 'shortcode_phoneNumber1');
 
 add_shortcode('phoneNumber2', 'shortcode_phoneNumber2');
@@ -466,4 +481,3 @@ add_shortcode('MapIframe', 'shortcode_MapIframe');
 add_shortcode('SiteName', 'shortcode_SiteName');
 
 add_shortcode('SiteUrl', 'shortcode_SiteUrl');
-*/

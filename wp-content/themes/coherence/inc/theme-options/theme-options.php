@@ -1573,11 +1573,11 @@ if (class_exists('CSF')) {
 	/*-------------------------------------------------------
 	   ** Pages and Template
 	 --------------------------------------------------------*/
-	CSF::createSection($coherence_prefix . '_theme_options', array(
+	/*CSF::createSection($coherence_prefix . '_theme_options', array(
 		'id'    => 'pages_and_template',
 		'title' => esc_html__('Pages & Template', 'coherence'),
 		'icon'  => 'fa fa-files-o'
-	));
+	));*/
 
 
 
