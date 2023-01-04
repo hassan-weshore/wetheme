@@ -177,69 +177,24 @@ class Coherence_Header_Widget extends Widget_Base
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
-
-		$this->add_control(
-			'logo_type',
-			[
-				'label' => esc_html__('Logo Type', 'coherence-core'),
-				'type' => \Elementor\Controls_Manager::SELECT,
-				'default' => 'image',
-				'options' => [
-					'image'  => esc_html__('Image', 'coherence-core'),
-					'icon' => esc_html__('Icon', 'coherence-core'),
-				],
-			]
-		);
-
-		$this->add_control(
+		
+		$this->add_responsive_control(
 			'logo',
 			[
 				'label' => __('Logo', 'coherence-core'),
 				'type' => \Elementor\Controls_Manager::MEDIA,
-				'condition' => [
-					'logo_type' => 'image'
-				],
 				'default' => [
 					'url' => \Elementor\Utils::get_placeholder_image_src(),
 				],
 			]
 		);
 
-		$this->add_control(
-			'icon_logo',
+		$this->add_group_control(
+			Group_Control_Image_Size::get_type(),
 			[
-				'label' => __('Icon Logo', 'coherence-addon'),
-				'type' => \Elementor\Controls_Manager::ICONS,
-				'condition' => [
-					'logo_type' => 'icon',
-				],
-			]
-		);
-
-		$this->add_control(
-			'mobile_icon_logo',
-			[
-				'label' => __('Mobile Icon Logo', 'coherence-addon'),
-				'type' => \Elementor\Controls_Manager::ICONS,
-				'condition' => [
-					'logo_type' => 'icon',
-					'layout_type' => 'layout_three',
-				],
-			]
-		);
-
-		$this->add_control(
-			'mobile_logo',
-			[
-				'label' => __('Mobile Logo', 'coherence-core'),
-				'type' => \Elementor\Controls_Manager::MEDIA,
-				'condition' => [
-					'layout_type' => ['layout_two', 'layout_three'],
-					'logo_type' => 'image'
-				],
-				'default' => [
-					'url' => \Elementor\Utils::get_placeholder_image_src(),
-				],
+				'name' => 'logo_thum', // Usage: `logo_thum_size` and `logo_thum_custom_dimension`
+				'default' => 'full',
+				'separator' => 'none',
 			]
 		);
 
@@ -1027,7 +982,11 @@ class Coherence_Header_Widget extends Widget_Base
 		$header_file = coherence_get_template($template_path);
 
 		if(!empty($header_file)) {
-			$logo = $settings['logo'] ?? [];
+
+			$logo = wp_kses_post( Group_Control_Image_Size::get_attachment_image_html( $settings, 'logo_thum' ,  'logo' ) );
+			$logo_tablet = wp_kses_post( Group_Control_Image_Size::get_attachment_image_html( $settings, 'logo_thum' ,  'logo_tablet' ) );
+			$logo_mobile = wp_kses_post( Group_Control_Image_Size::get_attachment_image_html( $settings, 'logo_thum' ,  'logo_mobile' ) );
+
 			$logo_type = $settings['logo_type'] ?? '';
 			$menu = $settings['nav_menu'] ?? '';
 			ob_start();

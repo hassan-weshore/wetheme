@@ -47,13 +47,19 @@
                 </button>
             </div>
             <div class="logo coherence-logo">
+            <?php if(!empty($logo) || !empty($logo_tablet) || !empty($logo_mobile)):?>
                 <a href="<?php echo esc_url(home_url('/')); ?>">
-                    <?php if ('image' == $settings['logo_type']) : ?>
-                        <img width="<?php echo esc_attr($settings['logo_dimension']['width']); ?>" height="<?php echo esc_attr($settings['logo_dimension']['height']); ?>" src="<?php echo esc_attr($settings['logo']['url']); ?>" alt="<?php echo esc_attr(get_bloginfo('name')); ?>">
-                    <?php else : ?>
-                        <img width="<?php echo esc_attr($settings['logo_dimension']['width']); ?>" height="<?php echo esc_attr($settings['logo_dimension']['height']); ?>" src="<?php echo esc_url($settings['icon_logo']['value']['url']); ?>" alt="<?php echo esc_attr(get_bloginfo('name')); ?>">
-                    <?php endif; ?>
+                    <span class="d-none d-lg-block logo-desktop">
+                        <?php echo $logo ;?>
+                    </span>
+                    <span class="d-none d-sm-block d-lg-none logo-tablet">
+                        <?php echo $logo_tablet ;?>
+                    </span>
+                    <span class="d-block d-sm-none logo-mobile">
+                        <?php echo $logo_mobile ;?>
+                    </span>
                 </a>
+            <?php endif;?>
             </div>
             <?php if ('yes' == $settings['search_status']) : ?>
                 <div class="nav-right-part nav-right-part-mobile">

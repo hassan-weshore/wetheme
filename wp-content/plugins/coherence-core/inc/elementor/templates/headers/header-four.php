@@ -22,9 +22,17 @@ if(!empty($settings['btn_devis_enable'])) {
 <header class="container header-core" id="header-four">
     <div class="row d-flex align-items-center">
         <div class="col-sm-2 col-5">
-            <?php if($logo_type == 'image'):?>
+            <?php if(!empty($logo) || !empty($logo_tablet) || !empty($logo_mobile)):?>
                 <a href="<?php echo esc_url(home_url('/')); ?>">
-                    <img src="<?php echo $logo['url']; ?>" alt="<?php echo $logo['alt']; ?>">
+                    <span class="d-none d-lg-block logo-desktop">
+                        <?php echo $logo ;?>
+                    </span>
+                    <span class="d-none d-sm-block d-lg-none logo-tablet">
+                        <?php echo $logo_tablet ;?>
+                    </span>
+                    <span class="d-block d-sm-none logo-mobile">
+                        <?php echo $logo_mobile ;?>
+                    </span>
                 </a>
             <?php endif;?>
         </div>
