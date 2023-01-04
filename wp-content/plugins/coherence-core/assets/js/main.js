@@ -383,6 +383,10 @@
             $('header.header-core').toggleClass('show-menu');
         });
 
+        $('header .header-core-navbar ul li.menu-item-has-children').click(function(e){
+            $(this).toggleClass('show-sub-menu');
+        });
+
     });
 
     $(window).on("scroll", function() {

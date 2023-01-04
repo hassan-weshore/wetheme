@@ -175,15 +175,6 @@ class Coherence_Button_Widget extends Widget_Base {
 						'title' => esc_html__( 'Right', 'coherence-core' ),
 						'icon' => 'eicon-arrow-right',
 					],
-					// 'up' => [
-					// 	'title' => esc_html__( 'Up', 'coherence-core' ),
-					// 	'icon' => 'eicon-arrow-up',
-					// ],
-					
-					// 'down' => [
-					// 	'title' => esc_html__( 'Down', 'coherence-core' ),
-					// 	'icon' => 'eicon-arrow-down',
-					// ],
 				],
 			]
 		);
@@ -266,10 +257,6 @@ class Coherence_Button_Widget extends Widget_Base {
 							'min' => 0,
 							'max' => 1200,
 						]
-					],
-					'default' => [
-						'unit' => '%',
-						'size' => 15,
 					],
 					'selectors' => [
 						'{{WRAPPER}} .elementor-button' => 'width: {{SIZE}}{{UNIT}};max-width: 100%;',
