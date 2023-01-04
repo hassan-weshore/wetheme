@@ -119,23 +119,7 @@ class Coherence_Button_Widget extends Widget_Base {
 		$this->register_button_style_controls();
 		$this->update_control('button_text_color', [
 			'default' => '#000',
-		]);	
-		$this->update_control(
-			'background_background',
-			[
-				'fields_options' => [
-					'background' => [
-						'default' => 'red',
-					],
-					'color' => [
-						'global' => [
-							'default' => 'red',
-						],
-					],
-				],
-				'condition' => array_merge( $args['section_condition'], [ 'style[value]!' => 'solid' ] ),
-			]
-		);
+		]);
 	}
 
 	protected function override_register_button_content_controls() {
