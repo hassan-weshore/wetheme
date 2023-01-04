@@ -850,6 +850,8 @@ class Coherence_Header_Widget extends Widget_Base
 				'selectors' => [
 					'{{WRAPPER}} .navbar .navbar-nav li:hover a:after' => 'background-color: {{VALUE}};',
 					'{{WRAPPER}} .navbar .navbar-nav li:hover a ,{{WRAPPER}} #header-four .menu_navbar li a' => 'color: {{VALUE}};',
+					'{{WRAPPER}} header .header-core-navbar ul li.menu-item-has-children::after' => 'color: {{VALUE}};',
+					'{{WRAPPER}} header .header-core-navbar ul li a::after' => 'background-color: {{VALUE}};',
 				],
 			]
 		);
