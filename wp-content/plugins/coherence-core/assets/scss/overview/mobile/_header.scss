@@ -142,3 +142,30 @@ header {
         }
     }
 }
+
+.coherence-header-builder {
+    .navbar-area {
+        position: relative;
+        &.sticky-active {
+            position: fixed !important;
+        }
+    }
+}
+
+//Layout One
+.navbar-area  {
+    .nav-container {
+        align-items: center;
+        &.navbar-bg {
+            position: relative;
+            justify-content: space-evenly;
+            align-items: center;
+        }
+        .logo {
+            position: absolute;
+            top: 8px;
+            left: 0px;
+            margin: 0 !important;
+        }
+    }
+}

@@ -198,15 +198,28 @@ class Coherence_Header_Widget extends Widget_Base
 			]
 		);
 
-		$this->add_control(
-			'logo_dimension',
+		$this->add_responsive_control(
+			'logo_pos_top',
 			[
-				'label' => __('Logo Dimension', 'coherence-core'),
-				'type' => \Elementor\Controls_Manager::IMAGE_DIMENSIONS,
-				'description' => __('Set Custom Logo Size.', 'coherence-core'),
-				'default' => [
-					'width' => '',
-					'height' => '',
+				'type' => \Elementor\Controls_Manager::NUMBER,
+				'label' => esc_html__( 'Position Top', 'coherence-core' ),
+				'placeholder' => '0',
+				'step' => 1,
+				'selectors' => [
+					'{{WRAPPER}} .navbar-area .nav-container .logo' => 'top: {{VALUE}}px;',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'logo_pos_left',
+			[
+				'type' => \Elementor\Controls_Manager::NUMBER,
+				'label' => esc_html__( 'Position Left', 'coherence-core' ),
+				'placeholder' => '0',
+				'step' => 1,
+				'selectors' => [
+					'{{WRAPPER}} .navbar-area .nav-container .logo' => 'left: {{VALUE}}px;',
 				],
 			]
 		);
