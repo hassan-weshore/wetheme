@@ -970,6 +970,30 @@ class Coherence_Header_Widget extends Widget_Base
 		
 		$this->end_controls_section();
 
+		$this->_register_controls_nav_style();
+
+	}
+
+	protected function _register_controls_nav_style() {
+		$this->start_controls_section(
+			'general_style_nav',
+			[
+				'label' => esc_html__('Navigation Options', 'coherence-core'),
+				'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+			]
+		);
+		$this->add_control(
+			'navigation_icon_color',
+			[
+				'label' => esc_html__( 'Navigation Icon Color', 'coherence-core' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .navbar-collapse .navbar-nav>li.menu-item-has-children:before' => 'background-color : {{VALUE}}',
+					'{{WRAPPER}} .navbar-collapse .navbar-nav>li.menu-item-has-children:after' => 'background-color : {{VALUE}}',
+				],
+			]
+		);
+		$this->end_controls_section();
 	}
 	/**
 	 * Render Elementor widget output on the frontend.
