@@ -1,0 +1,11 @@
+header {
+    &.header-core {
+        .btn {
+            //btn-header 
+            &-header {
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+        }
+    }
+}

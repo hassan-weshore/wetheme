@@ -13,7 +13,9 @@
 //\ Devices Sizes
 
 // Small devices (landscape phones, 576px and up)
-@media (min-width: $small-devices) {}
+@media (min-width: $small-devices) {
+    @import 'overview/lp/header_lp';
+}
 
 // Medium devices (tablets, 768px and up)
 @media (min-width: $medium-devices) {}
@@ -22,4 +24,6 @@
 @media (min-width: $large-devices) {}
 
 // Extra large devices (large desktops, 1200px and up)
-@media (min-width: $extra-devices) {}
+@media (min-width: $extra-devices) {
+    @import 'overview/desktop/header_desktop';
+}

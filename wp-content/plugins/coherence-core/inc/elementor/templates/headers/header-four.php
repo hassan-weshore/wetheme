@@ -36,7 +36,7 @@ if(!empty($settings['btn_devis_enable'])) {
                 </a>
             <?php endif;?>
         </div>
-        <div class="col-sm-9 col-5 text-end">
+        <div class="col-sm-7 col-5 text-end">
             <?php if(!empty($settings['btn_phone_enable']) && $settings['btn_phone_enable'] == 'yes'):?>
                 <a class="btn-header btn-phone" href="tel:<?php echo $settings['btn_phone_number']?>" role="button"><i class="fas fa-phone-alt"></i> <span class="text d-none d-md-inline"><?php echo $settings['btn_phone_text'] ?></span></a>
             <?php endif;?>
@@ -48,7 +48,7 @@ if(!empty($settings['btn_devis_enable'])) {
                 <?php endif;?>
             <?php endif;?>
         </div>
-        <div class="col-sm-1 col-2">
+        <div class="col-sm-3 col-2">
             <div class="menu menu-burger">
                 <span class="toggle-icon-line"></span>
                 <span class="toggle-icon-line"></span>

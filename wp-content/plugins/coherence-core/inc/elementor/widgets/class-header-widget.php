@@ -989,6 +989,9 @@ class Coherence_Header_Widget extends Widget_Base
 			$logo_tablet = wp_kses_post( Group_Control_Image_Size::get_attachment_image_html( $settings, 'logo_thum' ,  'logo_tablet' ) );
 			$logo_mobile = wp_kses_post( Group_Control_Image_Size::get_attachment_image_html( $settings, 'logo_thum' ,  'logo_mobile' ) );
 
+			$logo_tablet = !empty($logo_tablet) ? $logo_tablet : $logo;
+			$logo_mobile = !empty($logo_mobile) ? $logo_mobile : $logo;
+
 			$logo_type = $settings['logo_type'] ?? '';
 			$menu = $settings['nav_menu'] ?? '';
 			ob_start();

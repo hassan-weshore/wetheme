@@ -1,0 +1,16 @@
+header {
+    &.header-core.show-menu {
+        .menu-burger {
+            z-index : 4;
+            right: 41px;
+        }
+        .header-core-navbar {
+            top: 15px;
+            z-index: 3;
+            padding-top: 70px;
+        }
+        .btn-devis {
+            margin-right: 17%;
+        }
+    }
+}
