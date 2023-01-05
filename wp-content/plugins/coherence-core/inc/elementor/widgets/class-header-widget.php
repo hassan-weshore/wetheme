@@ -208,6 +208,9 @@ class Coherence_Header_Widget extends Widget_Base
 				'selectors' => [
 					'{{WRAPPER}} .navbar-area .nav-container .logo' => 'top: {{VALUE}}px;',
 				],
+				'condition' => [
+					'layout_type' => ['layout_one', 'layout_three', 'layout_two']
+				],
 			]
 		);
 
@@ -220,6 +223,9 @@ class Coherence_Header_Widget extends Widget_Base
 				'step' => 1,
 				'selectors' => [
 					'{{WRAPPER}} .navbar-area .nav-container .logo' => 'left: {{VALUE}}px;',
+				],
+				'condition' => [
+					'layout_type' => ['layout_one', 'layout_three', 'layout_two']
 				],
 			]
 		);
