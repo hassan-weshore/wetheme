@@ -28,7 +28,7 @@ define('CURRENT_THEME_NAME', $current_theme);
 define('COHERENCE_CORE_SELF_PATH', 'coherence-core/coherence-core.php');
 define('COHERENCE_CORE_ROOT_PATH', plugin_dir_path(__FILE__));
 define('COHERENCE_CORE_ROOT_URL', plugin_dir_url(__FILE__));
-define('COHERENCE_CORE_LIB', COHERENCE_CORE_ROOT_PATH . '/lib');
+define('COHERENCE_CORE_LIB', COHERENCE_CORE_ROOT_PATH . 'lib');
 define('COHERENCE_CORE_INC', COHERENCE_CORE_ROOT_PATH . 'inc');
 define('COHERENCE_CORE_ADMIN', COHERENCE_CORE_INC . '/admin');
 define('COHERENCE_CORE_ADMIN_ASSETS', COHERENCE_CORE_ROOT_URL . 'inc/admin/assets');

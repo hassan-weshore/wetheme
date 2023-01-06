@@ -32,10 +32,48 @@ if (!class_exists('Coherence_Elementor_Widget_Init')) {
 			// elementor editor css
 			add_filter('elementor/icons_manager/additional_tabs', array($this, 'elementor_custom_icons'));
 		}
+		
+		/**
+		* Include Widgets files
+		*
+		* Load widgets files
+		*
+		* @since 1.2.0
+		* @access public
+		*/
+		public function include_widgets_files() {
+			$js_files = $this->get_widget_script();
+			// Enqueue the widgets script.
+			if ( ! empty( $js_files ) ) {
+				foreach ( $js_files as $handle => $data ) {
+					wp_enqueue_script( $handle, COHERENCE_CORE_JS . $data['path'], $data['dep'], 1.6 , $data['in_footer'] );
+				}
+			}
+			// Enqueue the widgets style.
+			wp_enqueue_style( 'coherence-frontend-style', COHERENCE_CORE_CSS . '/frontend.css', []);
+		}
+
+		/**
+		* Returns Script array.
+		*
+		* @return array()
+		* @since 1.3.0
+		*/
+		public function get_widget_script() {
+			$js_files = [
+				'coherence-frontend-js' => [
+					'path'      => '/frontend.js',
+					'dep'       => [ 'jquery' ],
+					'in_footer' => true,
+				],
+			];
+			return $js_files;
+		}
+
 		/*
-	   * getInstance()
-	   * @since 1.0.0
-	   * */
+		* getInstance()
+		* @since 1.0.0
+		* */
 		public static function getInstance()
 		{
 			if (null == self::$instance) {
@@ -79,6 +117,7 @@ if (!class_exists('Coherence_Elementor_Widget_Init')) {
 			$elementor_widgets = array(
 				'button',
 				'header',
+				'menu',
 				'banner',
 				'about',
 				'service',
@@ -123,6 +162,8 @@ if (!class_exists('Coherence_Elementor_Widget_Init')) {
 					}
 				}
 			}
+			// Its is now safe to include Widgets files.
+			$this->include_widgets_files();
 		}
 
 		public function elementor_custom_icons($array)
