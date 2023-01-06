@@ -44,7 +44,7 @@ class Coherence_Button_Widget extends Widget_Base {
 	 * @return string Widget title.
 	 */
 	public function get_title() {
-		return esc_html__( 'Button', 'elementor' );
+		return esc_html__( 'Button', 'coherence-core' );
 	}
 
 	/**
@@ -82,7 +82,7 @@ class Coherence_Button_Widget extends Widget_Base {
 		$this->start_controls_section(
 			'section_button',
 			[
-				'label' => esc_html__( 'Button', 'elementor' ),
+				'label' => esc_html__( 'Button', 'coherence-core' ),
 			]
 		);
 
@@ -93,7 +93,7 @@ class Coherence_Button_Widget extends Widget_Base {
 		$this->start_controls_section(
 			'section_style',
 			[
-				'label' => esc_html__( 'Button', 'elementor' ),
+				'label' => esc_html__( 'Button', 'coherence-core' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -107,8 +107,8 @@ class Coherence_Button_Widget extends Widget_Base {
 	protected function override_register_button_style_controls() {
 		$default_args = [
 			'section_condition' => [],
-			'button_default_text' => esc_html__( 'Click here', 'elementor' ),
-			'text_control_label' => esc_html__( 'Text', 'elementor' ),
+			'button_default_text' => esc_html__( 'Click here', 'coherence-core' ),
+			'text_control_label' => esc_html__( 'Text', 'coherence-core' ),
 			'alignment_control_prefix_class' => 'elementor%s-align-',
 			'alignment_default' => '',
 			'icon_exclude_inline_options' => [],
@@ -125,8 +125,8 @@ class Coherence_Button_Widget extends Widget_Base {
 	protected function override_register_button_content_controls() {
 		$default_args = [
 			'section_condition' => [],
-			'button_default_text' => esc_html__( 'Click here', 'elementor' ),
-			'text_control_label' => esc_html__( 'Text', 'elementor' ),
+			'button_default_text' => esc_html__( 'Click here', 'coherence-core' ),
+			'text_control_label' => esc_html__( 'Text', 'coherence-core' ),
 			'alignment_control_prefix_class' => 'elementor%s-align-',
 			'alignment_default' => '',
 			'icon_exclude_inline_options' => [],
@@ -199,15 +199,15 @@ class Coherence_Button_Widget extends Widget_Base {
 			[
 				'options' => [
 					'left'    => [
-						'title' => esc_html__( 'Left', 'elementor' ),
+						'title' => esc_html__( 'Left', 'coherence-core' ),
 						'icon' => 'eicon-text-align-left',
 					],
 					'center' => [
-						'title' => esc_html__( 'Center', 'elementor' ),
+						'title' => esc_html__( 'Center', 'coherence-core' ),
 						'icon' => 'eicon-text-align-center',
 					],
 					'right' => [
-						'title' => esc_html__( 'Right', 'elementor' ),
+						'title' => esc_html__( 'Right', 'coherence-core' ),
 						'icon' => 'eicon-text-align-right',
 					],
 				],

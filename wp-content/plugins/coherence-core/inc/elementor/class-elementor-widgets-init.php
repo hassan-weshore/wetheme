@@ -118,6 +118,7 @@ if (!class_exists('Coherence_Elementor_Widget_Init')) {
 				'button',
 				'header',
 				'menu',
+				'logo',
 				'banner',
 				'about',
 				'service',
