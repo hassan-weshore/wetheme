@@ -37,13 +37,13 @@ class Menu_Walker extends \Walker_Nav_Menu {
 		$rel_blank   = '';
 
 		$classes = empty( $item->classes ) ? [] : (array) $item->classes;
-		$submenu = $args->has_children ? ' hfe-has-submenu' : '';
+		$submenu = $args->has_children ? ' coherence-core-has-submenu' : '';
 
 		if ( 0 === $depth ) {
 			array_push( $classes, 'parent' );
 		}
 		$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args, $depth ) );
-		$class_names = ' class="' . esc_attr( $class_names ) . $submenu . ' hfe-creative-menu"';
+		$class_names = ' class="' . esc_attr( $class_names ) . $submenu . ' coherence-core-creative-menu"';
 		$value       = apply_filters( 'nav_menu_li_values', $value );
 
 		$output .= $indent . '<li id="menu-item-' . $item->ID . '"' . $value . $class_names . '>';
@@ -60,21 +60,21 @@ class Menu_Walker extends \Walker_Nav_Menu {
 		$attributes .= ! empty( $item->xfn ) ? ' rel="' . esc_attr( $item->xfn ) . $rel_xfn . '"' : '' . $rel_blank;
 		$attributes .= ! empty( $item->url ) ? ' href="' . esc_attr( $item->url ) . '"' : '';
 
-		$atts = apply_filters( 'hfe_nav_menu_attrs', $attributes );
+		$atts = apply_filters( 'coherence_core_nav_menu_attrs', $attributes );
 
-		$item_output  = $args->has_children ? '<div class="hfe-has-submenu-container">' : '';
+		$item_output  = $args->has_children ? '<div class="coherence-core-has-submenu-container">' : '';
 		$item_output .= $args->before;
 		$item_output .= '<a' . $atts;
 		if ( 0 === $depth ) {
-			$item_output .= ' class = "hfe-menu-item"';
+			$item_output .= ' class = "coherence-core-menu-item"';
 		} else {
-			$item_output .= in_array( 'current-menu-item', $item->classes ) ? ' class = "hfe-sub-menu-item hfe-sub-menu-item-active"' : ' class = "hfe-sub-menu-item"';
+			$item_output .= in_array( 'current-menu-item', $item->classes ) ? ' class = "coherence-core-sub-menu-item coherence-core-sub-menu-item-active"' : ' class = "coherence-core-sub-menu-item"';
 		}
 
 		$item_output .= '>';
 		$item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
 		if ( $args->has_children ) {
-			$item_output .= "<span class='hfe-menu-toggle sub-arrow hfe-menu-child-";
+			$item_output .= "<span class='coherence-core-menu-toggle sub-arrow coherence-core-menu-child-";
 			$item_output .= $depth;
 			$item_output .= "'><i class='fa'></i></span>";
 		}

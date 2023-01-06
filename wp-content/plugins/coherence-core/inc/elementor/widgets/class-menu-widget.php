@@ -96,7 +96,7 @@ class Coherence_Menu_Widget extends Widget_Base {
 	 * @return array Widget scripts dependencies.
 	 */
 	public function get_script_depends() {
-		return [ 'hfe-frontend-js' ];
+		return [ 'coherence-core-frontend-js' ];
 	}
 
 	/**
@@ -248,7 +248,7 @@ class Coherence_Menu_Widget extends Widget_Base {
 					'label_off'    => __( 'No', 'header-footer-elementor' ),
 					'return_value' => 'yes',
 					'default'      => 'no',
-					'prefix_class' => 'hfe-nav-menu__theme-icon-',
+					'prefix_class' => 'coherence-core-nav-menu__theme-icon-',
 				]
 			);
 		}
@@ -304,7 +304,7 @@ class Coherence_Menu_Widget extends Widget_Base {
 					'condition'    => [
 						'layout' => [ 'horizontal', 'vertical' ],
 					],
-					'prefix_class' => 'hfe-nav-menu__align-',
+					'prefix_class' => 'coherence-core-nav-menu__align-',
 				]
 			);
 
@@ -368,8 +368,8 @@ class Coherence_Menu_Widget extends Widget_Base {
 						'right'  => 'margin-left: auto',
 					],
 					'selectors'            => [
-						'{{WRAPPER}} .hfe-nav-menu__toggle,
-						{{WRAPPER}} .hfe-nav-menu-icon' => '{{VALUE}}',
+						'{{WRAPPER}} .coherence-core-nav-menu__toggle,
+						{{WRAPPER}} .coherence-core-nav-menu-icon' => '{{VALUE}}',
 					],
 					'condition'            => [
 						'layout' => [ 'expandible', 'flyout' ],
@@ -409,9 +409,9 @@ class Coherence_Menu_Widget extends Widget_Base {
 					'selectors'          => [
 						'{{WRAPPER}} li.menu-item a' => 'justify-content: {{VALUE}};',
 						'{{WRAPPER}} li .elementor-button-wrapper' => 'text-align: {{VALUE}};',
-						'{{WRAPPER}}.hfe-menu-item-flex-end li .elementor-button-wrapper' => 'text-align: right;',
+						'{{WRAPPER}}.coherence-core-menu-item-flex-end li .elementor-button-wrapper' => 'text-align: right;',
 					],
-					'prefix_class'       => 'hfe-menu-item-',
+					'prefix_class'       => 'coherence-core-menu-item-',
 					'frontend_available' => true,
 				]
 			);
@@ -427,7 +427,7 @@ class Coherence_Menu_Widget extends Widget_Base {
 						'plus'    => __( 'Plus Sign', 'header-footer-elementor' ),
 						'classic' => __( 'Classic', 'header-footer-elementor' ),
 					],
-					'prefix_class' => 'hfe-submenu-icon-',
+					'prefix_class' => 'coherence-core-submenu-icon-',
 				]
 			);
 
@@ -441,7 +441,7 @@ class Coherence_Menu_Widget extends Widget_Base {
 						'none'     => __( 'Default', 'header-footer-elementor' ),
 						'slide_up' => __( 'Slide Up', 'header-footer-elementor' ),
 					],
-					'prefix_class' => 'hfe-submenu-animation-',
+					'prefix_class' => 'coherence-core-submenu-animation-',
 					'condition'    => [
 						'layout' => 'horizontal',
 					],
@@ -459,7 +459,7 @@ class Coherence_Menu_Widget extends Widget_Base {
 						'child'     => __( 'Open Submenu', 'header-footer-elementor' ),
 						'self_link' => __( 'Redirect To Self Link', 'header-footer-elementor' ),
 					],
-					'prefix_class' => 'hfe-link-redirect-',
+					'prefix_class' => 'coherence-core-link-redirect-',
 				]
 			);
 
@@ -486,7 +486,7 @@ class Coherence_Menu_Widget extends Widget_Base {
 					'tablet' => __( 'Tablet (1025px >)', 'header-footer-elementor' ),
 					'none'   => __( 'None', 'header-footer-elementor' ),
 				],
-				'prefix_class' => 'hfe-nav-menu__breakpoint-',
+				'prefix_class' => 'coherence-core-nav-menu__breakpoint-',
 				'condition'    => [
 					'layout' => [ 'horizontal', 'vertical' ],
 				],
@@ -525,7 +525,7 @@ class Coherence_Menu_Widget extends Widget_Base {
 					'right'  => 'margin-left: auto',
 				],
 				'selectors'            => [
-					'{{WRAPPER}} .hfe-nav-menu__toggle' => '{{VALUE}}',
+					'{{WRAPPER}} .coherence-core-nav-menu__toggle' => '{{VALUE}}',
 				],
 			]
 		);
@@ -648,9 +648,9 @@ class Coherence_Menu_Widget extends Widget_Base {
 					'unit' => 'px',
 				],
 				'selectors'          => [
-					'{{WRAPPER}} .hfe-flyout-wrapper .hfe-side' => 'width: {{SIZE}}{{UNIT}}',
-					'{{WRAPPER}} .hfe-flyout-open.left'  => 'left: -{{SIZE}}{{UNIT}}',
-					'{{WRAPPER}} .hfe-flyout-open.right' => 'right: -{{SIZE}}{{UNIT}}',
+					'{{WRAPPER}} .coherence-core-flyout-wrapper .coherence-core-side' => 'width: {{SIZE}}{{UNIT}}',
+					'{{WRAPPER}} .coherence-core-flyout-open.left'  => 'left: -{{SIZE}}{{UNIT}}',
+					'{{WRAPPER}} .coherence-core-flyout-open.right' => 'right: -{{SIZE}}{{UNIT}}',
 				],
 				'condition'          => [
 					'layout' => 'flyout',
@@ -675,7 +675,7 @@ class Coherence_Menu_Widget extends Widget_Base {
 						'unit' => 'px',
 					],
 					'selectors'          => [
-						'{{WRAPPER}} .hfe-flyout-content' => 'padding: {{SIZE}}{{UNIT}}',
+						'{{WRAPPER}} .coherence-core-flyout-content' => 'padding: {{SIZE}}{{UNIT}}',
 					],
 					'condition'          => [
 						'layout' => 'flyout',
@@ -700,11 +700,11 @@ class Coherence_Menu_Widget extends Widget_Base {
 						'unit' => 'px',
 					],
 					'selectors'          => [
-						'{{WRAPPER}} .menu-item a.hfe-menu-item' => 'padding-left: {{SIZE}}{{UNIT}}; padding-right: {{SIZE}}{{UNIT}}',
-						'{{WRAPPER}} .menu-item a.hfe-sub-menu-item' => 'padding-left: calc( {{SIZE}}{{UNIT}} + 20px );padding-right: {{SIZE}}{{UNIT}};',
-						'{{WRAPPER}} .hfe-nav-menu__layout-vertical .menu-item ul ul a.hfe-sub-menu-item' => 'padding-left: calc( {{SIZE}}{{UNIT}} + 40px );padding-right: {{SIZE}}{{UNIT}};',
-						'{{WRAPPER}} .hfe-nav-menu__layout-vertical .menu-item ul ul ul a.hfe-sub-menu-item' => 'padding-left: calc( {{SIZE}}{{UNIT}} + 60px );padding-right: {{SIZE}}{{UNIT}};',
-						'{{WRAPPER}} .hfe-nav-menu__layout-vertical .menu-item ul ul ul ul a.hfe-sub-menu-item' => 'padding-left: calc( {{SIZE}}{{UNIT}} + 80px );padding-right: {{SIZE}}{{UNIT}};',
+						'{{WRAPPER}} .menu-item a.coherence-core-menu-item' => 'padding-left: {{SIZE}}{{UNIT}}; padding-right: {{SIZE}}{{UNIT}}',
+						'{{WRAPPER}} .menu-item a.coherence-core-sub-menu-item' => 'padding-left: calc( {{SIZE}}{{UNIT}} + 20px );padding-right: {{SIZE}}{{UNIT}};',
+						'{{WRAPPER}} .coherence-core-nav-menu__layout-vertical .menu-item ul ul a.coherence-core-sub-menu-item' => 'padding-left: calc( {{SIZE}}{{UNIT}} + 40px );padding-right: {{SIZE}}{{UNIT}};',
+						'{{WRAPPER}} .coherence-core-nav-menu__layout-vertical .menu-item ul ul ul a.coherence-core-sub-menu-item' => 'padding-left: calc( {{SIZE}}{{UNIT}} + 60px );padding-right: {{SIZE}}{{UNIT}};',
+						'{{WRAPPER}} .coherence-core-nav-menu__layout-vertical .menu-item ul ul ul ul a.coherence-core-sub-menu-item' => 'padding-left: calc( {{SIZE}}{{UNIT}} + 80px );padding-right: {{SIZE}}{{UNIT}};',
 					],
 					'frontend_available' => true,
 				]
@@ -726,7 +726,7 @@ class Coherence_Menu_Widget extends Widget_Base {
 						'unit' => 'px',
 					],
 					'selectors'          => [
-						'{{WRAPPER}} .menu-item a.hfe-menu-item, {{WRAPPER}} .menu-item a.hfe-sub-menu-item' => 'padding-top: {{SIZE}}{{UNIT}}; padding-bottom: {{SIZE}}{{UNIT}};',
+						'{{WRAPPER}} .menu-item a.coherence-core-menu-item, {{WRAPPER}} .menu-item a.coherence-core-sub-menu-item' => 'padding-top: {{SIZE}}{{UNIT}}; padding-bottom: {{SIZE}}{{UNIT}};',
 					],
 					'frontend_available' => true,
 				]
@@ -744,13 +744,13 @@ class Coherence_Menu_Widget extends Widget_Base {
 						],
 					],
 					'selectors'          => [
-						'body:not(.rtl) {{WRAPPER}} .hfe-nav-menu__layout-horizontal .hfe-nav-menu > li.menu-item:not(:last-child)' => 'margin-right: {{SIZE}}{{UNIT}}',
-						'body.rtl {{WRAPPER}} .hfe-nav-menu__layout-horizontal .hfe-nav-menu > li.menu-item:not(:last-child)' => 'margin-left: {{SIZE}}{{UNIT}}',
-						'{{WRAPPER}} nav:not(.hfe-nav-menu__layout-horizontal) .hfe-nav-menu > li.menu-item:not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}}',
-						'(tablet)body:not(.rtl) {{WRAPPER}}.hfe-nav-menu__breakpoint-tablet .hfe-nav-menu__layout-horizontal .hfe-nav-menu > li.menu-item:not(:last-child)' => 'margin-right: 0px',
-						'(mobile)body:not(.rtl) {{WRAPPER}}.hfe-nav-menu__breakpoint-mobile .hfe-nav-menu__layout-horizontal .hfe-nav-menu > li.menu-item:not(:last-child)' => 'margin-right: 0px',
-						'(tablet)body {{WRAPPER}} nav.hfe-nav-menu__layout-vertical .hfe-nav-menu > li.menu-item:not(:last-child)' => 'margin-bottom: 0px',
-						'(mobile)body {{WRAPPER}} nav.hfe-nav-menu__layout-vertical .hfe-nav-menu > li.menu-item:not(:last-child)' => 'margin-bottom: 0px',
+						'body:not(.rtl) {{WRAPPER}} .coherence-core-nav-menu__layout-horizontal .coherence-core-nav-menu > li.menu-item:not(:last-child)' => 'margin-right: {{SIZE}}{{UNIT}}',
+						'body.rtl {{WRAPPER}} .coherence-core-nav-menu__layout-horizontal .coherence-core-nav-menu > li.menu-item:not(:last-child)' => 'margin-left: {{SIZE}}{{UNIT}}',
+						'{{WRAPPER}} nav:not(.coherence-core-nav-menu__layout-horizontal) .coherence-core-nav-menu > li.menu-item:not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}}',
+						'(tablet)body:not(.rtl) {{WRAPPER}}.coherence-core-nav-menu__breakpoint-tablet .coherence-core-nav-menu__layout-horizontal .coherence-core-nav-menu > li.menu-item:not(:last-child)' => 'margin-right: 0px',
+						'(mobile)body:not(.rtl) {{WRAPPER}}.coherence-core-nav-menu__breakpoint-mobile .coherence-core-nav-menu__layout-horizontal .coherence-core-nav-menu > li.menu-item:not(:last-child)' => 'margin-right: 0px',
+						'(tablet)body {{WRAPPER}} nav.coherence-core-nav-menu__layout-vertical .coherence-core-nav-menu > li.menu-item:not(:last-child)' => 'margin-bottom: 0px',
+						'(mobile)body {{WRAPPER}} nav.coherence-core-nav-menu__layout-vertical .coherence-core-nav-menu > li.menu-item:not(:last-child)' => 'margin-bottom: 0px',
 					],
 					'condition'          => [
 						'layout!' => 'expandible',
@@ -771,7 +771,7 @@ class Coherence_Menu_Widget extends Widget_Base {
 						],
 					],
 					'selectors'          => [
-						'body:not(.rtl) {{WRAPPER}} .hfe-nav-menu__layout-horizontal .hfe-nav-menu > li.menu-item' => 'margin-bottom: {{SIZE}}{{UNIT}}',
+						'body:not(.rtl) {{WRAPPER}} .coherence-core-nav-menu__layout-horizontal .coherence-core-nav-menu > li.menu-item' => 'margin-bottom: {{SIZE}}{{UNIT}}',
 					],
 					'condition'          => [
 						'layout' => 'horizontal',
@@ -792,7 +792,7 @@ class Coherence_Menu_Widget extends Widget_Base {
 						],
 					],
 					'selectors'          => [
-						'{{WRAPPER}} .hfe-flyout-wrapper .hfe-nav-menu > li.menu-item:first-child' => 'margin-top: {{SIZE}}{{UNIT}}',
+						'{{WRAPPER}} .coherence-core-flyout-wrapper .coherence-core-nav-menu > li.menu-item:first-child' => 'margin-top: {{SIZE}}{{UNIT}}',
 					],
 					'condition'          => [
 						'layout' => 'flyout',
@@ -808,7 +808,7 @@ class Coherence_Menu_Widget extends Widget_Base {
 					'type'      => Controls_Manager::COLOR,
 					'default'   => '#FFFFFF',
 					'selectors' => [
-						'{{WRAPPER}} .hfe-flyout-content' => 'background-color: {{VALUE}}',
+						'{{WRAPPER}} .coherence-core-flyout-content' => 'background-color: {{VALUE}}',
 					],
 					'condition' => [
 						'layout' => 'flyout',
@@ -915,7 +915,7 @@ class Coherence_Menu_Widget extends Widget_Base {
 					'default' => Global_Typography::TYPOGRAPHY_PRIMARY,
 				],
 				'separator' => 'before',
-				'selector'  => '{{WRAPPER}} a.hfe-menu-item, {{WRAPPER}} a.hfe-sub-menu-item',
+				'selector'  => '{{WRAPPER}} a.coherence-core-menu-item, {{WRAPPER}} a.coherence-core-sub-menu-item',
 			]
 		);
 
@@ -938,7 +938,7 @@ class Coherence_Menu_Widget extends Widget_Base {
 							],
 							'default'   => '',
 							'selectors' => [
-								'{{WRAPPER}} .menu-item a.hfe-menu-item, {{WRAPPER}} .sub-menu a.hfe-sub-menu-item' => 'color: {{VALUE}}',
+								'{{WRAPPER}} .menu-item a.coherence-core-menu-item, {{WRAPPER}} .sub-menu a.coherence-core-sub-menu-item' => 'color: {{VALUE}}',
 							],
 						]
 					);
@@ -950,7 +950,7 @@ class Coherence_Menu_Widget extends Widget_Base {
 							'type'      => Controls_Manager::COLOR,
 							'default'   => '',
 							'selectors' => [
-								'{{WRAPPER}} .menu-item a.hfe-menu-item, {{WRAPPER}} .sub-menu, {{WRAPPER}} nav.hfe-dropdown, {{WRAPPER}} .hfe-dropdown-expandible' => 'background-color: {{VALUE}}',
+								'{{WRAPPER}} .menu-item a.coherence-core-menu-item, {{WRAPPER}} .sub-menu, {{WRAPPER}} nav.coherence-core-dropdown, {{WRAPPER}} .coherence-core-dropdown-expandible' => 'background-color: {{VALUE}}',
 							],
 							'condition' => [
 								'layout!' => 'flyout',
@@ -976,11 +976,11 @@ class Coherence_Menu_Widget extends Widget_Base {
 								'default' => Global_Colors::COLOR_ACCENT,
 							],
 							'selectors' => [
-								'{{WRAPPER}} .menu-item a.hfe-menu-item:hover,
-								{{WRAPPER}} .sub-menu a.hfe-sub-menu-item:hover,
-								{{WRAPPER}} .menu-item.current-menu-item a.hfe-menu-item,
-								{{WRAPPER}} .menu-item a.hfe-menu-item.highlighted,
-								{{WRAPPER}} .menu-item a.hfe-menu-item:focus' => 'color: {{VALUE}}',
+								'{{WRAPPER}} .menu-item a.coherence-core-menu-item:hover,
+								{{WRAPPER}} .sub-menu a.coherence-core-sub-menu-item:hover,
+								{{WRAPPER}} .menu-item.current-menu-item a.coherence-core-menu-item,
+								{{WRAPPER}} .menu-item a.coherence-core-menu-item.highlighted,
+								{{WRAPPER}} .menu-item a.coherence-core-menu-item:focus' => 'color: {{VALUE}}',
 							],
 						]
 					);
@@ -991,11 +991,11 @@ class Coherence_Menu_Widget extends Widget_Base {
 							'label'     => __( 'Background Color', 'header-footer-elementor' ),
 							'type'      => Controls_Manager::COLOR,
 							'selectors' => [
-								'{{WRAPPER}} .menu-item a.hfe-menu-item:hover,
-								{{WRAPPER}} .sub-menu a.hfe-sub-menu-item:hover,
-								{{WRAPPER}} .menu-item.current-menu-item a.hfe-menu-item,
-								{{WRAPPER}} .menu-item a.hfe-menu-item.highlighted,
-								{{WRAPPER}} .menu-item a.hfe-menu-item:focus' => 'background-color: {{VALUE}}',
+								'{{WRAPPER}} .menu-item a.coherence-core-menu-item:hover,
+								{{WRAPPER}} .sub-menu a.coherence-core-sub-menu-item:hover,
+								{{WRAPPER}} .menu-item.current-menu-item a.coherence-core-menu-item,
+								{{WRAPPER}} .menu-item a.coherence-core-menu-item.highlighted,
+								{{WRAPPER}} .menu-item a.coherence-core-menu-item:focus' => 'background-color: {{VALUE}}',
 							],
 							'condition' => [
 								'layout!' => 'flyout',
@@ -1013,11 +1013,11 @@ class Coherence_Menu_Widget extends Widget_Base {
 							],
 							'default'   => '',
 							'selectors' => [
-								'{{WRAPPER}} .hfe-nav-menu-layout:not(.hfe-pointer__framed) .menu-item.parent a.hfe-menu-item:before,
-								{{WRAPPER}} .hfe-nav-menu-layout:not(.hfe-pointer__framed) .menu-item.parent a.hfe-menu-item:after' => 'background-color: {{VALUE}}',
-								'{{WRAPPER}} .hfe-nav-menu-layout:not(.hfe-pointer__framed) .menu-item.parent .sub-menu .hfe-has-submenu-container a:after' => 'background-color: unset',
-								'{{WRAPPER}} .hfe-pointer__framed .menu-item.parent a.hfe-menu-item:before,
-								{{WRAPPER}} .hfe-pointer__framed .menu-item.parent a.hfe-menu-item:after' => 'border-color: {{VALUE}}',
+								'{{WRAPPER}} .coherence-core-nav-menu-layout:not(.coherence-core-pointer__framed) .menu-item.parent a.coherence-core-menu-item:before,
+								{{WRAPPER}} .coherence-core-nav-menu-layout:not(.coherence-core-pointer__framed) .menu-item.parent a.coherence-core-menu-item:after' => 'background-color: {{VALUE}}',
+								'{{WRAPPER}} .coherence-core-nav-menu-layout:not(.coherence-core-pointer__framed) .menu-item.parent .sub-menu .coherence-core-has-submenu-container a:after' => 'background-color: unset',
+								'{{WRAPPER}} .coherence-core-pointer__framed .menu-item.parent a.coherence-core-menu-item:before,
+								{{WRAPPER}} .coherence-core-pointer__framed .menu-item.parent a.coherence-core-menu-item:after' => 'border-color: {{VALUE}}',
 							],
 							'condition' => [
 								'pointer!' => [ 'none', 'text' ],
@@ -1042,8 +1042,8 @@ class Coherence_Menu_Widget extends Widget_Base {
 							'type'      => Controls_Manager::COLOR,
 							'default'   => '',
 							'selectors' => [
-								'{{WRAPPER}} .menu-item.current-menu-item a.hfe-menu-item,
-								{{WRAPPER}} .menu-item.current-menu-ancestor a.hfe-menu-item' => 'color: {{VALUE}}',
+								'{{WRAPPER}} .menu-item.current-menu-item a.coherence-core-menu-item,
+								{{WRAPPER}} .menu-item.current-menu-ancestor a.coherence-core-menu-item' => 'color: {{VALUE}}',
 							],
 						]
 					);
@@ -1055,8 +1055,8 @@ class Coherence_Menu_Widget extends Widget_Base {
 							'type'      => Controls_Manager::COLOR,
 							'default'   => '',
 							'selectors' => [
-								'{{WRAPPER}} .menu-item.current-menu-item a.hfe-menu-item,
-								{{WRAPPER}} .menu-item.current-menu-ancestor a.hfe-menu-item' => 'background-color: {{VALUE}}',
+								'{{WRAPPER}} .menu-item.current-menu-item a.coherence-core-menu-item,
+								{{WRAPPER}} .menu-item.current-menu-ancestor a.coherence-core-menu-item' => 'background-color: {{VALUE}}',
 							],
 							'condition' => [
 								'layout!' => 'flyout',
@@ -1071,11 +1071,11 @@ class Coherence_Menu_Widget extends Widget_Base {
 							'type'      => Controls_Manager::COLOR,
 							'default'   => '',
 							'selectors' => [
-								'{{WRAPPER}} .hfe-nav-menu-layout:not(.hfe-pointer__framed) .menu-item.parent.current-menu-item a.hfe-menu-item:before,
-								{{WRAPPER}} .hfe-nav-menu-layout:not(.hfe-pointer__framed) .menu-item.parent.current-menu-item a.hfe-menu-item:after' => 'background-color: {{VALUE}}',
-								'{{WRAPPER}} .hfe-nav-menu:not(.hfe-pointer__framed) .menu-item.parent .sub-menu .hfe-has-submenu-container a.current-menu-item:after' => 'background-color: unset',
-								'{{WRAPPER}} .hfe-pointer__framed .menu-item.parent.current-menu-item a.hfe-menu-item:before,
-								{{WRAPPER}} .hfe-pointer__framed .menu-item.parent.current-menu-item a.hfe-menu-item:after' => 'border-color: {{VALUE}}',
+								'{{WRAPPER}} .coherence-core-nav-menu-layout:not(.coherence-core-pointer__framed) .menu-item.parent.current-menu-item a.coherence-core-menu-item:before,
+								{{WRAPPER}} .coherence-core-nav-menu-layout:not(.coherence-core-pointer__framed) .menu-item.parent.current-menu-item a.coherence-core-menu-item:after' => 'background-color: {{VALUE}}',
+								'{{WRAPPER}} .coherence-core-nav-menu:not(.coherence-core-pointer__framed) .menu-item.parent .sub-menu .coherence-core-has-submenu-container a.current-menu-item:after' => 'background-color: unset',
+								'{{WRAPPER}} .coherence-core-pointer__framed .menu-item.parent.current-menu-item a.coherence-core-menu-item:before,
+								{{WRAPPER}} .coherence-core-pointer__framed .menu-item.parent.current-menu-item a.coherence-core-menu-item:after' => 'border-color: {{VALUE}}',
 							],
 							'condition' => [
 								'pointer!' => [ 'none', 'text' ],
@@ -1138,12 +1138,12 @@ class Coherence_Menu_Widget extends Widget_Base {
 							'type'      => Controls_Manager::COLOR,
 							'default'   => '',
 							'selectors' => [
-								'{{WRAPPER}} .sub-menu a.hfe-sub-menu-item, 
+								'{{WRAPPER}} .sub-menu a.coherence-core-sub-menu-item, 
 								{{WRAPPER}} .elementor-menu-toggle,
-								{{WRAPPER}} nav.hfe-dropdown li a.hfe-menu-item,
-								{{WRAPPER}} nav.hfe-dropdown li a.hfe-sub-menu-item,
-								{{WRAPPER}} nav.hfe-dropdown-expandible li a.hfe-menu-item,
-								{{WRAPPER}} nav.hfe-dropdown-expandible li a.hfe-sub-menu-item' => 'color: {{VALUE}}',
+								{{WRAPPER}} nav.coherence-core-dropdown li a.coherence-core-menu-item,
+								{{WRAPPER}} nav.coherence-core-dropdown li a.coherence-core-sub-menu-item,
+								{{WRAPPER}} nav.coherence-core-dropdown-expandible li a.coherence-core-menu-item,
+								{{WRAPPER}} nav.coherence-core-dropdown-expandible li a.coherence-core-sub-menu-item' => 'color: {{VALUE}}',
 							],
 						]
 					);
@@ -1156,10 +1156,10 @@ class Coherence_Menu_Widget extends Widget_Base {
 							'default'   => '#fff',
 							'selectors' => [
 								'{{WRAPPER}} .sub-menu,
-								{{WRAPPER}} nav.hfe-dropdown,
-								{{WRAPPER}} nav.hfe-dropdown-expandible,
-								{{WRAPPER}} nav.hfe-dropdown .menu-item a.hfe-menu-item,
-								{{WRAPPER}} nav.hfe-dropdown .menu-item a.hfe-sub-menu-item' => 'background-color: {{VALUE}}',
+								{{WRAPPER}} nav.coherence-core-dropdown,
+								{{WRAPPER}} nav.coherence-core-dropdown-expandible,
+								{{WRAPPER}} nav.coherence-core-dropdown .menu-item a.coherence-core-menu-item,
+								{{WRAPPER}} nav.coherence-core-dropdown .menu-item a.coherence-core-sub-menu-item' => 'background-color: {{VALUE}}',
 							],
 							'separator' => 'after',
 						]
@@ -1181,12 +1181,12 @@ class Coherence_Menu_Widget extends Widget_Base {
 							'type'      => Controls_Manager::COLOR,
 							'default'   => '',
 							'selectors' => [
-								'{{WRAPPER}} .sub-menu a.hfe-sub-menu-item:hover, 
+								'{{WRAPPER}} .sub-menu a.coherence-core-sub-menu-item:hover, 
 								{{WRAPPER}} .elementor-menu-toggle:hover,
-								{{WRAPPER}} nav.hfe-dropdown li a.hfe-menu-item:hover,
-								{{WRAPPER}} nav.hfe-dropdown li a.hfe-sub-menu-item:hover,
-								{{WRAPPER}} nav.hfe-dropdown-expandible li a.hfe-menu-item:hover,
-								{{WRAPPER}} nav.hfe-dropdown-expandible li a.hfe-sub-menu-item:hover' => 'color: {{VALUE}}',
+								{{WRAPPER}} nav.coherence-core-dropdown li a.coherence-core-menu-item:hover,
+								{{WRAPPER}} nav.coherence-core-dropdown li a.coherence-core-sub-menu-item:hover,
+								{{WRAPPER}} nav.coherence-core-dropdown-expandible li a.coherence-core-menu-item:hover,
+								{{WRAPPER}} nav.coherence-core-dropdown-expandible li a.coherence-core-sub-menu-item:hover' => 'color: {{VALUE}}',
 							],
 						]
 					);
@@ -1198,11 +1198,11 @@ class Coherence_Menu_Widget extends Widget_Base {
 							'type'      => Controls_Manager::COLOR,
 							'default'   => '',
 							'selectors' => [
-								'{{WRAPPER}} .sub-menu a.hfe-sub-menu-item:hover,
-								{{WRAPPER}} nav.hfe-dropdown li a.hfe-menu-item:hover,
-								{{WRAPPER}} nav.hfe-dropdown li a.hfe-sub-menu-item:hover,
-								{{WRAPPER}} nav.hfe-dropdown-expandible li a.hfe-menu-item:hover,
-								{{WRAPPER}} nav.hfe-dropdown-expandible li a.hfe-sub-menu-item:hover' => 'background-color: {{VALUE}}',
+								'{{WRAPPER}} .sub-menu a.coherence-core-sub-menu-item:hover,
+								{{WRAPPER}} nav.coherence-core-dropdown li a.coherence-core-menu-item:hover,
+								{{WRAPPER}} nav.coherence-core-dropdown li a.coherence-core-sub-menu-item:hover,
+								{{WRAPPER}} nav.coherence-core-dropdown-expandible li a.coherence-core-menu-item:hover,
+								{{WRAPPER}} nav.coherence-core-dropdown-expandible li a.coherence-core-sub-menu-item:hover' => 'background-color: {{VALUE}}',
 							],
 							'separator' => 'after',
 						]
@@ -1224,10 +1224,10 @@ class Coherence_Menu_Widget extends Widget_Base {
 						'type'      => Controls_Manager::COLOR,
 						'default'   => '',
 						'selectors' => [
-							'{{WRAPPER}} .sub-menu .menu-item.current-menu-item a.hfe-sub-menu-item.hfe-sub-menu-item-active,	
-							{{WRAPPER}} nav.hfe-dropdown .menu-item.current-menu-item a.hfe-menu-item,
-							{{WRAPPER}} nav.hfe-dropdown .menu-item.current-menu-ancestor a.hfe-menu-item,
-							{{WRAPPER}} nav.hfe-dropdown .sub-menu .menu-item.current-menu-item a.hfe-sub-menu-item.hfe-sub-menu-item-active
+							'{{WRAPPER}} .sub-menu .menu-item.current-menu-item a.coherence-core-sub-menu-item.coherence-core-sub-menu-item-active,	
+							{{WRAPPER}} nav.coherence-core-dropdown .menu-item.current-menu-item a.coherence-core-menu-item,
+							{{WRAPPER}} nav.coherence-core-dropdown .menu-item.current-menu-ancestor a.coherence-core-menu-item,
+							{{WRAPPER}} nav.coherence-core-dropdown .sub-menu .menu-item.current-menu-item a.coherence-core-sub-menu-item.coherence-core-sub-menu-item-active
 							' => 'color: {{VALUE}}',
 
 						],
@@ -1241,10 +1241,10 @@ class Coherence_Menu_Widget extends Widget_Base {
 						'type'      => Controls_Manager::COLOR,
 						'default'   => '',
 						'selectors' => [
-							'{{WRAPPER}} .sub-menu .menu-item.current-menu-item a.hfe-sub-menu-item.hfe-sub-menu-item-active,	
-							{{WRAPPER}} nav.hfe-dropdown .menu-item.current-menu-item a.hfe-menu-item,
-							{{WRAPPER}} nav.hfe-dropdown .menu-item.current-menu-ancestor a.hfe-menu-item,
-							{{WRAPPER}} nav.hfe-dropdown .sub-menu .menu-item.current-menu-item a.hfe-sub-menu-item.hfe-sub-menu-item-active' => 'background-color: {{VALUE}}',
+							'{{WRAPPER}} .sub-menu .menu-item.current-menu-item a.coherence-core-sub-menu-item.coherence-core-sub-menu-item-active,	
+							{{WRAPPER}} nav.coherence-core-dropdown .menu-item.current-menu-item a.coherence-core-menu-item,
+							{{WRAPPER}} nav.coherence-core-dropdown .menu-item.current-menu-ancestor a.coherence-core-menu-item,
+							{{WRAPPER}} nav.coherence-core-dropdown .sub-menu .menu-item.current-menu-item a.coherence-core-sub-menu-item.coherence-core-sub-menu-item-active' => 'background-color: {{VALUE}}',
 						],
 						'separator' => 'after',
 					]
@@ -1263,11 +1263,11 @@ class Coherence_Menu_Widget extends Widget_Base {
 					],
 					'separator' => 'before',
 					'selector'  => '
-							{{WRAPPER}} .sub-menu li a.hfe-sub-menu-item,
-							{{WRAPPER}} nav.hfe-dropdown li a.hfe-sub-menu-item,
-							{{WRAPPER}} nav.hfe-dropdown li a.hfe-menu-item,
-							{{WRAPPER}} nav.hfe-dropdown-expandible li a.hfe-menu-item,
-							{{WRAPPER}} nav.hfe-dropdown-expandible li a.hfe-sub-menu-item',
+							{{WRAPPER}} .sub-menu li a.coherence-core-sub-menu-item,
+							{{WRAPPER}} nav.coherence-core-dropdown li a.coherence-core-sub-menu-item,
+							{{WRAPPER}} nav.coherence-core-dropdown li a.coherence-core-menu-item,
+							{{WRAPPER}} nav.coherence-core-dropdown-expandible li a.coherence-core-menu-item,
+							{{WRAPPER}} nav.coherence-core-dropdown-expandible li a.coherence-core-sub-menu-item',
 				]
 			);
 
@@ -1275,10 +1275,10 @@ class Coherence_Menu_Widget extends Widget_Base {
 				Group_Control_Border::get_type(),
 				[
 					'name'     => 'dropdown_border',
-					'selector' => '{{WRAPPER}} nav.hfe-nav-menu__layout-horizontal .sub-menu, 
-							{{WRAPPER}} nav:not(.hfe-nav-menu__layout-horizontal) .sub-menu.sub-menu-open,
-							{{WRAPPER}} nav.hfe-dropdown .hfe-nav-menu,
-						 	{{WRAPPER}} nav.hfe-dropdown-expandible .hfe-nav-menu',
+					'selector' => '{{WRAPPER}} nav.coherence-core-nav-menu__layout-horizontal .sub-menu, 
+							{{WRAPPER}} nav:not(.coherence-core-nav-menu__layout-horizontal) .sub-menu.sub-menu-open,
+							{{WRAPPER}} nav.coherence-core-dropdown .coherence-core-nav-menu,
+						 	{{WRAPPER}} nav.coherence-core-dropdown-expandible .coherence-core-nav-menu',
 				]
 			);
 
@@ -1292,12 +1292,12 @@ class Coherence_Menu_Widget extends Widget_Base {
 						'{{WRAPPER}} .sub-menu'        => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 						'{{WRAPPER}} .sub-menu li.menu-item:first-child' => 'border-top-left-radius: {{TOP}}{{UNIT}}; border-top-right-radius: {{RIGHT}}{{UNIT}};overflow:hidden;',
 						'{{WRAPPER}} .sub-menu li.menu-item:last-child' => 'border-bottom-right-radius: {{BOTTOM}}{{UNIT}}; border-bottom-left-radius: {{LEFT}}{{UNIT}};overflow:hidden',
-						'{{WRAPPER}} nav.hfe-dropdown' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-						'{{WRAPPER}} nav.hfe-dropdown li.menu-item:first-child' => 'border-top-left-radius: {{TOP}}{{UNIT}}; border-top-right-radius: {{RIGHT}}{{UNIT}};overflow:hidden',
-						'{{WRAPPER}} nav.hfe-dropdown li.menu-item:last-child' => 'border-bottom-right-radius: {{BOTTOM}}{{UNIT}}; border-bottom-left-radius: {{LEFT}}{{UNIT}};overflow:hidden',
-						'{{WRAPPER}} nav.hfe-dropdown-expandible' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-						'{{WRAPPER}} nav.hfe-dropdown-expandible li.menu-item:first-child' => 'border-top-left-radius: {{TOP}}{{UNIT}}; border-top-right-radius: {{RIGHT}}{{UNIT}};overflow:hidden',
-						'{{WRAPPER}} nav.hfe-dropdown-expandible li.menu-item:last-child' => 'border-bottom-right-radius: {{BOTTOM}}{{UNIT}}; border-bottom-left-radius: {{LEFT}}{{UNIT}};overflow:hidden',
+						'{{WRAPPER}} nav.coherence-core-dropdown' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						'{{WRAPPER}} nav.coherence-core-dropdown li.menu-item:first-child' => 'border-top-left-radius: {{TOP}}{{UNIT}}; border-top-right-radius: {{RIGHT}}{{UNIT}};overflow:hidden',
+						'{{WRAPPER}} nav.coherence-core-dropdown li.menu-item:last-child' => 'border-bottom-right-radius: {{BOTTOM}}{{UNIT}}; border-bottom-left-radius: {{LEFT}}{{UNIT}};overflow:hidden',
+						'{{WRAPPER}} nav.coherence-core-dropdown-expandible' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						'{{WRAPPER}} nav.coherence-core-dropdown-expandible li.menu-item:first-child' => 'border-top-left-radius: {{TOP}}{{UNIT}}; border-top-right-radius: {{RIGHT}}{{UNIT}};overflow:hidden',
+						'{{WRAPPER}} nav.coherence-core-dropdown-expandible li.menu-item:last-child' => 'border-bottom-right-radius: {{BOTTOM}}{{UNIT}}; border-bottom-left-radius: {{LEFT}}{{UNIT}};overflow:hidden',
 					],
 					'frontend_available' => true,
 				]
@@ -1310,9 +1310,9 @@ class Coherence_Menu_Widget extends Widget_Base {
 					'exclude'   => [
 						'box_shadow_position',
 					],
-					'selector'  => '{{WRAPPER}} .hfe-nav-menu .sub-menu,
-								{{WRAPPER}} nav.hfe-dropdown,
-						 		{{WRAPPER}} nav.hfe-dropdown-expandible',
+					'selector'  => '{{WRAPPER}} .coherence-core-nav-menu .sub-menu,
+								{{WRAPPER}} nav.coherence-core-dropdown,
+						 		{{WRAPPER}} nav.coherence-core-dropdown-expandible',
 					'separator' => 'after',
 				]
 			);
@@ -1349,17 +1349,17 @@ class Coherence_Menu_Widget extends Widget_Base {
 					'type'               => Controls_Manager::SLIDER,
 					'size_units'         => [ 'px' ],
 					'selectors'          => [
-						'{{WRAPPER}} .sub-menu li a.hfe-sub-menu-item,
-						{{WRAPPER}} nav.hfe-dropdown li a.hfe-menu-item,
-						{{WRAPPER}} nav.hfe-dropdown-expandible li a.hfe-menu-item' => 'padding-left: {{SIZE}}{{UNIT}}; padding-right: {{SIZE}}{{UNIT}}',
-						'{{WRAPPER}} nav.hfe-dropdown-expandible a.hfe-sub-menu-item,
-						{{WRAPPER}} nav.hfe-dropdown li a.hfe-sub-menu-item' => 'padding-left: calc( {{SIZE}}{{UNIT}} + 20px );padding-right: {{SIZE}}{{UNIT}};',
-						'{{WRAPPER}} .hfe-dropdown .menu-item ul ul a.hfe-sub-menu-item,
-						{{WRAPPER}} .hfe-dropdown-expandible .menu-item ul ul a.hfe-sub-menu-item' => 'padding-left: calc( {{SIZE}}{{UNIT}} + 40px );padding-right: {{SIZE}}{{UNIT}};',
-						'{{WRAPPER}} .hfe-dropdown .menu-item ul ul ul a.hfe-sub-menu-item,
-						{{WRAPPER}} .hfe-dropdown-expandible .menu-item ul ul ul a.hfe-sub-menu-item' => 'padding-left: calc( {{SIZE}}{{UNIT}} + 60px );padding-right: {{SIZE}}{{UNIT}};',
-						'{{WRAPPER}} .hfe-dropdown .menu-item ul ul ul ul a.hfe-sub-menu-item,
-						{{WRAPPER}} .hfe-dropdown-expandible .menu-item ul ul ul ul a.hfe-sub-menu-item' => 'padding-left: calc( {{SIZE}}{{UNIT}} + 80px );padding-right: {{SIZE}}{{UNIT}};',
+						'{{WRAPPER}} .sub-menu li a.coherence-core-sub-menu-item,
+						{{WRAPPER}} nav.coherence-core-dropdown li a.coherence-core-menu-item,
+						{{WRAPPER}} nav.coherence-core-dropdown-expandible li a.coherence-core-menu-item' => 'padding-left: {{SIZE}}{{UNIT}}; padding-right: {{SIZE}}{{UNIT}}',
+						'{{WRAPPER}} nav.coherence-core-dropdown-expandible a.coherence-core-sub-menu-item,
+						{{WRAPPER}} nav.coherence-core-dropdown li a.coherence-core-sub-menu-item' => 'padding-left: calc( {{SIZE}}{{UNIT}} + 20px );padding-right: {{SIZE}}{{UNIT}};',
+						'{{WRAPPER}} .coherence-core-dropdown .menu-item ul ul a.coherence-core-sub-menu-item,
+						{{WRAPPER}} .coherence-core-dropdown-expandible .menu-item ul ul a.coherence-core-sub-menu-item' => 'padding-left: calc( {{SIZE}}{{UNIT}} + 40px );padding-right: {{SIZE}}{{UNIT}};',
+						'{{WRAPPER}} .coherence-core-dropdown .menu-item ul ul ul a.coherence-core-sub-menu-item,
+						{{WRAPPER}} .coherence-core-dropdown-expandible .menu-item ul ul ul a.coherence-core-sub-menu-item' => 'padding-left: calc( {{SIZE}}{{UNIT}} + 60px );padding-right: {{SIZE}}{{UNIT}};',
+						'{{WRAPPER}} .coherence-core-dropdown .menu-item ul ul ul ul a.coherence-core-sub-menu-item,
+						{{WRAPPER}} .coherence-core-dropdown-expandible .menu-item ul ul ul ul a.coherence-core-sub-menu-item' => 'padding-left: calc( {{SIZE}}{{UNIT}} + 80px );padding-right: {{SIZE}}{{UNIT}};',
 					],
 					'frontend_available' => true,
 				]
@@ -1381,11 +1381,11 @@ class Coherence_Menu_Widget extends Widget_Base {
 						],
 					],
 					'selectors'          => [
-						'{{WRAPPER}} .sub-menu a.hfe-sub-menu-item,
-						 {{WRAPPER}} nav.hfe-dropdown li a.hfe-menu-item,
-						 {{WRAPPER}} nav.hfe-dropdown li a.hfe-sub-menu-item,
-						 {{WRAPPER}} nav.hfe-dropdown-expandible li a.hfe-menu-item,
-						 {{WRAPPER}} nav.hfe-dropdown-expandible li a.hfe-sub-menu-item' => 'padding-top: {{SIZE}}{{UNIT}}; padding-bottom: {{SIZE}}{{UNIT}}',
+						'{{WRAPPER}} .sub-menu a.coherence-core-sub-menu-item,
+						 {{WRAPPER}} nav.coherence-core-dropdown li a.coherence-core-menu-item,
+						 {{WRAPPER}} nav.coherence-core-dropdown li a.coherence-core-sub-menu-item,
+						 {{WRAPPER}} nav.coherence-core-dropdown-expandible li a.coherence-core-menu-item,
+						 {{WRAPPER}} nav.coherence-core-dropdown-expandible li a.coherence-core-sub-menu-item' => 'padding-top: {{SIZE}}{{UNIT}}; padding-bottom: {{SIZE}}{{UNIT}}',
 					],
 					'frontend_available' => true,
 				]
@@ -1403,8 +1403,8 @@ class Coherence_Menu_Widget extends Widget_Base {
 						],
 					],
 					'selectors'          => [
-						'{{WRAPPER}} nav.hfe-nav-menu__layout-horizontal:not(.hfe-dropdown) ul.sub-menu, {{WRAPPER}} nav.hfe-nav-menu__layout-expandible.menu-is-active, {{WRAPPER}} nav.hfe-nav-menu__layout-vertical:not(.hfe-dropdown) ul.sub-menu' => 'margin-top: {{SIZE}}px;',
-						'{{WRAPPER}} .hfe-dropdown.menu-is-active' => 'margin-top: {{SIZE}}px;',
+						'{{WRAPPER}} nav.coherence-core-nav-menu__layout-horizontal:not(.coherence-core-dropdown) ul.sub-menu, {{WRAPPER}} nav.coherence-core-nav-menu__layout-expandible.menu-is-active, {{WRAPPER}} nav.coherence-core-nav-menu__layout-vertical:not(.coherence-core-dropdown) ul.sub-menu' => 'margin-top: {{SIZE}}px;',
+						'{{WRAPPER}} .coherence-core-dropdown.menu-is-active' => 'margin-top: {{SIZE}}px;',
 					],
 					'condition'          => [
 						'layout' => [ 'horizontal', 'vertical', 'expandible' ],
@@ -1438,8 +1438,8 @@ class Coherence_Menu_Widget extends Widget_Base {
 					],
 					'selectors'   => [
 						'{{WRAPPER}} .sub-menu li.menu-item:not(:last-child), 
-						{{WRAPPER}} nav.hfe-dropdown li.menu-item:not(:last-child),
-						{{WRAPPER}} nav.hfe-dropdown-expandible li.menu-item:not(:last-child)' => 'border-bottom-style: {{VALUE}};',
+						{{WRAPPER}} nav.coherence-core-dropdown li.menu-item:not(:last-child),
+						{{WRAPPER}} nav.coherence-core-dropdown-expandible li.menu-item:not(:last-child)' => 'border-bottom-style: {{VALUE}};',
 					],
 				]
 			);
@@ -1451,8 +1451,8 @@ class Coherence_Menu_Widget extends Widget_Base {
 					'default'   => '#c4c4c4',
 					'selectors' => [
 						'{{WRAPPER}} .sub-menu li.menu-item:not(:last-child), 
-						{{WRAPPER}} nav.hfe-dropdown li.menu-item:not(:last-child),
-						{{WRAPPER}} nav.hfe-dropdown-expandible li.menu-item:not(:last-child)' => 'border-bottom-color: {{VALUE}};',
+						{{WRAPPER}} nav.coherence-core-dropdown li.menu-item:not(:last-child),
+						{{WRAPPER}} nav.coherence-core-dropdown-expandible li.menu-item:not(:last-child)' => 'border-bottom-color: {{VALUE}};',
 					],
 					'condition' => [
 						'dropdown_divider_border!' => 'none',
@@ -1476,8 +1476,8 @@ class Coherence_Menu_Widget extends Widget_Base {
 					],
 					'selectors' => [
 						'{{WRAPPER}} .sub-menu li.menu-item:not(:last-child), 
-						{{WRAPPER}} nav.hfe-dropdown li.menu-item:not(:last-child),
-						{{WRAPPER}} nav.hfe-dropdown-expandible li.menu-item:not(:last-child)' => 'border-bottom-width: {{SIZE}}{{UNIT}}',
+						{{WRAPPER}} nav.coherence-core-dropdown li.menu-item:not(:last-child),
+						{{WRAPPER}} nav.coherence-core-dropdown-expandible li.menu-item:not(:last-child)' => 'border-bottom-width: {{SIZE}}{{UNIT}}',
 					],
 					'condition' => [
 						'dropdown_divider_border!' => 'none',
@@ -1510,8 +1510,8 @@ class Coherence_Menu_Widget extends Widget_Base {
 				'label'     => __( 'Color', 'header-footer-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} div.hfe-nav-menu-icon' => 'color: {{VALUE}}',
-					'{{WRAPPER}} div.hfe-nav-menu-icon svg' => 'fill: {{VALUE}}',
+					'{{WRAPPER}} div.coherence-core-nav-menu-icon' => 'color: {{VALUE}}',
+					'{{WRAPPER}} div.coherence-core-nav-menu-icon svg' => 'fill: {{VALUE}}',
 				],
 			]
 		);
@@ -1522,7 +1522,7 @@ class Coherence_Menu_Widget extends Widget_Base {
 				'label'     => __( 'Background Color', 'header-footer-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .hfe-nav-menu-icon' => 'background-color: {{VALUE}}; padding: 0.35em;',
+					'{{WRAPPER}} .coherence-core-nav-menu-icon' => 'background-color: {{VALUE}}; padding: 0.35em;',
 				],
 			]
 		);
@@ -1542,8 +1542,8 @@ class Coherence_Menu_Widget extends Widget_Base {
 				'label'     => __( 'Color', 'header-footer-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} div.hfe-nav-menu-icon:hover' => 'color: {{VALUE}}',
-					'{{WRAPPER}} div.hfe-nav-menu-icon:hover svg' => 'fill: {{VALUE}}',
+					'{{WRAPPER}} div.coherence-core-nav-menu-icon:hover' => 'color: {{VALUE}}',
+					'{{WRAPPER}} div.coherence-core-nav-menu-icon:hover svg' => 'fill: {{VALUE}}',
 
 				],
 			]
@@ -1555,7 +1555,7 @@ class Coherence_Menu_Widget extends Widget_Base {
 				'label'     => __( 'Background Color', 'header-footer-elementor' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .hfe-nav-menu-icon:hover' => 'background-color: {{VALUE}}; padding: 0.35em;',
+					'{{WRAPPER}} .coherence-core-nav-menu-icon:hover' => 'background-color: {{VALUE}}; padding: 0.35em;',
 				],
 			]
 		);
@@ -1575,8 +1575,8 @@ class Coherence_Menu_Widget extends Widget_Base {
 					],
 				],
 				'selectors'          => [
-					'{{WRAPPER}} .hfe-nav-menu-icon'     => 'font-size: {{SIZE}}{{UNIT}}',
-					'{{WRAPPER}} .hfe-nav-menu-icon svg' => 'font-size: {{SIZE}}px;line-height: {{SIZE}}px;height: {{SIZE}}px;width: {{SIZE}}px;',
+					'{{WRAPPER}} .coherence-core-nav-menu-icon'     => 'font-size: {{SIZE}}{{UNIT}}',
+					'{{WRAPPER}} .coherence-core-nav-menu-icon svg' => 'font-size: {{SIZE}}px;line-height: {{SIZE}}px;height: {{SIZE}}px;width: {{SIZE}}px;',
 				],
 				'frontend_available' => true,
 				'separator'          => 'before',
@@ -1594,7 +1594,7 @@ class Coherence_Menu_Widget extends Widget_Base {
 					],
 				],
 				'selectors'          => [
-					'{{WRAPPER}} .hfe-nav-menu-icon' => 'border-width: {{SIZE}}{{UNIT}}; padding: 0.35em;',
+					'{{WRAPPER}} .coherence-core-nav-menu-icon' => 'border-width: {{SIZE}}{{UNIT}}; padding: 0.35em;',
 				],
 				'frontend_available' => true,
 			]
@@ -1607,7 +1607,7 @@ class Coherence_Menu_Widget extends Widget_Base {
 				'type'               => Controls_Manager::SLIDER,
 				'size_units'         => [ 'px', '%' ],
 				'selectors'          => [
-					'{{WRAPPER}} .hfe-nav-menu-icon' => 'border-radius: {{SIZE}}{{UNIT}}',
+					'{{WRAPPER}} .coherence-core-nav-menu-icon' => 'border-radius: {{SIZE}}{{UNIT}}',
 				],
 				'frontend_available' => true,
 			]
@@ -1620,8 +1620,8 @@ class Coherence_Menu_Widget extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#7A7A7A',
 				'selectors' => [
-					'{{WRAPPER}} .hfe-flyout-close'     => 'color: {{VALUE}}',
-					'{{WRAPPER}} .hfe-flyout-close svg' => 'fill: {{VALUE}}',
+					'{{WRAPPER}} .coherence-core-flyout-close'     => 'color: {{VALUE}}',
+					'{{WRAPPER}} .coherence-core-flyout-close svg' => 'fill: {{VALUE}}',
 
 				],
 				'condition' => [
@@ -1642,8 +1642,8 @@ class Coherence_Menu_Widget extends Widget_Base {
 					],
 				],
 				'selectors'          => [
-					'{{WRAPPER}} .hfe-flyout-close,
-					{{WRAPPER}} .hfe-flyout-close svg' => 'height: {{SIZE}}px; width: {{SIZE}}px; font-size: {{SIZE}}px; line-height: {{SIZE}}px;',
+					'{{WRAPPER}} .coherence-core-flyout-close,
+					{{WRAPPER}} .coherence-core-flyout-close svg' => 'height: {{SIZE}}px; width: {{SIZE}}px; font-size: {{SIZE}}px; line-height: {{SIZE}}px;',
 				],
 				'condition'          => [
 					'layout' => 'flyout',
@@ -1672,7 +1672,7 @@ class Coherence_Menu_Widget extends Widget_Base {
 					'global'   => [
 						'default' => Global_Typography::TYPOGRAPHY_ACCENT,
 					],
-					'selector' => '{{WRAPPER}} .menu-item a.hfe-menu-item.elementor-button',
+					'selector' => '{{WRAPPER}} .menu-item a.coherence-core-menu-item.elementor-button',
 				]
 			);
 			$this->add_responsive_control(
@@ -1682,7 +1682,7 @@ class Coherence_Menu_Widget extends Widget_Base {
 					'type'               => Controls_Manager::DIMENSIONS,
 					'size_units'         => [ 'px', 'em', '%' ],
 					'selectors'          => [
-						'{{WRAPPER}} .menu-item a.hfe-menu-item.elementor-button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						'{{WRAPPER}} .menu-item a.coherence-core-menu-item.elementor-button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					],
 					'frontend_available' => true,
 				]
@@ -1704,7 +1704,7 @@ class Coherence_Menu_Widget extends Widget_Base {
 							'type'      => Controls_Manager::COLOR,
 							'default'   => '',
 							'selectors' => [
-								'{{WRAPPER}} .menu-item a.hfe-menu-item.elementor-button' => 'color: {{VALUE}};',
+								'{{WRAPPER}} .menu-item a.coherence-core-menu-item.elementor-button' => 'color: {{VALUE}};',
 							],
 						]
 					);
@@ -1715,7 +1715,7 @@ class Coherence_Menu_Widget extends Widget_Base {
 							'name'           => 'all_background_color',
 							'label'          => __( 'Background Color', 'header-footer-elementor' ),
 							'types'          => [ 'classic', 'gradient' ],
-							'selector'       => '{{WRAPPER}} .menu-item a.hfe-menu-item.elementor-button',
+							'selector'       => '{{WRAPPER}} .menu-item a.coherence-core-menu-item.elementor-button',
 							'fields_options' => [
 								'color' => [
 									'global' => [
@@ -1731,7 +1731,7 @@ class Coherence_Menu_Widget extends Widget_Base {
 						[
 							'name'     => 'all_border',
 							'label'    => __( 'Border', 'header-footer-elementor' ),
-							'selector' => '{{WRAPPER}} .menu-item a.hfe-menu-item.elementor-button',
+							'selector' => '{{WRAPPER}} .menu-item a.coherence-core-menu-item.elementor-button',
 						]
 					);
 
@@ -1742,7 +1742,7 @@ class Coherence_Menu_Widget extends Widget_Base {
 							'type'       => Controls_Manager::DIMENSIONS,
 							'size_units' => [ 'px', '%' ],
 							'selectors'  => [
-								'{{WRAPPER}} .menu-item a.hfe-menu-item.elementor-button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+								'{{WRAPPER}} .menu-item a.coherence-core-menu-item.elementor-button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 							],
 						]
 					);
@@ -1751,7 +1751,7 @@ class Coherence_Menu_Widget extends Widget_Base {
 						Group_Control_Box_Shadow::get_type(),
 						[
 							'name'     => 'all_button_box_shadow',
-							'selector' => '{{WRAPPER}} .menu-item a.hfe-menu-item.elementor-button',
+							'selector' => '{{WRAPPER}} .menu-item a.coherence-core-menu-item.elementor-button',
 						]
 					);
 
@@ -1770,7 +1770,7 @@ class Coherence_Menu_Widget extends Widget_Base {
 							'label'     => __( 'Text Color', 'header-footer-elementor' ),
 							'type'      => Controls_Manager::COLOR,
 							'selectors' => [
-								'{{WRAPPER}} .menu-item a.hfe-menu-item.elementor-button:hover' => 'color: {{VALUE}};',
+								'{{WRAPPER}} .menu-item a.coherence-core-menu-item.elementor-button:hover' => 'color: {{VALUE}};',
 							],
 						]
 					);
@@ -1781,7 +1781,7 @@ class Coherence_Menu_Widget extends Widget_Base {
 							'name'           => 'all_background_hover_color',
 							'label'          => __( 'Background Color', 'header-footer-elementor' ),
 							'types'          => [ 'classic', 'gradient' ],
-							'selector'       => '{{WRAPPER}} .menu-item a.hfe-menu-item.elementor-button:hover',
+							'selector'       => '{{WRAPPER}} .menu-item a.coherence-core-menu-item.elementor-button:hover',
 							'fields_options' => [
 								'color' => [
 									'global' => [
@@ -1799,7 +1799,7 @@ class Coherence_Menu_Widget extends Widget_Base {
 							'type'      => Controls_Manager::COLOR,
 							'default'   => '',
 							'selectors' => [
-								'{{WRAPPER}} .menu-item a.hfe-menu-item.elementor-button:hover' => 'border-color: {{VALUE}};',
+								'{{WRAPPER}} .menu-item a.coherence-core-menu-item.elementor-button:hover' => 'border-color: {{VALUE}};',
 							],
 						]
 					);
@@ -1808,7 +1808,7 @@ class Coherence_Menu_Widget extends Widget_Base {
 						Group_Control_Box_Shadow::get_type(),
 						[
 							'name'      => 'all_button_hover_box_shadow',
-							'selector'  => '{{WRAPPER}} .menu-item a.hfe-menu-item.elementor-button:hover',
+							'selector'  => '{{WRAPPER}} .menu-item a.coherence-core-menu-item.elementor-button:hover',
 							'separator' => 'after',
 						]
 					);
@@ -1907,7 +1907,7 @@ class Coherence_Menu_Widget extends Widget_Base {
 		$args = [
 			'echo'        => false,
 			'menu'        => $settings['menu'],
-			'menu_class'  => 'hfe-nav-menu',
+			'menu_class'  => 'coherence-core-nav-menu',
 			'menu_id'     => 'menu-' . $this->get_nav_menu_index() . '-' . $this->get_id(),
 			'fallback_cb' => '__return_empty_string',
 			'container'   => '',
@@ -1915,10 +1915,10 @@ class Coherence_Menu_Widget extends Widget_Base {
 		];
 
 		if ( 'yes' === $settings['schema_support'] ) {
-			$this->add_render_attribute( 'hfe-nav-menu', 'itemscope', 'itemscope' );
-			$this->add_render_attribute( 'hfe-nav-menu', 'itemtype', 'http://schema.org/SiteNavigationElement' );
+			$this->add_render_attribute( 'coherence-core-nav-menu', 'itemscope', 'itemscope' );
+			$this->add_render_attribute( 'coherence-core-nav-menu', 'itemtype', 'http://schema.org/SiteNavigationElement' );
 
-			add_filter( 'hfe_nav_menu_attrs', [ $this, 'handle_link_attrs' ] );
+			add_filter( 'coherence_core_nav_menu_attrs', [ $this, 'handle_link_attrs' ] );
 			add_filter( 'nav_menu_li_values', [ $this, 'handle_li_values' ] );
 		}
 
@@ -1926,25 +1926,25 @@ class Coherence_Menu_Widget extends Widget_Base {
 
 		if ( 'flyout' === $settings['layout'] ) {
 
-			$this->add_render_attribute( 'hfe-flyout', 'class', 'hfe-flyout-wrapper' );
+			$this->add_render_attribute( 'coherence-core-flyout', 'class', 'coherence-core-flyout-wrapper' );
 			if ( 'cta' === $settings['menu_last_item'] ) {
 
-				$this->add_render_attribute( 'hfe-flyout', 'data-last-item', $settings['menu_last_item'] );
+				$this->add_render_attribute( 'coherence-core-flyout', 'data-last-item', $settings['menu_last_item'] );
 			}
 
 			?>
-			<div class="hfe-nav-menu__toggle elementor-clickable hfe-flyout-trigger" tabindex="0">
-					<div class="hfe-nav-menu-icon">
+			<div class="coherence-core-nav-menu__toggle elementor-clickable coherence-core-flyout-trigger" tabindex="0">
+					<div class="coherence-core-nav-menu-icon">
 						<?php echo isset( $menu_close_icons[0] ) ? $menu_close_icons[0] : ''; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?> 
 					</div>
 				</div>
-			<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'hfe-flyout' ) ); ?> >
-				<div class="hfe-flyout-overlay elementor-clickable"></div>
-				<div class="hfe-flyout-container">
-					<div id="hfe-flyout-content-id-<?php echo esc_attr( $this->get_id() ); ?>" class="hfe-side hfe-flyout-<?php echo esc_attr( $settings['flyout_layout'] ); ?> hfe-flyout-open" data-layout="<?php echo wp_kses_post( $settings['flyout_layout'] ); ?>" data-flyout-type="<?php echo wp_kses_post( $settings['flyout_type'] ); ?>">
-						<div class="hfe-flyout-content push">						
-							<nav <?php echo wp_kses_post( $this->get_render_attribute_string( 'hfe-nav-menu' ) ); ?>><?php echo $menu_html; ?></nav>
-							<div class="elementor-clickable hfe-flyout-close" tabindex="0">
+			<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'coherence-core-flyout' ) ); ?> >
+				<div class="coherence-core-flyout-overlay elementor-clickable"></div>
+				<div class="coherence-core-flyout-container">
+					<div id="coherence-core-flyout-content-id-<?php echo esc_attr( $this->get_id() ); ?>" class="coherence-core-side coherence-core-flyout-<?php echo esc_attr( $settings['flyout_layout'] ); ?> coherence-core-flyout-open" data-layout="<?php echo wp_kses_post( $settings['flyout_layout'] ); ?>" data-flyout-type="<?php echo wp_kses_post( $settings['flyout_type'] ); ?>">
+						<div class="coherence-core-flyout-content push">						
+							<nav <?php echo wp_kses_post( $this->get_render_attribute_string( 'coherence-core-nav-menu' ) ); ?>><?php echo $menu_html; ?></nav>
+							<div class="elementor-clickable coherence-core-flyout-close" tabindex="0">
 								<?php echo isset( $menu_close_icons[1] ) ? $menu_close_icons[1] : ''; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 							</div>
 						</div>
@@ -1954,66 +1954,66 @@ class Coherence_Menu_Widget extends Widget_Base {
 			<?php
 		} else {
 			$this->add_render_attribute(
-				'hfe-main-menu',
+				'coherence-core-main-menu',
 				'class',
 				[
-					'hfe-nav-menu',
-					'hfe-layout-' . $settings['layout'],
+					'coherence-core-nav-menu',
+					'coherence-core-layout-' . $settings['layout'],
 				]
 			);
 
-			$this->add_render_attribute( 'hfe-main-menu', 'class', 'hfe-nav-menu-layout' );
+			$this->add_render_attribute( 'coherence-core-main-menu', 'class', 'coherence-core-nav-menu-layout' );
 
-			$this->add_render_attribute( 'hfe-main-menu', 'class', $settings['layout'] );
+			$this->add_render_attribute( 'coherence-core-main-menu', 'class', $settings['layout'] );
 
-			$this->add_render_attribute( 'hfe-main-menu', 'data-layout', $settings['layout'] );
+			$this->add_render_attribute( 'coherence-core-main-menu', 'data-layout', $settings['layout'] );
 
 			if ( 'cta' === $settings['menu_last_item'] ) {
 
-				$this->add_render_attribute( 'hfe-main-menu', 'data-last-item', $settings['menu_last_item'] );
+				$this->add_render_attribute( 'coherence-core-main-menu', 'data-last-item', $settings['menu_last_item'] );
 			}
 
 			if ( $settings['pointer'] ) {
 				if ( 'horizontal' === $settings['layout'] || 'vertical' === $settings['layout'] ) {
-					$this->add_render_attribute( 'hfe-main-menu', 'class', 'hfe-pointer__' . $settings['pointer'] );
+					$this->add_render_attribute( 'coherence-core-main-menu', 'class', 'coherence-core-pointer__' . $settings['pointer'] );
 
 					if ( in_array( $settings['pointer'], [ 'double-line', 'underline', 'overline' ], true ) ) {
 						$key = 'animation_line';
-						$this->add_render_attribute( 'hfe-main-menu', 'class', 'hfe-animation__' . $settings[ $key ] );
+						$this->add_render_attribute( 'coherence-core-main-menu', 'class', 'coherence-core-animation__' . $settings[ $key ] );
 					} elseif ( 'framed' === $settings['pointer'] || 'text' === $settings['pointer'] ) {
 						$key = 'animation_' . $settings['pointer'];
-						$this->add_render_attribute( 'hfe-main-menu', 'class', 'hfe-animation__' . $settings[ $key ] );
+						$this->add_render_attribute( 'coherence-core-main-menu', 'class', 'coherence-core-animation__' . $settings[ $key ] );
 					}
 				}
 			}
 
 			if ( 'expandible' === $settings['layout'] ) {
-				$this->add_render_attribute( 'hfe-nav-menu', 'class', 'hfe-dropdown-expandible' );
+				$this->add_render_attribute( 'coherence-core-nav-menu', 'class', 'coherence-core-dropdown-expandible' );
 			}
 
 			$this->add_render_attribute(
-				'hfe-nav-menu',
+				'coherence-core-nav-menu',
 				'class',
 				[
-					'hfe-nav-menu__layout-' . $settings['layout'],
-					'hfe-nav-menu__submenu-' . $settings['submenu_icon'],
+					'coherence-core-nav-menu__layout-' . $settings['layout'],
+					'coherence-core-nav-menu__submenu-' . $settings['submenu_icon'],
 				]
 			);
 
-			$this->add_render_attribute( 'hfe-nav-menu', 'data-toggle-icon', $menu_close_icons[0] );
+			$this->add_render_attribute( 'coherence-core-nav-menu', 'data-toggle-icon', $menu_close_icons[0] );
 
-			$this->add_render_attribute( 'hfe-nav-menu', 'data-close-icon', $menu_close_icons[1] );
+			$this->add_render_attribute( 'coherence-core-nav-menu', 'data-close-icon', $menu_close_icons[1] );
 
-			$this->add_render_attribute( 'hfe-nav-menu', 'data-full-width', $settings['full_width_dropdown'] );
+			$this->add_render_attribute( 'coherence-core-nav-menu', 'data-full-width', $settings['full_width_dropdown'] );
 
 			?>
-			<div <?php echo $this->get_render_attribute_string( 'hfe-main-menu' ); ?>>
-				<div class="hfe-nav-menu__toggle elementor-clickable">
-					<div class="hfe-nav-menu-icon">
+			<div <?php echo $this->get_render_attribute_string( 'coherence-core-main-menu' ); ?>>
+				<div class="coherence-core-nav-menu__toggle elementor-clickable">
+					<div class="coherence-core-nav-menu-icon">
 						<?php echo isset( $menu_close_icons[0] ) ? $menu_close_icons[0] : ''; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 					</div>
 				</div>
-				<nav <?php echo $this->get_render_attribute_string( 'hfe-nav-menu' ); ?>><?php echo $menu_html; ?></nav>              
+				<nav <?php echo $this->get_render_attribute_string( 'coherence-core-nav-menu' ); ?>><?php echo $menu_html; ?></nav>              
 			</div>
 			<?php
 		}
