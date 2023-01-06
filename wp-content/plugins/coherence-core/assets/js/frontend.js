@@ -690,8 +690,7 @@
 	}
 
 	$( window ).on( 'elementor/frontend/init', function () {
-
 		elementorFrontend.hooks.addAction( 'frontend/element_ready/menu.default', WidgethfeNavMenuHandler );
-		//elementorFrontend.hooks.addAction( 'frontend/element_ready/search-button.default', WidgethfeSearchButton );
+		elementorFrontend.hooks.addAction( 'frontend/element_ready/search-button.default', WidgethfeSearchButton );
 	});
 } )( jQuery );

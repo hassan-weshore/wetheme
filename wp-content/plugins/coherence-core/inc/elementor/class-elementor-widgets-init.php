@@ -61,7 +61,7 @@ if (!class_exists('Coherence_Elementor_Widget_Init')) {
 		*/
 		public function get_widget_script() {
 			$js_files = [
-				'coherence-frontend-js' => [
+				'coherence-core-frontend-js' => [
 					'path'      => '/frontend.js',
 					'dep'       => [ 'jquery' ],
 					'in_footer' => true,
@@ -119,6 +119,7 @@ if (!class_exists('Coherence_Elementor_Widget_Init')) {
 				'header',
 				'menu',
 				'logo',
+				'search-button',
 				'banner',
 				'about',
 				'service',
