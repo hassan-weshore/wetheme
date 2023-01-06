@@ -487,14 +487,14 @@ if (class_exists('CSF')) {
 				'subtitle'    => esc_html__('Select a color for mobile search icon.', 'coherence'),
 				'dependency'  => array('enable_header_builder', '==', false),
 			),
-			array(
+			/*array(
 				'id'      => 'header_background_color',
 				'title'   => esc_html__('Header Background Image', 'coherence'),
 				'type'    => 'color',
 				'output_mode' => 'background-color',
 				'subtitle'    => esc_html__('Select an image for the header background. If left empty, the header background color will be used. For top headers the image displays on top of the header background color and will only display if header background color opacity is set to 1. For side headers the image displays behind the header background color so the header background opacity must be set below 1 to see the image.', 'coherence'),
 				'dependency'  => array('enable_header_builder', '==', false),
-			),
+			),*/
 		)
 	));
 

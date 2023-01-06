@@ -13,10 +13,10 @@
         /*-------------------------------------
             menu
         -------------------------------------*/
-        $('.navbar-area .menu').on('click', function () {
+        /*$('.navbar-area .menu').on('click', function () {
             $(this).toggleClass('open');
             $('.navbar-area .navbar-collapse').toggleClass('sopen');
-        });
+        });*/
 
         // mobile menu
         if ($(window).width() < 992) {

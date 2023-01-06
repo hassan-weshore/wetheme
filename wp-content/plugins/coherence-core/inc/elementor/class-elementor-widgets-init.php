@@ -26,7 +26,7 @@ if (!class_exists('Coherence_Elementor_Widget_Init')) {
 		* */
 		public function __construct()
 		{
-			add_action('elementor/elements/categories_registered', array($this, '_widget_categories'));
+			add_action('elementor/elements/categories_registered', array($this, '_widget_categories'), 2);
 			//elementor widget registered
 			add_action('elementor/widgets/widgets_registered', array($this, '_widget_registered'));
 			// elementor editor css
@@ -49,13 +49,22 @@ if (!class_exists('Coherence_Elementor_Widget_Init')) {
 		 * */
 		public function _widget_categories($elements_manager)
 		{
-			$elements_manager->add_category(
-				'coherence_widgets',
+
+			$categories = [];
+			$categories['coherence_widgets'] =
 				[
-					'title' => __('COHERENCE Widgets', 'coherence-core'),
-					'icon' => 'fa fa-plug',
-				]
-			);
+					'title' => sprintf(__('%s - Widgets', 'coherence-core'), '<strong>COHERENCE</strong>'),
+					'icon'  => 'eicon-font'
+				];
+
+			$old_categories = $elements_manager->get_categories();
+			$categories = array_merge($categories, $old_categories);
+
+			$set_categories = function ($categories) {
+				$this->categories = $categories;
+			};
+
+			$set_categories->call($elements_manager, $categories);
 		}
 
 		/**

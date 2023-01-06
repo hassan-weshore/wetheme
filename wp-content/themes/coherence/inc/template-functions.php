@@ -373,12 +373,12 @@ if (!function_exists('hook_phoneNumber')) :
 
             
 
-            jQuery(\".header_number\").html(\"<a href=' tel:\"+globalheader_number+\"' class='dib link_phone1'>\"+globalheader_number+\"</a>\" );
-            jQuery(\".phoneNumber1\").html(\"<a href=' tel:\"+globalPhoneNumber1+\"' class='dib link_phone1'>\"+globalPhoneNumber1+\"</a>\" );
+            jQuery(\".header_number\").html(\"<a href='tel:\"+globalheader_number+\"' class='dib link_phone1'>\"+globalheader_number+\"</a>\" );
+            jQuery(\".phoneNumber1\").html(\"<a href='tel:\"+globalPhoneNumber1+\"' class='dib link_phone1'>\"+globalPhoneNumber1+\"</a>\" );
 
-            jQuery(\".phoneNumber2\").html(\"<a href=' tel:\"+globalPhoneNumber2+\"' class='dib link_phone2'>\"+globalPhoneNumber2+\"</a>\" );
+            jQuery(\".phoneNumber2\").html(\"<a href='tel:\"+globalPhoneNumber2+\"' class='dib link_phone2'>\"+globalPhoneNumber2+\"</a>\" );
 
-            jQuery(\".AdresseMail\").html( \"<a href=' mailto:\"+globalAdresseMail+\"' class='dib link_mail'>\"+globalAdresseMail+\"</a>\" );
+            jQuery(\".AdresseMail\").html( \"<a href='mailto:\"+globalAdresseMail+\"' class='dib link_mail'>\"+globalAdresseMail+\"</a>\" );
 
             jQuery(\".AdressePhysique\").html(globalAdressePhysique );
 
