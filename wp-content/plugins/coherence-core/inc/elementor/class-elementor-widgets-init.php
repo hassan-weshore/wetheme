@@ -26,44 +26,47 @@ if (!class_exists('Coherence_Elementor_Widget_Init')) {
 		* */
 		public function __construct()
 		{
+			include COHERENCE_CORE_ELEMENTOR . '/widgets/class-section-widget.php';
 			add_action('elementor/elements/categories_registered', array($this, '_widget_categories'), 2);
 			//elementor widget registered
 			add_action('elementor/widgets/widgets_registered', array($this, '_widget_registered'));
 			// elementor editor css
 			add_filter('elementor/icons_manager/additional_tabs', array($this, 'elementor_custom_icons'));
 		}
-		
+
 		/**
-		* Include Widgets files
-		*
-		* Load widgets files
-		*
-		* @since 1.2.0
-		* @access public
-		*/
-		public function include_widgets_files() {
+		 * Include Widgets files
+		 *
+		 * Load widgets files
+		 *
+		 * @since 1.2.0
+		 * @access public
+		 */
+		public function include_widgets_files()
+		{
 			$js_files = $this->get_widget_script();
 			// Enqueue the widgets script.
-			if ( ! empty( $js_files ) ) {
-				foreach ( $js_files as $handle => $data ) {
-					wp_enqueue_script( $handle, COHERENCE_CORE_JS . $data['path'], $data['dep'], 1.6 , $data['in_footer'] );
+			if (!empty($js_files)) {
+				foreach ($js_files as $handle => $data) {
+					wp_enqueue_script($handle, COHERENCE_CORE_JS . $data['path'], $data['dep'], 1.6, $data['in_footer']);
 				}
 			}
 			// Enqueue the widgets style.
-			wp_enqueue_style( 'coherence-frontend-style', COHERENCE_CORE_CSS . '/frontend.css', []);
+			wp_enqueue_style('coherence-frontend-style', COHERENCE_CORE_CSS . '/frontend.css', []);
 		}
 
 		/**
-		* Returns Script array.
-		*
-		* @return array()
-		* @since 1.3.0
-		*/
-		public function get_widget_script() {
+		 * Returns Script array.
+		 *
+		 * @return array()
+		 * @since 1.3.0
+		 */
+		public function get_widget_script()
+		{
 			$js_files = [
 				'coherence-core-frontend-js' => [
 					'path'      => '/frontend.js',
-					'dep'       => [ 'jquery' ],
+					'dep'       => ['jquery'],
 					'in_footer' => true,
 				],
 			];

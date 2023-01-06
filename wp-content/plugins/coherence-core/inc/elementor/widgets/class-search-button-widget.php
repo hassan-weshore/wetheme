@@ -17,7 +17,7 @@ use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
 use Elementor\Group_Control_Border;
 use Elementor\Plugin;
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (!defined('ABSPATH')) {
 	exit;   // Exit if accessed directly.
 }
 
@@ -28,7 +28,8 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 1.5.0
  */
-class Coherence_Search_Button_Widget extends Widget_Base {
+class Coherence_Search_Button_Widget extends Widget_Base
+{
 	/**
 	 * Retrieve the widget name.
 	 *
@@ -38,7 +39,8 @@ class Coherence_Search_Button_Widget extends Widget_Base {
 	 *
 	 * @return string Widget name.
 	 */
-	public function get_name() {
+	public function get_name()
+	{
 		return 'search-button';
 	}
 
@@ -51,8 +53,9 @@ class Coherence_Search_Button_Widget extends Widget_Base {
 	 *
 	 * @return string Widget title.
 	 */
-	public function get_title() {
-		return __( 'Search', 'coherence-core' );
+	public function get_title()
+	{
+		return __('Search', 'coherence-core');
 	}
 
 	/**
@@ -64,7 +67,8 @@ class Coherence_Search_Button_Widget extends Widget_Base {
 	 *
 	 * @return string Widget icon.
 	 */
-	public function get_icon() {
+	public function get_icon()
+	{
 		return 'eicon-search';
 	}
 
@@ -82,8 +86,9 @@ class Coherence_Search_Button_Widget extends Widget_Base {
 	 *
 	 * @return array Widget categories.
 	 */
-	public function get_categories() {
-		return [ 'coherence_widgets' ];
+	public function get_categories()
+	{
+		return ['coherence_widgets'];
 	}
 
 	/**
@@ -96,8 +101,9 @@ class Coherence_Search_Button_Widget extends Widget_Base {
 	 *
 	 * @return array Widget scripts dependencies.
 	 */
-	public function get_script_depends() {
-		return [ 'coherence-core-frontend-js' ];
+	public function get_script_depends()
+	{
+		return ['coherence-core-frontend-js'];
 	}
 
 	/**
@@ -106,7 +112,8 @@ class Coherence_Search_Button_Widget extends Widget_Base {
 	 * @since 1.5.7
 	 * @access protected
 	 */
-	protected function register_controls() {
+	protected function register_controls()
+	{
 		$this->register_general_content_controls();
 		$this->register_search_style_controls();
 	}
@@ -116,24 +123,25 @@ class Coherence_Search_Button_Widget extends Widget_Base {
 	 * @since 1.5.0
 	 * @access protected
 	 */
-	protected function register_general_content_controls() {
+	protected function register_general_content_controls()
+	{
 		$this->start_controls_section(
 			'section_general_fields',
 			[
-				'label' => __( 'Search Box', 'coherence-core' ),
+				'label' => __('Search Box', 'coherence-core'),
 			]
 		);
 
 		$this->add_control(
 			'layout',
 			[
-				'label'        => __( 'Layout', 'coherence-core' ),
+				'label'        => __('Layout', 'coherence-core'),
 				'type'         => Controls_Manager::SELECT,
 				'default'      => 'text',
 				'options'      => [
-					'text'      => __( 'Input Box', 'coherence-core' ),
-					'icon'      => __( 'Icon', 'coherence-core' ),
-					'icon_text' => __( 'Input Box With Button', 'coherence-core' ),
+					'text'      => __('Input Box', 'coherence-core'),
+					'icon'      => __('Icon', 'coherence-core'),
+					'icon_text' => __('Input Box With Button', 'coherence-core'),
 				],
 				'prefix_class' => 'coherence-core-search-layout-',
 				'render_type'  => 'template',
@@ -143,9 +151,9 @@ class Coherence_Search_Button_Widget extends Widget_Base {
 		$this->add_control(
 			'placeholder',
 			[
-				'label'     => __( 'Placeholder', 'coherence-core' ),
+				'label'     => __('Placeholder', 'coherence-core'),
 				'type'      => Controls_Manager::TEXT,
-				'default'   => __( 'Type & Hit Enter', 'coherence-core' ) . '...',
+				'default'   => __('Recherche...', 'coherence-core') . '...',
 				'condition' => [
 					'layout!' => 'icon',
 				],
@@ -155,7 +163,7 @@ class Coherence_Search_Button_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'size',
 			[
-				'label'              => __( 'Size', 'coherence-core' ),
+				'label'              => __('Size', 'coherence-core'),
 				'type'               => Controls_Manager::SLIDER,
 				'default'            => [
 					'size' => 50,
@@ -181,11 +189,12 @@ class Coherence_Search_Button_Widget extends Widget_Base {
 	 * @since 1.5.0
 	 * @access protected
 	 */
-	protected function register_search_style_controls() {
+	protected function register_search_style_controls()
+	{
 		$this->start_controls_section(
 			'section_input_style',
 			[
-				'label' => __( 'Input', 'coherence-core' ),
+				'label' => __('Input', 'coherence-core'),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -204,7 +213,7 @@ class Coherence_Search_Button_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'input_icon_size',
 			[
-				'label'              => __( 'Width', 'coherence-core' ),
+				'label'              => __('Width', 'coherence-core'),
 				'type'               => Controls_Manager::SLIDER,
 				'default'            => [
 					'size' => 250,
@@ -225,12 +234,12 @@ class Coherence_Search_Button_Widget extends Widget_Base {
 			]
 		);
 
-		$this->start_controls_tabs( 'tabs_input_colors' );
+		$this->start_controls_tabs('tabs_input_colors');
 
 		$this->start_controls_tab(
 			'tab_input_normal',
 			[
-				'label'     => __( 'Normal', 'coherence-core' ),
+				'label'     => __('Normal', 'coherence-core'),
 				'condition' => [
 					'layout!' => 'icon',
 				],
@@ -240,7 +249,7 @@ class Coherence_Search_Button_Widget extends Widget_Base {
 		$this->add_control(
 			'input_text_color',
 			[
-				'label'     => __( 'Text Color', 'coherence-core' ),
+				'label'     => __('Text Color', 'coherence-core'),
 				'type'      => Controls_Manager::COLOR,
 				'global'    => [
 					'default' => Global_Colors::COLOR_TEXT,
@@ -257,7 +266,7 @@ class Coherence_Search_Button_Widget extends Widget_Base {
 		$this->add_control(
 			'input_placeholder_color',
 			[
-				'label'     => __( 'Placeholder Color', 'coherence-core' ),
+				'label'     => __('Placeholder Color', 'coherence-core'),
 				'type'      => Controls_Manager::COLOR,
 				'global'    => [
 					'default' => Global_Colors::COLOR_TEXT,
@@ -275,7 +284,7 @@ class Coherence_Search_Button_Widget extends Widget_Base {
 		$this->add_control(
 			'input_background_color',
 			[
-				'label'     => __( 'Background Color', 'coherence-core' ),
+				'label'     => __('Background Color', 'coherence-core'),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#ededed',
 				'selectors' => [
@@ -301,16 +310,16 @@ class Coherence_Search_Button_Widget extends Widget_Base {
 		$this->add_control(
 			'border_style',
 			[
-				'label'       => __( 'Border Style', 'coherence-core' ),
+				'label'       => __('Border Style', 'coherence-core'),
 				'type'        => Controls_Manager::SELECT,
 				'default'     => 'none',
 				'label_block' => false,
 				'options'     => [
-					'none'   => __( 'None', 'coherence-core' ),
-					'solid'  => __( 'Solid', 'coherence-core' ),
-					'double' => __( 'Double', 'coherence-core' ),
-					'dotted' => __( 'Dotted', 'coherence-core' ),
-					'dashed' => __( 'Dashed', 'coherence-core' ),
+					'none'   => __('None', 'coherence-core'),
+					'solid'  => __('Solid', 'coherence-core'),
+					'double' => __('Double', 'coherence-core'),
+					'dotted' => __('Dotted', 'coherence-core'),
+					'dashed' => __('Dashed', 'coherence-core'),
 				],
 				'selectors'   => [
 					'{{WRAPPER}} .coherence-core-search-form__container ,{{WRAPPER}} .coherence-core-search-icon-toggle .coherence-core-search-form__input,{{WRAPPER}} .coherence-core-input-focus .coherence-core-search-icon-toggle .coherence-core-search-form__input' => 'border-style: {{VALUE}};',
@@ -324,7 +333,7 @@ class Coherence_Search_Button_Widget extends Widget_Base {
 		$this->add_control(
 			'border_color',
 			[
-				'label'     => __( 'Border Color', 'coherence-core' ),
+				'label'     => __('Border Color', 'coherence-core'),
 				'type'      => Controls_Manager::COLOR,
 				'global'    => [
 					'default' => Global_Colors::COLOR_PRIMARY,
@@ -345,9 +354,9 @@ class Coherence_Search_Button_Widget extends Widget_Base {
 		$this->add_control(
 			'border_width',
 			[
-				'label'      => __( 'Border Width', 'coherence-core' ),
+				'label'      => __('Border Width', 'coherence-core'),
 				'type'       => Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px' ],
+				'size_units' => ['px'],
 				'default'    => [
 					'top'    => '1',
 					'bottom' => '1',
@@ -370,7 +379,7 @@ class Coherence_Search_Button_Widget extends Widget_Base {
 		$this->add_control(
 			'border_radius',
 			[
-				'label'     => __( 'Border Radius', 'coherence-core' ),
+				'label'     => __('Border Radius', 'coherence-core'),
 				'type'      => Controls_Manager::SLIDER,
 				'range'     => [
 					'px' => [
@@ -397,7 +406,7 @@ class Coherence_Search_Button_Widget extends Widget_Base {
 		$this->start_controls_tab(
 			'tab_input_focus',
 			[
-				'label'     => __( 'Focus', 'coherence-core' ),
+				'label'     => __('Focus', 'coherence-core'),
 				'condition' => [
 					'layout!' => 'icon',
 				],
@@ -407,7 +416,7 @@ class Coherence_Search_Button_Widget extends Widget_Base {
 		$this->add_control(
 			'input_text_color_focus',
 			[
-				'label'     => __( 'Text Color', 'coherence-core' ),
+				'label'     => __('Text Color', 'coherence-core'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .coherence-core-input-focus .coherence-core-search-form__input:focus,
@@ -422,7 +431,7 @@ class Coherence_Search_Button_Widget extends Widget_Base {
 		$this->add_control(
 			'input_placeholder_hover_color',
 			[
-				'label'     => __( 'Placeholder Color', 'coherence-core' ),
+				'label'     => __('Placeholder Color', 'coherence-core'),
 				'type'      => Controls_Manager::COLOR,
 				'global'    => [
 					'default' => Global_Colors::COLOR_TEXT,
@@ -439,7 +448,7 @@ class Coherence_Search_Button_Widget extends Widget_Base {
 		$this->add_control(
 			'input_background_color_focus',
 			[
-				'label'     => __( 'Background Color', 'coherence-core' ),
+				'label'     => __('Background Color', 'coherence-core'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .coherence-core-input-focus .coherence-core-search-form__input:focus,
@@ -472,7 +481,7 @@ class Coherence_Search_Button_Widget extends Widget_Base {
 		$this->add_control(
 			'input_border_color_focus',
 			[
-				'label'     => __( 'Border Color', 'coherence-core' ),
+				'label'     => __('Border Color', 'coherence-core'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .coherence-core-input-focus .coherence-core-search-form__container,
@@ -491,7 +500,7 @@ class Coherence_Search_Button_Widget extends Widget_Base {
 		$this->add_control(
 			'icon_text_color_focus',
 			[
-				'label'     => __( 'Text Color', 'coherence-core' ),
+				'label'     => __('Text Color', 'coherence-core'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .coherence-core-input-focus .coherence-core-search-form__input:focus' => 'color: {{VALUE}}',
@@ -506,7 +515,7 @@ class Coherence_Search_Button_Widget extends Widget_Base {
 		$this->add_control(
 			'icon_text_background_color_focus',
 			[
-				'label'     => __( 'Background Color', 'coherence-core' ),
+				'label'     => __('Background Color', 'coherence-core'),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#ededed',
 				'selectors' => [
@@ -539,16 +548,16 @@ class Coherence_Search_Button_Widget extends Widget_Base {
 		$this->add_control(
 			'icon_border_style',
 			[
-				'label'       => __( 'Border Style', 'coherence-core' ),
+				'label'       => __('Border Style', 'coherence-core'),
 				'type'        => Controls_Manager::SELECT,
 				'default'     => 'none',
 				'label_block' => false,
 				'options'     => [
-					'none'   => __( 'None', 'coherence-core' ),
-					'solid'  => __( 'Solid', 'coherence-core' ),
-					'double' => __( 'Double', 'coherence-core' ),
-					'dotted' => __( 'Dotted', 'coherence-core' ),
-					'dashed' => __( 'Dashed', 'coherence-core' ),
+					'none'   => __('None', 'coherence-core'),
+					'solid'  => __('Solid', 'coherence-core'),
+					'double' => __('Double', 'coherence-core'),
+					'dotted' => __('Dotted', 'coherence-core'),
+					'dashed' => __('Dashed', 'coherence-core'),
 				],
 				'selectors'   => [
 					'{{WRAPPER}} .coherence-core-input-focus .coherence-core-search-icon-toggle .coherence-core-search-form__input' => 'border-style: {{VALUE}};',
@@ -562,7 +571,7 @@ class Coherence_Search_Button_Widget extends Widget_Base {
 		$this->add_control(
 			'icon_border_color_focus',
 			[
-				'label'     => __( 'Border Color', 'coherence-core' ),
+				'label'     => __('Border Color', 'coherence-core'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .coherence-core-input-focus .coherence-core-search-form__container,
@@ -578,9 +587,9 @@ class Coherence_Search_Button_Widget extends Widget_Base {
 		$this->add_control(
 			'icon_border_width',
 			[
-				'label'      => __( 'Border Width', 'coherence-core' ),
+				'label'      => __('Border Width', 'coherence-core'),
 				'type'       => Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px' ],
+				'size_units' => ['px'],
 				'default'    => [
 					'top'    => '1',
 					'bottom' => '1',
@@ -601,7 +610,7 @@ class Coherence_Search_Button_Widget extends Widget_Base {
 		$this->add_control(
 			'icon_focus_border_radius',
 			[
-				'label'     => __( 'Border Radius', 'coherence-core' ),
+				'label'     => __('Border Radius', 'coherence-core'),
 				'type'      => Controls_Manager::SLIDER,
 				'range'     => [
 					'px' => [
@@ -627,7 +636,7 @@ class Coherence_Search_Button_Widget extends Widget_Base {
 		$this->start_controls_section(
 			'section_button_style',
 			[
-				'label'     => __( 'Button', 'coherence-core' ),
+				'label'     => __('Button', 'coherence-core'),
 				'tab'       => Controls_Manager::TAB_STYLE,
 				'condition' => [
 					'layout' => 'icon_text',
@@ -635,19 +644,19 @@ class Coherence_Search_Button_Widget extends Widget_Base {
 			]
 		);
 
-		$this->start_controls_tabs( 'tabs_button_colors' );
+		$this->start_controls_tabs('tabs_button_colors');
 
 		$this->start_controls_tab(
 			'tab_button_normal',
 			[
-				'label' => __( 'Normal', 'coherence-core' ),
+				'label' => __('Normal', 'coherence-core'),
 			]
 		);
 
 		$this->add_control(
 			'button_icon_color',
 			[
-				'label'     => __( 'Icon Color', 'coherence-core' ),
+				'label'     => __('Icon Color', 'coherence-core'),
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#fff',
 				'selectors' => [
@@ -660,9 +669,9 @@ class Coherence_Search_Button_Widget extends Widget_Base {
 			Group_Control_Background::get_type(),
 			[
 				'name'           => 'button_background',
-				'label'          => __( 'Background', 'coherence-core' ),
-				'types'          => [ 'classic', 'gradient' ],
-				'exclude'        => [ 'image' ],
+				'label'          => __('Background', 'coherence-core'),
+				'types'          => ['classic', 'gradient'],
+				'exclude'        => ['image'],
 				'selector'       => '{{WRAPPER}} .coherence-core-search-submit',
 				'fields_options' => [
 					'background' => [
@@ -680,14 +689,14 @@ class Coherence_Search_Button_Widget extends Widget_Base {
 		$this->start_controls_tab(
 			'tab_button_hover',
 			[
-				'label' => __( 'Hover', 'coherence-core' ),
+				'label' => __('Hover', 'coherence-core'),
 			]
 		);
 
 		$this->add_control(
 			'button_text_color_hover',
 			[
-				'label'     => __( 'Icon Color', 'coherence-core' ),
+				'label'     => __('Icon Color', 'coherence-core'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .coherence-core-search-submit:hover' => 'color: {{VALUE}}',
@@ -698,7 +707,7 @@ class Coherence_Search_Button_Widget extends Widget_Base {
 		$this->add_control(
 			'button_background_color_hover',
 			[
-				'label'     => __( 'Background Color', 'coherence-core' ),
+				'label'     => __('Background Color', 'coherence-core'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .coherence-core-search-submit:hover' => 'background-color: {{VALUE}}',
@@ -713,9 +722,9 @@ class Coherence_Search_Button_Widget extends Widget_Base {
 			Group_Control_Background::get_type(),
 			[
 				'name'      => 'button_background_hover',
-				'label'     => __( 'Background', 'coherence-core' ),
-				'types'     => [ 'classic', 'gradient' ],
-				'exclude'   => [ 'image' ],
+				'label'     => __('Background', 'coherence-core'),
+				'types'     => ['classic', 'gradient'],
+				'exclude'   => ['image'],
 				'selector'  => '{{WRAPPER}} .coherence-core-search-submit:hover',
 				'condition' => [
 					'button_background_color_hover' => '',
@@ -730,7 +739,7 @@ class Coherence_Search_Button_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'icon_size',
 			[
-				'label'              => __( 'Icon Size', 'coherence-core' ),
+				'label'              => __('Icon Size', 'coherence-core'),
 				'type'               => Controls_Manager::SLIDER,
 				'range'              => [
 					'px' => [
@@ -757,7 +766,7 @@ class Coherence_Search_Button_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'button_width',
 			[
-				'label'              => __( 'Width', 'coherence-core' ),
+				'label'              => __('Width', 'coherence-core'),
 				'type'               => Controls_Manager::SLIDER,
 				'range'              => [
 					'px' => [
@@ -782,7 +791,7 @@ class Coherence_Search_Button_Widget extends Widget_Base {
 		$this->start_controls_section(
 			'section_toggle_style',
 			[
-				'label'     => __( 'Icon', 'coherence-core' ),
+				'label'     => __('Icon', 'coherence-core'),
 				'tab'       => Controls_Manager::TAB_STYLE,
 				'condition' => [
 					'layout' => 'icon',
@@ -790,19 +799,19 @@ class Coherence_Search_Button_Widget extends Widget_Base {
 			]
 		);
 
-		$this->start_controls_tabs( 'tabs_toggle_color' );
+		$this->start_controls_tabs('tabs_toggle_color');
 
 		$this->start_controls_tab(
 			'tab_toggle_normal',
 			[
-				'label' => __( 'Normal', 'coherence-core' ),
+				'label' => __('Normal', 'coherence-core'),
 			]
 		);
 
 		$this->add_control(
 			'toggle_color',
 			[
-				'label'     => __( 'Color', 'coherence-core' ),
+				'label'     => __('Color', 'coherence-core'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .coherence-core-search-icon-toggle i' => 'color: {{VALUE}}; border-color: {{VALUE}}; fill: {{VALUE}};',
@@ -815,14 +824,14 @@ class Coherence_Search_Button_Widget extends Widget_Base {
 		$this->start_controls_tab(
 			'tab_toggle_hover',
 			[
-				'label' => __( 'Hover', 'coherence-core' ),
+				'label' => __('Hover', 'coherence-core'),
 			]
 		);
 
 		$this->add_control(
 			'toggle_color_hover',
 			[
-				'label'     => __( 'Color', 'coherence-core' ),
+				'label'     => __('Color', 'coherence-core'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .coherence-core-search-icon-toggle i:hover' => 'color: {{VALUE}}; border-color: {{VALUE}}',
@@ -837,7 +846,7 @@ class Coherence_Search_Button_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'toggle_icon_size',
 			[
-				'label'              => __( 'Icon Size', 'coherence-core' ),
+				'label'              => __('Icon Size', 'coherence-core'),
 				'type'               => Controls_Manager::SLIDER,
 				'default'            => [
 					'size' => 15,
@@ -862,7 +871,7 @@ class Coherence_Search_Button_Widget extends Widget_Base {
 		$this->start_controls_section(
 			'section_close_icon',
 			[
-				'label'     => __( 'Close Icon', 'coherence-core' ),
+				'label'     => __('Close Icon', 'coherence-core'),
 				'tab'       => Controls_Manager::TAB_STYLE,
 				'condition' => [
 					'layout!' => 'icon',
@@ -873,7 +882,7 @@ class Coherence_Search_Button_Widget extends Widget_Base {
 		$this->add_responsive_control(
 			'close_icon_size',
 			[
-				'label'              => __( 'Size', 'coherence-core' ),
+				'label'              => __('Size', 'coherence-core'),
 				'type'               => Controls_Manager::SLIDER,
 				'range'              => [
 					'px' => [
@@ -895,18 +904,18 @@ class Coherence_Search_Button_Widget extends Widget_Base {
 			]
 		);
 
-		$this->start_controls_tabs( 'close_icon_normal' );
+		$this->start_controls_tabs('close_icon_normal');
 
 		$this->start_controls_tab(
 			'normal_close_button',
 			[
-				'label' => __( 'Normal', 'coherence-core' ),
+				'label' => __('Normal', 'coherence-core'),
 			]
 		);
 		$this->add_control(
 			'text_color',
 			[
-				'label'     => __( 'Color', 'coherence-core' ),
+				'label'     => __('Color', 'coherence-core'),
 				'type'      => Controls_Manager::COLOR,
 				'global'    => [
 					'default' => Global_Colors::COLOR_TEXT,
@@ -924,14 +933,14 @@ class Coherence_Search_Button_Widget extends Widget_Base {
 		$this->start_controls_tab(
 			'hover_close_icon',
 			[
-				'label' => __( 'Hover', 'coherence-core' ),
+				'label' => __('Hover', 'coherence-core'),
 			]
 		);
 
 		$this->add_control(
 			'hover_close_icon_text',
 			[
-				'label'     => __( 'Color', 'coherence-core' ),
+				'label'     => __('Color', 'coherence-core'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .coherence-core-search-form__container button#clear-with-button:hover,
@@ -946,7 +955,6 @@ class Coherence_Search_Button_Widget extends Widget_Base {
 		$this->end_controls_tabs();
 
 		$this->end_controls_section();
-
 	}
 	/**
 	 * Render Search button output on the frontend.
@@ -956,7 +964,8 @@ class Coherence_Search_Button_Widget extends Widget_Base {
 	 * @since 1.5.0
 	 * @access protected
 	 */
-	protected function render() {
+	protected function render()
+	{
 		$settings = $this->get_settings_for_display();
 
 		$this->add_render_attribute(
@@ -966,7 +975,7 @@ class Coherence_Search_Button_Widget extends Widget_Base {
 				'class'       => 'coherence-core-search-form__input',
 				'type'        => 'search',
 				'name'        => 's',
-				'title'       => __( 'Search', 'coherence-core' ),
+				'title'       => __('Search', 'coherence-core'),
 				'value'       => get_search_query(),
 
 			]
@@ -975,37 +984,37 @@ class Coherence_Search_Button_Widget extends Widget_Base {
 		$this->add_render_attribute(
 			'container',
 			[
-				'class' => [ 'coherence-core-search-form__container' ],
+				'class' => ['coherence-core-search-form__container'],
 				'role'  => 'tablist',
 			]
 		);
-		?>
+?>
 		<form class="coherence-core-search-button-wrapper" role="search" action="<?php echo home_url(); ?>" method="get">
-			<?php if ( 'icon' === $settings['layout'] ) { ?>
-			<div class = "coherence-core-search-icon-toggle">
-				<input <?php echo $this->get_render_attribute_string( 'input' ); ?>>
-				<i class="fas fa-search" aria-hidden="true"></i>
-			</div>
+			<?php if ('icon' === $settings['layout']) { ?>
+				<div class="coherence-core-search-icon-toggle">
+					<input <?php echo $this->get_render_attribute_string('input'); ?>>
+					<i class="fas fa-search" aria-hidden="true"></i>
+				</div>
 			<?php } else { ?>
-			<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'container' ) ); ?>>
-				<?php if ( 'text' === $settings['layout'] ) { ?>
-					<input <?php echo $this->get_render_attribute_string( 'input' ); ?>>
+				<div <?php echo wp_kses_post($this->get_render_attribute_string('container')); ?>>
+					<?php if ('text' === $settings['layout']) { ?>
+						<input <?php echo $this->get_render_attribute_string('input'); ?>>
 						<button id="clear" type="reset">
 							<i class="fas fa-times clearable__clear" aria-hidden="true"></i>
 						</button>
-				<?php } else { ?>
-					<input <?php echo $this->get_render_attribute_string( 'input' ); ?>>
-					<button id="clear-with-button" type="reset">
-						<i class="fas fa-times" aria-hidden="true"></i>
-					</button>
-					<button class="coherence-core-search-submit" type="submit">
-						<i class="fas fa-search" aria-hidden="true"></i>
-					</button>
-				<?php } ?>
-			</div>
-		<?php } ?>
+					<?php } else { ?>
+						<input <?php echo $this->get_render_attribute_string('input'); ?>>
+						<button id="clear-with-button" type="reset">
+							<i class="fas fa-times" aria-hidden="true"></i>
+						</button>
+						<button class="coherence-core-search-submit" type="submit">
+							<i class="fas fa-search" aria-hidden="true"></i>
+						</button>
+					<?php } ?>
+				</div>
+			<?php } ?>
 		</form>
-		<?php
+<?php
 	}
 }
 Plugin::instance()->widgets_manager->register(new Coherence_Search_Button_Widget());

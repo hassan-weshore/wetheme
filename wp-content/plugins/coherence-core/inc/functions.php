@@ -232,6 +232,50 @@ if (!function_exists('coherence_core__blog_addon_social_icon')) :
 <?php
   }
 endif;
+
+/*
+function add_custom_css_rule_to_the_css_file()
+{
+
+  $stylesheet_obj = new Stylesheet();
+
+  $breakpoints = Responsive::get_breakpoints();
+  $post_css_file->get_stylesheet()->add_rules(
+    '.my-selector',
+    [
+      'width' => '50px',
+      'height' => '50px',
+    ]
+  );
+
+
+  $stylesheet_obj
+    ->add_device('mobile', 0)
+    ->add_device('tablet', $breakpoints['md'])
+    ->add_device('desktop', $breakpoints['lg'])
+    ->add_device('width480', $breakpoints['width480'])
+    ->add_device('width540', $breakpoints['width540'])
+    ->add_device('width640', $breakpoints['width640'])
+    ->add_device('width700', $breakpoints['width700'])
+    ->add_device('width750', $breakpoints['width750'])
+    ->add_device('width800', $breakpoints['width800'])
+    ->add_device('width840', $breakpoints['width840'])
+    ->add_device('width900', $breakpoints['width900'])
+    ->add_device('width940', $breakpoints['width940']);
+}
+add_action('elementor/element/parse_css', 'add_custom_css_rule_to_the_css_file', 10, 2);
+
+
+
+*/
+
+
+
+
+
+
+
+
 /*
 *  header builder
 */
