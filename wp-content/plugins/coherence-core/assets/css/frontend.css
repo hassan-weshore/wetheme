@@ -1941,6 +1941,10 @@ div.coherence-core-nav-menu,
     height:100%;
 }
 
+.coherence-core-site-logo-container .logo img {
+    display: inline;
+}
+
 
 /************* ABDELHAQ ****************/
 
@@ -1958,3 +1962,4 @@ div.coherence-core-nav-menu,
       background-size: 23px;
       background-repeat: no-repeat;
   }
+

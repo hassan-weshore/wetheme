@@ -111,28 +111,16 @@ class Coherence_Logo_Widget extends Widget_Base {
 	 */
 	protected function register_content_site_logo_controls() {
 		$this->start_controls_section(
-			'section_site_image',
+			'section_site_logo',
 			[
 				'label' => __( 'Site Logo', 'coherence-core' ),
 			]
 		);
 
-		$this->add_control(
-			'site_logo_fallback',
+		$this->add_responsive_control(
+			'logo',
 			[
-				'label'       => __( 'Custom Image', 'coherence-core' ),
-				'type'        => Controls_Manager::SWITCHER,
-				'yes'         => __( 'Yes', 'coherence-core' ),
-				'no'          => __( 'No', 'coherence-core' ),
-				'default'     => 'no',
-				'render_type' => 'template',
-			]
-		);
-
-		$this->add_control(
-			'custom_image',
-			[
-				'label'     => __( 'Add Image', 'coherence-core' ),
+				'label'     => __( 'Add Logo', 'coherence-core' ),
 				'type'      => Controls_Manager::MEDIA,
 				'dynamic'   => [
 					'active' => true,
@@ -140,20 +128,95 @@ class Coherence_Logo_Widget extends Widget_Base {
 				'default'   => [
 					'url' => Utils::get_placeholder_image_src(),
 				],
-				'condition' => [
-					'site_logo_fallback' => 'yes',
-				],
+			]
+		);
+
+		$this->add_control(
+			'logo_size_desktop',
+			[
+				'label' => esc_html__('Logo Desktop Size', 'coherence-core'),
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
 			]
 		);
 
 		$this->add_group_control(
 			Group_Control_Image_Size::get_type(),
 			[
-				'name'    => 'site_logo_size',
-				'label'   => __( 'Image Size', 'coherence-core' ),
+				'name'    => 'logo_thum', // Usage: `logo_thum_size` and `logo_thum_custom_dimension`
+				'label'   => __( 'Logo Size', 'coherence-core' ),
 				'default' => 'medium',
 			]
 		);
+
+		$this->add_control(
+			'logo_size_tablet',
+			[
+				'label' => esc_html__('Logo Tablet Size', 'coherence-core'),
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Image_Size::get_type(),
+			[
+				'name'    => 'logo_thum_tablet',
+				'label'   => __( 'Logo Size', 'coherence-core' ),
+				'default' => 'medium',
+			]
+		);
+
+		$this->add_control(
+			'logo_size_mobile',
+			[
+				'label' => esc_html__('Logo Mobile Size', 'coherence-core'),
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Image_Size::get_type(),
+			[
+				'name'    => 'logo_thum_mobile',
+				'label'   => __( 'Logo Size', 'coherence-core' ),
+				'default' => 'medium',
+			]
+		);
+
+		$this->add_control(
+			'logo_sticky',
+			[
+				'label'     => __( 'Logo sticky', 'coherence-core' ),
+				'type'      => Controls_Manager::MEDIA,
+				'dynamic'   => [
+					'active' => true,
+				],
+				'default'   => [
+					'url' => Utils::get_placeholder_image_src(),
+				],
+			]
+		);
+
+		$this->add_control(
+			'logo_size_sticky',
+			[
+				'label' => esc_html__('Logo Sticky Size', 'coherence-core'),
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Image_Size::get_type(),
+			[
+				'name'    => 'logo_thum_sticky',
+				'label'   => __( 'Logo Size', 'coherence-core' ),
+				'default' => 'medium',
+			]
+		);
+
 		$this->add_responsive_control(
 			'align',
 			[
@@ -218,9 +281,7 @@ class Coherence_Logo_Widget extends Widget_Base {
 				'type'    => Controls_Manager::SELECT,
 				'default' => 'default',
 				'options' => [
-					'default' => __( 'Default', 'coherence-core' ),
 					'none'    => __( 'None', 'coherence-core' ),
-					'file'    => __( 'Media File', 'coherence-core' ),
 					'custom'  => __( 'Custom URL', 'coherence-core' ),
 				],
 			]
@@ -239,23 +300,6 @@ class Coherence_Logo_Widget extends Widget_Base {
 					'link_to' => 'custom',
 				],
 				'show_label'  => false,
-			]
-		);
-
-		$this->add_control(
-			'open_lightbox',
-			[
-				'label'     => __( 'Lightbox', 'coherence-core' ),
-				'type'      => Controls_Manager::SELECT,
-				'default'   => 'default',
-				'options'   => [
-					'default' => __( 'Default', 'coherence-core' ),
-					'yes'     => __( 'Yes', 'coherence-core' ),
-					'no'      => __( 'No', 'coherence-core' ),
-				],
-				'condition' => [
-					'link_to' => 'file',
-				],
 			]
 		);
 
@@ -680,23 +724,54 @@ class Coherence_Logo_Widget extends Widget_Base {
 		return $caption;
 	}
 
-	/**
-	 * Render Site Image output on the frontend.
-	 *
-	 * Written in PHP and used to generate the final HTML.
-	 *
-	 * @since 1.3.0
-	 * @param array $size returns the size of an image.
-	 * @access public
-	 */
-	public function site_image_url( $size ) {
-		$settings = $this->get_settings_for_display();
-		if ( ! empty( $settings['custom_image']['url'] ) ) {
-			$logo = wp_get_attachment_image_src( $settings['custom_image']['id'], $size, true );
-		} else {
-			$logo = wp_get_attachment_image_src( get_theme_mod( 'custom_logo' ), $size, true );
+	private function get_logos($settings) : void {
+
+		$logo = wp_kses_post(Group_Control_Image_Size::get_attachment_image_html($settings, 'logo_thum',  'logo'));
+		$logo_tablet = wp_kses_post(Group_Control_Image_Size::get_attachment_image_html($settings, 'logo_thum_tablet',  'logo_tablet'));
+		$logo_mobile = wp_kses_post(Group_Control_Image_Size::get_attachment_image_html($settings, 'logo_thum_mobile',  'logo_mobile'));
+		//Logo sticky 
+		$logo_sticky = wp_kses_post(Group_Control_Image_Size::get_attachment_image_html($settings, 'logo_thum_sticky',  'logo_sticky'));
+
+		$logo_tablet = !empty($logo_tablet) ? $logo_tablet : $logo;
+		$logo_mobile = !empty($logo_mobile) ? $logo_mobile : $logo;
+
+		$link = $this->get_link_url( $settings );
+
+		if(!empty($logo_sticky)) {
+			?>
+				<?php if($link):?>
+					<a href="<?php echo esc_url($link['url']); ?>">
+				<?php endif;?>
+					<span class="logo d-none logo-sticky">
+						<?php echo $logo_sticky ;?>
+					</span>
+				<?php if($link):?>
+					</a>
+				<?php endif;?>
+			<?php
 		}
-		return $logo[0];
+
+		if(!empty($logo) || !empty($logo_tablet) || !empty($logo_mobile)) {
+			?>
+			<?php if($link):?>
+			<a href="<?php echo esc_url($link['url']); ?>">
+			<?php endif;?>
+				<span class="logo d-none d-lg-inline logo-desktop">
+					<?php echo $logo ;?>
+				</span>
+				<span class="logo d-none d-sm-inline d-lg-none logo-tablet">
+					<?php echo $logo_tablet ;?>
+				</span>
+				<span class="logo d-inline d-sm-none logo-mobile">
+					<?php echo $logo_mobile ;?>
+				</span>
+			<?php if($link):?>
+			</a>
+			<?php endif;?>
+			<?php
+		} else {
+			echo '<img src="'.site_url().'/wp-content/plugins/elementor/assets/images/placeholder.png">';
+		}
 	}
 
 	/**
@@ -708,36 +783,10 @@ class Coherence_Logo_Widget extends Widget_Base {
 	 * @access protected
 	 */
 	protected function render() {
-		$link     = '';
 		$settings = $this->get_settings_for_display();
-
 		$has_caption = $this->has_caption( $settings );
-
 		$this->add_render_attribute( 'wrapper', 'class', 'coherence-core-site-logo' );
 
-		$size = $settings['site_logo_size_size'];
-
-		$site_image = $this->site_image_url( $size );
-
-		if ( site_url() . '/wp-includes/images/media/default.png' === $site_image ) {
-			$site_image = site_url() . '/wp-content/plugins/elementor/assets/images/placeholder.png';
-		} else {
-			$site_image = $site_image;
-		}
-
-		if ( 'file' === $settings['link_to'] ) {
-				$link = $site_image;
-				$this->add_render_attribute( 'link', 'href', $link );
-		} elseif ( 'default' === $settings['link_to'] ) {
-			$link = site_url();
-			$this->add_render_attribute( 'link', 'href', $link );
-		} else {
-			$link = $this->get_link_url( $settings );
-
-			if ( $link ) {
-				$this->add_link_attributes( 'link', $link );
-			}
-		}
 		$class = '';
 		if ( Plugin::$instance->editor->is_edit_mode() ) {
 			$class = 'elementor-non-clickable';
@@ -745,109 +794,29 @@ class Coherence_Logo_Widget extends Widget_Base {
 			$class = 'elementor-clickable';
 		}
 		?>
+
 		<div <?php echo $this->get_render_attribute_string( 'wrapper' ); ?>>
-		<?php if ( $has_caption ) : ?>
+			<?php if ( $has_caption ) : ?>
 				<figure class="wp-caption">
-		<?php endif; ?>
-		<?php if ( $link ) : ?>
-					<?php
-					if ( 'no' === $settings['open_lightbox'] ) {
-						$class = 'elementor-non-clickable';
-					}
-					?>
-				<a data-elementor-open-lightbox="<?php echo esc_attr( $settings['open_lightbox'] ); ?>"  class='<?php echo  esc_attr( $class ); ?>' <?php echo $this->get_render_attribute_string( 'link' ); ?>>
-		<?php endif; ?>
-		<?php
-		if ( empty( $site_image ) ) {
-			return;
-		}
-		$img_animation = '';
-
-		if ( 'custom' !== $size ) {
-			$image_size = $size;
-		} else {
-			require_once ELEMENTOR_PATH . 'includes/libraries/bfi-thumb/bfi-thumb.php';
-
-			$image_dimension = $settings['site_logo_size_custom_dimension'];
-
-			$image_size = [
-				// Defaults sizes.
-				0           => null, // Width.
-				1           => null, // Height.
-
-				'bfi_thumb' => true,
-				'crop'      => true,
-			];
-
-			$has_custom_size = false;
-			if ( ! empty( $image_dimension['width'] ) ) {
-				$has_custom_size = true;
-				$image_size[0]   = $image_dimension['width'];
-			}
-
-			if ( ! empty( $image_dimension['height'] ) ) {
-				$has_custom_size = true;
-				$image_size[1]   = $image_dimension['height'];
-			}
-
-			if ( ! $has_custom_size ) {
-				$image_size = 'full';
-			}
-		}
-
-		$image_url = $site_image;
-
-		if ( ! empty( $settings['custom_image']['url'] ) ) {
-			$image_data = wp_get_attachment_image_src( $settings['custom_image']['id'], $image_size, true );
-		} else {
-			$image_data = wp_get_attachment_image_src( get_theme_mod( 'custom_logo' ), $image_size, true );
-		}
-
-		$site_image_class = 'elementor-animation-';
-
-		if ( ! empty( $settings['hover_animation'] ) ) {
-			$img_animation = $settings['hover_animation'];
-		}
-		if ( ! empty( $image_data ) ) {
-			$image_url = $image_data[0];
-		}
-
-		if ( site_url() . '/wp-includes/images/media/default.png' === $image_url ) {
-			$image_url = site_url() . '/wp-content/plugins/elementor/assets/images/placeholder.png';
-		} else {
-			$image_url = $image_url;
-		}
-
-		$class_animation = $site_image_class . $img_animation;
-
-		$image_unset = site_url() . '/wp-content/plugins/elementor/assets/images/placeholder.png';
-
-		if ( $image_unset !== $image_url ) {
-			$image_url = $image_url;
-		}
-
-		?>
-			<div class="coherence-core-site-logo-set">           
-				<div class="coherence-core-site-logo-container">
-					<img class="coherence-core-site-logo-img <?php echo esc_attr( $class_animation ); ?>"  src="<?php echo esc_url( $image_url ); ?>" alt="<?php echo esc_attr( Control_Media::get_image_alt( $settings['custom_image'] ) ); ?>"/>
-				</div>
-			</div>
-		<?php if ( $link ) : ?>
-					</a>
-		<?php endif; ?>
-		<?php
-		if ( $has_caption ) :
-			$caption_text = $this->get_caption( $settings );
-			?>
-			<?php if ( ! empty( $caption_text ) ) : ?>
-					<div class="coherence-core-caption-width"> 
-						<figcaption class="widget-image-caption wp-caption-text"><?php echo wp_kses_post( $caption_text ); ?></figcaption>
+					<?php endif; ?>
+					
+					<div class="coherence-core-site-logo-set">           
+						<div class="coherence-core-site-logo-container">
+							<?php $this->get_logos($settings);?>
+						</div>
 					</div>
-			<?php endif; ?>
+					
+					<?php if ( $has_caption ) : $caption_text = $this->get_caption( $settings ); ?>
+					
+					<?php if ( ! empty( $caption_text ) ) : ?>
+						<div class="coherence-core-caption-width"> 
+							<figcaption class="widget-image-caption wp-caption-text"><?php echo wp_kses_post( $caption_text ); ?></figcaption>
+						</div>
+					<?php endif; ?>
 				</figure>
-		<?php endif; ?>
+			<?php endif; ?>
 		</div>  
-			<?php
+		<?php
 	}
 
 	/**
@@ -871,12 +840,6 @@ class Coherence_Logo_Widget extends Widget_Base {
 			return $settings['link'];
 		}
 
-		if ( 'default' === $settings['link_to'] ) {
-			if ( empty( $settings['link']['url'] ) ) {
-				return false;
-			}
-			return site_url();
-		}
 	}
 }
 
