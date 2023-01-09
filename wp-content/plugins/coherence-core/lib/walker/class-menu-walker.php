@@ -76,7 +76,7 @@ class Menu_Walker extends \Walker_Nav_Menu {
 		if ( $args->has_children ) {
 			$item_output .= "<span class='coherence-core-menu-toggle sub-arrow coherence-core-menu-child-";
 			$item_output .= $depth;
-			$item_output .= "'><i class='fa'></i></span>";
+			$item_output .= "'>".apply_filters( 'coherence_core_nav_menu_icon', $icon = '')."</span>";
 		}
 		$item_output .= '</a>';
 

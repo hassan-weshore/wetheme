@@ -416,20 +416,30 @@ class Coherence_Menu_Widget extends Widget_Base {
 				]
 			);
 
-			$this->add_control(
-				'submenu_icon',
-				[
-					'label'        => __( 'Submenu Icon', 'coherence-core' ),
-					'type'         => Controls_Manager::SELECT,
-					'default'      => 'arrow',
-					'options'      => [
-						'arrow'   => __( 'Arrows', 'coherence-core' ),
-						'plus'    => __( 'Plus Sign', 'coherence-core' ),
-						'classic' => __( 'Classic', 'coherence-core' ),
-					],
-					'prefix_class' => 'coherence-core-submenu-icon-',
-				]
-			);
+			if ( $this->is_elementor_updated() ) {
+				$this->add_control(
+					'submenu_icon',
+					[
+						'label'       => __( 'Submenu Icon', 'coherence-core' ),
+						'type'        => Controls_Manager::ICONS,
+						'label_block' => 'true',
+						'default'     => [
+							'value'   => 'fas fa-angle-down',
+							'library' => 'fa-solid',
+						],
+					]
+				);
+			} else {
+				$this->add_control(
+					'submenu_icon',
+					[
+						'label'       => __( 'Submenu Icon', 'coherence-core' ),
+						'type'        => Controls_Manager::ICON,
+						'label_block' => 'true',
+						'default'     => 'fa fa-angle-down',
+					]
+				);
+			}
 
 			$this->add_control(
 				'submenu_animation',
@@ -1922,6 +1932,14 @@ class Coherence_Menu_Widget extends Widget_Base {
 			add_filter( 'nav_menu_li_values', [ $this, 'handle_li_values' ] );
 		}
 
+		add_filter( 'coherence_core_nav_menu_icon', function($submenu_icon) use ($settings){
+			$icon = $settings['submenu_icon']['value'] ?? [];
+			if(!empty($icon)) {
+				$submenu_icon = '<i class="' . esc_attr( $icon ) . '" aria-hidden="true" tabindex="0"></i>';
+			}
+			return $submenu_icon;
+		});
+
 		$menu_html = wp_nav_menu( $args );
 
 		if ( 'flyout' === $settings['layout'] ) {
@@ -1935,7 +1953,7 @@ class Coherence_Menu_Widget extends Widget_Base {
 			?>
 			<div class="coherence-core-nav-menu__toggle elementor-clickable coherence-core-flyout-trigger" tabindex="0">
 					<div class="coherence-core-nav-menu-icon">
-						<?php echo isset( $menu_close_icons[0] ) ? $menu_close_icons[0] : ''; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?> 
+						<?php echo $menu_close_icons[0] ?? '';?> 
 					</div>
 				</div>
 			<div <?php echo wp_kses_post( $this->get_render_attribute_string( 'coherence-core-flyout' ) ); ?> >
@@ -1945,7 +1963,7 @@ class Coherence_Menu_Widget extends Widget_Base {
 						<div class="coherence-core-flyout-content push">						
 							<nav <?php echo wp_kses_post( $this->get_render_attribute_string( 'coherence-core-nav-menu' ) ); ?>><?php echo $menu_html; ?></nav>
 							<div class="elementor-clickable coherence-core-flyout-close" tabindex="0">
-								<?php echo isset( $menu_close_icons[1] ) ? $menu_close_icons[1] : ''; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+								<?php echo $menu_close_icons[1] ??  '';?>
 							</div>
 						</div>
 					</div>
@@ -1996,7 +2014,6 @@ class Coherence_Menu_Widget extends Widget_Base {
 				'class',
 				[
 					'coherence-core-nav-menu__layout-' . $settings['layout'],
-					'coherence-core-nav-menu__submenu-' . $settings['submenu_icon'],
 				]
 			);
 
@@ -2010,7 +2027,7 @@ class Coherence_Menu_Widget extends Widget_Base {
 			<div <?php echo $this->get_render_attribute_string( 'coherence-core-main-menu' ); ?>>
 				<div class="coherence-core-nav-menu__toggle elementor-clickable">
 					<div class="coherence-core-nav-menu-icon">
-						<?php echo isset( $menu_close_icons[0] ) ? $menu_close_icons[0] : ''; //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+						<?php echo $menu_close_icons[0] ?? '';?>
 					</div>
 				</div>
 				<nav <?php echo $this->get_render_attribute_string( 'coherence-core-nav-menu' ); ?>><?php echo $menu_html; ?></nav>              
