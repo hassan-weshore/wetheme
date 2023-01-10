@@ -42,6 +42,20 @@ class Coherence_Heading_Widget extends Widget_Heading
 	}
 
 	/**
+	 * Retrieve the widget icon.
+	 *
+	 * @since 1.5.0
+	 *
+	 * @access public
+	 *
+	 * @return string Widget icon.
+	 */
+	public function get_icon()
+	{
+		return 'eicon-t-letter coherence-element';
+	}
+
+	/**
 	 * Get widget categories.
 	 *
 	 * Retrieve the list of categories the Elementor widget belongs to.

@@ -16,7 +16,6 @@ class Coherence_Elementor_Custom_Controls
         add_action('elementor/element/column/section_advanced/after_section_end', [__CLASS__, 'add_controls_section'], 1);
         add_action('elementor/element/section/section_advanced/after_section_end', [__CLASS__, 'add_controls_section'], 1);
         add_action('elementor/frontend/before_render', [__CLASS__, 'before_section_render'], 1);
-
         // Coherence Annimations
         add_action('elementor/element/after_section_end', function ($element, $section_id) {
 
@@ -191,6 +190,7 @@ class Coherence_Elementor_Custom_Controls
             $control_stack->end_injection();
         });
     }
+
 
     public static function add_controls_section(Element_Base $element)
     {

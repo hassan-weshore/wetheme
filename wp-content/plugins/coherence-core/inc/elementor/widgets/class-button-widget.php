@@ -65,7 +65,7 @@ class Coherence_Button_Widget extends Widget_Base
 	 */
 	public function get_icon()
 	{
-		return 'eicon-button';
+		return 'eicon-button coherence-element';
 	}
 
 	/**

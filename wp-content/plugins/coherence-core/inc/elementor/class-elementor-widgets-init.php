@@ -52,7 +52,7 @@ if (!class_exists('Coherence_Elementor_Widget_Init')) {
 			global $elementor_widget_blacklist;
 			$elementor_widget_blacklist = [
 
-				//'social-icons'
+				'heading'
 
 			];
 
@@ -60,6 +60,7 @@ if (!class_exists('Coherence_Elementor_Widget_Init')) {
 				$widgets_manager->unregister($widget_name);
 			}
 		}
+
 
 		/**
 		 * Include Widgets files
@@ -145,12 +146,13 @@ if (!class_exists('Coherence_Elementor_Widget_Init')) {
 				return;
 			}
 			$elementor_widgets = array(
-				'button',
+				'heading',
 				'header',
 				'menu',
 				'logo',
 				'search-button',
 				'social-icons',
+				'button',
 				'banner',
 				'about',
 				'service',
@@ -178,7 +180,6 @@ if (!class_exists('Coherence_Elementor_Widget_Init')) {
 				'footer-nav',
 				'footer-subscribe',
 				'copyright',
-				'heading',
 				'contentbox',
 			);
 			$elementor_widgets = apply_filters('coherence_elementor_widget', $elementor_widgets);

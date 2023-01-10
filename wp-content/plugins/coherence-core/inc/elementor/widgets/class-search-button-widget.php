@@ -69,7 +69,7 @@ class Coherence_Search_Button_Widget extends Widget_Base
 	 */
 	public function get_icon()
 	{
-		return 'eicon-search';
+		return 'eicon-search coherence-element';
 	}
 
 	/**

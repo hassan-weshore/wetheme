@@ -1,7 +1,8 @@
 <?php
+
 namespace Elementor;
 
-if ( ! defined( 'ABSPATH' ) ) {
+if (!defined('ABSPATH')) {
 	exit; // Exit if accessed directly.
 }
 
@@ -15,7 +16,8 @@ use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
  *
  * @since 1.0.0
  */
-class Widget_Content_Box extends Widget_Base {
+class Widget_Content_Box extends Widget_Base
+{
 
 	/**
 	 * Get widget name.
@@ -27,7 +29,8 @@ class Widget_Content_Box extends Widget_Base {
 	 *
 	 * @return string Widget name.
 	 */
-	public function get_name() {
+	public function get_name()
+	{
 		return 'content-box';
 	}
 
@@ -41,8 +44,9 @@ class Widget_Content_Box extends Widget_Base {
 	 *
 	 * @return string Widget title.
 	 */
-	public function get_title() {
-		return esc_html__( 'Content Box', 'coherence-core' );
+	public function get_title()
+	{
+		return esc_html__('Content Box', 'coherence-core');
 	}
 
 	/**
@@ -55,11 +59,12 @@ class Widget_Content_Box extends Widget_Base {
 	 *
 	 * @return string Widget icon.
 	 */
-	public function get_icon() {
-		return 'eicon-image-box';
+	public function get_icon()
+	{
+		return 'eicon-image-box coherence-element';
 	}
 
-    /**
+	/**
 	 * Get widget categories.
 	 *
 	 * Retrieve the list of categories the button widget belongs to.
@@ -71,8 +76,9 @@ class Widget_Content_Box extends Widget_Base {
 	 *
 	 * @return array Widget categories.
 	 */
-	public function get_categories() {
-		return [ 'coherence_widgets' ];
+	public function get_categories()
+	{
+		return ['coherence_widgets'];
 	}
 
 	/**
@@ -85,8 +91,9 @@ class Widget_Content_Box extends Widget_Base {
 	 *
 	 * @return array Widget keywords.
 	 */
-	public function get_keywords() {
-		return [ 'image', 'photo', 'visual' , 'icon', 'box' ];
+	public function get_keywords()
+	{
+		return ['image', 'photo', 'visual', 'icon', 'box'];
 	}
 
 	/**
@@ -97,18 +104,19 @@ class Widget_Content_Box extends Widget_Base {
 	 * @since 3.1.0
 	 * @access protected
 	 */
-	protected function register_controls() {
+	protected function register_controls()
+	{
 		$this->start_controls_section(
 			'section_image',
 			[
-				'label' => esc_html__( 'Content Box', 'coherence-core' ),
+				'label' => esc_html__('Content Box', 'coherence-core'),
 			]
 		);
 
 		$this->add_control(
 			'image',
 			[
-				'label' => esc_html__( 'Choose Image', 'coherence-core' ),
+				'label' => esc_html__('Choose Image', 'coherence-core'),
 				'type' => Controls_Manager::MEDIA,
 				'dynamic' => [
 					'active' => true,
@@ -131,13 +139,13 @@ class Widget_Content_Box extends Widget_Base {
 		$this->add_control(
 			'title_text',
 			[
-				'label' => esc_html__( 'Title & Description', 'coherence-core' ),
+				'label' => esc_html__('Title & Description', 'coherence-core'),
 				'type' => Controls_Manager::TEXT,
 				'dynamic' => [
 					'active' => true,
 				],
-				'default' => esc_html__( 'This is the heading', 'coherence-core' ),
-				'placeholder' => esc_html__( 'Enter your title', 'coherence-core' ),
+				'default' => esc_html__('This is the heading', 'coherence-core'),
+				'placeholder' => esc_html__('Enter your title', 'coherence-core'),
 				'label_block' => true,
 			]
 		);
@@ -145,13 +153,13 @@ class Widget_Content_Box extends Widget_Base {
 		$this->add_control(
 			'description_text',
 			[
-				'label' => esc_html__( 'Content', 'coherence-core' ),
+				'label' => esc_html__('Content', 'coherence-core'),
 				'type' => Controls_Manager::TEXTAREA,
 				'dynamic' => [
 					'active' => true,
 				],
-				'default' => esc_html__( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.', 'coherence-core' ),
-				'placeholder' => esc_html__( 'Enter your description', 'coherence-core' ),
+				'default' => esc_html__('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.', 'coherence-core'),
+				'placeholder' => esc_html__('Enter your description', 'coherence-core'),
 				'separator' => 'none',
 				'rows' => 10,
 				'show_label' => false,
@@ -161,12 +169,12 @@ class Widget_Content_Box extends Widget_Base {
 		$this->add_control(
 			'link',
 			[
-				'label' => esc_html__( 'Link', 'coherence-core' ),
+				'label' => esc_html__('Link', 'coherence-core'),
 				'type' => Controls_Manager::URL,
 				'dynamic' => [
 					'active' => true,
 				],
-				'placeholder' => esc_html__( 'https://your-link.com', 'coherence-core' ),
+				'placeholder' => esc_html__('https://your-link.com', 'coherence-core'),
 				'separator' => 'before',
 			]
 		);
@@ -174,20 +182,20 @@ class Widget_Content_Box extends Widget_Base {
 		$this->add_control(
 			'position',
 			[
-				'label' => esc_html__( 'Image Position', 'coherence-core' ),
+				'label' => esc_html__('Image Position', 'coherence-core'),
 				'type' => Controls_Manager::CHOOSE,
 				'default' => 'top',
 				'options' => [
 					'left' => [
-						'title' => esc_html__( 'Left', 'coherence-core' ),
+						'title' => esc_html__('Left', 'coherence-core'),
 						'icon' => 'eicon-h-align-left',
 					],
 					'top' => [
-						'title' => esc_html__( 'Top', 'coherence-core' ),
+						'title' => esc_html__('Top', 'coherence-core'),
 						'icon' => 'eicon-v-align-top',
 					],
 					'right' => [
-						'title' => esc_html__( 'Right', 'coherence-core' ),
+						'title' => esc_html__('Right', 'coherence-core'),
 						'icon' => 'eicon-h-align-right',
 					],
 				],
@@ -199,7 +207,7 @@ class Widget_Content_Box extends Widget_Base {
 		$this->add_control(
 			'title_size',
 			[
-				'label' => esc_html__( 'Title HTML Tag', 'coherence-core' ),
+				'label' => esc_html__('Title HTML Tag', 'coherence-core'),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
 					'h1' => 'H1',
@@ -219,7 +227,7 @@ class Widget_Content_Box extends Widget_Base {
 		$this->add_control(
 			'view',
 			[
-				'label' => esc_html__( 'View', 'coherence-core' ),
+				'label' => esc_html__('View', 'coherence-core'),
 				'type' => Controls_Manager::HIDDEN,
 				'default' => 'traditional',
 			]
@@ -230,7 +238,7 @@ class Widget_Content_Box extends Widget_Base {
 		$this->start_controls_section(
 			'section_style_image',
 			[
-				'label' => esc_html__( 'Image', 'coherence-core' ),
+				'label' => esc_html__('Image', 'coherence-core'),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -238,9 +246,9 @@ class Widget_Content_Box extends Widget_Base {
 		$this->add_responsive_control(
 			'image_space',
 			[
-				'label' => esc_html__( 'Spacing', 'coherence-core' ),
+				'label' => esc_html__('Spacing', 'coherence-core'),
 				'type' => Controls_Manager::SLIDER,
-				'size_units' => [ 'px', '%', 'em', 'rem' ],
+				'size_units' => ['px', '%', 'em', 'rem'],
 				'default' => [
 					'size' => 15,
 				],
@@ -262,7 +270,7 @@ class Widget_Content_Box extends Widget_Base {
 		$this->add_responsive_control(
 			'image_size',
 			[
-				'label' => esc_html__( 'Width', 'coherence-core' ) . ' (%)',
+				'label' => esc_html__('Width', 'coherence-core') . ' (%)',
 				'type' => Controls_Manager::SLIDER,
 				'default' => [
 					'size' => 30,
@@ -274,7 +282,7 @@ class Widget_Content_Box extends Widget_Base {
 				'mobile_default' => [
 					'unit' => '%',
 				],
-				'size_units' => [ '%' ],
+				'size_units' => ['%'],
 				'range' => [
 					'%' => [
 						'min' => 5,
@@ -299,9 +307,9 @@ class Widget_Content_Box extends Widget_Base {
 		$this->add_responsive_control(
 			'image_border_radius',
 			[
-				'label' => esc_html__( 'Border Radius', 'coherence-core' ),
+				'label' => esc_html__('Border Radius', 'coherence-core'),
 				'type' => Controls_Manager::SLIDER,
-				'size_units' => [ 'px', '%', 'em' ],
+				'size_units' => ['px', '%', 'em'],
 				'separator' => 'after',
 				'selectors' => [
 					'{{WRAPPER}} .elementor-image-box-img img' => 'border-radius: {{SIZE}}{{UNIT}};',
@@ -312,16 +320,17 @@ class Widget_Content_Box extends Widget_Base {
 		$this->add_control(
 			'hover_animation',
 			[
-				'label' => esc_html__( 'Hover Animation', 'coherence-core' ),
+				'label' => esc_html__('Hover Animation', 'coherence-core'),
 				'type' => Controls_Manager::HOVER_ANIMATION,
 			]
 		);
 
-		$this->start_controls_tabs( 'image_effects' );
+		$this->start_controls_tabs('image_effects');
 
-		$this->start_controls_tab( 'normal',
+		$this->start_controls_tab(
+			'normal',
 			[
-				'label' => esc_html__( 'Normal', 'coherence-core' ),
+				'label' => esc_html__('Normal', 'coherence-core'),
 			]
 		);
 
@@ -336,7 +345,7 @@ class Widget_Content_Box extends Widget_Base {
 		$this->add_control(
 			'image_opacity',
 			[
-				'label' => esc_html__( 'Opacity', 'coherence-core' ),
+				'label' => esc_html__('Opacity', 'coherence-core'),
 				'type' => Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [
@@ -354,7 +363,7 @@ class Widget_Content_Box extends Widget_Base {
 		$this->add_control(
 			'background_hover_transition',
 			[
-				'label' => esc_html__( 'Transition Duration', 'coherence-core' ),
+				'label' => esc_html__('Transition Duration', 'coherence-core'),
 				'type' => Controls_Manager::SLIDER,
 				'default' => [
 					'size' => 0.3,
@@ -373,9 +382,10 @@ class Widget_Content_Box extends Widget_Base {
 
 		$this->end_controls_tab();
 
-		$this->start_controls_tab( 'hover',
+		$this->start_controls_tab(
+			'hover',
 			[
-				'label' => esc_html__( 'Hover', 'coherence-core' ),
+				'label' => esc_html__('Hover', 'coherence-core'),
 			]
 		);
 
@@ -390,7 +400,7 @@ class Widget_Content_Box extends Widget_Base {
 		$this->add_control(
 			'image_opacity_hover',
 			[
-				'label' => esc_html__( 'Opacity', 'coherence-core' ),
+				'label' => esc_html__('Opacity', 'coherence-core'),
 				'type' => Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [
@@ -414,7 +424,7 @@ class Widget_Content_Box extends Widget_Base {
 		$this->start_controls_section(
 			'section_style_content',
 			[
-				'label' => esc_html__( 'Content', 'coherence-core' ),
+				'label' => esc_html__('Content', 'coherence-core'),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			]
 		);
@@ -422,23 +432,23 @@ class Widget_Content_Box extends Widget_Base {
 		$this->add_responsive_control(
 			'text_align',
 			[
-				'label' => esc_html__( 'Alignment', 'coherence-core' ),
+				'label' => esc_html__('Alignment', 'coherence-core'),
 				'type' => Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => esc_html__( 'Left', 'coherence-core' ),
+						'title' => esc_html__('Left', 'coherence-core'),
 						'icon' => 'eicon-text-align-left',
 					],
 					'center' => [
-						'title' => esc_html__( 'Center', 'coherence-core' ),
+						'title' => esc_html__('Center', 'coherence-core'),
 						'icon' => 'eicon-text-align-center',
 					],
 					'right' => [
-						'title' => esc_html__( 'Right', 'coherence-core' ),
+						'title' => esc_html__('Right', 'coherence-core'),
 						'icon' => 'eicon-text-align-right',
 					],
 					'justify' => [
-						'title' => esc_html__( 'Justified', 'coherence-core' ),
+						'title' => esc_html__('Justified', 'coherence-core'),
 						'icon' => 'eicon-text-align-justify',
 					],
 				],
@@ -451,12 +461,12 @@ class Widget_Content_Box extends Widget_Base {
 		$this->add_control(
 			'content_vertical_alignment',
 			[
-				'label' => esc_html__( 'Vertical Alignment', 'coherence-core' ),
+				'label' => esc_html__('Vertical Alignment', 'coherence-core'),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
-					'top' => esc_html__( 'Top', 'coherence-core' ),
-					'middle' => esc_html__( 'Middle', 'coherence-core' ),
-					'bottom' => esc_html__( 'Bottom', 'coherence-core' ),
+					'top' => esc_html__('Top', 'coherence-core'),
+					'middle' => esc_html__('Middle', 'coherence-core'),
+					'bottom' => esc_html__('Bottom', 'coherence-core'),
 				],
 				'default' => 'top',
 				'prefix_class' => 'elementor-vertical-align-',
@@ -466,7 +476,7 @@ class Widget_Content_Box extends Widget_Base {
 		$this->add_control(
 			'heading_title',
 			[
-				'label' => esc_html__( 'Title', 'coherence-core' ),
+				'label' => esc_html__('Title', 'coherence-core'),
 				'type' => Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -475,7 +485,7 @@ class Widget_Content_Box extends Widget_Base {
 		$this->add_responsive_control(
 			'title_bottom_space',
 			[
-				'label' => esc_html__( 'Spacing', 'coherence-core' ),
+				'label' => esc_html__('Spacing', 'coherence-core'),
 				'type' => Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [
@@ -492,7 +502,7 @@ class Widget_Content_Box extends Widget_Base {
 		$this->add_control(
 			'title_color',
 			[
-				'label' => esc_html__( 'Color', 'coherence-core' ),
+				'label' => esc_html__('Color', 'coherence-core'),
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'selectors' => [
@@ -534,7 +544,7 @@ class Widget_Content_Box extends Widget_Base {
 		$this->add_control(
 			'heading_description',
 			[
-				'label' => esc_html__( 'Description', 'coherence-core' ),
+				'label' => esc_html__('Description', 'coherence-core'),
 				'type' => Controls_Manager::HEADING,
 				'separator' => 'before',
 			]
@@ -543,7 +553,7 @@ class Widget_Content_Box extends Widget_Base {
 		$this->add_control(
 			'description_color',
 			[
-				'label' => esc_html__( 'Color', 'coherence-core' ),
+				'label' => esc_html__('Color', 'coherence-core'),
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'selectors' => [
@@ -585,51 +595,52 @@ class Widget_Content_Box extends Widget_Base {
 	 * @since 1.0.0
 	 * @access protected
 	 */
-	protected function render() {
+	protected function render()
+	{
 		$settings = $this->get_settings_for_display();
 
-		$has_content = ! Utils::is_empty( $settings['title_text'] ) || ! Utils::is_empty( $settings['description_text'] );
+		$has_content = !Utils::is_empty($settings['title_text']) || !Utils::is_empty($settings['description_text']);
 
 		$html = '<div class="elementor-image-box-wrapper">';
 
-		if ( ! empty( $settings['link']['url'] ) ) {
-			$this->add_link_attributes( 'link', $settings['link'] );
+		if (!empty($settings['link']['url'])) {
+			$this->add_link_attributes('link', $settings['link']);
 		}
 
-		if ( ! empty( $settings['image']['url'] ) ) {
+		if (!empty($settings['image']['url'])) {
 
-			$image_html = wp_kses_post( Group_Control_Image_Size::get_attachment_image_html( $settings, 'thumbnail', 'image' ) );
+			$image_html = wp_kses_post(Group_Control_Image_Size::get_attachment_image_html($settings, 'thumbnail', 'image'));
 
-			if ( ! empty( $settings['link']['url'] ) ) {
-				$image_html = '<a ' . $this->get_render_attribute_string( 'link' ) . '>' . $image_html . '</a>';
+			if (!empty($settings['link']['url'])) {
+				$image_html = '<a ' . $this->get_render_attribute_string('link') . '>' . $image_html . '</a>';
 			}
 
 			$html .= '<figure class="elementor-image-box-img">' . $image_html . '</figure>';
 		}
 
-		if ( $has_content ) {
+		if ($has_content) {
 			$html .= '<div class="elementor-image-box-content">';
 
-			if ( ! Utils::is_empty( $settings['title_text'] ) ) {
-				$this->add_render_attribute( 'title_text', 'class', 'elementor-image-box-title' );
+			if (!Utils::is_empty($settings['title_text'])) {
+				$this->add_render_attribute('title_text', 'class', 'elementor-image-box-title');
 
-				$this->add_inline_editing_attributes( 'title_text', 'none' );
+				$this->add_inline_editing_attributes('title_text', 'none');
 
 				$title_html = $settings['title_text'];
 
-				if ( ! empty( $settings['link']['url'] ) ) {
-					$title_html = '<a ' . $this->get_render_attribute_string( 'link' ) . '>' . $title_html . '</a>';
+				if (!empty($settings['link']['url'])) {
+					$title_html = '<a ' . $this->get_render_attribute_string('link') . '>' . $title_html . '</a>';
 				}
 
-				$html .= sprintf( '<%1$s %2$s>%3$s</%1$s>', Utils::validate_html_tag( $settings['title_size'] ), $this->get_render_attribute_string( 'title_text' ), $title_html );
+				$html .= sprintf('<%1$s %2$s>%3$s</%1$s>', Utils::validate_html_tag($settings['title_size']), $this->get_render_attribute_string('title_text'), $title_html);
 			}
 
-			if ( ! Utils::is_empty( $settings['description_text'] ) ) {
-				$this->add_render_attribute( 'description_text', 'class', 'elementor-image-box-description' );
+			if (!Utils::is_empty($settings['description_text'])) {
+				$this->add_render_attribute('description_text', 'class', 'elementor-image-box-description');
 
-				$this->add_inline_editing_attributes( 'description_text' );
+				$this->add_inline_editing_attributes('description_text');
 
-				$html .= sprintf( '<p %1$s>%2$s</p>', $this->get_render_attribute_string( 'description_text' ), $settings['description_text'] );
+				$html .= sprintf('<p %1$s>%2$s</p>', $this->get_render_attribute_string('description_text'), $settings['description_text']);
 			}
 
 			$html .= '</div>';
@@ -637,7 +648,7 @@ class Widget_Content_Box extends Widget_Base {
 
 		$html .= '</div>';
 
-		Utils::print_unescaped_internal_string( $html );
+		Utils::print_unescaped_internal_string($html);
 	}
 
 	/**
@@ -648,67 +659,11 @@ class Widget_Content_Box extends Widget_Base {
 	 * @since 2.9.0
 	 * @access protected
 	 */
-	protected function content_template() {
-		?>
-		<#
-		var html = '<div class="elementor-image-box-wrapper">';
-
-		if ( settings.image.url ) {
-			var image = {
-				id: settings.image.id,
-				url: settings.image.url,
-				size: settings.thumbnail_size,
-				dimension: settings.thumbnail_custom_dimension,
-				model: view.getEditModel()
-			};
-
-			var image_url = elementor.imagesManager.getImageUrl( image );
-
-			var imageHtml = '<img src="' + image_url + '" class="elementor-animation-' + settings.hover_animation + '" />';
-
-			if ( settings.link.url ) {
-				imageHtml = '<a href="' + settings.link.url + '">' + imageHtml + '</a>';
-			}
-
-			html += '<figure class="elementor-image-box-img">' + imageHtml + '</figure>';
-		}
-
-		var hasContent = !! ( settings.title_text || settings.description_text );
-
-		if ( hasContent ) {
-			html += '<div class="elementor-image-box-content">';
-
-			if ( settings.title_text ) {
-				var title_html = settings.title_text,
-					titleSizeTag = elementor.helpers.validateHTMLTag( settings.title_size );
-
-				if ( settings.link.url ) {
-					title_html = '<a href="' + settings.link.url + '">' + title_html + '</a>';
-				}
-
-				view.addRenderAttribute( 'title_text', 'class', 'elementor-image-box-title' );
-
-				view.addInlineEditingAttributes( 'title_text', 'none' );
-
-				html += '<' + titleSizeTag  + ' ' + view.getRenderAttributeString( 'title_text' ) + '>' + title_html + '</' + titleSizeTag  + '>';
-			}
-
-			if ( settings.description_text ) {
-				view.addRenderAttribute( 'description_text', 'class', 'elementor-image-box-description' );
-
-				view.addInlineEditingAttributes( 'description_text' );
-
-				html += '<p ' + view.getRenderAttributeString( 'description_text' ) + '>' + settings.description_text + '</p>';
-			}
-
-			html += '</div>';
-		}
-
-		html += '</div>';
-
-		print( html );
-		#>
-		<?php
+	protected function content_template()
+	{
+?>
+		<# var html='<div class="elementor-image-box-wrapper">' ; if ( settings.image.url ) { var image={ id: settings.image.id, url: settings.image.url, size: settings.thumbnail_size, dimension: settings.thumbnail_custom_dimension, model: view.getEditModel() }; var image_url=elementor.imagesManager.getImageUrl( image ); var imageHtml='<img src="' + image_url + '" class="elementor-animation-' + settings.hover_animation + '" />' ; if ( settings.link.url ) { imageHtml='<a href="' + settings.link.url + '">' + imageHtml + '</a>' ; } html +='<figure class="elementor-image-box-img">' + imageHtml + '</figure>' ; } var hasContent=!! ( settings.title_text || settings.description_text ); if ( hasContent ) { html +='<div class="elementor-image-box-content">' ; if ( settings.title_text ) { var title_html=settings.title_text, titleSizeTag=elementor.helpers.validateHTMLTag( settings.title_size ); if ( settings.link.url ) { title_html='<a href="' + settings.link.url + '">' + title_html + '</a>' ; } view.addRenderAttribute( 'title_text' , 'class' , 'elementor-image-box-title' ); view.addInlineEditingAttributes( 'title_text' , 'none' ); html +='<' + titleSizeTag + ' ' + view.getRenderAttributeString( 'title_text' ) + '>' + title_html + '</' + titleSizeTag + '>' ; } if ( settings.description_text ) { view.addRenderAttribute( 'description_text' , 'class' , 'elementor-image-box-description' ); view.addInlineEditingAttributes( 'description_text' ); html +='<p ' + view.getRenderAttributeString( 'description_text' ) + '>' + settings.description_text + '</p>' ; } html +='</div>' ; } html +='</div>' ; print( html ); #>
+	<?php
 	}
 }
 Plugin::instance()->widgets_manager->register(new Widget_Content_Box());

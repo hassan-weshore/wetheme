@@ -53,7 +53,7 @@ class Coherence_Header_Widget extends Widget_Base
 	 */
 	public function get_icon()
 	{
-		return 'eicon-product-info';
+		return 'eicon-product-info coherence-element';
 	}
 
 	/**
