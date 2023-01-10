@@ -32,6 +32,14 @@
 			$input.submit();
 		});
 
+		$('.coherence-core-search-type-popup .close').on( 'click', function(){
+			$('.coherence-core-search-type-popup').removeClass('show');
+		});
+
+		$('.coherence-core-search-type-popup .coherence-core-show-popup').on('click' , function(){
+			$('.coherence-core-search-type-popup').addClass('show');
+		});
+
 		$toggle_search.css( 'padding-right', $toggle_search.next().outerWidth() + 'px' );
 
 	

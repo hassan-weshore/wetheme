@@ -28,7 +28,7 @@ class Social_Icons extends Widget_Base
 	 */
 	public function get_name()
 	{
-		return 'social-icons';
+		return 'coherence-social-icons';
 	}
 
 	/**

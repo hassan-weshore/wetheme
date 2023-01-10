@@ -149,6 +149,22 @@ class Coherence_Search_Button_Widget extends Widget_Base
 		);
 
 		$this->add_control(
+			'type',
+			[
+				'label'        => __('Form', 'coherence-core'),
+				'type'         => Controls_Manager::SELECT,
+				'default'      => 'text',
+				'options'      => [
+					'simple'      => __('Simple', 'coherence-core'),
+					'dropdown'      => __('Dropdown', 'coherence-core'),
+					'popup'      => __('Pop Up', 'coherence-core'),
+				],
+				'prefix_class' => 'coherence-core-search-type-',
+				'render_type'  => 'template',
+			]
+		);
+
+		$this->add_control(
 			'placeholder',
 			[
 				'label'     => __('Placeholder', 'coherence-core'),
@@ -161,23 +177,55 @@ class Coherence_Search_Button_Widget extends Widget_Base
 		);
 
 		$this->add_responsive_control(
-			'size',
+			'input_width',
 			[
-				'label'              => __('Size', 'coherence-core'),
-				'type'               => Controls_Manager::SLIDER,
-				'default'            => [
+				'label' => esc_html__('Input Width', 'coherence-core'),
+				'type' => \Elementor\Controls_Manager::SLIDER,
+				'size_units' => ['%'],
+				'range' => [
+					'%' => [
+						'min' => 20,
+						'max' => 100,
+					],
+				],
+				'default' => [
+					'unit' => '%',
 					'size' => 50,
 				],
-				'selectors'          => [
-					'{{WRAPPER}} .coherence-core-search-form__container' => 'min-height: {{SIZE}}{{UNIT}}',
-					'{{WRAPPER}} .coherence-core-search-submit'      => 'min-width: {{SIZE}}{{UNIT}}',
-					'{{WRAPPER}} .coherence-core-search-form__input' => 'padding-left: calc({{SIZE}}{{UNIT}} / 5); padding-right: calc({{SIZE}}{{UNIT}} / 5)',
+				'selectors' => [
+					'{{WRAPPER}} .coherence-core-search-button-wrapper' => 'width: {{SIZE}}{{UNIT}};',
 				],
-				'condition'          => [
+				'condition' => [
 					'layout!' => 'icon',
 				],
-				'render_type'        => 'template',
-				'frontend_available' => true,
+			]
+		);
+
+		$this->add_responsive_control(
+			'align',
+			[
+				'label' => esc_html__( 'Alignment', 'coherence-core' ),
+				'type' => Controls_Manager::CHOOSE,
+				'options' => [
+					'left'    => [
+						'title' => esc_html__( 'Left', 'coherence-core' ),
+						'icon' => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__( 'Center', 'coherence-core' ),
+						'icon' => 'eicon-text-align-center',
+					],
+					'right' => [
+						'title' => esc_html__( 'Right', 'coherence-core' ),
+						'icon' => 'eicon-text-align-right',
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .elementor-widget-container' => 'text-align: {{VALUE}};',
+				],
+				'condition' => [
+					'layout!' => 'icon',
+				],
 			]
 		);
 
@@ -225,7 +273,7 @@ class Coherence_Search_Button_Widget extends Widget_Base
 					],
 				],
 				'selectors'          => [
-					'{{WRAPPER}} .coherence-core-input-focus .coherence-core-search-icon-toggle input[type=search]' => 'width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}}.coherence-core-search-type-dropdown .coherence-core-input-focus .coherence-core-box-search' => 'width: {{SIZE}}{{UNIT}};',
 				],
 				'condition'          => [
 					'layout' => 'icon',
@@ -952,10 +1000,144 @@ class Coherence_Search_Button_Widget extends Widget_Base
 
 		$this->end_controls_tab();
 
+		
 		$this->end_controls_tabs();
+		
+		$this->end_controls_section();
 
+		$this->register_search_style_dropdown_box();
+	}
+
+	protected function register_search_style_dropdown_box() {
+		$this->start_controls_section(
+			'section_dropdown_style',
+			[
+				'label' => __('Dropdown', 'coherence-core'),
+				'tab'   => Controls_Manager::TAB_STYLE,
+				'condition' => [
+					'type' => 'dropdown',
+				],
+			]
+		);
+
+		$this->add_control(
+			'section_dropdown_padding',
+			[
+				'label' => esc_html__('Padding', 'coherence-core'),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', '%', 'em', 'custom'],
+				'selectors' => [
+					'{{WRAPPER}}.coherence-core-search-type-dropdown .coherence-core-input-focus .coherence-core-box-search' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'section_dropdown_background_color',
+			[
+				'label'     => __('Background Color', 'coherence-core'),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}}.coherence-core-search-type-dropdown .coherence-core-input-focus .coherence-core-box-search' => 'background-color: {{VALUE}}',
+				],
+			]
+		);
+
+		$this->add_control(
+			'section_dropdown_border_style',
+			[
+				'label'       => __('Border Style', 'coherence-core'),
+				'type'        => Controls_Manager::SELECT,
+				'default'     => 'none',
+				'label_block' => false,
+				'options'     => [
+					'none'   => __('None', 'coherence-core'),
+					'solid'  => __('Solid', 'coherence-core'),
+					'double' => __('Double', 'coherence-core'),
+					'dotted' => __('Dotted', 'coherence-core'),
+					'dashed' => __('Dashed', 'coherence-core'),
+				],
+				'selectors'   => [
+					'{{WRAPPER}}.coherence-core-search-type-dropdown .coherence-core-input-focus .coherence-core-box-search' => 'border-style: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'section_dropdown_border_color',
+			[
+				'label'     => __('Border Color', 'coherence-core'),
+				'type'      => Controls_Manager::COLOR,
+				'global'    => [
+					'default' => Global_Colors::COLOR_PRIMARY,
+				],
+				'condition' => [
+					'section_dropdown_border_style!' => 'none',
+				],
+				'default'   => '',
+				'selectors' => [
+					'{{WRAPPER}}.coherence-core-search-type-dropdown .coherence-core-input-focus .coherence-core-box-search' => 'border-color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'section_dropdown_border_width',
+			[
+				'label'      => __('Border Width', 'coherence-core'),
+				'type'       => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px'],
+				'default'    => [
+					'top'    => '1',
+					'bottom' => '1',
+					'left'   => '1',
+					'right'  => '1',
+					'unit'   => 'px',
+				],
+				'condition'  => [
+					'section_dropdown_border_style!' => 'none',
+				],
+				'selectors'  => [
+					'{{WRAPPER}}.coherence-core-search-type-dropdown .coherence-core-input-focus .coherence-core-box-search' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+				'separator' => 'after',
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name'      => 'section_dropdown_shadow',
+				'selector'  => '{{WRAPPER}}.coherence-core-search-type-dropdown .coherence-core-input-focus .coherence-core-box-search',
+			]
+		);
+
+		$this->add_control(
+			'section_dropdown_border_radius',
+			[
+				'label'     => __('Border Radius', 'coherence-core'),
+				'type'      => Controls_Manager::SLIDER,
+				'range'     => [
+					'px' => [
+						'min' => 0,
+						'max' => 200,
+					],
+				],
+				'default'   => [
+					'size' => 3,
+					'unit' => 'px',
+				],
+				'selectors' => [
+					'{{WRAPPER}}.coherence-core-search-type-dropdown .coherence-core-input-focus .coherence-core-box-search' => 'border-radius: {{SIZE}}{{UNIT}}',
+				],
+				'separator' => 'before',
+			]
+		);
+
+		$this->end_controls_tab();
 		$this->end_controls_section();
 	}
+
 	/**
 	 * Render Search button output on the frontend.
 	 *
@@ -989,10 +1171,13 @@ class Coherence_Search_Button_Widget extends Widget_Base
 			]
 		);
 ?>
+		<span class="close"><i class=" icomoon-close" aria-hidden="true" tabindex="0"></i></span>
 		<form class="coherence-core-search-button-wrapper" role="search" action="<?php echo home_url(); ?>" method="get">
 			<?php if ('icon' === $settings['layout']) { ?>
 				<div class="coherence-core-search-icon-toggle">
-					<input <?php echo $this->get_render_attribute_string('input'); ?>>
+					<div class="coherence-core-box-search">
+						<input <?php echo $this->get_render_attribute_string('input'); ?>>
+					</div>
 					<i class="fas fa-search" aria-hidden="true"></i>
 				</div>
 			<?php } else { ?>
@@ -1007,13 +1192,13 @@ class Coherence_Search_Button_Widget extends Widget_Base
 						<button id="clear-with-button" type="reset">
 							<i class="fas fa-times" aria-hidden="true"></i>
 						</button>
-						<button class="coherence-core-search-submit" type="submit">
-							<i class="fas fa-search" aria-hidden="true"></i>
-						</button>
+						
+						<button class="coherence-core-search-submit" type="submit"><i class="fas fa-search" aria-hidden="true"></i></button>
 					<?php } ?>
 				</div>
 			<?php } ?>
 		</form>
+		<span class="coherence-core-show-popup"><i class="fas fa-search" aria-hidden="true"></i></span>
 <?php
 	}
 }

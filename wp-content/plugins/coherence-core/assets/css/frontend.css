@@ -1756,9 +1756,8 @@ div.coherence-core-nav-menu,
 /*Search Box CSS*/
 
 .coherence-core-search-button-wrapper {
-    display: block;
+    display: inline-block;
     cursor: pointer;
-    vertical-align: middle;
     text-align: right;
 }
 
@@ -1814,10 +1813,6 @@ div.coherence-core-nav-menu,
 .coherence-core-search-layout-icon .coherence-core-search-icon-toggle .coherence-core-search-form__input {
     background-color: unset;
     height: 100%;
-}
-
-.coherence-core-search-button-wrapper.coherence-core-input-focus {
-    display: flex;
 }
 
 .coherence-core-search-form__container .coherence-core-search-submit {
@@ -1883,6 +1878,91 @@ div.coherence-core-nav-menu,
     position: absolute;
     width: 250px;
     right: 0;
+}
+.coherence-core-search-layout-icon .elementor-widget-container {
+    text-align: right;
+}
+.coherence-core-search-layout-icon .coherence-core-input-focus input {
+    margin-right: 30px;
+}
+
+.coherence-core-search-type-dropdown .coherence-core-search-icon-toggle input[type=search] {
+    width: 100% !important;
+    height: 40px;
+    margin-right: 0;
+}
+
+.coherence-core-search-type-dropdown .coherence-core-search-button-wrapper.coherence-core-input-focus .coherence-core-search-icon-toggle .coherence-core-search-form__input{
+    position: relative;
+}
+
+.coherence-core-search-type-popup.show {
+    position: fixed;
+    background: #242424a8;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 99999;
+    backdrop-filter: blur(2px);
+}
+
+.coherence-core-search-type-popup.show .elementor-widget-container {
+    position: relative;
+    bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.coherence-core-search-type-dropdown.coherence-core-search-layout-icon .coherence-core-box-search {
+    position: absolute;
+    top: 30px;
+    z-index: 10;
+    margin-right: 0;
+    right: 0;
+}
+
+.coherence-core-search-type-dropdown .coherence-core-input-focus .coherence-core-box-search {
+    opacity: 1;
+}
+
+.coherence-core-search-type-dropdown .coherence-core-box-search {
+    opacity: 0;
+    width: 0;
+}
+
+.elementor-widget-search-button .elementor-widget-container .close,
+.coherence-core-search-type-popup .elementor-widget-container .coherence-core-search-button-wrapper,
+.coherence-core-search-type-popup.show .elementor-widget-container .coherence-core-show-popup,
+.elementor-widget-search-button .elementor-widget-container .coherence-core-show-popup
+{
+    display: none;
+}
+
+.coherence-core-search-type-popup .elementor-widget-container .coherence-core-show-popup {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.coherence-core-search-type-popup.show .elementor-widget-container .close,
+.coherence-core-search-type-popup.show .elementor-widget-container .coherence-core-search-button-wrapper
+{
+    display: block;
+}
+
+.coherence-core-search-type-popup.show .elementor-widget-container .close i:before {
+    color: #ffffff;
+    background: rgba(221,221,221, 0.08);
+    margin-bottom: 40px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
 }
 
 .coherence-core-search-layout-text .coherence-core-search-form__container,
