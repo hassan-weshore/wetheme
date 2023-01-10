@@ -32,6 +32,33 @@ if (!class_exists('Coherence_Elementor_Widget_Init')) {
 			add_action('elementor/widgets/widgets_registered', array($this, '_widget_registered'));
 			// elementor editor css
 			add_filter('elementor/icons_manager/additional_tabs', array($this, 'elementor_custom_icons'));
+			//add_filter('elementor/icons_manager/additional_tabs', array($this, 'elementor_custom_icons'));
+			add_action('elementor/widgets/register', array($this, 'remove_unused_widgets'), 200);
+			add_action('elementor/widgets/widgets_registered', array($this, 'remove_widgets_elementor_pro'));
+		}
+
+		/******************
+		 * HIDE PRO WIDGETS
+		 *******************/
+		public function remove_widgets_elementor_pro()
+		{
+			echo "
+			<style>#elementor-panel-category-pro-elements, #elementor-panel-category-woocommerce-elements, #elementor-panel-category-theme-elements, #elementor-panel-get-pro-elements, .elementor-nerd-box{display: none !important;}</style>
+			";
+		}
+
+		public function remove_unused_widgets($widgets_manager)
+		{
+			global $elementor_widget_blacklist;
+			$elementor_widget_blacklist = [
+
+				//'social-icons'
+
+			];
+
+			foreach ($elementor_widget_blacklist as $widget_name) {
+				$widgets_manager->unregister($widget_name);
+			}
 		}
 
 		/**

@@ -34,25 +34,25 @@
     <nav class="navbar navbar-area navbar-area-3 navbar-expand-lg">
         <div class="container nav-container">
             <div class="responsive-mobile-menu">
-                <button class="menu toggle-btn d-block d-lg-none" data-target="#itech_main_menu" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="menu toggle-btn d-block d-lg-none" data-target="#coherence_main_menu" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="icon-left"></span>
                     <span class="icon-right"></span>
                 </button>
             </div>
             <div class="logo">
-            <?php if(!empty($logo) || !empty($logo_tablet) || !empty($logo_mobile)):?>
-                <a href="<?php echo esc_url(home_url('/')); ?>">
-                    <span class="d-none d-lg-block logo-desktop">
-                        <?php echo $logo ;?>
-                    </span>
-                    <span class="d-none d-sm-block d-lg-none logo-tablet">
-                        <?php echo $logo_tablet ;?>
-                    </span>
-                    <span class="d-block d-sm-none logo-mobile">
-                        <?php echo $logo_mobile ;?>
-                    </span>
-                </a>
-            <?php endif;?>
+                <?php if (!empty($logo) || !empty($logo_tablet) || !empty($logo_mobile)) : ?>
+                    <a href="<?php echo esc_url(home_url('/')); ?>">
+                        <span class="d-none d-lg-block logo-desktop">
+                            <?php echo $logo; ?>
+                        </span>
+                        <span class="d-none d-sm-block d-lg-none logo-tablet">
+                            <?php echo $logo_tablet; ?>
+                        </span>
+                        <span class="d-block d-sm-none logo-mobile">
+                            <?php echo $logo_mobile; ?>
+                        </span>
+                    </a>
+                <?php endif; ?>
             </div>
             <?php if ('yes' == $settings['search_status']) : ?>
                 <div class="nav-right-part nav-right-part-mobile">
@@ -61,7 +61,7 @@
                     </a>
                 </div>
             <?php endif; ?>
-            <div class="collapse navbar-collapse" id="itech_main_menu">
+            <div class="collapse navbar-collapse" id="coherence_main_menu">
                 <?php
                 wp_nav_menu(
                     array(
