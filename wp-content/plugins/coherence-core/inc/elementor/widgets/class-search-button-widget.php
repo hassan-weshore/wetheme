@@ -863,6 +863,7 @@ class Coherence_Search_Button_Widget extends Widget_Base
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .coherence-core-search-icon-toggle i' => 'color: {{VALUE}}; border-color: {{VALUE}}; fill: {{VALUE}};',
+					'{{WRAPPER}} .coherence-core-search-button-wrapper svg path' => 'color: {{VALUE}}',
 				],
 			]
 		);
@@ -890,29 +891,6 @@ class Coherence_Search_Button_Widget extends Widget_Base
 		$this->end_controls_tab();
 
 		$this->end_controls_tabs();
-
-		$this->add_responsive_control(
-			'toggle_icon_size',
-			[
-				'label'              => __('Icon Size', 'coherence-core'),
-				'type'               => Controls_Manager::SLIDER,
-				'default'            => [
-					'size' => 15,
-				],
-				'selectors'          => [
-					'{{WRAPPER}} .coherence-core-search-icon-toggle input[type=search]' => 'padding: 0 calc( {{SIZE}}{{UNIT}} / 2);',
-					'{{WRAPPER}} .coherence-core-search-icon-toggle i.fa-search:before' => 'font-size: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .coherence-core-search-icon-toggle i.fa-search, {{WRAPPER}} .coherence-core-search-icon-toggle' => 'width: {{SIZE}}{{UNIT}};',
-
-				],
-				'condition'          => [
-					'layout' => 'icon',
-				],
-				'separator'          => 'before',
-				'render_type'        => 'template',
-				'frontend_available' => true,
-			]
-		);
 
 		$this->end_controls_section();
 
