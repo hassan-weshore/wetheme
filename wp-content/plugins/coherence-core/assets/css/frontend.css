@@ -2043,3 +2043,50 @@ div.coherence-core-nav-menu,
       background-repeat: no-repeat;
   }
 
+  .elementor-widget-coherence-core-content-box .elementor-coherence-core-content-box-content {
+    width: 100%;
+  }
+  @media (min-width: 768px) {
+    .elementor-widget-coherence-core-content-box.elementor-position-left .elementor-coherence-core-content-box-wrapper, .elementor-widget-coherence-core-content-box.elementor-position-right .elementor-coherence-core-content-box-wrapper {
+      display: flex;
+    }
+    .elementor-widget-coherence-core-content-box.elementor-position-right .elementor-coherence-core-content-box-wrapper {
+      text-align: right;
+      flex-direction: row-reverse;
+    }
+    .elementor-widget-coherence-core-content-box.elementor-position-left .elementor-coherence-core-content-box-wrapper {
+      text-align: left;
+      flex-direction: row;
+    }
+    .elementor-widget-coherence-core-content-box.elementor-position-top .elementor-coherence-core-content-box-img {
+      margin: auto;
+    }
+    .elementor-widget-coherence-core-content-box.elementor-vertical-align-top .elementor-coherence-core-content-box-wrapper {
+      align-items: flex-start;
+    }
+    .elementor-widget-coherence-core-content-box.elementor-vertical-align-middle .elementor-coherence-core-content-box-wrapper {
+      align-items: center;
+    }
+    .elementor-widget-coherence-core-content-box.elementor-vertical-align-bottom .elementor-coherence-core-content-box-wrapper {
+      align-items: flex-end;
+    }
+  }
+  @media (max-width: 767px) {
+    .elementor-widget-coherence-core-content-box .elementor-coherence-core-content-box-img {
+      margin-left: auto !important;
+      margin-right: auto !important;
+      margin-bottom: 15px;
+    }
+  }
+  .elementor-widget-coherence-core-content-box .elementor-coherence-core-content-box-img {
+    display: inline-block;
+  }
+  .elementor-widget-coherence-core-content-box .elementor-coherence-core-content-box-title a {
+    color: inherit;
+  }
+  .elementor-widget-coherence-core-content-box .elementor-coherence-core-content-box-wrapper {
+    text-align: center;
+  }
+  .elementor-widget-coherence-core-content-box .elementor-coherence-core-content-box-description {
+    margin: 0;
+  }
