@@ -93,7 +93,7 @@ class Widget_Content_Box extends Widget_Base
 	 */
 	public function get_keywords()
 	{
-		return ['image', 'photo', 'visual', 'icon', 'box'];
+		return ['image', 'photo', 'visual', 'box' , 'icon box', 'icon'];
 	}
 
 	/**
@@ -251,6 +251,21 @@ class Widget_Content_Box extends Widget_Base
 			]
 		);
 
+		/*
+		$this->add_control(
+			'link_bloc', 
+			[
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label' => esc_html__('Apply the link to the whole block', 'coherence-core'),
+				'label_on' => esc_html__('Yes', 'coherence-core'),
+				'label_off' => esc_html__('No', 'coherence-core'),
+				'return_value' => 'yes',
+				'default' => 'no',
+				'separator' => 'after',
+			]
+		);
+		*/
+
 		$this->add_control(
 			'position',
 			[
@@ -388,21 +403,6 @@ class Widget_Content_Box extends Widget_Base
 			]
 		);
 
-		$this->add_control(
-			'title_color',
-			[
-				'label' => esc_html__('Color', 'coherence-core'),
-				'type' => Controls_Manager::COLOR,
-				'default' => '',
-				'selectors' => [
-					'{{WRAPPER}} .elementor-coherence-core-content-box-title' => 'color: {{VALUE}};',
-				],
-				'global' => [
-					'default' => Global_Colors::COLOR_PRIMARY,
-				],
-			]
-		);
-
 		$this->add_group_control(
 			Group_Control_Typography::get_type(),
 			[
@@ -429,6 +429,8 @@ class Widget_Content_Box extends Widget_Base
 				'selector' => '{{WRAPPER}} .elementor-coherence-core-content-box-title',
 			]
 		);
+
+		$this->register_title_hover_style();
 
 		$this->add_control(
 			'heading_description',
@@ -674,7 +676,7 @@ class Widget_Content_Box extends Widget_Base
 				'label' => esc_html__( 'Icon', 'coherence-core'),
 				'tab'   => Controls_Manager::TAB_STYLE,
 				'conditions' => [
-					'relation' => 'or',
+					'relation' => 'and',
 					'terms' => [
 						[
 							'name' => 'selected_icon[value]',
@@ -682,8 +684,8 @@ class Widget_Content_Box extends Widget_Base
 							'value' => '',
 						],
 						[
-							'name' => 'selebox_typected_icon[value]',
-							'operator' => '===',
+							'name' => 'box_type[value]',
+							'operator' => '==',
 							'value' => 'icon',
 						],
 					],
@@ -910,8 +912,62 @@ class Widget_Content_Box extends Widget_Base
 		$this->end_controls_section();
 	}
 
+	protected function register_title_hover_style() {
+
+		$this->start_controls_tabs(
+			'style_tabs'
+		);
+
+		$this->start_controls_tab(
+			'style_normal_tab',
+			[
+				'label' => esc_html__( 'Normal', 'coherence-core'),
+			]
+		);
+
+		$this->add_control(
+			'title_color',
+			[
+				'label' => esc_html__('Color', 'coherence-core'),
+				'type' => Controls_Manager::COLOR,
+				'default' => '',
+				'selectors' => [
+					'{{WRAPPER}} .elementor-coherence-core-content-box-title' => 'color: {{VALUE}};',
+				],
+				'global' => [
+					'default' => Global_Colors::COLOR_PRIMARY,
+				],
+			]
+		);
+
+		$this->end_controls_tab();
+
+		$this->start_controls_tab(
+			'style_hover_tab',
+			[
+				'label' => esc_html__( 'Hover', 'coherence-core' ),
+			]
+		);
+
+		$this->add_control(
+			'title_color_hover',
+			[
+				'label' => esc_html__('Color', 'coherence-core'),
+				'type' => Controls_Manager::COLOR,
+				'default' => '',
+				'selectors' => [
+					'{{WRAPPER}} .elementor-coherence-core-content-box-title:hover' => 'color: {{VALUE}};',
+				],
+			]
+		);
+
+		$this->end_controls_tab();
+
+		$this->end_controls_tabs();
+	}
+
 	/**
-	 * Render image box widget output on the frontend.
+	 * Render content box widget output on the frontend.
 	 *
 	 * Written in PHP and used to generate the final HTML.
 	 *
@@ -926,73 +982,12 @@ class Widget_Content_Box extends Widget_Base
 
 		$html = '<div class="elementor-coherence-core-content-box-wrapper">';
 
-		if (!empty($settings['link']['url'])) {
-			$this->add_link_attributes('link', $settings['link']);
-		}
-
-		if (!empty($settings['image']['url']) && $settings['box_type'] == 'image') {
-
-			$image_html = wp_kses_post(Group_Control_Image_Size::get_attachment_image_html($settings, 'thumbnail', 'image'));
-
-			if (!empty($settings['link']['url'])) {
-				$image_html = '<a ' . $this->get_render_attribute_string('link') . '>' . $image_html . '</a>';
-			}
-
-			$html .= '<figure class="elementor-coherence-core-content-box-img">' . $image_html . '</figure>';
+		if($settings['box_type'] == 'image') {
+			$html .= $this->render_image($settings);
 		}
 
 		if($settings['box_type'] == 'icon') {
-			$this->add_render_attribute( 'icon', 'class', [ 'elementor-icon', 'elementor-animation-' . $settings['hover_animation'] ] );
-			$icon_tag = 'span';
-			if ( ! isset( $settings['icon'] ) && ! Icons_Manager::is_migration_allowed() ) {
-				// add old default
-				$settings['icon'] = 'fa fa-star';
-			}
-			
-			$has_icon = ! empty( $settings['icon'] );
-			if ( ! empty( $settings['link']['url'] ) ) {
-				$icon_tag = 'a';
-				$this->add_link_attributes( 'link', $settings['link'] );
-			}
-			
-			if ( $has_icon ) {
-				$this->add_render_attribute( 'i', 'class', $settings['icon'] );
-				$this->add_render_attribute( 'i', 'aria-hidden', 'true' );
-			}
-
-			if ( ! $has_icon && ! empty( $settings['selected_icon']['value'] ) ) {
-				$has_icon = true;
-			}
-			$migrated = isset( $settings['__fa4_migrated']['selected_icon'] );
-			$is_new = ! isset( $settings['icon'] ) && Icons_Manager::is_migration_allowed();
-		}
-
-		// if($has_icon) {
-		// 	$html .= '<div class="elementor-coherence-core-content-box-icon">';
-		// 	$html .= '<'.Utils::print_validated_html_tag( $icon_tag ) ." ". $this->print_render_attribute_string( 'icon' ) ." ". $this->print_render_attribute_string( 'link' ).'>';
-		// 	if ( $is_new || $migrated ) {
-		// 		$html .= Icons_Manager::render_icon( $settings['selected_icon'], [ 'aria-hidden' => 'true' ] );
-		// 	} elseif ( ! empty( $settings['icon'] ) ) {
-		// 		$html .= '<i'. $this->print_render_attribute_string('i') .'></i>';
-		// 	}
-		// 	$html .= '</'.Utils::print_validated_html_tag( $icon_tag ).'>';
-		// 	$html .='</div>';
-		// }
-
-		if($has_icon) {
-			?>
-			<div class="elementor-coherence-core-content-box-icon">
-				<<?php Utils::print_validated_html_tag( $icon_tag ); ?> <?php $this->print_render_attribute_string( 'icon' ); ?> <?php $this->print_render_attribute_string( 'link' ); ?>>
-				<?php
-				if ( $is_new || $migrated ) {
-					Icons_Manager::render_icon( $settings['selected_icon'], [ 'aria-hidden' => 'true' ] );
-				} elseif ( ! empty( $settings['icon'] ) ) {
-					?><i <?php $this->print_render_attribute_string( 'i' ); ?>></i><?php
-				}
-				?>
-				</<?php Utils::print_validated_html_tag( $icon_tag ); ?>>
-			</div>
-			<?php
+			$html .= $this->render_icon($settings);
 		}
 
 		if ($has_content) {
@@ -1006,7 +1001,7 @@ class Widget_Content_Box extends Widget_Base
 				$title_html = $settings['title_text'];
 
 				if (!empty($settings['link']['url'])) {
-					$title_html = '<a ' . $this->get_render_attribute_string('link') . '>' . $title_html . '</a>';
+					$title_html = sprintf('<a %1$s>%2$s</a>',$this->get_render_attribute_string('link'),$title_html);
 				}
 
 				$html .= sprintf('<%1$s %2$s>%3$s</%1$s>', Utils::validate_html_tag($settings['title_size']), $this->get_render_attribute_string('title_text'), $title_html);
@@ -1028,8 +1023,78 @@ class Widget_Content_Box extends Widget_Base
 		Utils::print_unescaped_internal_string($html);
 	}
 
+	private function render_icon($settings)
+	{
+		$html = '';
+		$this->add_render_attribute( 'icon', 'class', [ 'elementor-icon', 'elementor-animation-' . $settings['hover_animation'] ] );
+
+		$icon_tag = 'span';
+
+		if ( ! isset( $settings['icon'] ) && ! Icons_Manager::is_migration_allowed() ) {
+			// add old default
+			$settings['icon'] = 'fa fa-star';
+		}
+
+		$has_icon = ! empty( $settings['icon'] );
+
+		if ( ! empty( $settings['link']['url'] ) ) {
+			$icon_tag = 'a';
+
+			$this->add_link_attributes( 'link', $settings['link'] );
+		}
+
+		if ( $has_icon ) {
+			$this->add_render_attribute( 'i', 'class', $settings['icon'] );
+			$this->add_render_attribute( 'i', 'aria-hidden', 'true' );
+		}
+
+		$this->add_render_attribute( 'description_text', 'class', 'elementor-icon-box-description' );
+
+		$this->add_inline_editing_attributes( 'title_text', 'none' );
+		$this->add_inline_editing_attributes( 'description_text' );
+		if ( ! $has_icon && ! empty( $settings['selected_icon']['value'] ) ) {
+			$has_icon = true;
+		}
+		$migrated = isset( $settings['__fa4_migrated']['selected_icon'] );
+		$is_new = ! isset( $settings['icon'] ) && Icons_Manager::is_migration_allowed();
+
+		if($has_icon) {
+			$html .='<div class="elementor-coherence-core-content-box-icon">';
+			$html .= sprintf('<%1$s %2$s %3$s>',Utils::validate_html_tag( $icon_tag ),$this->get_render_attribute_string( 'icon' ),$this->get_render_attribute_string( 'link' ));
+			if ( $is_new || $migrated ) {
+				$html .= Icons_Manager::try_get_icon_html( $settings['selected_icon'], [ 'aria-hidden' => 'true' ] );
+			} elseif ( ! empty( $settings['icon'] ) ) {
+				$html .= sprintf('<i %1$s></i>',$this->get_render_attribute_string( 'i' ));
+			}
+			
+			$html .= sprintf('</%1$s>',Utils::validate_html_tag( $icon_tag ));
+			$html .='</div>';
+		}
+
+		return $html;
+	}
+
+	private function render_image($settings) {
+		$html = '';
+		if ( ! empty( $settings['link']['url'] ) ) {
+			$this->add_link_attributes( 'link', $settings['link'] );
+		}
+
+		if ( ! empty( $settings['image']['url'] ) ) {
+
+			$image_html = wp_kses_post( Group_Control_Image_Size::get_attachment_image_html( $settings, 'thumbnail', 'image' ) );
+
+			if ( ! empty( $settings['link']['url'] ) ) {
+				$image_html = sprintf('<a %1$s>%2$s</a>',$this->get_render_attribute_string( 'link' ),$image_html);
+			}
+
+			$html = '<figure class="elementor-coherence-core-content-box-img">' . $image_html . '</figure>';
+		}
+		return $html;
+	}
+
 	/**
-	 * Render image box widget output in the editor.
+	 * Render content box widget output in the editor.
 	 *
 	 * Written as a Backbone JavaScript template and used to generate the live preview.
 	 *
