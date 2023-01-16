@@ -2090,3 +2090,7 @@ div.coherence-core-nav-menu,
   .elementor-widget-coherence-core-content-box .elementor-coherence-core-content-box-description {
     margin: 0;
   }
+  .elementor-position-right .elementor-coherence-core-content-box-img ,
+  .elementor-position-left .elementor-coherence-core-content-box-img {
+    flex-shrink: 0;
+  }
