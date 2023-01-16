@@ -1,0 +1,35 @@
+.coherence-section-parallax {
+	position: absolute;
+	overflow: hidden;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.coherence-section-parallax .coherence-section-parallax-background {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.coherence-section-parallax.coherence-section-parallax-fixed .coherence-section-parallax-background {
+	background-attachment: fixed;
+}
+
+.coherence-section-parallax.coherence-section-parallax-horizontal .coherence-section-parallax-background {
+/*	background-position: center center;*/
+}
+
+.coherence-section-parallax.coherence-section-parallax-vertical {
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+}
+
+.coherence-section-parallax.coherence-section-parallax-vertical .coherence-section-parallax-background {
+/*	background-repeat: no-repeat;
+	background-size: cover;*/
+	will-change: transform;
+}

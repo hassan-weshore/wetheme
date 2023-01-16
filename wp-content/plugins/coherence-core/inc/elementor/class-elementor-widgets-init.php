@@ -26,7 +26,9 @@ if (!class_exists('Coherence_Elementor_Widget_Init')) {
 		* */
 		public function __construct()
 		{
-			include COHERENCE_CORE_ELEMENTOR . '/widgets/class-section-widget.php';
+
+			//include COHERENCE_CORE_ELEMENTOR . '/coherence-sections-colums-breakpoints.php';
+			include COHERENCE_CORE_ELEMENTOR . '/widgets/widgets-options-css-interaction.php';
 			add_action('elementor/elements/categories_registered', array($this, '_widget_categories'), 2);
 			//elementor widget registered
 			add_action('elementor/widgets/widgets_registered', array($this, '_widget_registered'));
