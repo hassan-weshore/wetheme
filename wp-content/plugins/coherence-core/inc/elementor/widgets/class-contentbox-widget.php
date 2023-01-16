@@ -502,27 +502,51 @@ class Widget_Content_Box extends Widget_Base
 		$this->add_responsive_control(
 			'image_size',
 			[
-				'label' => esc_html__('Width', 'coherence-core') . ' (%)',
+				'label' => esc_html__('Width', 'coherence-core'),
 				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%'],
 				'default' => [
-					'size' => 30,
-					'unit' => '%',
+					'size' => 250,
+					'unit' => 'px',
 				],
-				'tablet_default' => [
-					'unit' => '%',
-				],
-				'mobile_default' => [
-					'unit' => '%',
-				],
-				'size_units' => ['%'],
 				'range' => [
 					'%' => [
-						'min' => 5,
+						'min' => 0,
 						'max' => 100,
 					],
+					'px' => [
+						'min' => 0,
+						'max' => 1200,
+					]
 				],
 				'selectors' => [
-					'{{WRAPPER}} .elementor-coherence-core-content-box-wrapper .elementor-coherence-core-content-box-img' => 'width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .elementor-coherence-core-content-box-wrapper .elementor-coherence-core-content-box-img img' => 'width: {{SIZE}}{{UNIT}};max-width: 100%;',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'height_size',
+			[
+				'label' => esc_html__('height', 'coherence-core'),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%'],
+				'default' => [
+					'size' => 250,
+					'unit' => 'px',
+				],
+				'range' => [
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+					'px' => [
+						'min' => 0,
+						'max' => 1200,
+					]
+				],
+				'selectors' => [
+					'{{WRAPPER}} .elementor-coherence-core-content-box-wrapper .elementor-coherence-core-content-box-img img' => 'height: {{SIZE}}{{UNIT}};object-fit: cover;',
 				],
 			]
 		);
