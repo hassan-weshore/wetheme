@@ -251,21 +251,6 @@ class Widget_Content_Box extends Widget_Base
 			]
 		);
 
-		/*
-		$this->add_control(
-			'link_bloc', 
-			[
-				'type' => \Elementor\Controls_Manager::SWITCHER,
-				'label' => esc_html__('Apply the link to the whole block', 'coherence-core'),
-				'label_on' => esc_html__('Yes', 'coherence-core'),
-				'label_off' => esc_html__('No', 'coherence-core'),
-				'return_value' => 'yes',
-				'default' => 'no',
-				'separator' => 'after',
-			]
-		);
-		*/
-
 		$this->add_control(
 			'position',
 			[
@@ -800,7 +785,10 @@ class Widget_Content_Box extends Widget_Base
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}}' => '--icon-box-icon-margin: {{SIZE}}{{UNIT}}',
+					'{{WRAPPER}}.elementor-position-right .elementor-coherence-core-content-box-icon' => 'margin-left: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}}.elementor-position-left .elementor-coherence-core-content-box-icon' => 'margin-right: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}}.elementor-position-top .elementor-coherence-core-content-box-icon' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+					'(mobile){{WRAPPER}} .elementor-coherence-core-content-box-icon' => 'margin-bottom: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -874,7 +862,7 @@ class Widget_Content_Box extends Widget_Base
 				],
 				'device_args' => $rotate_device_args,
 				'selectors' => [
-					'{{WRAPPER}} .elementor-icon i' => 'transform: rotate({{SIZE}}{{UNIT}});',
+					'{{WRAPPER}} .elementor-coherence-core-content-box-icon .elementor-icon' => 'transform: rotate({{SIZE}}{{UNIT}});',
 				],
 			]
 		);
@@ -1134,18 +1122,18 @@ class Widget_Content_Box extends Widget_Base
 				iconTag = link ? 'a' : 'span',
 				iconHTML = elementor.helpers.renderIcon( view, settings.selected_icon, { 'aria-hidden': true }, 'i' , 'object' ),
 				migrated = elementor.helpers.isIconMigrated( settings, 'selected_icon' );
-			}
 
-			if ( settings.icon || settings.selected_icon.value ) {
-				html +='<div class="elementor-coherence-core-content-box-icon">';
-				html +='<'+iconTag+ " " + link +' class="elementor-icon elementor-animation-' + settings.hover_animation + '">'
-					if ( iconHTML && iconHTML.rendered && ( ! settings.icon || migrated ) ) {
-						html += iconHTML.value;
+				if ( settings.icon || settings.selected_icon.value ) {
+					html +='<div class="elementor-coherence-core-content-box-icon">';
+					html +='<'+iconTag+ " " + link +' class="elementor-icon elementor-animation-' + settings.hover_animation + '">';
+						if ( iconHTML && iconHTML.rendered && ( ! settings.icon || migrated ) ) {
+							html += iconHTML.value;
 						} else {
 							html +='<i class="'+settings.icon+'" aria-hidden="true"></i>';
 						}
-						html +='</'+iconTag+'>';
-				html +='</div>';
+					html +='</'+iconTag+'>';
+					html +='</div>';
+				}
 			}
 			
 			var hasContent=!! ( settings.title_text || settings.description_text ); 
