@@ -71,28 +71,68 @@ function load_plugin() {
     if ( is_admin() && get_option( 'activated-coherence-core' ) == 'coherence-core' ) {
 	   $kit_active_id = Elementor\Plugin::$instance->kits_manager->get_active_id();
 	   $settings = get_post_meta( $kit_active_id, '_elementor_page_settings', true );
+
+	   //Default colors 
+	   $colors = [
+		'system_colors' => 
+		[
+			[
+				'_id' => 'primary',
+				'title' => 'Principal',
+				'color' => '#9b59b6',
+			],
+			[
+				'_id' => 'secondary',
+				'title' => 'Secondaire',
+				'color' => '#e74c3c',
+			],
+			[
+				'_id' => 'text',
+				'title' => 'Texte',
+				'color' => '#2c3e50',
+			],
+			[
+				'_id' => 'accent',
+				'title' => 'Accentué',
+				'color' => '#c0392b',
+			],
+		],
+		'custom_colors' => [
+			[
+				'_id' => 'c7f8c8d',
+				'title' => 'Nouvel élément #2',
+				'color' => '#7f8c8d',
+			],
+			[
+				'_id' => 'c1abc9c',
+				'title' => 'Nouvel élément #2',
+				'color' => '#1abc9c',
+			]
+		]
+	];
+
+	//Default breakpoints
+	$default_breakpoints = [
+		'active_breakpoints' => 
+		[
+			'viewport_mobile',
+			'viewport_mobile_extra',
+			'viewport_tablet',
+			'viewport_tablet_extra',
+			'viewport_laptop',
+			'viewport_widescreen',
+		],
+		'viewport_md' => 601,
+		'viewport_lg' => 1025,
+		'viewport_mobile' => 600,
+		'viewport_mobile_extra' => 800,
+		'viewport_tablet' => 1024,
+		'viewport_tablet_extra' => 1360,
+		'viewport_laptop' => 1500,
+		'viewport_widescreen' => 1920,
+	];
    
-	   $default_breakpoints = [
-	   	'active_breakpoints' => 
-	   	[
-	   		'viewport_mobile',
-	   		'viewport_mobile_extra',
-	   		'viewport_tablet',
-	   		'viewport_tablet_extra',
-	   		'viewport_laptop',
-	   		'viewport_widescreen',
-	   	],
-	   	'viewport_md' => 601,
-	   	'viewport_lg' => 1025,
-	   	'viewport_mobile' => 600,
-	   	'viewport_mobile_extra' => 800,
-	   	'viewport_tablet' => 1024,
-	   	'viewport_tablet_extra' => 1360,
-	   	'viewport_laptop' => 1500,
-	   	'viewport_widescreen' => 1920,
-	   ];
-   
-	   $settings = array_merge($settings,$default_breakpoints);
+	   $settings = array_merge($settings,$default_breakpoints,$colors);
 	   update_post_meta($kit_active_id, '_elementor_page_settings' , $settings);
 
 	   delete_option( 'activated-coherence-core' );
@@ -100,3 +140,8 @@ function load_plugin() {
 }
 
 add_action( 'admin_init', 'load_plugin' );
+
+add_action('init',function(){
+	$kit_active_id = Elementor\Plugin::$instance->kits_manager->get_active_id();
+	$settings = get_post_meta( $kit_active_id, '_elementor_page_settings', true );
+});
