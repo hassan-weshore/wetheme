@@ -201,7 +201,7 @@ class Widget_Content_Box extends Widget_Base
 				'default' => 'circle',
 				'condition' => [
 					'view!' => 'default',
-					'selected_icon[value]!' => '',
+					'selected_icon!' => '',
 					'box_type' => 'icon',
 				],
 				'prefix_class' => 'elementor-shape-',
@@ -688,12 +688,12 @@ class Widget_Content_Box extends Widget_Base
 					'relation' => 'and',
 					'terms' => [
 						[
-							'name' => 'selected_icon[value]',
+							'name' => 'selected_icon',
 							'operator' => '!=',
 							'value' => '',
 						],
 						[
-							'name' => 'box_type[value]',
+							'name' => 'box_type',
 							'operator' => '==',
 							'value' => 'icon',
 						],
