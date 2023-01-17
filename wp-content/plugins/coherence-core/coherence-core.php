@@ -72,6 +72,10 @@ function load_plugin() {
 	   $kit_active_id = Elementor\Plugin::$instance->kits_manager->get_active_id();
 	   $settings = get_post_meta( $kit_active_id, '_elementor_page_settings', true );
 
+	   if(empty($settings)) {
+		$settings = [];
+	   }
+
 	   //Default colors 
 	   $colors = [
 		'system_colors' => 
