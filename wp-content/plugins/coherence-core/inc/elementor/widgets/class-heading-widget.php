@@ -653,15 +653,29 @@ class Coherence_Heading_Widget extends Widget_Heading
 	{
 ?>
 		<div class="coherence-heading">
-			<# var title=settings.title; var show_separator=settings.show_separator; view.addRenderAttribute( 'title' , 'class' , [ 'elementor-heading-title' , 'elementor-size-' + settings.size ] ); view.addInlineEditingAttributes( 'title' ); if ( settings.sub_title !=='' ) { #>
+			<#
+			var title=settings.title; var show_separator=settings.show_separator;
+			view.addRenderAttribute( 'title' , 'class' , [ 'elementor-heading-title' , 'elementor-size-' + settings.size ] );
+			view.addInlineEditingAttributes( 'title' );
+			
+			if ( settings.sub_title !=='' ) { #>
 				<span class="separator-sub-title">{{{settings.sub_title}}}</span>
-				<# } var headerSizeTag=elementor.helpers.validateHTMLTag( settings.header_size ) if ( headerSizeTag ) { #>
+			<# } 
+				
+			var headerSizeTag=elementor.helpers.validateHTMLTag( settings.header_size ) 
+			if ( headerSizeTag ) { #>
 					<{{{headerSizeTag}}} {{{view.getRenderAttributeString( 'title' )}}}>{{{title}}}</{{{headerSizeTag}}}>
-					<# } if ( show_separator==='yes' ) { #>
-						<span class="coherence-core-heading-{{{settings.separator_type}}}"></span>
-						<# } if ( settings.summary_title !=='' ) { #>
-							<p class="text-summary-title">{{{settings.summary_title}}}</p>
-							<# } #>
+			<# } 
+			
+			if ( show_separator==='yes' ) { #>
+				<span class="coherence-core-heading-{{{settings.separator_type}}}"></span>
+			<# } 
+			
+			if ( settings.summary_title !=='' ) { #>
+				<p class="text-summary-title">{{{settings.summary_title}}}</p>
+			<# } 
+			
+			#>
 		</div>
 <?php
 	}

@@ -122,13 +122,11 @@ function load_plugin() {
 			'viewport_laptop',
 			'viewport_widescreen',
 		],
-		'viewport_md' => 601,
-		'viewport_lg' => 1025,
-		'viewport_mobile' => 600,
-		'viewport_mobile_extra' => 800,
-		'viewport_tablet' => 1024,
-		'viewport_tablet_extra' => 1360,
-		'viewport_laptop' => 1500,
+		'viewport_mobile' => 497,
+		'viewport_mobile_extra' => 600,
+		'viewport_tablet' => 800,
+		'viewport_tablet_extra' => 1024,
+		'viewport_laptop' => 1360,
 		'viewport_widescreen' => 1920,
 	];
    
@@ -141,7 +139,4 @@ function load_plugin() {
 
 add_action( 'admin_init', 'load_plugin' );
 
-add_action('init',function(){
-	$kit_active_id = Elementor\Plugin::$instance->kits_manager->get_active_id();
-	$settings = get_post_meta( $kit_active_id, '_elementor_page_settings', true );
-});
+
