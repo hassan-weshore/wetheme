@@ -28,7 +28,7 @@ class Coherence_Image_Widget extends Widget_Base {
 	 * @return string Widget name.
 	 */
 	public function get_name() {
-		return 'coherence-image-widget';
+		return 'coherence-image';
 	}
 
 	/**
@@ -272,6 +272,9 @@ class Coherence_Image_Widget extends Widget_Base {
 				'selectors' => [
 					'{{WRAPPER}} img' => 'width: {{SIZE}}{{UNIT}};',
 				],
+				'condition' => [
+					'show_icon!' => 'yes'
+				],
 			]
 		);
 
@@ -307,6 +310,9 @@ class Coherence_Image_Widget extends Widget_Base {
 				'selectors' => [
 					'{{WRAPPER}} img' => 'max-width: {{SIZE}}{{UNIT}};',
 				],
+				'condition' => [
+					'show_icon!' => 'yes'
+				],
 			]
 		);
 
@@ -337,6 +343,9 @@ class Coherence_Image_Widget extends Widget_Base {
 				],
 				'selectors' => [
 					'{{WRAPPER}} img' => 'height: {{SIZE}}{{UNIT}};',
+				],
+				'condition' => [
+					'show_icon!' => 'yes'
 				],
 			]
 		);
@@ -429,6 +438,8 @@ class Coherence_Image_Widget extends Widget_Base {
 				],
 			]
 		);
+
+		$this->additional_controls_style_image_hover();
 
 		$this->add_group_control(
 			Group_Control_Css_Filter::get_type(),
@@ -607,6 +618,118 @@ class Coherence_Image_Widget extends Widget_Base {
 		$this->end_controls_section();
 	}
 
+	public function additional_controls_style_image_hover() {
+		
+		$this->add_group_control(
+			Group_Control_Background::get_type(),
+			[
+				'name' => 'background_hover',
+				'types' => ['classic','gradient'],
+				'exclude' => ['image'],
+				'selector' => '{{WRAPPER}} .section-image:after',
+			]
+		);
+
+		$this->add_control(
+			'opacity_background',
+			[
+				'label' => esc_html__( 'Opacity Background', 'coherence-core' ),
+				'type' => Controls_Manager::SLIDER,
+				'range' => [
+					'px' => [
+						'max' => 1,
+						'min' => 0.10,
+						'step' => 0.01,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .section-image:after' => 'opacity: {{SIZE}};',
+				],
+			]
+		);
+
+		$this->add_control(
+			'heading_icon',
+			[
+				'label' => esc_html__('Icon', 'coherence-core'),
+				'type' => Controls_Manager::HEADING,
+				'separator' => 'before',
+			]
+		);
+
+		$this->add_control(
+			'show_icon',
+			[
+				'label' => esc_html__('Show', 'coherence-core'),
+				'type' => \Elementor\Controls_Manager::SWITCHER,
+				'label_on' => esc_html__('Yes', 'coherence-core'),
+				'label_off' => esc_html__('No', 'coherence-core'),
+				'return_value' => 'yes',
+				'default' => 'no',
+				'prefix_class' => 'elementor-show-icon-',
+			]
+		);
+
+		$this->add_control(
+			'selected_icon',
+			[
+				'label' => esc_html__( 'Icon', 'coherence-core'),
+				'type' => Controls_Manager::ICONS,
+				'fa4compatibility' => 'icon',
+				'default' => [
+					'value' => 'fas fa-star',
+					'library' => 'fa-solid',
+				],
+				'condition' => [
+					'show_icon' => 'yes'
+				]
+			]
+		);
+
+		
+		$this->add_responsive_control(
+			'icon_size',
+			[
+				'label' => esc_html__( 'Taille', 'coherence-core'),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'px', '%', 'em', 'rem' ],
+				'range' => [
+					'px' => [
+						'min' => 6,
+						'max' => 300,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .section-image svg' => 'width: {{SIZE}}{{UNIT}};',
+				],
+				'condition' => [
+					'show_icon' => 'yes'
+				]
+			]
+		);
+
+
+		$this->add_responsive_control(
+			'rotate',
+			[
+				'label' => esc_html__( 'Rotate', 'coherence-core'),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => [ 'deg', 'grad', 'rad', 'turn' ],
+				'default' => [
+					'unit' => 'deg',
+				],
+				'selectors' => [
+					'{{WRAPPER}} .section-image svg' => 'transform: rotate({{SIZE}}{{UNIT}});',
+				],
+				'condition' => [
+					'show_icon' => 'yes'
+				],
+				'separator' => 'after',
+			]
+		);
+
+	}
+
 	/**
 	 * Check if the current widget has caption
 	 *
@@ -689,7 +812,14 @@ class Coherence_Image_Widget extends Widget_Base {
 			<?php if ( $link ) : ?>
 					<a <?php $this->print_render_attribute_string( 'link' ); ?>>
 			<?php endif; ?>
+			<div class="section-image">
+				<?php 
+					if($settings['show_icon'] === 'yes') {
+						echo Icons_Manager::try_get_icon_html( $settings['selected_icon'], [ 'aria-hidden' => 'true' ] );
+					}
+				?>
 				<?php Group_Control_Image_Size::print_attachment_image_html( $settings ); ?>
+			</div>
 			<?php if ( $link ) : ?>
 					</a>
 			<?php endif; ?>
@@ -704,110 +834,6 @@ class Coherence_Image_Widget extends Widget_Base {
 		<?php if ( ! Plugin::$instance->experiments->is_feature_active( 'e_dom_optimization' ) ) { ?>
 			</div>
 		<?php } ?>
-		<?php
-	}
-
-	/**
-	 * Render image widget output in the editor.
-	 *
-	 * Written as a Backbone JavaScript template and used to generate the live preview.
-	 *
-	 * @since 2.9.0
-	 * @access protected
-	 */
-	protected function content_template() {
-		?>
-		<# if ( settings.image.url ) {
-			var image = {
-				id: settings.image.id,
-				url: settings.image.url,
-				size: settings.image_size,
-				dimension: settings.image_custom_dimension,
-				model: view.getEditModel()
-			};
-
-			var image_url = elementor.imagesManager.getImageUrl( image );
-
-			if ( ! image_url ) {
-				return;
-			}
-
-			var hasCaption = function() {
-				if( ! settings.caption_source || 'none' === settings.caption_source ) {
-					return false;
-				}
-				return true;
-			}
-
-			var ensureAttachmentData = function( id ) {
-				if ( 'undefined' === typeof wp.media.attachment( id ).get( 'caption' ) ) {
-					wp.media.attachment( id ).fetch().then( function( data ) {
-						view.render();
-					} );
-				}
-			}
-
-			var getAttachmentCaption = function( id ) {
-				if ( ! id ) {
-					return '';
-				}
-				ensureAttachmentData( id );
-				return wp.media.attachment( id ).get( 'caption' );
-			}
-
-			var getCaption = function() {
-				if ( ! hasCaption() ) {
-					return '';
-				}
-				return 'custom' === settings.caption_source ? settings.caption : getAttachmentCaption( settings.image.id );
-			}
-
-			var link_url;
-
-			if ( 'custom' === settings.link_to ) {
-				link_url = settings.link.url;
-			}
-
-			if ( 'file' === settings.link_to ) {
-				link_url = settings.image.url;
-			}
-
-			<?php if ( ! Plugin::$instance->experiments->is_feature_active( 'e_dom_optimization' ) ) { ?>
-				#><div class="elementor-image{{ settings.shape ? ' elementor-image-shape-' + settings.shape : '' }}"><#
-			<?php } ?>
-
-			var imgClass = '';
-
-			if ( '' !== settings.hover_animation ) {
-				imgClass = 'elementor-animation-' + settings.hover_animation;
-			}
-
-			if ( hasCaption() ) {
-				#><figure class="wp-caption"><#
-			}
-
-			if ( link_url ) {
-					#><a class="elementor-clickable" data-elementor-open-lightbox="{{ settings.open_lightbox }}" href="{{ link_url }}"><#
-			}
-						#><img src="{{ image_url }}" class="{{ imgClass }}" /><#
-
-			if ( link_url ) {
-					#></a><#
-			}
-
-			if ( hasCaption() ) {
-					#><figcaption class="widget-image-caption wp-caption-text">{{{ getCaption() }}}</figcaption><#
-			}
-
-			if ( hasCaption() ) {
-				#></figure><#
-			}
-
-			<?php if ( ! Plugin::$instance->experiments->is_feature_active( 'e_dom_optimization' ) ) { ?>
-				#></div><#
-			<?php } ?>
-
-		} #>
 		<?php
 	}
 
