@@ -151,12 +151,69 @@ class Coherence_Heading_Widget extends Widget_Heading
 					'label_block' => true,
 				]
 			);
+
+			
+			$element->add_responsive_control(
+				'sub_title_justify_content',
+				[
+					'label' => esc_html__('Justify Content', 'coherence-core'),
+					'type' => Controls_Manager::SELECT,
+					'default' => 'center',
+					'options' => [
+						'center' => esc_html__('Center', 'coherence-core'),
+						'flex-start' => esc_html__('Flex Start', 'coherence-core'),
+						'flex-end' => esc_html__('Flex End', 'coherence-core'),
+						'space-around' => esc_html__('Space Around', 'coherence-core'),
+						'space-between' => esc_html__('Space Between', 'coherence-core'),
+						'space-evenly' => esc_html__('Space Evenly', 'coherence-core'),
+					],
+					'selectors' => [
+						'{{WRAPPER}} .coherence-heading .separator-sub-title' => 'justify-content: {{VALUE}};',
+					],
+					'condition' => [
+						'sub_title!' => '',
+					]
+				]
+			);
 			$element->add_control(
 				'summary_title',
 				[
 					'label' => esc_html__('Content', 'coherence-core'),
 					'type' => Controls_Manager::TEXTAREA,
 					'placeholder' => esc_html__('Enter your Content', 'coherence-core'),
+				]
+			);
+			$element->add_responsive_control(
+				'summary_text_align',
+				[
+					'label' => esc_html__('Text Align', 'coherence-core'),
+					'type' => Controls_Manager::CHOOSE,
+					'default' => 'center',
+					'options' => [
+						'left' => [
+							'title' => esc_html__( 'Left', 'coherence-core' ),
+							'icon' => 'eicon-text-align-left',
+						],
+						'center' => [
+							'title' => esc_html__( 'Center', 'coherence-core' ),
+							'icon' => 'eicon-text-align-center',
+						],
+						'right' => [
+							'title' => esc_html__( 'Right', 'coherence-core' ),
+							'icon' => 'eicon-text-align-right',
+						],
+						'justify' => [
+							'title' =>  esc_html__( 'Justify', 'coherence-core' ),
+							'icon' => 'eicon-text-align-justify',
+						]
+					],
+					'default' => 'center',
+					'selectors' => [
+						'{{WRAPPER}}  .coherence-heading .text-summary-title' => 'text-align: {{VALUE}};',
+					],
+					'condition' => [
+						'summary_title!' => '',
+					]
 				]
 			);
 			$element->add_control(
@@ -425,25 +482,7 @@ class Coherence_Heading_Widget extends Widget_Heading
 					],
 				]
 			);
-			$element->add_responsive_control(
-				'sub_title_justify_content',
-				[
-					'label' => esc_html__('Justify Content', 'coherence-core'),
-					'type' => Controls_Manager::SELECT,
-					'default' => 'center',
-					'options' => [
-						'center' => esc_html__('Center', 'coherence-core'),
-						'flex-start' => esc_html__('Flex Start', 'coherence-core'),
-						'flex-end' => esc_html__('Flex End', 'coherence-core'),
-						'space-around' => esc_html__('Space Around', 'coherence-core'),
-						'space-between' => esc_html__('Space Between', 'coherence-core'),
-						'space-evenly' => esc_html__('Space Evenly', 'coherence-core'),
-					],
-					'selectors' => [
-						'{{WRAPPER}} .coherence-heading .separator-sub-title' => 'justify-content: {{VALUE}};',
-					],
-				]
-			);
+			
 			$element->add_responsive_control(
 				'sub_title_margin',
 				[
@@ -558,22 +597,6 @@ class Coherence_Heading_Widget extends Widget_Heading
 					],
 					'selectors' => [
 						'{{WRAPPER}}  .coherence-heading .text-summary-title' => 'color: {{VALUE}};',
-					],
-				]
-			);
-			$element->add_responsive_control(
-				'summary_text_align',
-				[
-					'label' => esc_html__('Text Align', 'coherence-core'),
-					'type' => Controls_Manager::SELECT,
-					'default' => 'center',
-					'options' => [
-						'center' => esc_html__('Center', 'coherence-core'),
-						'left' => esc_html__('Left', 'coherence-core'),
-						'right' => esc_html__('Right', 'coherence-core'),
-					],
-					'selectors' => [
-						'{{WRAPPER}}  .coherence-heading .text-summary-title' => 'text-align: {{VALUE}};',
 					],
 				]
 			);
