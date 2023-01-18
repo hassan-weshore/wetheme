@@ -1,22 +1,22 @@
 .elementor-widget-coherence-image {
-    &.elementor-show-icon-yes {
-        .section-image {
-            img {
-                width: 100% !important;
-                object-fit: contain;
-                max-width: 100% !important;
-                height: auto !important;
+    &.coherence-core-align-image {
+        //coherence-core-align-image-auto
+        &-auto {
+            .section-image {
+                margin-left: auto;
+                margin-right: auto;
             }
-            svg {
-                display: none;
-                position: absolute;
-                z-index: 5;
+        }
+        //coherence-core-align-image-left
+        &-left {
+            .section-image {
+                margin-right: auto;
             }
-            &:hover {
-                svg {
-                    display: inline-block;
-                    width: 70px;
-                }
+        }
+        //coherence-core-align-image-right
+        &-right {
+            .section-image {
+                margin-left: auto;
             }
         }
     }
@@ -25,6 +25,15 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        img {
+            width: 100%;
+            object-fit: contain;
+        }
+        svg {
+            display: none;
+            position: absolute;
+            z-index: 5;
+        }
         &:after {
             position: absolute;
             top: 0;
@@ -36,6 +45,11 @@
         &:hover {
             &:after {
                 content: '';
+            }
+            svg {
+                display: inline-block;
+                width: 70px;
+                height: auto;
             }
         }
     }

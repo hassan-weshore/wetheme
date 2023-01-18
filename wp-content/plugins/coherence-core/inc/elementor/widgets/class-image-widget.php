@@ -140,21 +140,19 @@ class Coherence_Image_Widget extends Widget_Base
 				'type' => Controls_Manager::CHOOSE,
 				'options' => [
 					'left' => [
-						'title' => esc_html__('Left', 'coherence-core'),
-						'icon' => 'eicon-text-align-left',
+						'title' => esc_html__( 'Left', 'coherence-core' ),
+						'icon' => 'eicon-h-align-left',
 					],
-					'center' => [
-						'title' => esc_html__('Center', 'coherence-core'),
-						'icon' => 'eicon-text-align-center',
+					'auto' => [
+						'title' => esc_html__( 'Center', 'coherence-core' ),
+						'icon' => 'eicon-h-align-center',
 					],
 					'right' => [
-						'title' => esc_html__('Right', 'coherence-core'),
-						'icon' => 'eicon-text-align-right',
+						'title' => esc_html__( 'Right', 'coherence-core' ),
+						'icon' => 'eicon-h-align-right',
 					],
 				],
-				'selectors' => [
-					'{{WRAPPER}}' => 'text-align: {{VALUE}};',
-				],
+				'prefix_class' => 'coherence-core-align-image-',
 			]
 		);
 
@@ -278,10 +276,7 @@ class Coherence_Image_Widget extends Widget_Base
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} img' => 'width: {{SIZE}}{{UNIT}};',
-				],
-				'condition' => [
-					'show_icon!' => 'yes'
+					'{{WRAPPER}} .section-image' => 'width: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -316,10 +311,7 @@ class Coherence_Image_Widget extends Widget_Base
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} img' => 'max-width: {{SIZE}}{{UNIT}};',
-				],
-				'condition' => [
-					'show_icon!' => 'yes'
+					'{{WRAPPER}} .section-image' => 'max-width: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -351,9 +343,6 @@ class Coherence_Image_Widget extends Widget_Base
 				],
 				'selectors' => [
 					'{{WRAPPER}} img' => 'height: {{SIZE}}{{UNIT}};',
-				],
-				'condition' => [
-					'show_icon!' => 'yes'
 				],
 			]
 		);
@@ -635,8 +624,7 @@ class Coherence_Image_Widget extends Widget_Base
 			Group_Control_Background::get_type(),
 			[
 				'name' => 'background_hover',
-				'types' => ['classic', 'gradient'],
-				'exclude' => ['image'],
+				'types' => ['classic','gradient'],
 				'selector' => '{{WRAPPER}} .section-image:after',
 			]
 		);
@@ -697,7 +685,21 @@ class Coherence_Image_Widget extends Widget_Base
 			]
 		);
 
-
+		$this->add_control(
+			'icon_color',
+			[
+				'label' => esc_html__( 'Icon Color', 'coherence-core' ),
+				'type' => Controls_Manager::COLOR,
+				'default' => '',
+				'selectors' => [
+					'{{WRAPPER}} .section-image svg path' => 'fill: {{VALUE}};',
+				],
+				'global' => [
+					'default' => Global_Colors::COLOR_TEXT,
+				],
+			]
+		);
+		
 		$this->add_responsive_control(
 			'icon_size',
 			[
@@ -828,7 +830,7 @@ class Coherence_Image_Widget extends Widget_Base
 					<div class="section-image">
 						<?php
 						if ($settings['show_icon'] === 'yes') {
-							echo Icons_Manager::try_get_icon_html($settings['selected_icon'], ['aria-hidden' => 'true']);
+							echo '<i class="fa '.$settings['selected_icon']['value'].'"></i>';
 						}
 						?>
 						<?php Group_Control_Image_Size::print_attachment_image_html($settings); ?>
@@ -849,6 +851,121 @@ class Coherence_Image_Widget extends Widget_Base
 		<?php } ?>
 <?php
 	}
+
+		/**
+	 * Render image widget output in the editor.
+	 *
+	 * Written as a Backbone JavaScript template and used to generate the live preview.
+	 *
+	 * @since 2.9.0
+	 * @access protected
+	 */
+	protected function content_template() {
+		?>
+		<# if ( settings.image.url ) {
+			var image = {
+				id: settings.image.id,
+				url: settings.image.url,
+				size: settings.image_size,
+				dimension: settings.image_custom_dimension,
+				model: view.getEditModel()
+			};
+
+			var image_url = elementor.imagesManager.getImageUrl( image );
+
+			if ( ! image_url ) {
+				return;
+			}
+
+			var hasCaption = function() {
+				if( ! settings.caption_source || 'none' === settings.caption_source ) {
+					return false;
+				}
+				return true;
+			}
+
+			var ensureAttachmentData = function( id ) {
+				if ( 'undefined' === typeof wp.media.attachment( id ).get( 'caption' ) ) {
+					wp.media.attachment( id ).fetch().then( function( data ) {
+						view.render();
+					} );
+				}
+			}
+
+			var getAttachmentCaption = function( id ) {
+				if ( ! id ) {
+					return '';
+				}
+				ensureAttachmentData( id );
+				return wp.media.attachment( id ).get( 'caption' );
+			}
+
+			var getCaption = function() {
+				if ( ! hasCaption() ) {
+					return '';
+				}
+				return 'custom' === settings.caption_source ? settings.caption : getAttachmentCaption( settings.image.id );
+			}
+
+			var link_url;
+
+			if ( 'custom' === settings.link_to ) {
+				link_url = settings.link.url;
+			}
+
+			if ( 'file' === settings.link_to ) {
+				link_url = settings.image.url;
+			}
+
+			<?php if ( ! Plugin::$instance->experiments->is_feature_active( 'e_dom_optimization' ) ) { ?>
+				#><div class="elementor-image{{ settings.shape ? ' elementor-image-shape-' + settings.shape : '' }}"><#
+			<?php } ?>
+
+			var imgClass = '';
+
+			if ( '' !== settings.hover_animation ) {
+				imgClass = 'elementor-animation-' + settings.hover_animation;
+			}
+
+			if ( hasCaption() ) {
+				#><figure class="wp-caption"><#
+			}
+
+			if ( link_url ) {
+					#><a class="elementor-clickable" data-elementor-open-lightbox="{{ settings.open_lightbox }}" href="{{ link_url }}"><#
+			}
+			
+			#>
+				<div class="section-image">
+					<# if(settings.show_icon === 'yes' && settings.selected_icon.value !== '') { 
+						#><i class="fa {{settings.selected_icon.value}}"></i><#
+					}
+					#>
+					<img src="{{ image_url }}" class="{{ imgClass }}" />
+				</div>
+			
+			<#
+
+			if ( link_url ) {
+					#></a><#
+			}
+
+			if ( hasCaption() ) {
+					#><figcaption class="widget-image-caption wp-caption-text">{{{ getCaption() }}}</figcaption><#
+			}
+
+			if ( hasCaption() ) {
+				#></figure><#
+			}
+
+			<?php if ( ! Plugin::$instance->experiments->is_feature_active( 'e_dom_optimization' ) ) { ?>
+				#></div><#
+			<?php } ?>
+
+		} #>
+		<?php
+	}
+
 
 	/**
 	 * Retrieve image widget link URL.
