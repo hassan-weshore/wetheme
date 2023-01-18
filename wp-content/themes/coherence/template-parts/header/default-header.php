@@ -10,7 +10,7 @@
 
 ?>
 <div class="header-contenair">
-    <?php if (1 == coherence_get_option('show_top_bar', 0)) : ?>
+    <?php if (2 == coherence_get_option('show_top_bar', 0)) : ?>
         <div class="navbar-top">
             <div class="container">
                 <div class="row">

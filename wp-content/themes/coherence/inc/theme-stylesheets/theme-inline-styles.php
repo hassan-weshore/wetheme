@@ -430,14 +430,14 @@ if (!function_exists('coherence_dynamic_styles')) {
 	   ------------------------------------------------------------------------------------ */
 
 		//primary color
-
+		/*
 		if (!empty(coherence_get_customize_option('main_color'))) :
 		?>
 			:root {
 			--main-color: <?php echo esc_attr(coherence_get_customize_option('main_color')); ?>;
 			}
 		<?php endif;
-
+*/
 		/*------------------------------------------------------------------------------------
 		  Mobile
 	   ------------------------------------------------------------------------------------ */

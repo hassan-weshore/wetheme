@@ -262,3 +262,48 @@ if (defined('JETPACK__VERSION')) {
 if (class_exists('WooCommerce')) {
 	require get_template_directory() . '/inc/woocommerce.php';
 }
+
+//csf_{$prefix}_save_after
+
+function update_elementor_site_settings()
+{
+
+	if (is_admin() && is_plugin_active('elementor/elementor.php')) {
+
+		$kit_active_id = Elementor\Plugin::$instance->kits_manager->get_active_id();
+		$elementor_settings = get_post_meta($kit_active_id, '_elementor_page_settings', true);
+		if (empty($elementor_settings)) {
+			$elementor_settings = [];
+		}
+		//Default breakpoints
+		$default_breakpoints = [
+			'active_breakpoints' =>
+			[
+				'viewport_mobile',
+				'viewport_mobile_extra',
+				'viewport_tablet',
+				'viewport_tablet_extra',
+				'viewport_laptop',
+				'viewport_widescreen',
+			],
+			'viewport_mobile' => coherence_get_option('grid_main_break_point'),
+			'viewport_mobile_extra' => coherence_get_option('side_header_break_point'),
+			'viewport_tablet' => coherence_get_option('content_break_point'),
+			'viewport_tablet_extra' => coherence_get_option('sidebar_break_point'),
+			'viewport_laptop' => coherence_get_option('Laptop_break_point'),
+			'viewport_widescreen' => coherence_get_option('Widescreen_break_point'),
+		];
+		$container_width = [
+			'container_width' =>
+			[
+				'size' => intval(coherence_get_option('content_width')['width']),
+			],
+		];
+
+		$elementor_settings = array_merge($elementor_settings, $default_breakpoints, $container_width);
+		update_post_meta($kit_active_id, '_elementor_page_settings', $elementor_settings);
+	}
+	//delete_option('activated-coherence-core');
+}
+
+add_action("csf_coherence_theme_options_save_after", 'update_elementor_site_settings');

@@ -32,6 +32,7 @@ class Coherence_Section_Interactions
 		add_action('elementor/element/section/section_background/after_section_end', array($this, 'after_section_end'), 10, 2);
 		add_action('elementor/element/column/section_style/after_section_end', array($this, 'after_column_end'), 10, 2);
 		add_action('elementor/frontend/section/before_render', array($this, 'section_before_render'));
+		add_action('elementor/element/before_render', array($this, 'section_before_render'));
 		add_action('elementor/frontend/column/before_render', array($this, 'section_before_render'));
 		add_action('elementor/frontend/before_enqueue_scripts', array($this, 'enqueue_scripts'), 9);
 		add_action('elementor/element/parse_css', [$this, 'add_post_css'], 10, 2);
@@ -459,7 +460,7 @@ class Coherence_Section_Interactions
 		$type = isset($data['elType']) ? $data['elType'] : 'section';
 		$settings = $data['settings'];
 		//|| $obj->get_type() === 'container'
-		if ('section' === $type || 'column' === $type || 'container' === $type) {
+		if ('section' === $type || 'column' === $type || 'container' ===  $obj->get_name()) {
 
 			if (isset($settings['coherence_parallax_activate']) && $settings['coherence_parallax_activate'] == 'yes') {
 				$this->parallax_sections[$data['id']] = array(

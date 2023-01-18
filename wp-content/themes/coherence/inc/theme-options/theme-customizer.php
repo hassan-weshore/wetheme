@@ -35,7 +35,7 @@ if (class_exists('CSF')) {
 	/*-------------------------------------
 	  ** Theme Body Options
   -------------------------------------*/
-	CSF::createSection($coherence_prefix . '_customize_options', array(
+	/*CSF::createSection($coherence_prefix . '_customize_options', array(
 		'title'    => esc_html__('Coherence Main Body', 'coherence'),
 		'priority' => 10,
 		'fields'   => array(
@@ -55,10 +55,10 @@ if (class_exists('CSF')) {
 				'id'          => 'txt_Color',
 				'type'        => 'color',
 				'title'       => esc_html__('Body Text Color', 'coherence'),
-				'default'     => '#696969',
+				//'default'     => '#696969',
 				'output_mode' => 'color',
 				'output'      => array('p', '.single-blog-inner .single-blog-details p'),
 			),
 		)
-	));
+	));*/
 }//endif

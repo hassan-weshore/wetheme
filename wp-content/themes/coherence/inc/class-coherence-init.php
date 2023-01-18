@@ -21,7 +21,7 @@ if (!class_exists('Coherence_Init')) {
 			//widget init
 			add_action('widgets_init', array($this, 'widgets_init'));
 			//theme assets
-			add_action('wp_enqueue_scripts', array($this, 'theme_assets'));
+			add_action('wp_enqueue_scripts', array($this, 'theme_assets'), 1);
 		}
 
 		/**

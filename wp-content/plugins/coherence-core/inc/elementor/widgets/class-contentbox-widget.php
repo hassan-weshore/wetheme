@@ -61,7 +61,7 @@ class Widget_Content_Box extends Widget_Base
 	 */
 	public function get_icon()
 	{
-		return 'eicon-info-box';
+		return 'eicon-info-box coherence-element';
 	}
 
 	/**
@@ -93,7 +93,7 @@ class Widget_Content_Box extends Widget_Base
 	 */
 	public function get_keywords()
 	{
-		return ['image', 'photo', 'visual', 'box' , 'icon box', 'icon'];
+		return ['image', 'photo', 'visual', 'box', 'icon box', 'icon'];
 	}
 
 	/**
@@ -146,7 +146,7 @@ class Widget_Content_Box extends Widget_Base
 		$this->add_control(
 			'selected_icon',
 			[
-				'label' => esc_html__( 'Icon', 'coherence-core'),
+				'label' => esc_html__('Icon', 'coherence-core'),
 				'type' => Controls_Manager::ICONS,
 				'fa4compatibility' => 'icon',
 				'default' => [
@@ -174,12 +174,12 @@ class Widget_Content_Box extends Widget_Base
 		$this->add_control(
 			'view',
 			[
-				'label' => esc_html__( 'View', 'coherence-core'),
+				'label' => esc_html__('View', 'coherence-core'),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
-					'default' => esc_html__( 'Default', 'coherence-core'),
-					'stacked' => esc_html__( 'Stacked', 'coherence-core'),
-					'framed' => esc_html__( 'Framed', 'coherence-core'),
+					'default' => esc_html__('Default', 'coherence-core'),
+					'stacked' => esc_html__('Stacked', 'coherence-core'),
+					'framed' => esc_html__('Framed', 'coherence-core'),
 				],
 				'default' => 'default',
 				'prefix_class' => 'elementor-view-',
@@ -192,11 +192,11 @@ class Widget_Content_Box extends Widget_Base
 		$this->add_control(
 			'shape',
 			[
-				'label' => esc_html__( 'Shape', 'coherence-core'),
+				'label' => esc_html__('Shape', 'coherence-core'),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
-					'circle' => esc_html__( 'Circle', 'coherence-core'),
-					'square' => esc_html__( 'Square', 'coherence-core'),
+					'circle' => esc_html__('Circle', 'coherence-core'),
+					'square' => esc_html__('Square', 'coherence-core'),
 				],
 				'default' => 'circle',
 				'condition' => [
@@ -463,7 +463,8 @@ class Widget_Content_Box extends Widget_Base
 		$this->end_controls_section();
 	}
 
-	protected function register_search_style_image() {
+	protected function register_search_style_image()
+	{
 		$this->start_controls_section(
 			'section_style_image',
 			[
@@ -504,7 +505,7 @@ class Widget_Content_Box extends Widget_Base
 			[
 				'label' => esc_html__('Width', 'coherence-core'),
 				'type' => Controls_Manager::SLIDER,
-				'size_units' => [ 'px', '%'],
+				'size_units' => ['px', '%'],
 				'default' => [
 					'size' => 250,
 					'unit' => 'px',
@@ -530,7 +531,7 @@ class Widget_Content_Box extends Widget_Base
 			[
 				'label' => esc_html__('height', 'coherence-core'),
 				'type' => Controls_Manager::SLIDER,
-				'size_units' => [ 'px', '%'],
+				'size_units' => ['px', '%'],
 				'default' => [
 					'size' => 250,
 					'unit' => 'px',
@@ -678,11 +679,12 @@ class Widget_Content_Box extends Widget_Base
 		$this->end_controls_section();
 	}
 
-	protected function register_search_style_icon() {
+	protected function register_search_style_icon()
+	{
 		$this->start_controls_section(
 			'section_style_icon',
 			[
-				'label' => esc_html__( 'Icon', 'coherence-core'),
+				'label' => esc_html__('Icon', 'coherence-core'),
 				'tab'   => Controls_Manager::TAB_STYLE,
 				'conditions' => [
 					'relation' => 'and',
@@ -702,19 +704,19 @@ class Widget_Content_Box extends Widget_Base
 			]
 		);
 
-		$this->start_controls_tabs( 'icon_colors' );
+		$this->start_controls_tabs('icon_colors');
 
 		$this->start_controls_tab(
 			'icon_colors_normal',
 			[
-				'label' => esc_html__( 'Normal', 'coherence-core'),
+				'label' => esc_html__('Normal', 'coherence-core'),
 			]
 		);
 
 		$this->add_control(
 			'primary_color',
 			[
-				'label' => esc_html__( 'Primary Color', 'coherence-core'),
+				'label' => esc_html__('Primary Color', 'coherence-core'),
 				'type' => Controls_Manager::COLOR,
 				'global' => [
 					'default' => Global_Colors::COLOR_PRIMARY,
@@ -730,7 +732,7 @@ class Widget_Content_Box extends Widget_Base
 		$this->add_control(
 			'secondary_color',
 			[
-				'label' => esc_html__( 'Secondary Color', 'coherence-core'),
+				'label' => esc_html__('Secondary Color', 'coherence-core'),
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'condition' => [
@@ -748,14 +750,14 @@ class Widget_Content_Box extends Widget_Base
 		$this->start_controls_tab(
 			'icon_colors_hover',
 			[
-				'label' => esc_html__( 'Hover', 'coherence-core'),
+				'label' => esc_html__('Hover', 'coherence-core'),
 			]
 		);
 
 		$this->add_control(
 			'hover_primary_color',
 			[
-				'label' => esc_html__( 'Primary Color', 'coherence-core'),
+				'label' => esc_html__('Primary Color', 'coherence-core'),
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'selectors' => [
@@ -768,7 +770,7 @@ class Widget_Content_Box extends Widget_Base
 		$this->add_control(
 			'hover_secondary_color',
 			[
-				'label' => esc_html__( 'Secondary Color', 'coherence-core'),
+				'label' => esc_html__('Secondary Color', 'coherence-core'),
 				'type' => Controls_Manager::COLOR,
 				'default' => '',
 				'condition' => [
@@ -784,7 +786,7 @@ class Widget_Content_Box extends Widget_Base
 		$this->add_control(
 			'hover_animation',
 			[
-				'label' => esc_html__( 'Hover Animation', 'coherence-core'),
+				'label' => esc_html__('Hover Animation', 'coherence-core'),
 				'type' => Controls_Manager::HOVER_ANIMATION,
 			]
 		);
@@ -796,9 +798,9 @@ class Widget_Content_Box extends Widget_Base
 		$this->add_responsive_control(
 			'icon_space',
 			[
-				'label' => esc_html__( 'Spacing', 'coherence-core'),
+				'label' => esc_html__('Spacing', 'coherence-core'),
 				'type' => Controls_Manager::SLIDER,
-				'size_units' => [ 'px', '%', 'em', 'rem' ],
+				'size_units' => ['px', '%', 'em', 'rem'],
 				'default' => [
 					'size' => 15,
 				],
@@ -820,9 +822,9 @@ class Widget_Content_Box extends Widget_Base
 		$this->add_responsive_control(
 			'icon_size',
 			[
-				'label' => esc_html__( 'Size', 'coherence-core'),
+				'label' => esc_html__('Size', 'coherence-core'),
 				'type' => Controls_Manager::SLIDER,
-				'size_units' => [ 'px', '%', 'em', 'rem' ],
+				'size_units' => ['px', '%', 'em', 'rem'],
 				'range' => [
 					'px' => [
 						'min' => 6,
@@ -838,7 +840,7 @@ class Widget_Content_Box extends Widget_Base
 		$this->add_responsive_control(
 			'icon_padding',
 			[
-				'label' => esc_html__( 'Padding', 'coherence-core'),
+				'label' => esc_html__('Padding', 'coherence-core'),
 				'type' => Controls_Manager::SLIDER,
 				'selectors' => [
 					'{{WRAPPER}} .elementor-icon' => 'padding: {{SIZE}}{{UNIT}};',
@@ -865,16 +867,16 @@ class Widget_Content_Box extends Widget_Base
 			],
 		];
 
-		foreach ( $active_breakpoints as $breakpoint_name => $breakpoint ) {
-			$rotate_device_args[ $breakpoint_name ] = $rotate_device_settings;
+		foreach ($active_breakpoints as $breakpoint_name => $breakpoint) {
+			$rotate_device_args[$breakpoint_name] = $rotate_device_settings;
 		}
 
 		$this->add_responsive_control(
 			'rotate',
 			[
-				'label' => esc_html__( 'Rotate', 'coherence-core'),
+				'label' => esc_html__('Rotate', 'coherence-core'),
 				'type' => Controls_Manager::SLIDER,
-				'size_units' => [ 'deg', 'grad', 'rad', 'turn' ],
+				'size_units' => ['deg', 'grad', 'rad', 'turn'],
 				'default' => [
 					'unit' => 'deg',
 				],
@@ -894,9 +896,9 @@ class Widget_Content_Box extends Widget_Base
 		$this->add_responsive_control(
 			'border_width',
 			[
-				'label' => esc_html__( 'Border Width', 'coherence-core'),
+				'label' => esc_html__('Border Width', 'coherence-core'),
 				'type' => Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px', '%', 'em' ],
+				'size_units' => ['px', '%', 'em'],
 				'selectors' => [
 					'{{WRAPPER}} .elementor-icon' => 'border-width: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
@@ -909,9 +911,9 @@ class Widget_Content_Box extends Widget_Base
 		$this->add_responsive_control(
 			'border_radius',
 			[
-				'label' => esc_html__( 'Border Radius', 'coherence-core'),
+				'label' => esc_html__('Border Radius', 'coherence-core'),
 				'type' => Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px', '%', 'em' ],
+				'size_units' => ['px', '%', 'em'],
 				'selectors' => [
 					'{{WRAPPER}} .elementor-icon' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
@@ -924,7 +926,8 @@ class Widget_Content_Box extends Widget_Base
 		$this->end_controls_section();
 	}
 
-	protected function register_title_hover_style() {
+	protected function register_title_hover_style()
+	{
 
 		$this->start_controls_tabs(
 			'style_tabs'
@@ -933,7 +936,7 @@ class Widget_Content_Box extends Widget_Base
 		$this->start_controls_tab(
 			'style_normal_tab',
 			[
-				'label' => esc_html__( 'Normal', 'coherence-core'),
+				'label' => esc_html__('Normal', 'coherence-core'),
 			]
 		);
 
@@ -957,7 +960,7 @@ class Widget_Content_Box extends Widget_Base
 		$this->start_controls_tab(
 			'style_hover_tab',
 			[
-				'label' => esc_html__( 'Hover', 'coherence-core' ),
+				'label' => esc_html__('Hover', 'coherence-core'),
 			]
 		);
 
@@ -994,11 +997,11 @@ class Widget_Content_Box extends Widget_Base
 
 		$html = '<div class="elementor-coherence-core-content-box-wrapper">';
 
-		if($settings['box_type'] == 'image') {
+		if ($settings['box_type'] == 'image') {
 			$html .= $this->render_image($settings);
 		}
 
-		if($settings['box_type'] == 'icon') {
+		if ($settings['box_type'] == 'icon') {
 			$html .= $this->render_icon($settings);
 		}
 
@@ -1013,7 +1016,7 @@ class Widget_Content_Box extends Widget_Base
 				$title_html = $settings['title_text'];
 
 				if (!empty($settings['link']['url'])) {
-					$title_html = sprintf('<a %1$s>%2$s</a>',$this->get_render_attribute_string('link'),$title_html);
+					$title_html = sprintf('<a %1$s>%2$s</a>', $this->get_render_attribute_string('link'), $title_html);
 				}
 
 				$html .= sprintf('<%1$s %2$s>%3$s</%1$s>', Utils::validate_html_tag($settings['title_size']), $this->get_render_attribute_string('title_text'), $title_html);
@@ -1038,66 +1041,67 @@ class Widget_Content_Box extends Widget_Base
 	private function render_icon($settings)
 	{
 		$html = '';
-		$this->add_render_attribute( 'icon', 'class', [ 'elementor-icon', 'elementor-animation-' . $settings['hover_animation'] ] );
+		$this->add_render_attribute('icon', 'class', ['elementor-icon', 'elementor-animation-' . $settings['hover_animation']]);
 
 		$icon_tag = 'span';
 
-		if ( ! isset( $settings['icon'] ) && ! Icons_Manager::is_migration_allowed() ) {
+		if (!isset($settings['icon']) && !Icons_Manager::is_migration_allowed()) {
 			// add old default
 			$settings['icon'] = 'fa fa-star';
 		}
 
-		$has_icon = ! empty( $settings['icon'] );
+		$has_icon = !empty($settings['icon']);
 
-		if ( ! empty( $settings['link']['url'] ) ) {
+		if (!empty($settings['link']['url'])) {
 			$icon_tag = 'a';
 
-			$this->add_link_attributes( 'link', $settings['link'] );
+			$this->add_link_attributes('link', $settings['link']);
 		}
 
-		if ( $has_icon ) {
-			$this->add_render_attribute( 'i', 'class', $settings['icon'] );
-			$this->add_render_attribute( 'i', 'aria-hidden', 'true' );
+		if ($has_icon) {
+			$this->add_render_attribute('i', 'class', $settings['icon']);
+			$this->add_render_attribute('i', 'aria-hidden', 'true');
 		}
 
-		$this->add_render_attribute( 'description_text', 'class', 'elementor-icon-box-description' );
+		$this->add_render_attribute('description_text', 'class', 'elementor-icon-box-description');
 
-		$this->add_inline_editing_attributes( 'title_text', 'none' );
-		$this->add_inline_editing_attributes( 'description_text' );
-		if ( ! $has_icon && ! empty( $settings['selected_icon']['value'] ) ) {
+		$this->add_inline_editing_attributes('title_text', 'none');
+		$this->add_inline_editing_attributes('description_text');
+		if (!$has_icon && !empty($settings['selected_icon']['value'])) {
 			$has_icon = true;
 		}
-		$migrated = isset( $settings['__fa4_migrated']['selected_icon'] );
-		$is_new = ! isset( $settings['icon'] ) && Icons_Manager::is_migration_allowed();
+		$migrated = isset($settings['__fa4_migrated']['selected_icon']);
+		$is_new = !isset($settings['icon']) && Icons_Manager::is_migration_allowed();
 
-		if($has_icon) {
-			$html .='<div class="elementor-coherence-core-content-box-icon">';
-			$html .= sprintf('<%1$s %2$s %3$s>',Utils::validate_html_tag( $icon_tag ),$this->get_render_attribute_string( 'icon' ),$this->get_render_attribute_string( 'link' ));
-			if ( $is_new || $migrated ) {
-				$html .= Icons_Manager::try_get_icon_html( $settings['selected_icon'], [ 'aria-hidden' => 'true' ] );
-			} elseif ( ! empty( $settings['icon'] ) ) {
-				$html .= sprintf('<i %1$s></i>',$this->get_render_attribute_string( 'i' ));
+		if ($has_icon) {
+			$html .= '<div class="elementor-coherence-core-content-box-icon">';
+			$html .= sprintf('<%1$s %2$s %3$s>', Utils::validate_html_tag($icon_tag), $this->get_render_attribute_string('icon'), $this->get_render_attribute_string('link'));
+			if ($is_new || $migrated) {
+				$html .= Icons_Manager::try_get_icon_html($settings['selected_icon'], ['aria-hidden' => 'true']);
+			} elseif (!empty($settings['icon'])) {
+				$html .= sprintf('<i %1$s></i>', $this->get_render_attribute_string('i'));
 			}
-			
-			$html .= sprintf('</%1$s>',Utils::validate_html_tag( $icon_tag ));
-			$html .='</div>';
+
+			$html .= sprintf('</%1$s>', Utils::validate_html_tag($icon_tag));
+			$html .= '</div>';
 		}
 
 		return $html;
 	}
 
-	private function render_image($settings) {
+	private function render_image($settings)
+	{
 		$html = '';
-		if ( ! empty( $settings['link']['url'] ) ) {
-			$this->add_link_attributes( 'link', $settings['link'] );
+		if (!empty($settings['link']['url'])) {
+			$this->add_link_attributes('link', $settings['link']);
 		}
 
-		if ( ! empty( $settings['image']['url'] ) ) {
+		if (!empty($settings['image']['url'])) {
 
-			$image_html = wp_kses_post( Group_Control_Image_Size::get_attachment_image_html( $settings, 'thumbnail', 'image' ) );
+			$image_html = wp_kses_post(Group_Control_Image_Size::get_attachment_image_html($settings, 'thumbnail', 'image'));
 
-			if ( ! empty( $settings['link']['url'] ) ) {
-				$image_html = sprintf('<a %1$s>%2$s</a>',$this->get_render_attribute_string( 'link' ),$image_html);
+			if (!empty($settings['link']['url'])) {
+				$image_html = sprintf('<a %1$s>%2$s</a>', $this->get_render_attribute_string('link'), $image_html);
 			}
 
 			$html = '<figure class="elementor-coherence-core-content-box-img">' . $image_html . '</figure>';
@@ -1115,84 +1119,39 @@ class Widget_Content_Box extends Widget_Base
 	 */
 	protected function content_template()
 	{
-		?>
-			<# 
-			
-			var html='<div class="elementor-coherence-core-content-box-wrapper">'; 
-
-			if(settings.box_type == 'image') {
-				if(settings.image.url) 
-				{ 
-					var image= { 
-						id: settings.image.id,
-						url: settings.image.url,
-						size: settings.thumbnail_size,
-						dimension: settings.thumbnail_custom_dimension,
-						model: view.getEditModel() 
-					}; 
-					
-					var image_url = elementor.imagesManager.getImageUrl( image ); 
-					var imageHtml='<img src="' + image_url + '" class="elementor-animation-' + settings.hover_animation + '" />' ; 
-					if ( settings.link.url ) { 
-						imageHtml='<a href="' + settings.link.url + '">' + imageHtml + '</a>' ; 
-					} 
-					
-					html +='<figure class="elementor-coherence-core-content-box-img">' + imageHtml + '</figure>' ; 
-				}
-			} 
-			
-			if(settings.box_type == 'icon') {
-				var link = settings.link.url ? 'href="' + settings.link.url + '"' : '',
-				iconTag = link ? 'a' : 'span',
-				iconHTML = elementor.helpers.renderIcon( view, settings.selected_icon, { 'aria-hidden': true }, 'i' , 'object' ),
-				migrated = elementor.helpers.isIconMigrated( settings, 'selected_icon' );
-
-				if ( settings.icon || settings.selected_icon.value ) {
-					html +='<div class="elementor-coherence-core-content-box-icon">';
-					html +='<'+iconTag+ " " + link +' class="elementor-icon elementor-animation-' + settings.hover_animation + '">';
-						if ( iconHTML && iconHTML.rendered && ( ! settings.icon || migrated ) ) {
-							html += iconHTML.value;
-						} else {
-							html +='<i class="'+settings.icon+'" aria-hidden="true"></i>';
-						}
-					html +='</'+iconTag+'>';
-					html +='</div>';
-				}
+?>
+		<# var html='<div class="elementor-coherence-core-content-box-wrapper">' ; if(settings.box_type=='image' ) { if(settings.image.url) { var image={ id: settings.image.id, url: settings.image.url, size: settings.thumbnail_size, dimension: settings.thumbnail_custom_dimension, model: view.getEditModel() }; var image_url=elementor.imagesManager.getImageUrl( image ); var imageHtml='<img src="' + image_url + '" class="elementor-animation-' + settings.hover_animation + '" />' ; if ( settings.link.url ) { imageHtml='<a href="' + settings.link.url + '">' + imageHtml + '</a>' ; } html +='<figure class="elementor-coherence-core-content-box-img">' + imageHtml + '</figure>' ; } } if(settings.box_type=='icon' ) { var link=settings.link.url ? 'href="' + settings.link.url + '"' : '' , iconTag=link ? 'a' : 'span' , iconHTML=elementor.helpers.renderIcon( view, settings.selected_icon, { 'aria-hidden' : true }, 'i' , 'object' ), migrated=elementor.helpers.isIconMigrated( settings, 'selected_icon' ); if ( settings.icon || settings.selected_icon.value ) { html +='<div class="elementor-coherence-core-content-box-icon">' ; html +='<' +iconTag+ " " + link +' class="elementor-icon elementor-animation-' + settings.hover_animation + '">';
+			if ( iconHTML && iconHTML.rendered && ( ! settings.icon || migrated ) ) {
+			html += iconHTML.value;
+			} else {
+			html +='<i class="'+settings.icon+'" aria-hidden="true"></i>';
 			}
-			
-			var hasContent=!! ( settings.title_text || settings.description_text ); 
-			
+			html +='</'+iconTag+'>';
+			html +='</div>';
+			}
+			}
+
+			var hasContent=!! ( settings.title_text || settings.description_text );
+
 			if (hasContent)
-			{ 
-				html +='<div class="elementor-coherence-core-content-box-content">' ; 
+			{
+			html +='<div class="elementor-coherence-core-content-box-content">' ;
 				if ( settings.title_text )
 				{
-					var title_html=settings.title_text, titleSizeTag=elementor.helpers.validateHTMLTag( settings.title_size ); 
-					if ( settings.link.url )
-					{ 
-						title_html='<a href="' + settings.link.url + '">' + title_html + '</a>' ; 
-					} 
-					view.addRenderAttribute( 'title_text' , 'class' , 'elementor-coherence-core-content-box-title' );
-					view.addInlineEditingAttributes( 'title_text' , 'none' );
-					html +='<' + titleSizeTag + ' ' + view.getRenderAttributeString( 'title_text' ) + '>' + title_html + '</' + titleSizeTag + '>' ; 
+				var title_html=settings.title_text, titleSizeTag=elementor.helpers.validateHTMLTag( settings.title_size );
+				if ( settings.link.url )
+				{
+				title_html='<a href="' + settings.link.url + '">' + title_html + '</a>' ;
 				}
-				
-				if ( settings.description_text ) 
-				{ 
-					view.addRenderAttribute( 'description_text' , 'class' , 'elementor-coherence-core-content-box-description' );
-					view.addInlineEditingAttributes( 'description_text' );
-					html +='<p ' + view.getRenderAttributeString( 'description_text' ) + '>' + settings.description_text + '</p>' ; 
-				}
-				html +='</div>' ; 
-			}
-			html +='</div>' ; 
-			print( html ); 
-			#>
-		<?php
-	}
+				view.addRenderAttribute( 'title_text' , 'class' , 'elementor-coherence-core-content-box-title' );
+				view.addInlineEditingAttributes( 'title_text' , 'none' );
+				html +='<' + titleSizeTag + ' ' + view.getRenderAttributeString( 'title_text' ) + '>' + title_html + '</' + titleSizeTag + '>' ; } if ( settings.description_text ) { view.addRenderAttribute( 'description_text' , 'class' , 'elementor-coherence-core-content-box-description' ); view.addInlineEditingAttributes( 'description_text' ); html +='<p ' + view.getRenderAttributeString( 'description_text' ) + '>' + settings.description_text + '</p>' ; } html +='</div>' ; } html +='</div>' ; print( html ); #>
+			<?php
+		}
 
-	public function on_import( $element ) {
-		return Icons_Manager::on_import_migration( $element, 'icon', 'selected_icon', true );
+		public function on_import($element)
+		{
+			return Icons_Manager::on_import_migration($element, 'icon', 'selected_icon', true);
+		}
 	}
-}
-Plugin::instance()->widgets_manager->register(new Widget_Content_Box());
+	Plugin::instance()->widgets_manager->register(new Widget_Content_Box());

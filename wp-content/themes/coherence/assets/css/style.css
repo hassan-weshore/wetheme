@@ -48,7 +48,7 @@ Version: 1.0.0
   --main-color: #0060FF;
   --main-color2: #EE0020;
   --heading-color: #141D38;
-  --paragraph-color: #616161;
+  --paragraph-color: red;
   --body-font: "Rubik", sans-serif;
   --heading-font: "Rajdhani", sans-serif;
   --body-font-size: 16px;
@@ -124,7 +124,7 @@ h6 {
 }
 
 p {
-  color: var(--paragraph-color);
+  
   -webkit-hyphens: auto;
   -ms-hyphens: auto;
   hyphens: auto;
