@@ -147,12 +147,36 @@ class Coherence_Logo_Widget extends Widget_Base
 			]
 		);
 
+		$exclude_image_size = [
+			'coherence_team_524X462',
+			'coherence_team_794X320',
+			'coherence_service_750X390',
+			'coherence_blog_80X80',
+			'coherence_blog__378X324',
+			'coherence_blog__360X308',
+			'coherence_blog__360X254',
+			'coherence_blog__80X80',
+			'coherence_team__269X286',
+			'coherence_team__86X86',
+			'coherence_project__357X472',
+			'coherence_project__362X410',
+			'coherence_project__360X554',
+			'coherence_project__362X262',
+			'coherence_project_details__756X305',
+			'medium_large',
+			'large',
+			'1536x1536',
+			'2048x2048',
+		];
+
+
 		$this->add_group_control(
 			Group_Control_Image_Size::get_type(),
 			[
 				'name'    => 'logo_thum', // Usage: `logo_thum_size` and `logo_thum_custom_dimension`
 				'label'   => __('Logo Size', 'coherence-core'),
-				'default' => 'medium',
+				'exclude' => $exclude_image_size,
+				'default' => 'thumbnail',
 			]
 		);
 
@@ -170,7 +194,8 @@ class Coherence_Logo_Widget extends Widget_Base
 			[
 				'name'    => 'logo_thum_tablet',
 				'label'   => __('Logo Size', 'coherence-core'),
-				'default' => 'medium',
+				'exclude' => $exclude_image_size,
+				'default' => 'thumbnail',
 			]
 		);
 
@@ -188,7 +213,8 @@ class Coherence_Logo_Widget extends Widget_Base
 			[
 				'name'    => 'logo_thum_mobile',
 				'label'   => __('Logo Size', 'coherence-core'),
-				'default' => 'medium',
+				'exclude' => $exclude_image_size,
+				'default' => 'thumbnail',
 			]
 		);
 
@@ -220,7 +246,8 @@ class Coherence_Logo_Widget extends Widget_Base
 			[
 				'name'    => 'logo_thum_sticky',
 				'label'   => __('Logo Size', 'coherence-core'),
-				'default' => 'medium',
+				'exclude' => $exclude_image_size,
+				'default' => 'thumbnail',
 			]
 		);
 
@@ -739,10 +766,20 @@ class Coherence_Logo_Widget extends Widget_Base
 	{
 
 		$logo = wp_kses_post(Group_Control_Image_Size::get_attachment_image_html($settings, 'logo_thum',  'logo'));
-		$logo_tablet = wp_kses_post(Group_Control_Image_Size::get_attachment_image_html($settings, 'logo_thum_tablet',  'logo_tablet'));
-		$logo_mobile = wp_kses_post(Group_Control_Image_Size::get_attachment_image_html($settings, 'logo_thum_mobile',  'logo_mobile'));
+
+		if(!empty($settings['logo_tablet'])) {
+			$logo_tablet = wp_kses_post(Group_Control_Image_Size::get_attachment_image_html($settings, 'logo_thum_tablet',  'logo_tablet'));
+		}
+
+		if(!empty($settings['logo_mobile'])) {
+			$logo_mobile = wp_kses_post(Group_Control_Image_Size::get_attachment_image_html($settings, 'logo_thum_mobile',  'logo_mobile'));
+		}
+
 		//Logo sticky 
-		$logo_sticky = wp_kses_post(Group_Control_Image_Size::get_attachment_image_html($settings, 'logo_thum_sticky',  'logo_sticky'));
+		if(!empty($settings['logo_mobile'])) {
+			$logo_sticky = wp_kses_post(Group_Control_Image_Size::get_attachment_image_html($settings, 'logo_thum_sticky',  'logo_sticky'));
+		}
+
 
 		$logo_tablet = !empty($logo_tablet) ? $logo_tablet : $logo;
 		$logo_mobile = !empty($logo_mobile) ? $logo_mobile : $logo;
