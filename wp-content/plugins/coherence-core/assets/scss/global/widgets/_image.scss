@@ -1,55 +1,35 @@
 .elementor-widget-coherence-image {
     &.coherence-core-align-image {
-        //coherence-core-align-image-auto
-        &-auto {
-            .section-image {
-                margin-left: auto;
-                margin-right: auto;
-            }
+        //coherence-core-align-image-center
+        &-center {
+            text-align: center;
         }
         //coherence-core-align-image-left
         &-left {
-            .section-image {
-                margin-right: auto;
-            }
+            text-align: left;
         }
         //coherence-core-align-image-right
         &-right {
-            .section-image {
-                margin-left: auto;
-            }
+            text-align: right;
         }
     }
-    .section-image {
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+    .coherence-figure {
         img {
             width: 100%;
             object-fit: contain;
         }
-        svg {
-            display: none;
-            position: absolute;
-            z-index: 5;
-        }
-        &:after {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 4;
-        }
-        &:hover {
-            &:after {
-                content: '';
-            }
-            svg {
-                display: inline-block;
-                width: 70px;
-                height: auto;
+        figcaption {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 0;
+            margin-bottom: 0;
+            .content {
+                flex: 0 0 100%;
+                text-align: center;
+                .section-icon {
+                    margin-bottom: 25px;
+                }
             }
         }
     }

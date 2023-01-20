@@ -1,0 +1,94 @@
+// Default variables
+@import "imagehover/variables";
+
+// Custom variables
+@import "imagehover/custom";
+
+@mixin fill($padding: 0) {
+  position: absolute;
+  top: $padding;
+  bottom: $padding;
+  left: $padding;
+  right: $padding;
+}
+
+[class^="imghvr-"],
+[class*=" imghvr-"] {
+  position: relative;
+  display: inline-block;
+  margin: 0;
+  max-width: 100%;
+  background-color: $image-bg;
+  color: #fff;
+  overflow: hidden;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  transform: translateZ(0);
+
+  > img  {
+    vertical-align: top;
+    max-width: 100%;
+  }
+
+  figcaption {
+    background-color: $figcaption-bg;
+    padding: $figcaption-padding;
+    @include fill;
+    color: $text-color;
+    z-index: -1;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: $text-color;
+    }
+  }
+
+  &:hover {
+    figcaption {
+      z-index: 1;
+    }
+  }
+
+  a {
+    @include fill;
+    z-index: 1;
+  }
+}
+
+[class^="imghvr-"],
+[class*=" imghvr-"],
+[class^="imghvr-"]:before,
+[class^="imghvr-"]:after,
+[class*=" imghvr-"]:before,
+[class*=" imghvr-"]:after,
+[class^="imghvr-"] *,
+[class*=" imghvr-"] *,
+[class^="imghvr-"] *:before,
+[class^="imghvr-"] *:after,
+[class*=" imghvr-"] *:before,
+[class*=" imghvr-"] *:after {
+  box-sizing: border-box;
+  transition: all 0.35s ease;
+}
+
+@import "imagehover/effects/_imghvr-fade";
+@import "imagehover/effects/_imghvr-push";
+@import "imagehover/effects/_imghvr-slide";
+@import "imagehover/effects/_imghvr-reveal";
+@import "imagehover/effects/_imghvr-hinge";
+@import "imagehover/effects/_imghvr-flip";
+@import "imagehover/effects/_imghvr-shutter-out";
+@import "imagehover/effects/_imghvr-shutter-in";
+@import "imagehover/effects/_imghvr-switch";
+@import "imagehover/effects/_imghvr-pivot-in";
+@import "imagehover/effects/_imghvr-pivot-out";
+@import "imagehover/effects/_imghvr-fold";
+@import "imagehover/effects/_imghvr-zoom-in";
+@import "imagehover/effects/_imghvr-zoom-out";
+@import "imagehover/effects/_imghvr-blur";
+@import "imagehover/effects/_imghvr-fall-away";

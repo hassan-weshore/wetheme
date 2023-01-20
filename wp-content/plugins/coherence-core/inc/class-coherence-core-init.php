@@ -63,6 +63,7 @@ if (!class_exists('Coherence_Core_Init')) {
 			wp_enqueue_style('slick', COHERENCE_CORE_CSS . '/slick.min.css', array(), COHERENCE_CORE_VERSION, 'all');
 			//wp_enqueue_style('coherence-main-style', COHERENCE_CORE_CSS . '/style.css', array(), COHERENCE_CORE_VERSION, 'all');
 			wp_enqueue_style('coherence-global-style', COHERENCE_CORE_CSS . '/global.css', array(), COHERENCE_CORE_VERSION, 'all');
+			wp_enqueue_style('coherence-imagehover-style', COHERENCE_CORE_CSS . '/imagehover.css', array(), COHERENCE_CORE_VERSION, 'all');
 		}
 		/**
 		 * load plugin js
