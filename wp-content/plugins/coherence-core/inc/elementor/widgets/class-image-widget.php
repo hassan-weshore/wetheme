@@ -451,6 +451,8 @@ class Coherence_Image_Widget extends Widget_Base
 			]
 		);
 
+		$this->animation_control();
+
 		$this->add_control(
 			'opacity_hover',
 			[
@@ -644,8 +646,6 @@ class Coherence_Image_Widget extends Widget_Base
 		$this->end_controls_section();
 
 		$this->title_style();
-
-		$this->animation_widget_image_section();
 	}
 
 	public function title_style(){
@@ -752,15 +752,7 @@ class Coherence_Image_Widget extends Widget_Base
 		$this->end_controls_section();
 	}
 
-	public function animation_widget_image_section() {
-		$this->start_controls_section(
-			'section_style_animation',
-			[
-				'label' => esc_html__('Animation', 'coherence-core'),
-				'tab'   => Controls_Manager::TAB_STYLE,
-			]
-		);
-
+	public function animation_control() {
 		$this->add_control(
 			'animation_class',
 			[
@@ -815,8 +807,6 @@ class Coherence_Image_Widget extends Widget_Base
 				]
 			]
 		);
-
-		$this->end_controls_section();
 	}
 
 	public function additional_controls_style_image_hover()
