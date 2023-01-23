@@ -7,22 +7,11 @@
  */
 
 namespace Elementor;
-
-use Elementor\Includes\Widgets\Traits\Button_Trait;
 use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
+use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 
 class Coherence_Button_Widget extends Widget_Base
 {
-
-	use Button_Trait;
-
-	public function  __construct($data = [], $args = null)
-	{
-		parent::__construct($data, $args);
-
-		add_action('elementor/element/after_section_start', [$this, 'inject_button_custom_control'], 10, 3);
-	}
-
 	/**
 	 * Get widget name.
 	 *
@@ -85,19 +74,28 @@ class Coherence_Button_Widget extends Widget_Base
 		return ['coherence_widgets'];
 	}
 
+	/**
+	 * Get button sizes.
+	 *
+	 * Retrieve an array of button sizes for the button widget.
+	 *
+	 * @since 3.4.0
+	 * @access public
+	 * @static
+	 *
+	 * @return array An array containing button sizes.
+	 */
+	public static function get_button_sizes() {
+		return [
+			'xs' => esc_html__( 'Extra Small', 'coherence-core' ),
+			'sm' => esc_html__( 'Small', 'coherence-core' ),
+			'md' => esc_html__( 'Medium', 'coherence-core' ),
+			'lg' => esc_html__( 'Large', 'coherence-core' ),
+			'xl' => esc_html__( 'Extra Large', 'coherence-core' ),
+		];
+	}
 
-	protected function register_controls()
-	{
-		$this->start_controls_section(
-			'section_button',
-			[
-				'label' => esc_html__('Button', 'coherence-core'),
-			]
-		);
-
-		$this->override_register_button_content_controls();
-
-		$this->end_controls_section();
+	protected function register_button_controls_style(array $args = []) {
 
 		$this->start_controls_section(
 			'section_style',
@@ -107,31 +105,195 @@ class Coherence_Button_Widget extends Widget_Base
 			]
 		);
 
-		$this->override_register_button_style_controls();
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			[
+				'name' => 'typography',
+				'global' => [
+					'default' => Global_Typography::TYPOGRAPHY_ACCENT,
+				],
+				'selector' => '{{WRAPPER}} .elementor-button',
+				'condition' => $args['section_condition'],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Text_Shadow::get_type(),
+			[
+				'name' => 'text_shadow',
+				'selector' => '{{WRAPPER}} .elementor-button',
+				'condition' => $args['section_condition'],
+			]
+		);
+
+		$this->start_controls_tabs( 'tabs_button_style', [
+			'condition' => $args['section_condition'],
+		] );
+
+		$this->start_controls_tab(
+			'tab_button_normal',
+			[
+				'label' => esc_html__( 'Normal', 'coherence-core' ),
+				'condition' => $args['section_condition'],
+			]
+		);
+
+		$this->add_control(
+			'button_text_color',
+			[
+				'label' => esc_html__( 'Text Color', 'coherence-core' ),
+				'type' => Controls_Manager::COLOR,
+				'default' => '#000',
+				'selectors' => [
+					'{{WRAPPER}} .elementor-button' => 'fill: {{VALUE}}; color: {{VALUE}};',
+				],
+				'condition' => $args['section_condition'],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Background::get_type(),
+			[
+				'name' => 'background',
+				'types' => [ 'classic', 'gradient' ],
+				'exclude' => [ 'image' ],
+				'selector' => '{{WRAPPER}} .elementor-button',
+				'fields_options' => [
+					'background' => [
+						'default' => 'classic',
+					],
+					'color' => [
+						'global' => [
+							'default' => Global_Colors::COLOR_ACCENT,
+						],
+					],
+				],
+				'condition' => $args['section_condition'],
+			]
+		);
+
+		$this->end_controls_tab();
+
+		$this->start_controls_tab(
+			'tab_button_hover',
+			[
+				'label' => esc_html__( 'Hover', 'coherence-core' ),
+				'condition' => $args['section_condition'],
+			]
+		);
+
+		$this->add_control(
+			'hover_color',
+			[
+				'label' => esc_html__( 'Text Color', 'coherence-core' ),
+				'type' => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .elementor-button:hover, {{WRAPPER}} .elementor-button:focus' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .elementor-button:hover svg, {{WRAPPER}} .elementor-button:focus svg' => 'fill: {{VALUE}};',
+				],
+				'condition' => $args['section_condition'],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Background::get_type(),
+			[
+				'name' => 'button_background_hover',
+				'types' => [ 'classic', 'gradient' ],
+				'exclude' => [ 'image' ],
+				'selector' => '{{WRAPPER}} .elementor-button:hover, {{WRAPPER}} .elementor-button:focus',
+				'fields_options' => [
+					'background' => [
+						'default' => 'classic',
+					],
+				],
+				'condition' => $args['section_condition'],
+			]
+		);
+
+		$this->add_control(
+			'button_hover_border_color',
+			[
+				'label' => esc_html__( 'Border Color', 'coherence-core' ),
+				'type' => Controls_Manager::COLOR,
+				'condition' => [
+					'border_border!' => '',
+				],
+				'selectors' => [
+					'{{WRAPPER}} .elementor-button:hover, {{WRAPPER}} .elementor-button:focus' => 'border-color: {{VALUE}};',
+				],
+				'condition' => $args['section_condition'],
+			]
+		);
+
+		$this->add_control(
+			'hover_animation',
+			[
+				'label' => esc_html__( 'Hover Animation', 'coherence-core' ),
+				'type' => Controls_Manager::HOVER_ANIMATION,
+				'condition' => $args['section_condition'],
+			]
+		);
+
+		$this->end_controls_tab();
+
+		$this->end_controls_tabs();
+
+		$this->add_group_control(
+			Group_Control_Border::get_type(),
+			[
+				'name' => 'border',
+				'selector' => '{{WRAPPER}} .elementor-button',
+				'separator' => 'before',
+				'condition' => $args['section_condition'],
+			]
+		);
+
+		$this->add_responsive_control(
+			'border_radius',
+			[
+				'label' => esc_html__( 'Border Radius', 'coherence-core' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', '%', 'em' ],
+				'selectors' => [
+					'{{WRAPPER}} .elementor-button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+				'condition' => $args['section_condition'],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'button_box_shadow',
+				'selector' => '{{WRAPPER}} .elementor-button',
+				'condition' => $args['section_condition'],
+			]
+		);
+
+		$this->add_responsive_control(
+			'text_padding',
+			[
+				'label' => esc_html__( 'Padding', 'coherence-core' ),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px', 'em', '%' ],
+				'selectors' => [
+					'{{WRAPPER}} .elementor-button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+				'separator' => 'before',
+				'condition' => $args['section_condition'],
+			]
+		);
 
 		$this->end_controls_section();
 	}
 
-	protected function override_register_button_style_controls()
-	{
-		$default_args = [
-			'section_condition' => [],
-			'button_default_text' => esc_html__('Click here', 'coherence-core'),
-			'text_control_label' => esc_html__('Text', 'coherence-core'),
-			'alignment_control_prefix_class' => 'elementor%s-align-',
-			'alignment_default' => '',
-			'icon_exclude_inline_options' => [],
-		];
-
-		$args = wp_parse_args($args, $default_args);
-
-		$this->register_button_style_controls();
-		$this->update_control('button_text_color', [
-			'default' => '#000',
-		]);
+	public function on_import( $element ) {
+		return Icons_Manager::on_import_migration( $element, 'icon', 'selected_icon' );
 	}
 
-	protected function override_register_button_content_controls()
+
+	protected function register_controls()
 	{
 		$default_args = [
 			'section_condition' => [],
@@ -143,20 +305,146 @@ class Coherence_Button_Widget extends Widget_Base
 		];
 
 		$args = wp_parse_args($args, $default_args);
-		//[$args] => Pour remplacer tous les arguments hérités de la fonction parent , si tu veux tu peux supprimer car la valeur par défaut et un tableau vide []
-		$this->register_button_content_controls($args);
-		//Remove control button_type
-		$this->remove_control('button_type');
-		////Remove control Button ID
-		$this->remove_control('button_css_id');
-		//Update control Icon
-		$this->update_control('selected_icon', [
-			'skin' => 'media',
-			'label_block' => true,
-		]);
 
-		//Update Type and icon positions
-		$this->update_responsive_control(
+		//Section Content
+		$this->register_button_controls_content($args);	
+		//Section Styles
+		$this->register_button_controls_style($args);
+	}
+
+	protected function register_button_controls_content(array $args = []) {
+		
+		$this->start_controls_section(
+			'section_button',
+			[
+				'label' => esc_html__('Button', 'coherence-core'),
+			]
+		);
+		$this->add_control(
+			'style',
+			[
+				'label' => esc_html__('Style', 'coherence-core'),
+				'type' => Controls_Manager::SELECT,
+				'default' => 'solid',
+				'options' => [
+					'solid' => esc_html__('Solid', 'coherence-core'),
+					'plain' => esc_html__('Plain', 'coherence-core'),
+				],
+				'condition' => $args['section_condition'],
+			]
+		);
+		$this->add_responsive_control(
+			'width',
+			[
+				'label' => esc_html__('width', 'coherence-core'),
+				'type' => Controls_Manager::SLIDER,
+				'size_units' => ['%', 'px'],
+				'range' => [
+					'%' => [
+						'min' => 0,
+						'max' => 100,
+					],
+					'px' => [
+						'min' => 0,
+						'max' => 1200,
+					]
+				],
+				'selectors' => [
+					'{{WRAPPER}} .elementor-button' => 'width: {{SIZE}}{{UNIT}};max-width: 100%;',
+				],
+				'condition' => $args['section_condition'],
+			]
+		);
+		$this->add_control(
+			'link-type',
+			[
+				'label' => esc_html__('Link Type', 'coherence-core'),
+				'type' => Controls_Manager::SELECT,
+				'default' => 'simple-click',
+				'options' => [
+					'simple-click' => esc_html__('Simple Click', 'coherence-core'),
+					'lightbox' => esc_html__('Lightbox', 'coherence-core'), // image
+					'modal-window' => esc_html__('Modal Window', 'coherence-core'), // popup
+					'local-scroll' => esc_html__('Local Scroll', 'coherence-core'), //scroll by id
+					'scroll-to-section-bellow' => esc_html__('Scroll to Section Bellow', 'coherence-core'),
+				],
+			]
+		);
+		$this->add_control(
+			'text',
+			[
+				'label' => $args['text_control_label'],
+				'type' => Controls_Manager::TEXT,
+				'default' => $args['button_default_text'],
+				'placeholder' => $args['button_default_text'],
+				'condition' => $args['section_condition'],
+			]
+		);
+
+		$this->add_control(
+			'link',
+			[
+				'label' => esc_html__( 'Link', 'coherence-core' ),
+				'type' => Controls_Manager::URL,
+				'placeholder' => esc_html__( 'https://your-link.com', 'coherence-core' ),
+				'default' => [
+					'url' => '#',
+				],
+				'condition' => $args['section_condition'],
+			]
+		);
+
+		$this->add_responsive_control(
+			'align',
+			[
+				'label' => esc_html__( 'Alignment', 'coherence-core' ),
+				'type' => Controls_Manager::CHOOSE,
+				'options' => [
+					'left'    => [
+						'title' => esc_html__('Left', 'coherence-core'),
+						'icon' => 'eicon-text-align-left',
+					],
+					'center' => [
+						'title' => esc_html__('Center', 'coherence-core'),
+						'icon' => 'eicon-text-align-center',
+					],
+					'right' => [
+						'title' => esc_html__('Right', 'coherence-core'),
+						'icon' => 'eicon-text-align-right',
+					],
+				],
+				'prefix_class' => $args['alignment_control_prefix_class'],
+				'default' => $args['alignment_default'],
+				'condition' => $args['section_condition'],
+			]
+		);
+
+		$this->add_control(
+			'size',
+			[
+				'label' => esc_html__( 'Size', 'coherence-core' ),
+				'type' => Controls_Manager::SELECT,
+				'default' => 'sm',
+				'options' => self::get_button_sizes(),
+				'style_transfer' => true,
+				'condition' => $args['section_condition'],
+			]
+		);
+
+		$this->add_control(
+			'selected_icon',
+			[
+				'label' => esc_html__( 'Icon', 'coherence-core' ),
+				'type' => Controls_Manager::ICONS,
+				'fa4compatibility' => 'icon',
+				'skin' => 'media',
+				'label_block' => true,
+				'condition' => $args['section_condition'],
+				'icon_exclude_inline_options' => $args['icon_exclude_inline_options'],
+			]
+		);
+
+		$this->add_responsive_control(
 			'icon_align',
 			[
 				'type' => Controls_Manager::CHOOSE,
@@ -173,9 +461,16 @@ class Coherence_Button_Widget extends Widget_Base
 			]
 		);
 
-		$this->update_control(
+		$this->add_control(
 			'icon_indent',
 			[
+				'label' => esc_html__( 'Icon Spacing', 'coherence-core' ),
+				'type' => Controls_Manager::SLIDER,
+				'range' => [
+					'px' => [
+						'max' => 50,
+					],
+				],
 				'selectors' => [
 					'{{WRAPPER}} .elementor-button .elementor-align-icon-right' => 'margin-left: {{SIZE}}{{UNIT}};',
 					'{{WRAPPER}} .elementor-button .elementor-align-icon-left' => 'margin-right: {{SIZE}}{{UNIT}};',
@@ -186,108 +481,17 @@ class Coherence_Button_Widget extends Widget_Base
 			]
 		);
 
-		$this->update_control(
-			'text',
+		$this->add_control(
+			'view',
 			[
-				'dynamic' => [
-					'active' => false,
-				],
+				'label' => esc_html__( 'View', 'coherence-core' ),
+				'type' => Controls_Manager::HIDDEN,
+				'default' => 'traditional',
+				'condition' => $args['section_condition'],
 			]
 		);
-		//Update link
-		$this->update_control(
-			'link',
-			[
-				'dynamic' => [
-					'active' => false,
-				],
-			]
-		);
-		//Update align Delete option justify 
-		$this->update_responsive_control(
-			'align',
-			[
-				'options' => [
-					'left'    => [
-						'title' => esc_html__('Left', 'coherence-core'),
-						'icon' => 'eicon-text-align-left',
-					],
-					'center' => [
-						'title' => esc_html__('Center', 'coherence-core'),
-						'icon' => 'eicon-text-align-center',
-					],
-					'right' => [
-						'title' => esc_html__('Right', 'coherence-core'),
-						'icon' => 'eicon-text-align-right',
-					],
-				],
-			]
-		);
-	}
 
-	/**
-	 * Action elementor/element/after_section_start
-	 * Function inject_button_custom_control
-	 * @since 1.0.0
-	 * @access public
-	 * 
-	 */
-
-	public function inject_button_custom_control($element, $section_id, $args)
-	{
-
-		if ('coherence-Button-widget' === $element->get_name() && 'section_button' === $section_id) {
-			$element->add_responsive_control(
-				'width',
-				[
-					'label' => esc_html__('width', 'coherence-core'),
-					'type' => Controls_Manager::SLIDER,
-					'size_units' => ['%', 'px'],
-					'range' => [
-						'%' => [
-							'min' => 0,
-							'max' => 100,
-						],
-						'px' => [
-							'min' => 0,
-							'max' => 1200,
-						]
-					],
-					'selectors' => [
-						'{{WRAPPER}} .elementor-button' => 'width: {{SIZE}}{{UNIT}};max-width: 100%;',
-					],
-					'condition' => $args['section_condition'],
-				]
-			);
-			$element->add_control(
-				'style',
-				[
-					'label' => esc_html__('Style', 'coherence-core'),
-					'type' => Controls_Manager::SELECT,
-					'default' => 'solid',
-					'options' => [
-						'solid' => esc_html__('Solid', 'coherence-core'),
-						'plain' => esc_html__('Plain', 'coherence-core'),
-					],
-					'condition' => $args['section_condition'],
-				]
-			);
-			$element->add_control(
-				'link-type',
-				[
-					'label' => esc_html__('Link Type', 'coherence-core'),
-					'type' => Controls_Manager::SELECT,
-					'default' => 'simple-click',
-					'options' => [
-						'simple-click' => esc_html__('Simple Click', 'coherence-core'),
-						'lightbox' => esc_html__('Lightbox', 'coherence-core'), // image
-						'modal-window' => esc_html__('Modal Window', 'coherence-core'), // popup
-						'local-scroll' => esc_html__('Local Scroll', 'coherence-core'), //scroll by id
-						'scroll-to-section-bellow' => esc_html__('Scroll to Section Bellow', 'coherence-core'),
-					],
-				]
-			);
-		}
+		$this->end_controls_section();
 	}
 
 	/**
@@ -317,10 +521,6 @@ class Coherence_Button_Widget extends Widget_Base
 
 		$instance->add_render_attribute('button', 'class', 'elementor-button');
 		$instance->add_render_attribute('button', 'role', 'button');
-
-		if (!empty($settings['button_css_id'])) {
-			$instance->add_render_attribute('button', 'id', $settings['button_css_id']);
-		}
 
 		if (!empty($settings['size'])) {
 			$instance->add_render_attribute('button', 'class', 'elementor-size-' . $settings['size']);
@@ -355,7 +555,7 @@ class Coherence_Button_Widget extends Widget_Base
 	?>
 		<# view.addRenderAttribute( 'text' , 'class' , 'elementor-button-text' ); view.addInlineEditingAttributes( 'text' , 'none' ); var iconHTML=elementor.helpers.renderIcon( view, settings.selected_icon, { 'aria-hidden' : true }, 'i' , 'object' ), migrated=elementor.helpers.isIconMigrated( settings, 'selected_icon' ); #>
 			<div class="elementor-button-wrapper coherence-button-wrapper">
-				<a id="{{ settings.button_css_id }}" class="elementor-button elementor-size-{{ settings.size }} coherence-button-style-{{settings.style}} elementor-animation-{{ settings.hover_animation }}" href="{{ settings.link.url }}" role="button">
+				<a class="elementor-button elementor-size-{{ settings.size }} coherence-button-style-{{settings.style}} elementor-animation-{{ settings.hover_animation }}" href="{{ settings.link.url }}" role="button">
 					<span class="elementor-button-content-wrapper">
 						<# if ( settings.icon || settings.selected_icon ) { #>
 							<span class="elementor-button-icon elementor-align-icon-{{ settings.icon_align }}">
