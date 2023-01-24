@@ -3,14 +3,26 @@
         //coherence-core-align-image-center
         &-center {
             text-align: center;
+            .coherence-figure {
+                margin-left: auto !important;
+                margin-right: auto !important;
+            }
         }
         //coherence-core-align-image-left
         &-left {
             text-align: left;
+            .coherence-figure {
+                margin-left: 0 !important;
+                margin-right: auto !important;
+            }
         }
         //coherence-core-align-image-right
         &-right {
             text-align: right;
+            .coherence-figure {
+                margin-left: auto !important;
+                margin-right: 0 !important;
+            }
         }
     }
     .coherence-figure {
@@ -30,6 +42,16 @@
                 .section-icon {
                     margin-bottom: 25px;
                 }
+            }
+        }
+        &.animation-none {
+            position: relative;
+            figcaption {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
             }
         }
     }

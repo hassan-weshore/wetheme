@@ -282,16 +282,11 @@ class Coherence_Image_Widget extends Widget_Base
 			[
 				'label' => esc_html__('Width', 'coherence-core'),
 				'type' => Controls_Manager::SLIDER,
-				'default' => [
-					'unit' => '%',
-				],
-				'tablet_default' => [
-					'unit' => '%',
-				],
-				'mobile_default' => [
-					'unit' => '%',
-				],
 				'size_units' => ['%', 'px', 'vw'],
+				'default' => [
+					'unit' => 'px',
+					'size' => 768
+				],
 				'range' => [
 					'%' => [
 						'min' => 1,
@@ -299,7 +294,7 @@ class Coherence_Image_Widget extends Widget_Base
 					],
 					'px' => [
 						'min' => 1,
-						'max' => 1000,
+						'max' => 1920,
 					],
 					'vw' => [
 						'min' => 1,
@@ -313,18 +308,13 @@ class Coherence_Image_Widget extends Widget_Base
 		);
 
 		$this->add_responsive_control(
-			'space',
+			'max_width',
 			[
 				'label' => esc_html__('Max Width', 'coherence-core'),
 				'type' => Controls_Manager::SLIDER,
 				'default' => [
 					'unit' => '%',
-				],
-				'tablet_default' => [
-					'unit' => '%',
-				],
-				'mobile_default' => [
-					'unit' => '%',
+					'size' => 100,
 				],
 				'size_units' => ['%', 'px', 'vw'],
 				'range' => [
@@ -514,7 +504,7 @@ class Coherence_Image_Widget extends Widget_Base
 			Group_Control_Border::get_type(),
 			[
 				'name' => 'image_border',
-				'selector' => '{{WRAPPER}} img',
+				'selector' => '{{WRAPPER}} .coherence-figure',
 				'separator' => 'before',
 			]
 		);
@@ -526,7 +516,7 @@ class Coherence_Image_Widget extends Widget_Base
 				'type' => Controls_Manager::DIMENSIONS,
 				'size_units' => ['px', '%', 'em'],
 				'selectors' => [
-					'{{WRAPPER}}  figure img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}}  .coherence-figure' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -538,7 +528,29 @@ class Coherence_Image_Widget extends Widget_Base
 				'exclude' => [
 					'box_shadow_position',
 				],
-				'selector' => '{{WRAPPER}}  figure img',
+				'selector' => '{{WRAPPER}}  .coherence-figure',
+			]
+		);
+
+		$this->add_responsive_control(
+			'figure_padding',
+			[
+				'label' => esc_html__('Figure Padding', 'coherence-core'),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', '%', 'em'],
+				'selectors' => [
+					'{{WRAPPER}}  .coherence-figure' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Background::get_type(),
+			[
+				'name' => 'background_figure',
+				'types' => ['classic','gradient'],
+				'exclude' => [ 'image' ],
+				'selector' => '{{WRAPPER}}  figure.coherence-figure',
 			]
 		);
 
@@ -758,8 +770,9 @@ class Coherence_Image_Widget extends Widget_Base
 			[
 				'label' => __('Select Animation', 'coherence-core'),
 				'type' => \Elementor\Controls_Manager::SELECT2,
-				'default' => 'imghvr-fade',
+				'default' => 'animation-none',
 				'options' => [
+					'animation-none' => __('None', 'coherence-core'),
 					'imghvr-fade' => __('Fade', 'coherence-core'),
 					'imghvr-push-up' => __('Push up', 'coherence-core'),
 					'imghvr-push-down' => __('Push down', 'coherence-core'),
@@ -822,7 +835,8 @@ class Coherence_Image_Widget extends Widget_Base
 				{{WRAPPER}} figure[class^=imghvr-] figcaption,
 				{{WRAPPER}} figure[class*=" imghvr-"] figcaption,
 				{{WRAPPER}} figure[class^=imghvr-],
-				{{WRAPPER}} figure[class*=" imghvr-"]',
+				{{WRAPPER}} figure[class*=" imghvr-"]
+				{{WRAPPER}} figure.coherence-figure',
 			]
 		);
 
@@ -1081,15 +1095,18 @@ class Coherence_Image_Widget extends Widget_Base
 			
 			<figure class="coherence-figure  <?php echo $this->animation_class($settings); ?>">
 				<?php Group_Control_Image_Size::print_attachment_image_html($settings); ?>
+				<?php if($has_title ||  $has_caption || (!empty($settings['selected_icon']['value']) && $settings['show_icon'] === 'yes')):?>
 					<figcaption class="widget-image-caption coherence-figure-text">
 						<div class="content">
-							<div class="section-icon">
-								<?php
-									if ($settings['show_icon'] === 'yes') {
-										echo '<i class="fa '.$settings['selected_icon']['value'].'"></i>';
-									}
-								?>
-							</div>
+							<?php if(!empty($settings['selected_icon']['value']) && $settings['show_icon'] === 'yes'):?>
+								<div class="section-icon">
+									<?php
+										if ($settings['show_icon'] === 'yes') {
+											echo '<i class="fa '.$settings['selected_icon']['value'].'"></i>';
+										}
+									?>
+								</div>
+							<?php endif;?>
 							<?php
 								if($has_title) {
 									echo '<div class="image-title">'.wp_kses_post($this->get_title_image($settings)).'</div>';
@@ -1100,6 +1117,7 @@ class Coherence_Image_Widget extends Widget_Base
 							?>
 						</div>
 					</figcaption>
+				<?php endif;?>
 				<?php if ($link) : ?>
 					<a <?php $this->print_render_attribute_string('link'); ?>></a>
 				<?php endif; ?>
@@ -1213,23 +1231,27 @@ class Coherence_Image_Widget extends Widget_Base
 			#>
 			<figure class="coherence-figure  {{figureClass}}">
 				<img src="{{ image_url }}" class="{{ imgClass }}" />
-				<figcaption class="widget-image-caption coherence-figure-text">
-					<div class="content">
-						<div class="section-icon">
-							<# if(settings.show_icon === 'yes' && settings.selected_icon.value !== '') { 
-								#><i class="fa {{settings.selected_icon.value}}"></i><#
-							} #>
-						</div>
-						
-						<div class="image-title">
-							{{{ getTitle() }}}
-						</div>
 
-						<# if ( hasCaption() ) {
-							#><p class="image-caption">{{{ getCaption() }}}</p><#
-						} #>
-					</div>
-				</figcaption>
+				<# if(hasTitle() || hasCaption() || (settings.show_icon === 'yes' && settings.selected_icon.value !== '')) {#>
+					<figcaption class="widget-image-caption coherence-figure-text">
+						<div class="content">
+							<# if(settings.show_icon === 'yes' && settings.selected_icon.value !== '') {
+								#><div class="section-icon">
+									<i class="fa {{settings.selected_icon.value}}"></i>
+								</div><#
+							}#>
+							
+							<# if(hasTitle()) {
+								#><div class="image-title">{{{ getTitle() }}}</div><#
+							}#>
+							
+							<# if ( hasCaption() ) {
+								#><p class="image-caption">{{{ getCaption() }}}</p><#
+							}#>
+						</div>
+					</figcaption>
+				<#}#>
+				
 				<# if ( link_url ) {
 					#><a class="elementor-clickable" data-elementor-open-lightbox="{{ settings.open_lightbox }}" href="{{ link_url }}"><#
 				}#>
