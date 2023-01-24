@@ -1,0 +1,31 @@
+.elementor-widget-image-gallery {
+    &.gallery-type-show-on-hover {
+        .gallery-item {
+            overflow: hidden;
+            position: relative;
+            figcaption {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: absolute;
+                bottom : -100%;
+                left: 0;
+                width: 100%;
+                min-height: 50%;
+                transition: all 0.3s;
+            }
+            &:hover {
+                figcaption {
+                    bottom: 0;
+                }
+            }
+        }
+    }
+    &.gallery-type-none {
+        .gallery-item {
+            figcaption {
+                display: none;
+            }
+        }
+    }
+}

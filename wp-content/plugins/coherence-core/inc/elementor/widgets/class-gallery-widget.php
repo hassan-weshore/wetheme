@@ -1,6 +1,7 @@
 <?php
 namespace Elementor;
 
+use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
 use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -27,7 +28,7 @@ class Coherence_Gallery_Widget extends Widget_Base {
 	 * @return string Widget name.
 	 */
 	public function get_name() {
-		return 'coherence_Gallery_widget';
+		return 'image-gallery';
 	}
 
 	/**
@@ -71,8 +72,8 @@ class Coherence_Gallery_Widget extends Widget_Base {
 	public function get_keywords() {
 		return [ 'image', 'photo', 'visual', 'gallery' ];
 	}
-    
-    /**
+	
+	/**
 	 * Get widget categories.
 	 *
 	 * Retrieve the list of categories the Elementor widget belongs to.
@@ -124,6 +125,70 @@ class Coherence_Gallery_Widget extends Widget_Base {
 			]
 		);
 
+		$this->add_control(
+			'autoHeight',
+			[
+				'type' => Controls_Manager::SWITCHER,
+				'label' => __( 'Auto-Height', 'coherence-core' ),
+				'default' => 'yes',
+			]
+		);
+
+		$this->add_responsive_control(
+			'height',
+			[
+				'label' => esc_html__('Height', 'coherence-core'),
+				'type' => Controls_Manager::SLIDER,
+				'default' => [
+					'unit' => 'px',
+					'size' => 200,
+				],
+				'size_units' => ['px', 'vh'],
+				'range' => [
+					'px' => [
+						'min' => 1,
+						'max' => 650,
+					],
+					'vh' => [
+						'min' => 1,
+						'max' => 100,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .gallery-item img' => 'height: {{SIZE}}{{UNIT}};',
+				],
+				'condition' => [
+					'autoHeight' => '',
+				]
+			]
+		);
+
+		$this->add_control(
+			'object_fit',
+			[
+				'label' => esc_html__( 'Object Fit', 'coherence-core' ),
+				'type' => Controls_Manager::SELECT,
+				'default' => 'cover',
+				'options' => [
+					'cover' => esc_html__( 'Cover', 'coherence-core' ),
+					'contain' => esc_html__( 'contain', 'coherence-core' ),
+					'fill' => esc_html__( 'fill', 'coherence-core' ),
+					'inherit' => esc_html__( 'Inherit', 'coherence-core' ),
+					'initial' => esc_html__( 'Initial', 'coherence-core' ),
+					'none' => esc_html__( 'None', 'coherence-core' ),
+					'revert' => esc_html__( 'Revert', 'coherence-core' ),
+					'scale-down' => esc_html__( 'Scale Down', 'coherence-core' ),
+					'unset' => esc_html__( 'Unset', 'coherence-core' ),
+				],
+				'selectors' => [
+					'{{WRAPPER}} .gallery-item img' => 'object-fit: {{VALUE}};',
+				],
+				'condition' => [
+					'autoHeight' => '',
+				]
+			]
+		);
+
 		$gallery_columns = range( 1, 10 );
 		$gallery_columns = array_combine( $gallery_columns, $gallery_columns );
 
@@ -142,7 +207,7 @@ class Coherence_Gallery_Widget extends Widget_Base {
 			[
 				'label' => esc_html__( 'Link', 'coherence-core' ),
 				'type' => Controls_Manager::SELECT,
-				'default' => 'file',
+				'default' => 'none',
 				'options' => [
 					'file' => esc_html__( 'Media File', 'coherence-core' ),
 					'attachment' => esc_html__( 'Attachment Page', 'coherence-core' ),
@@ -156,7 +221,7 @@ class Coherence_Gallery_Widget extends Widget_Base {
 			[
 				'label' => esc_html__( 'Lightbox', 'coherence-core' ),
 				'type' => Controls_Manager::SELECT,
-				'default' => 'default',
+				'default' => 'no',
 				'options' => [
 					'default' => esc_html__( 'Default', 'coherence-core' ),
 					'yes' => esc_html__( 'Yes', 'coherence-core' ),
@@ -272,19 +337,18 @@ class Coherence_Gallery_Widget extends Widget_Base {
 			]
 		);
 
-		$this->add_control(
+		$this->add_responsive_control(
 			'gallery_display_caption',
 			[
 				'label' => esc_html__( 'Display', 'coherence-core' ),
 				'type' => Controls_Manager::SELECT,
 				'default' => '',
 				'options' => [
-					'' => esc_html__( 'Show', 'coherence-core' ),
+					'show' => esc_html__( 'Show', 'coherence-core' ),
+					'show-on-hover' => esc_html__( 'Show on Hover', 'coherence-core' ),
 					'none' => esc_html__( 'Hide', 'coherence-core' ),
 				],
-				'selectors' => [
-					'{{WRAPPER}} .gallery-item .gallery-caption' => 'display: {{VALUE}};',
-				],
+				'prefix_class' => 'gallery-type-',
 			]
 		);
 
@@ -316,7 +380,22 @@ class Coherence_Gallery_Widget extends Widget_Base {
 					'{{WRAPPER}} .gallery-item .gallery-caption' => 'text-align: {{VALUE}};',
 				],
 				'condition' => [
-					'gallery_display_caption' => '',
+					'gallery_display_caption!' => 'none',
+				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'caption_padding',
+			[
+				'label' => esc_html__('Caption Padding', 'coherence-core'),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', '%', 'em'],
+				'selectors' => [
+					'{{WRAPPER}} .gallery-item .gallery-caption' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+				'condition' => [
+					'gallery_display_caption!' => 'none',
 				],
 			]
 		);
@@ -331,7 +410,7 @@ class Coherence_Gallery_Widget extends Widget_Base {
 					'{{WRAPPER}} .gallery-item .gallery-caption' => 'color: {{VALUE}};',
 				],
 				'condition' => [
-					'gallery_display_caption' => '',
+					'gallery_display_caption!' => 'none',
 				],
 			]
 		);
@@ -345,7 +424,7 @@ class Coherence_Gallery_Widget extends Widget_Base {
 				],
 				'selector' => '{{WRAPPER}} .gallery-item .gallery-caption',
 				'condition' => [
-					'gallery_display_caption' => '',
+					'gallery_display_caption!' => 'none',
 				],
 			]
 		);
@@ -355,6 +434,34 @@ class Coherence_Gallery_Widget extends Widget_Base {
 			[
 				'name' => 'caption_shadow',
 				'selector' => '{{WRAPPER}} .gallery-item .gallery-caption',
+				'condition' => [
+					'gallery_display_caption!' => 'none',
+				],
+			]
+		);
+
+		$this->add_control(
+			'on_hover',
+			[
+				'label' => esc_html__( 'On Hover', 'coherence-core' ),
+				'type' => \Elementor\Controls_Manager::HEADING,
+				'separator' => 'before',
+				'condition' => [
+					'gallery_display_caption' => 'show-on-hover',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Background::get_type(),
+			[
+				'name' => 'background_figure',
+				'types' => ['classic','gradient'],
+				'exclude' => ['image'],
+				'selector' => '{{WRAPPER}} .gallery-item .gallery-caption',
+				'condition' => [
+					'gallery_display_caption' => 'show-on-hover',
+				],
 			]
 		);
 
