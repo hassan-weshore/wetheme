@@ -155,6 +155,7 @@ if (!class_exists('Coherence_Elementor_Widget_Init')) {
 				'search-button',
 				'social-icons',
 				'Image',
+				'feature-list',
 				'button',
 				'banner',
 				'about',

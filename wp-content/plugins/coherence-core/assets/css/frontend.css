@@ -2095,3 +2095,126 @@ div.coherence-core-nav-menu,
   .elementor-position-left .elementor-coherence-core-content-box-img {
     flex-shrink: 0;
   }
+
+  /*--------------------------------------------------------------
+  == Feature List
+  --------------------------------------------------------------*/
+  
+  .coherence-feature-list-center .coherence-feature-list-item {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  
+  .coherence-feature-list-center .coherence-feature-list-content-wrap {
+      text-align: center;
+  }
+  
+  .coherence-feature-list-right .coherence-feature-list-item {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: row-reverse;
+            flex-direction: row-reverse;
+  }
+  
+  .coherence-feature-list-right .coherence-feature-list-content-wrap {
+    text-align: right;
+  }
+
+  .coherence-feature-list-align-flex-start .coherence-feature-list-title,
+  .coherence-feature-list-align-flex-start .coherence-feature-list-description {
+      text-align: left;
+  }
+
+  .coherence-feature-list-align-flex-end .coherence-feature-list-title,
+  .coherence-feature-list-align-flex-end .coherence-feature-list-description {
+      text-align: right;
+  }
+
+  .coherence-feature-list-rhombus .coherence-feature-list-icon-inner-wrap {
+      -webkit-transform: rotate(45deg);
+          -ms-transform: rotate(45deg);
+              transform: rotate(45deg);
+  }
+
+  .coherence-feature-list-rhombus .coherence-feature-list-icon-wrap i,
+  .coherence-feature-list-rhombus .coherence-feature-list-icon-wrap svg,
+  .coherence-feature-list-rhombus .coherence-feature-list-icon-wrap img {
+      -webkit-transform: rotate(-45deg);
+          -ms-transform: rotate(-45deg);
+              transform: rotate(-45deg);
+  }
+
+  .coherence-feature-list-wrap .coherence-feature-list-icon-inner-wrap {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-pack: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+      overflow: hidden;
+  }
+
+  .coherence-feature-list {
+      padding: 0;
+      margin: 0;
+  }
+  
+  .coherence-feature-list-line-yes .coherence-feature-list-icon-wrap {
+    position: relative;
+  }
+
+  .coherence-feature-list-icon-wrap img {
+      width: 100%;
+      max-width: 100%;
+  }
+
+  .coherence-feature-list-center .coherence-feature-list-line {
+      display: none;
+  }
+
+  .coherence-feature-list-item:not(:last-of-type) .coherence-feature-list-line {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+            transform: translateX(-50%);
+    width: 0;
+    height: 0;
+  }
+
+  .coherence-feature-list-item:last-of-type .coherence-feature-list-line {
+    display: none;
+  }
+
+  .coherence-feature-list-title,
+  .coherence-feature-list-description {
+      margin: 0;
+  }
+
+  .coherence-feature-list-left .coherence-feature-list-item {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+      text-align: left;
+  }

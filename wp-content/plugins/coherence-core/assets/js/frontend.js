@@ -254,6 +254,25 @@
 		});
 	};
 
+	var widgetFeatureList = function($scope , $) {
+
+		if ( 'undefined' == typeof $scope ) return;
+
+		$scope.find('.coherence-feature-list-item:not(:last-of-type)').find('.coherence-feature-list-icon-wrap').each(function(index) {
+			var offsetTop = $scope.find('.coherence-feature-list-item').eq(index + 1).find('.coherence-feature-list-icon-wrap').offset().top;
+			
+			$(this).find('.coherence-feature-list-line').height(offsetTop - $(this).offset().top + 'px');
+		});
+
+		$(window).resize(function() {
+			$scope.find('.coherence-feature-list-item:not(:last-of-type)').find('.coherence-feature-list-icon-wrap').each(function(index) {
+				var offsetTop = $scope.find('.coherence-feature-list-item').eq(index + 1).find('.coherence-feature-list-icon-wrap').offset().top;
+				
+				$(this).find('.coherence-feature-list-line').height(offsetTop - $(this).offset().top + 'px');
+			});
+		})
+	}
+
 	function _handle_current_menu_item_class( layout_links ) {
 		layout_links.each(
 			function () {
@@ -700,5 +719,6 @@
 	$( window ).on( 'elementor/frontend/init', function () {
 		elementorFrontend.hooks.addAction( 'frontend/element_ready/menu.default', WidgethfeNavMenuHandler );
 		elementorFrontend.hooks.addAction( 'frontend/element_ready/search-button.default', WidgethfeSearchButton );
+		elementorFrontend.hooks.addAction( 'frontend/element_ready/coherence-feature-list.default', widgetFeatureList );
 	});
 } )( jQuery );
