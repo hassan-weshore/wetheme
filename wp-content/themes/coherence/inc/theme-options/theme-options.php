@@ -248,6 +248,7 @@ if (class_exists('CSF')) {
 				'default' => 1360,
 				'step'    => 1,
 				'unit'    => 'px',
+				'max' => 1920,
 				'min' => 1024,
 				'dependency'  => array('responsive', '==', true),
 			),
@@ -260,6 +261,7 @@ if (class_exists('CSF')) {
 				'step'    => 1,
 				'unit'    => 'px',
 				'min' => 800,
+				'max' => 1360,
 				'dependency'  => array('responsive', '==', true),
 			),
 			array(
@@ -271,6 +273,7 @@ if (class_exists('CSF')) {
 				'step'    => 1,
 				'unit'    => 'px',
 				'min' => 600,
+				'max' => 1024,
 				'dependency'  => array('responsive', '==', true),
 			),
 			array(
@@ -282,6 +285,7 @@ if (class_exists('CSF')) {
 				'step'    => 1,
 				'unit'    => 'px',
 				'min' => 497,
+				'max' => 800,
 				'dependency'  => array('responsive', '==', true),
 			),
 			array(
@@ -1634,8 +1638,8 @@ if (class_exists('CSF')) {
 				'id'             => 'coherence_body_font',
 				'default'        => array(
 					'font-family' => 'Rubik',
-					'font-size'   => '16',
-					'line-height' => '26',
+					'font-size'   => '14',
+					'line-height' => '25',
 					'unit'        => 'px',
 					'type'        => 'google',
 				),
@@ -1992,6 +1996,16 @@ if (class_exists('CSF')) {
 				'type'       => 'switcher',
 				'desc'       => esc_html__('Turn on to display featured images on regular pages.', 'coherence'),
 				'default'    => false,
+			),
+			array(
+				'id'         => 'elementor_dark_light',
+				'title'      => esc_html__('Elementor UI Theme', 'coherence'),
+				'type'       => 'switcher',
+				'desc'       => esc_html__('Set light or dark mode, or use Auto Detect to sync it with your OS setting.', 'coherence'),
+				'default'    => true,
+				'text_on'  => 'Light',
+				'text_off' => 'Dark',
+				'text_width' => 100
 			),
 
 		)

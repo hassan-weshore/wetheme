@@ -7,6 +7,7 @@
  */
 
 namespace Elementor;
+
 use Elementor\Core\Kits\Documents\Tabs\Global_Colors;
 use Elementor\Core\Kits\Documents\Tabs\Global_Typography;
 
@@ -85,17 +86,19 @@ class Coherence_Button_Widget extends Widget_Base
 	 *
 	 * @return array An array containing button sizes.
 	 */
-	public static function get_button_sizes() {
+	public static function get_button_sizes()
+	{
 		return [
-			'xs' => esc_html__( 'Extra Small', 'coherence-core' ),
-			'sm' => esc_html__( 'Small', 'coherence-core' ),
-			'md' => esc_html__( 'Medium', 'coherence-core' ),
-			'lg' => esc_html__( 'Large', 'coherence-core' ),
-			'xl' => esc_html__( 'Extra Large', 'coherence-core' ),
+			'xs' => esc_html__('Extra Small', 'coherence-core'),
+			'sm' => esc_html__('Small', 'coherence-core'),
+			'md' => esc_html__('Medium', 'coherence-core'),
+			'lg' => esc_html__('Large', 'coherence-core'),
+			'xl' => esc_html__('Extra Large', 'coherence-core'),
 		];
 	}
 
-	protected function register_button_controls_style(array $args = []) {
+	protected function register_button_controls_style(array $args = [])
+	{
 
 		$this->start_controls_section(
 			'section_style',
@@ -126,14 +129,14 @@ class Coherence_Button_Widget extends Widget_Base
 			]
 		);
 
-		$this->start_controls_tabs( 'tabs_button_style', [
+		$this->start_controls_tabs('tabs_button_style', [
 			'condition' => $args['section_condition'],
-		] );
+		]);
 
 		$this->start_controls_tab(
 			'tab_button_normal',
 			[
-				'label' => esc_html__( 'Normal', 'coherence-core' ),
+				'label' => esc_html__('Normal', 'coherence-core'),
 				'condition' => $args['section_condition'],
 			]
 		);
@@ -141,7 +144,7 @@ class Coherence_Button_Widget extends Widget_Base
 		$this->add_control(
 			'button_text_color',
 			[
-				'label' => esc_html__( 'Text Color', 'coherence-core' ),
+				'label' => esc_html__('Text Color', 'coherence-core'),
 				'type' => Controls_Manager::COLOR,
 				'default' => '#000',
 				'selectors' => [
@@ -155,8 +158,8 @@ class Coherence_Button_Widget extends Widget_Base
 			Group_Control_Background::get_type(),
 			[
 				'name' => 'background',
-				'types' => [ 'classic', 'gradient' ],
-				'exclude' => [ 'image' ],
+				'types' => ['classic', 'gradient'],
+				'exclude' => ['image'],
 				'selector' => '{{WRAPPER}} .elementor-button',
 				'fields_options' => [
 					'background' => [
@@ -177,7 +180,7 @@ class Coherence_Button_Widget extends Widget_Base
 		$this->start_controls_tab(
 			'tab_button_hover',
 			[
-				'label' => esc_html__( 'Hover', 'coherence-core' ),
+				'label' => esc_html__('Hover', 'coherence-core'),
 				'condition' => $args['section_condition'],
 			]
 		);
@@ -185,7 +188,7 @@ class Coherence_Button_Widget extends Widget_Base
 		$this->add_control(
 			'hover_color',
 			[
-				'label' => esc_html__( 'Text Color', 'coherence-core' ),
+				'label' => esc_html__('Text Color', 'coherence-core'),
 				'type' => Controls_Manager::COLOR,
 				'selectors' => [
 					'{{WRAPPER}} .elementor-button:hover, {{WRAPPER}} .elementor-button:focus' => 'color: {{VALUE}};',
@@ -199,8 +202,8 @@ class Coherence_Button_Widget extends Widget_Base
 			Group_Control_Background::get_type(),
 			[
 				'name' => 'button_background_hover',
-				'types' => [ 'classic', 'gradient' ],
-				'exclude' => [ 'image' ],
+				'types' => ['classic', 'gradient'],
+				'exclude' => ['image'],
 				'selector' => '{{WRAPPER}} .elementor-button:hover, {{WRAPPER}} .elementor-button:focus',
 				'fields_options' => [
 					'background' => [
@@ -214,7 +217,7 @@ class Coherence_Button_Widget extends Widget_Base
 		$this->add_control(
 			'button_hover_border_color',
 			[
-				'label' => esc_html__( 'Border Color', 'coherence-core' ),
+				'label' => esc_html__('Border Color', 'coherence-core'),
 				'type' => Controls_Manager::COLOR,
 				'condition' => [
 					'border_border!' => '',
@@ -229,7 +232,7 @@ class Coherence_Button_Widget extends Widget_Base
 		$this->add_control(
 			'hover_animation',
 			[
-				'label' => esc_html__( 'Hover Animation', 'coherence-core' ),
+				'label' => esc_html__('Hover Animation', 'coherence-core'),
 				'type' => Controls_Manager::HOVER_ANIMATION,
 				'condition' => $args['section_condition'],
 			]
@@ -252,9 +255,9 @@ class Coherence_Button_Widget extends Widget_Base
 		$this->add_responsive_control(
 			'border_radius',
 			[
-				'label' => esc_html__( 'Border Radius', 'coherence-core' ),
+				'label' => esc_html__('Border Radius', 'coherence-core'),
 				'type' => Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px', '%', 'em' ],
+				'size_units' => ['px', '%', 'em'],
 				'selectors' => [
 					'{{WRAPPER}} .elementor-button' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
@@ -274,9 +277,9 @@ class Coherence_Button_Widget extends Widget_Base
 		$this->add_responsive_control(
 			'text_padding',
 			[
-				'label' => esc_html__( 'Padding', 'coherence-core' ),
+				'label' => esc_html__('Padding', 'coherence-core'),
 				'type' => Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px', 'em', '%' ],
+				'size_units' => ['px', 'em', '%'],
 				'selectors' => [
 					'{{WRAPPER}} .elementor-button' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
@@ -288,12 +291,13 @@ class Coherence_Button_Widget extends Widget_Base
 		$this->end_controls_section();
 	}
 
-	public function on_import( $element ) {
-		return Icons_Manager::on_import_migration( $element, 'icon', 'selected_icon' );
+	public function on_import($element)
+	{
+		return Icons_Manager::on_import_migration($element, 'icon', 'selected_icon');
 	}
 
 
-	protected function register_controls()
+	protected function register_controls($args = [])
 	{
 		$default_args = [
 			'section_condition' => [],
@@ -307,13 +311,14 @@ class Coherence_Button_Widget extends Widget_Base
 		$args = wp_parse_args($args, $default_args);
 
 		//Section Content
-		$this->register_button_controls_content($args);	
+		$this->register_button_controls_content($args);
 		//Section Styles
 		$this->register_button_controls_style($args);
 	}
 
-	protected function register_button_controls_content(array $args = []) {
-		
+	protected function register_button_controls_content(array $args = [])
+	{
+
 		$this->start_controls_section(
 			'section_button',
 			[
@@ -384,9 +389,9 @@ class Coherence_Button_Widget extends Widget_Base
 		$this->add_control(
 			'link',
 			[
-				'label' => esc_html__( 'Link', 'coherence-core' ),
+				'label' => esc_html__('Link', 'coherence-core'),
 				'type' => Controls_Manager::URL,
-				'placeholder' => esc_html__( 'https://your-link.com', 'coherence-core' ),
+				'placeholder' => esc_html__('https://your-link.com', 'coherence-core'),
 				'default' => [
 					'url' => '#',
 				],
@@ -397,7 +402,7 @@ class Coherence_Button_Widget extends Widget_Base
 		$this->add_responsive_control(
 			'align',
 			[
-				'label' => esc_html__( 'Alignment', 'coherence-core' ),
+				'label' => esc_html__('Alignment', 'coherence-core'),
 				'type' => Controls_Manager::CHOOSE,
 				'options' => [
 					'left'    => [
@@ -422,7 +427,7 @@ class Coherence_Button_Widget extends Widget_Base
 		$this->add_control(
 			'size',
 			[
-				'label' => esc_html__( 'Size', 'coherence-core' ),
+				'label' => esc_html__('Size', 'coherence-core'),
 				'type' => Controls_Manager::SELECT,
 				'default' => 'sm',
 				'options' => self::get_button_sizes(),
@@ -434,7 +439,7 @@ class Coherence_Button_Widget extends Widget_Base
 		$this->add_control(
 			'selected_icon',
 			[
-				'label' => esc_html__( 'Icon', 'coherence-core' ),
+				'label' => esc_html__('Icon', 'coherence-core'),
 				'type' => Controls_Manager::ICONS,
 				'fa4compatibility' => 'icon',
 				'skin' => 'media',
@@ -464,7 +469,7 @@ class Coherence_Button_Widget extends Widget_Base
 		$this->add_control(
 			'icon_indent',
 			[
-				'label' => esc_html__( 'Icon Spacing', 'coherence-core' ),
+				'label' => esc_html__('Icon Spacing', 'coherence-core'),
 				'type' => Controls_Manager::SLIDER,
 				'range' => [
 					'px' => [
@@ -484,7 +489,7 @@ class Coherence_Button_Widget extends Widget_Base
 		$this->add_control(
 			'view',
 			[
-				'label' => esc_html__( 'View', 'coherence-core' ),
+				'label' => esc_html__('View', 'coherence-core'),
 				'type' => Controls_Manager::HIDDEN,
 				'default' => 'traditional',
 				'condition' => $args['section_condition'],

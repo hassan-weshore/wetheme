@@ -25,7 +25,7 @@ if (!function_exists('coherence_check_exist_value')) {
 
 if (!function_exists('coherence_font_style')) {
 
-	function coherence_font_style($selector_to_style = null, $get_option_value)
+	function coherence_font_style($selector_to_style = null, $get_option_value = null)
 	{
 		//
 		$return = coherence_check_exist_value("font-size", esc_attr(coherence_get_option($get_option_value)['font-size']) . "px") .
@@ -204,9 +204,7 @@ if (!function_exists('coherence_dynamic_styles')) {
 		.navbar-area .nav-container .navbar-collapse .navbar-nav li.menu-item-has-children .sub-menu li a:hover{
 		<?php echo coherence_check_exist_value("color", esc_attr(coherence_get_option('sub_menu_hover_color')) . " !important"); ?>
 		}
-		.elementor-section.elementor-section-boxed>.elementor-container, .navbar-top .container,.navbar>.container{
-		<?php echo coherence_check_exist_value("max-width", esc_attr(coherence_get_option('content_width')['width']) . "px !important"); ?>
-		}
+
 		<?php echo coherence_padding_style(".sub-menu li", "mainmenu_dropdown_vertical_padding"); ?>
 		.sub-menu li{
 		<?php echo coherence_check_exist_value("background-color", esc_attr(coherence_get_option('menu_sub_bg_color')), ""); ?>

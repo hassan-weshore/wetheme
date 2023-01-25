@@ -269,13 +269,17 @@ function update_elementor_site_settings()
 {
 
 	if (is_admin() && is_plugin_active('elementor/elementor.php')) {
-
+		$preferences = get_user_meta(get_current_user_id(), 'elementor_preferences', true);
 		$kit_active_id = Elementor\Plugin::$instance->kits_manager->get_active_id();
 		$elementor_settings = get_post_meta($kit_active_id, '_elementor_page_settings', true);
 		if (empty($elementor_settings)) {
 			$elementor_settings = [];
 		}
+		// if (empty($preferences)) {
+		// 	$preferences = [];
+		// }
 		//Default breakpoints
+
 		$default_breakpoints = [
 			'active_breakpoints' =>
 			[
@@ -286,24 +290,61 @@ function update_elementor_site_settings()
 				'viewport_laptop',
 				'viewport_widescreen',
 			],
-			'viewport_mobile' => coherence_get_option('grid_main_break_point'),
-			'viewport_mobile_extra' => coherence_get_option('side_header_break_point'),
-			'viewport_tablet' => coherence_get_option('content_break_point'),
-			'viewport_tablet_extra' => coherence_get_option('sidebar_break_point'),
-			'viewport_laptop' => coherence_get_option('Laptop_break_point'),
-			'viewport_widescreen' => coherence_get_option('Widescreen_break_point'),
+			'viewport_mobile' => coherence_get_option('mobile_break_point'),
+			'viewport_mobile_extra' => coherence_get_option('mobile_extra_point'),
+			'viewport_tablet' => coherence_get_option('sidebar_break_point'),
+			'viewport_tablet_extra' => coherence_get_option('content_break_point'),
+			'viewport_laptop' => coherence_get_option('side_header_break_point'),
+			'viewport_widescreen' => coherence_get_option('grid_main_break_point'),
 		];
+
+		$system_colors = [
+			'system_colors' =>
+			[
+				[
+					'_id' => 'text',
+					'title' => 'Texte',
+					'color' => coherence_get_option('coherence_body_font')['color'],
+				],
+			],
+		];
+
 		$container_width = [
 			'container_width' =>
 			[
 				'size' => intval(coherence_get_option('content_width')['width']),
 			],
 		];
+		$system_typography = [
+			'system_typography' =>
+			[
+				[
+					'_id' =>  'text',
+					'title' =>  'Site typo géneral',
+					'typography_typography' =>  'custom',
+					'typography_font_family' => coherence_get_option('coherence_body_font')['font-family'],
+					//'typography_font_weight' => string '400' (length=3)
 
-		$elementor_settings = array_merge($elementor_settings, $default_breakpoints, $container_width);
+					// 'body_color' => coherence_get_option('coherence_body_font')['color'],
+					// 'body_typography_font_family' => coherence_get_option('coherence_body_font')['font-family'],
+					// 'body_typography_typography' =>  'custom',
+				],
+			],
+		];
+
+		$elementor_settings = array_merge($elementor_settings, $default_breakpoints, $container_width, $system_colors, $system_typography);
 		update_post_meta($kit_active_id, '_elementor_page_settings', $elementor_settings);
+
+
+		$modeUi = (coherence_get_option('elementor_dark_light') == false) ? "dark" : "light";
+		$ui_themex = [
+			'ui_theme' => $modeUi,
+		];
+		$preferences = array_merge($preferences, $ui_themex);
+		update_user_meta(wp_get_current_user()->ID, 'elementor_preferences', $preferences);
 	}
 	//delete_option('activated-coherence-core');
+
 }
 
 add_action("csf_coherence_theme_options_save_after", 'update_elementor_site_settings');

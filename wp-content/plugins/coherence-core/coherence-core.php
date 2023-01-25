@@ -139,9 +139,20 @@ function load_plugin()
 
 		$settings = array_merge($settings, $default_breakpoints, $colors);
 		update_post_meta($kit_active_id, '_elementor_page_settings', $settings);
-
 		delete_option('activated-coherence-core');
 	}
 }
 
 add_action('admin_init', 'load_plugin');
+add_action('admin_init', function () {
+	$kit_active_id = Elementor\Plugin::$instance->kits_manager->get_active_id();
+	$settings = get_post_meta($kit_active_id, '_elementor_page_settings', true);
+	//var_dump($settings);
+	//$preference = get_user_meta(1, 'elementor_preferences', true);
+
+
+
+
+
+	//var_dump($preferences);
+});
