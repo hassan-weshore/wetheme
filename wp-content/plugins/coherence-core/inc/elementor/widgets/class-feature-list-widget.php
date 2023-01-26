@@ -411,6 +411,9 @@ class Coherence_Feature_List_Widget extends Widget_Base
 				'selectors' => [
 					'{{WRAPPER}} {{CURRENT_ITEM}} .coherence-feature-list-description' => 'color: {{VALUE}}',
 				],
+                'condition' => [
+					'feature_list_custom_styles' => 'yes'
+				]
 			]
 		);
 
@@ -466,6 +469,9 @@ class Coherence_Feature_List_Widget extends Widget_Base
 				'label' => esc_html__('Hover Options', 'coherence-core'),
 				'type' => \Elementor\Controls_Manager::HEADING,
 				'separator' => 'before',
+                'condition' => [
+					'feature_list_custom_styles' => 'yes'
+				]
 			]
 		);
 
@@ -492,6 +498,9 @@ class Coherence_Feature_List_Widget extends Widget_Base
 				'selectors' => [
 					'{{WRAPPER}} {{CURRENT_ITEM}} .coherence-feature-list-description:hover' => 'color: {{VALUE}}',
 				],
+                'condition' => [
+					'feature_list_custom_styles' => 'yes'
+				]
 			]
 		);
 
@@ -919,7 +928,7 @@ class Coherence_Feature_List_Widget extends Widget_Base
 			]
 		);
 
-		$this->add_control(
+        $this->add_control(
 			'feature_list_list_background',
 			[
 				'label'  => esc_html__( 'Background Color', 'coherence-core' ),
@@ -927,56 +936,6 @@ class Coherence_Feature_List_Widget extends Widget_Base
 				'selectors' => [
 					'{{WRAPPER}}.elementor-widget-coherence-feature-list .coherence-feature-list-item' => 'background-color: {{VALUE}}',
 				],
-			]
-		);
-
-		$this->add_responsive_control(
-			'list_spacing',
-			[
-				'label' => esc_html__('Margin', 'coherence-core'),
-				'type' => Controls_Manager::DIMENSIONS,
-				'size_units' => ['px', '%', 'em'],
-				'default' => [
-					'top' => '15',
-					'right' => '15',
-					'bottom' => '15',
-					'left' => '15',
-				],
-				'selectors' => [
-					'{{WRAPPER}}.elementor-widget-coherence-feature-list .coherence-feature-list-item' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-				'separator' => 'before'
-			]
-		);
-
-		$this->add_responsive_control(
-			'list_padding',
-			[
-				'label' => esc_html__('Padding', 'coherence-core'),
-				'type' => Controls_Manager::DIMENSIONS,
-				'size_units' => ['px', '%', 'em'],
-				'default' => [
-					'top' => '5',
-					'right' => '5',
-					'bottom' => '5',
-					'left' => '5',
-				],
-				'selectors' => [
-					'{{WRAPPER}}.elementor-widget-coherence-feature-list .coherence-feature-list-item' => 'Padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				],
-				'separator' => 'before'
-			]
-		);
-
-		$this->add_control(
-			'feature_list_items_border_radius',
-			[
-				'label' => esc_html__( 'Border Radius', 'coherence-core' ),
-				'type' => \Elementor\Controls_Manager::DIMENSIONS,
-				'size_units' => [ 'px' , '%'],
-				'selectors' => [
-					'{{WRAPPER}}.elementor-widget-coherence-feature-list .coherence-feature-list-item' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-				]
 			]
 		);
 
@@ -1058,6 +1017,58 @@ class Coherence_Feature_List_Widget extends Widget_Base
 				'condition' => [
 					'feature_list_box' => 'yes'
 				],
+			]
+		);
+
+		$this->add_responsive_control(
+			'list_spacing',
+			[
+				'label' => esc_html__('Margin', 'coherence-core'),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', '%', 'em'],
+				'default' => [
+					'top' => '15',
+					'right' => '15',
+					'bottom' => '15',
+					'left' => '15',
+				],
+				'selectors' => [
+					'{{WRAPPER}}.elementor-widget-coherence-feature-list .coherence-feature-list-item' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+                'render_type' => 'template',
+				'separator' => 'before',
+			]
+		);
+
+		$this->add_responsive_control(
+			'list_padding',
+			[
+				'label' => esc_html__('Padding', 'coherence-core'),
+				'type' => Controls_Manager::DIMENSIONS,
+				'size_units' => ['px', '%', 'em'],
+				'default' => [
+					'top' => '5',
+					'right' => '5',
+					'bottom' => '5',
+					'left' => '5',
+				],
+				'selectors' => [
+					'{{WRAPPER}}.elementor-widget-coherence-feature-list .coherence-feature-list-item' => 'Padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+                'render_type' => 'template',
+				'separator' => 'before'
+			]
+		);
+
+		$this->add_control(
+			'feature_list_items_border_radius',
+			[
+				'label' => esc_html__( 'Border Radius', 'coherence-core' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => [ 'px' , '%'],
+				'selectors' => [
+					'{{WRAPPER}}.elementor-widget-coherence-feature-list .coherence-feature-list-item' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				]
 			]
 		);
 
