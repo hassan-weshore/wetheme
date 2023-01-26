@@ -188,6 +188,71 @@ class Coherence_Menu_Widget extends Widget_Base
 		$this->register_general_content_controls();
 		$this->register_style_content_controls();
 		$this->register_dropdown_content_controls();
+		$this->register_style_animation_menu();
+	}
+
+	protected function register_style_animation_menu() {
+		$this->start_controls_section(
+			'toggle_style_effects',
+			[
+				'label'     => __('Menu Effects', 'coherence-core'),
+				'tab'       => Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$this->add_responsive_control(
+			'menu_item_effects',
+			[
+				'label' => esc_html__('Items Effects', 'coherence-core'),
+				'type' => Controls_Manager::SELECT,
+				'options' => [
+					'none' => esc_html__('None', 'coherence-core'),
+					'underline' => esc_html( 'Underline' , 'coherence-core' ),
+				],
+				'default' => 'none',
+				'prefix_class' => 'menu-item-effect-',
+			]
+		);
+
+		$this->add_control(
+			'line_color',
+			[
+				'label'     => __('Line Color', 'coherence-core'),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}}.menu-item-effect-underline .coherence-core-nav-menu>li a::after' => 'background-color: {{VALUE}} !important',
+				],
+				'condition' => [
+					'menu_item_effects' => 'underline',
+				],
+			]
+		);
+
+		$this->add_control(
+			'line_weight',
+			[
+				'label'		=> __('Line Color', 'coherence-core'),
+				'type'		=> Controls_Manager::SLIDER,
+				'range'	=> [
+					'px'=> [
+						'min' => 1,
+						'max' => 5,
+					],
+				],
+				'default' => [
+					'size' => 3,
+					'unit' => 'px',
+				],
+				'selectors' => [
+					'{{WRAPPER}}.menu-item-effect-underline .coherence-core-nav-menu>li a::after' => 'height: {{SIZE}}{{UNIT}}',
+				],
+				'condition' => [
+					'menu_item_effects' => 'underline',
+				],
+			]
+		);
+
+		$this->end_controls_section();
 	}
 
 	/**

@@ -1,0 +1,26 @@
+.menu-item-effect {
+    //menu-item-effect-underline
+    &-underline {
+        .coherence-core-nav-menu {
+            & > li {
+                a {
+                    position: relative;
+                    &::after {
+                      position: absolute;
+                      content: "";
+                      bottom : 0;
+                      left: 0;
+                      width: 100%;
+                      transform: scaleX(0);
+                      transform-origin: right;
+                      transition: transform 0.5s;
+                    }
+                    &:hover::after {
+                      transform: scaleX(1);
+                      transform-origin: left;
+                    }
+                  }
+            }
+        }
+    }
+}
