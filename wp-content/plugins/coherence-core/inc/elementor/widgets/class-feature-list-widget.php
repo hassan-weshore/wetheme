@@ -928,14 +928,13 @@ class Coherence_Feature_List_Widget extends Widget_Base
 			]
 		);
 
-        $this->add_control(
-			'feature_list_list_background',
+		$this->add_group_control(
+			Group_Control_Background::get_type(),
 			[
-				'label'  => esc_html__( 'Background Color', 'coherence-core' ),
-				'type' => \Elementor\Controls_Manager::COLOR,
-				'selectors' => [
-					'{{WRAPPER}}.elementor-widget-coherence-feature-list .coherence-feature-list-item' => 'background-color: {{VALUE}}',
-				],
+				'name' => 'feature_list_list_background',
+				'types' => [ 'classic', 'gradient' ],
+				'exclude' => [ 'image' ],
+				'selector' => '{{WRAPPER}}.elementor-widget-coherence-feature-list .coherence-feature-list-item',
 			]
 		);
 
