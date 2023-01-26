@@ -28,7 +28,7 @@ class Social_Icons extends Widget_Base
 	 */
 	public function get_name()
 	{
-		return 'coherence-social-icons';
+		return 'social-icons';
 	}
 
 	/**
@@ -90,7 +90,7 @@ class Social_Icons extends Widget_Base
 	 */
 	public function get_keywords()
 	{
-		return ['social', 'icon', 'link'];
+		return ['Coherence', 'coherence social' , 'social', 'icon', 'link'];
 	}
 
 	/**
@@ -216,7 +216,7 @@ class Social_Icons extends Widget_Base
 			]
 		);
 
-		$repeater->add_control(
+		$repeater->add_responsive_control(
 			'item_icon_primary_color',
 			[
 				'label' => esc_html__('Primary Color', 'coherence-core'),
@@ -230,7 +230,7 @@ class Social_Icons extends Widget_Base
 			]
 		);
 
-		$repeater->add_control(
+		$repeater->add_responsive_control(
 			'item_icon_secondary_color',
 			[
 				'label' => esc_html__('Secondary Color', 'coherence-core'),
@@ -240,7 +240,7 @@ class Social_Icons extends Widget_Base
 				],
 				'selectors' => [
 					'{{WRAPPER}} {{CURRENT_ITEM}}.elementor-social-icon i' => 'color: {{VALUE}};',
-					'{{WRAPPER}} {{CURRENT_ITEM}}.elementor-social-icon svg' => 'fill: {{VALUE}};',
+					'{{WRAPPER}} {{CURRENT_ITEM}}.elementor-social-icon svg path' => 'fill: {{VALUE}};',
 				],
 			]
 		);
@@ -374,7 +374,7 @@ class Social_Icons extends Widget_Base
 			]
 		);
 
-		$this->add_control(
+		$this->add_responsive_control(
 			'icon_primary_color',
 			[
 				'label' => esc_html__('Primary Color', 'coherence-core'),
@@ -388,7 +388,7 @@ class Social_Icons extends Widget_Base
 			]
 		);
 
-		$this->add_control(
+		$this->add_responsive_control(
 			'icon_secondary_color',
 			[
 				'label' => esc_html__('Secondary Color', 'coherence-core'),
@@ -398,7 +398,7 @@ class Social_Icons extends Widget_Base
 				],
 				'selectors' => [
 					'{{WRAPPER}} .elementor-social-icon i' => 'color: {{VALUE}};',
-					'{{WRAPPER}} .elementor-social-icon svg' => 'fill: {{VALUE}};',
+					'{{WRAPPER}} .elementor-social-icon svg path' => 'fill: {{VALUE}};',
 				],
 			]
 		);
@@ -408,11 +408,20 @@ class Social_Icons extends Widget_Base
 			[
 				'label' => esc_html__('Size', 'coherence-core'),
 				'type' => Controls_Manager::SLIDER,
+				'size_units' => ['px', 'em'],
 				'range' => [
 					'px' => [
-						'min' => 6,
-						'max' => 300,
+						'min' => 12,
+						'max' => 100,
 					],
+					'em' => [
+						'min' => 1,
+						'max' => 10,
+					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 20,
 				],
 				'selectors' => [
 					'{{WRAPPER}}' => '--icon-size: {{SIZE}}{{UNIT}}',
@@ -425,23 +434,23 @@ class Social_Icons extends Widget_Base
 			[
 				'label' => esc_html__('Padding', 'coherence-core'),
 				'type' => Controls_Manager::SLIDER,
+				'size_units' => ['px', 'em'],
 				'selectors' => [
 					'{{WRAPPER}} .elementor-social-icon' => '--icon-padding: {{SIZE}}{{UNIT}}',
 				],
-				'default' => [
-					'unit' => 'em',
-				],
-				'tablet_default' => [
-					'unit' => 'em',
-				],
-				'mobile_default' => [
-					'unit' => 'em',
-				],
 				'range' => [
+					'px' => [
+						'min' => 0,
+						'max' => 100,
+					],
 					'em' => [
 						'min' => 0,
-						'max' => 5,
+						'max' => 10,
 					],
+				],
+				'default' => [
+					'unit' => 'px',
+					'size' => 15,
 				],
 			]
 		);
@@ -511,7 +520,7 @@ class Social_Icons extends Widget_Base
 			]
 		);
 
-		$this->add_control(
+		$this->add_responsive_control(
 			'hover_primary_color',
 			[
 				'label' => esc_html__('Primary Color', 'coherence-core'),
@@ -526,7 +535,7 @@ class Social_Icons extends Widget_Base
 			]
 		);
 
-		$this->add_control(
+		$this->add_responsive_control(
 			'hover_secondary_color',
 			[
 				'label' => esc_html__('Secondary Color', 'coherence-core'),
@@ -537,7 +546,7 @@ class Social_Icons extends Widget_Base
 				],
 				'selectors' => [
 					'{{WRAPPER}} .elementor-social-icon:hover i' => 'color: {{VALUE}};',
-					'{{WRAPPER}} .elementor-social-icon:hover svg' => 'fill: {{VALUE}};',
+					'{{WRAPPER}} .elementor-social-icon:hover svg path' => 'fill: {{VALUE}};',
 				],
 			]
 		);

@@ -93,7 +93,7 @@ class Coherence_Image_Widget extends Widget_Base
 	 */
 	public function get_keywords()
 	{
-		return ['image', 'photo', 'visual'];
+		return ['Coherence', 'coherence image' , 'image', 'photo', 'visual'];
 	}
 
 	/**

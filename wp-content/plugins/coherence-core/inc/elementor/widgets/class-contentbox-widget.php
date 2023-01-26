@@ -93,7 +93,7 @@ class Widget_Content_Box extends Widget_Base
 	 */
 	public function get_keywords()
 	{
-		return ['image', 'photo', 'visual', 'box', 'icon box', 'icon'];
+		return ['Coherence', 'coherence image' , 'image', 'photo', 'visual', 'box', 'icon box', 'icon'];
 	}
 
 	/**

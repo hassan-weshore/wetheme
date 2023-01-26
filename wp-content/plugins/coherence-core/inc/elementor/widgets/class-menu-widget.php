@@ -36,6 +36,21 @@ class Coherence_Menu_Widget extends Widget_Base
 		return 'menu';
 	}
 
+		/**
+	 * Get widget keywords.
+	 *
+	 * Retrieve the list of keywords the widget belongs to.
+	 *
+	 * @since 2.1.0
+	 * @access public
+	 *
+	 * @return array Widget keywords.
+	 */
+	public function get_keywords()
+	{
+		return ['Coherence', 'coherence menu' , 'menu'];
+	}
+
 	/**
 	 * Get widget title.
 	 *

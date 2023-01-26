@@ -76,6 +76,21 @@ class Coherence_Button_Widget extends Widget_Base
 	}
 
 	/**
+	 * Get widget keywords.
+	 *
+	 * Retrieve the list of keywords the widget belongs to.
+	 *
+	 * @since 2.1.0
+	 * @access public
+	 *
+	 * @return array Widget keywords.
+	 */
+	public function get_keywords()
+	{
+		return ['Coherence', 'coherence button' , 'button'];
+	}
+
+	/**
 	 * Get button sizes.
 	 *
 	 * Retrieve an array of button sizes for the button widget.

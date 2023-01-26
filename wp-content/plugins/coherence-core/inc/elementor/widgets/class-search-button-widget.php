@@ -45,6 +45,21 @@ class Coherence_Search_Button_Widget extends Widget_Base
 	}
 
 	/**
+	 * Get widget keywords.
+	 *
+	 * Retrieve the list of keywords the widget belongs to.
+	 *
+	 * @since 2.1.0
+	 * @access public
+	 *
+	 * @return array Widget keywords.
+	 */
+	public function get_keywords()
+	{
+		return ['Coherence', 'coherence button' , 'button'];
+	}
+
+	/**
 	 * Retrieve the widget title.
 	 *
 	 * @since 1.5.0

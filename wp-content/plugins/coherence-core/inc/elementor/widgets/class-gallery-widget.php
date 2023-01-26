@@ -70,7 +70,7 @@ class Coherence_Gallery_Widget extends Widget_Base {
 	 * @return array Widget keywords.
 	 */
 	public function get_keywords() {
-		return [ 'image', 'photo', 'visual', 'gallery' ];
+		return ['coherence', 'coherence image', 'image', 'photo', 'visual', 'gallery' ];
 	}
 	
 	/**
