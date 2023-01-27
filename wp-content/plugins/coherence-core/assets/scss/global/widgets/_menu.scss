@@ -1,26 +1,91 @@
+[class*=" menu-item-effect-"] {
+    .coherence-core-nav-menu {
+        & > li {
+            a {
+                position: relative;
+                &::after {
+                  position: absolute;
+                  //DELETE EFFECT FRO SUB MENU
+                  content: unset;
+                  left: 0;
+                  transform: scaleX(0);
+                  transform-origin: right;
+                }
+                &:hover::after {
+                  transform: scaleX(1);
+                  transform-origin: left;
+                }
+                &.coherence-core-menu-item {
+                  &::after {
+                    content: "";
+                  }
+                }
+              }
+        }
+    }
+}
+
 .menu-item-effect {
     //menu-item-effect-underline
     &-underline {
         .coherence-core-nav-menu {
             & > li {
                 a {
-                    position: relative;
                     &::after {
-                      position: absolute;
-                      content: "";
-                      bottom : 0;
-                      left: 0;
                       width: 100%;
-                      transform: scaleX(0);
-                      transform-origin: right;
                       transition: transform 0.5s;
-                    }
-                    &:hover::after {
-                      transform: scaleX(1);
-                      transform-origin: left;
+                      bottom : 0;
                     }
                   }
             }
         }
     }
+     //menu-item-effect-circle
+     &-circle {
+        .coherence-core-nav-menu {
+            & > li {
+                a {
+                    &::after {
+                      width: 6px;
+                      height: 6px;
+                      border-radius: 50%;
+                      transition: left 0.5s;
+                      bottom : 4px;
+                    }
+                    &:hover::after {
+                      left: 50%;
+                    }
+                  }
+            }
+        }
+    }
+    //menu-item-effect-shadow
+    &-shadow {
+      .coherence-core-nav-menu {
+        & > li {
+          position: relative;
+          &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left:0;
+            height:100%;
+            width: 100%;
+            z-index:-1;
+            transition: .2s;
+          }
+            &:hover {
+              &::before {
+                transform: scale(1.1);
+              }
+          }
+        }
+      }
+    }
+
+}
+
+nav.coherence-core-dropdown-expandible {
+  width: 100% !important;
+  z-index: 99 !important;
 }

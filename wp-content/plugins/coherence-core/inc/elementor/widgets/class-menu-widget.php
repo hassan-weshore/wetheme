@@ -197,6 +197,9 @@ class Coherence_Menu_Widget extends Widget_Base
 			[
 				'label'     => __('Menu Effects', 'coherence-core'),
 				'tab'       => Controls_Manager::TAB_STYLE,
+				'condition' => [
+					'pointer' => 'none',
+				]
 			]
 		);
 
@@ -206,8 +209,10 @@ class Coherence_Menu_Widget extends Widget_Base
 				'label' => esc_html__('Items Effects', 'coherence-core'),
 				'type' => Controls_Manager::SELECT,
 				'options' => [
-					'none' => esc_html__('None', 'coherence-core'),
-					'underline' => esc_html( 'Underline' , 'coherence-core' ),
+					'none' => esc_html__('None','coherence-core'),
+					'underline' => esc_html('Underline','coherence-core'),
+					'circle' => esc_html('Circle','coherence-core'),
+					'shadow' => esc_html('Shadow','coherence-core'),
 				],
 				'default' => 'none',
 				'prefix_class' => 'menu-item-effect-',
@@ -220,10 +225,10 @@ class Coherence_Menu_Widget extends Widget_Base
 				'label'     => __('Line Color', 'coherence-core'),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}}.menu-item-effect-underline .coherence-core-nav-menu>li a::after' => 'background-color: {{VALUE}} !important',
+					'{{WRAPPER}}[class*=" menu-item-effect-"] .coherence-core-nav-menu>li a::after' => 'background-color: {{VALUE}} !important',
 				],
 				'condition' => [
-					'menu_item_effects' => 'underline',
+					'menu_item_effects!' =>  ['none' , 'shadow'],
 				],
 			]
 		);
@@ -231,7 +236,7 @@ class Coherence_Menu_Widget extends Widget_Base
 		$this->add_control(
 			'line_weight',
 			[
-				'label'		=> __('Line Color', 'coherence-core'),
+				'label'		=> __('Line Weight', 'coherence-core'),
 				'type'		=> Controls_Manager::SLIDER,
 				'range'	=> [
 					'px'=> [
@@ -248,6 +253,110 @@ class Coherence_Menu_Widget extends Widget_Base
 				],
 				'condition' => [
 					'menu_item_effects' => 'underline',
+				],
+			]
+		);
+
+		$this->add_control(
+			'circle_diameter',
+			[
+				'label'		=> __('Diameter dimension', 'coherence-core'),
+				'type'		=> Controls_Manager::SLIDER,
+				'range'	=> [
+					'px'=> [
+						'min' => 3,
+						'max' => 9,
+					],
+				],
+				'default' => [
+					'size' => 5,
+					'unit' => 'px',
+				],
+				'selectors' => [
+					'{{WRAPPER}}.menu-item-effect-circle .coherence-core-nav-menu>li a::after' => 'height: {{SIZE}}{{UNIT}};width: {{SIZE}}{{UNIT}}',
+				],
+				'condition' => [
+					'menu_item_effects' => 'circle',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Box_Shadow::get_type(),
+			[
+				'name' => 'menu_items_shadow',
+				'selector' => '{{WRAPPER}}.menu-item-effect-shadow .coherence-core-nav-menu>li:hover::before',
+				'condition' => [
+					'menu_item_effects' => 'shadow',
+				],
+			]
+		);
+
+		$this->add_group_control(
+			Group_Control_Background::get_type(),
+			[
+				'name'           => 'menu_items_background',
+				'label'          => __('Background Color', 'coherence-core'),
+				'types'          => ['classic', 'gradient'],
+				'exclude' => [ 'image' ],
+				'selector'       => '{{WRAPPER}}.menu-item-effect-shadow .coherence-core-nav-menu>li:hover::before',
+				'condition' => [
+					'menu_item_effects' => 'shadow',
+				],
+			]
+		);
+
+		$this->add_control(
+			'menu_items_color',
+			[
+				'label'  => esc_html__( 'Color Text Hover', 'coherence-core' ),
+				'type' => \Elementor\Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}}.menu-item-effect-shadow .coherence-core-nav-menu>li:hover a.coherence-core-menu-item' => 'color: {{VALUE}}',
+				],
+				'condition' => [
+					'menu_item_effects' => 'shadow',
+				],
+			]
+		);
+
+		$this->add_control(
+			'menu_items_border_radius',
+			[
+				'label' => esc_html__( 'Border Radius', 'coherence-core' ),
+				'type' => \Elementor\Controls_Manager::DIMENSIONS,
+				'size_units' => ['px','%'],
+				'default' => [
+					'top' => 25,
+					'right' => 25,
+					'bottom' => 25,
+					'left' => 25,
+				],
+				'selectors' => [
+					'{{WRAPPER}}.menu-item-effect-shadow .coherence-core-nav-menu>li::before' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+				],
+				'condition' => [
+					'menu_item_effects' => 'shadow',
+				],
+			]
+		);
+
+		$this->add_control(
+			'sub_menu_spacing_weight',
+			[
+				'label'		=> __('Sub Menu Spacing', 'coherence-core'),
+				'type'		=> Controls_Manager::SLIDER,
+				'range'	=> [
+					'px'=> [
+						'min' => 1,
+						'max' => 35,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}}[class*=" menu-item-effect-"] .coherence-core-nav-menu>li .sub-menu' => 'margin-top: {{SIZE}}{{UNIT}}',
+				],
+				'condition' => [
+					'menu_item_effects!' => 'none',
 				],
 			]
 		);
